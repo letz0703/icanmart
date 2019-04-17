@@ -24,6 +24,7 @@ $factory->define(Item::class, function (Faker $faker) {
         'product_name' => $faker->text(20),
         'description' => $faker->text(40),
         'expire_date' => $faker->date(),
+        'channel' => $faker->text(20),
         'buy_price' => $faker->numberBetween(1000,10000),
         'sell_price' => $faker->numberBetween(1000,10000),
         'quantity' => $faker->numberBetween(1,100),

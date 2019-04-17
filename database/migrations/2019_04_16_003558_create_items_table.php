@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('product_name');
             $table->text('description')->nullable();
             $table->date('expire_date')->nullable();
+            $table->string('channel')->nullable();
             $table->integer('buy_price')->nullable();
             $table->integer('sell_price')->nullable();
             $table->unsignedInteger('quantity')->nullable();
