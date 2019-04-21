@@ -50,6 +50,8 @@ class ItemController extends Controller
     {
         return view('items.show',compact('item'));
     }
+    
+    
 
     /**
      * Show the form for editing the specified resource.

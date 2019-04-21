@@ -18,15 +18,21 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Item::class, function (Faker $faker) {
+$factory->define(Item::class, function (Faker $faker){
     return [
-        'barcode' => $faker->numberBetween(100000000,20000000),
+        'barcode'      => $faker->numberBetween(100000000, 20000000),
         'product_name' => $faker->text(20),
-        'description' => $faker->text(40),
-        'expire_date' => $faker->date(),
-        'channel' => $faker->text(20),
-        'buy_price' => $faker->numberBetween(1000,10000),
-        'sell_price' => $faker->numberBetween(1000,10000),
-        'quantity' => $faker->numberBetween(1,100),
+        'description'  => $faker->text(40),
+        'expire_date'  => $faker->date(),
+        'channel'      => $faker->text(20),
+        'buy_price'    => $faker->numberBetween(1000, 10000),
+        'sell_price'   => $faker->numberBetween(1000, 10000),
+        'quantity'     => $faker->numberBetween(1, 100),
+        'box_id'       => function (){
+            return factory('App\Box')->create()->id;
+        },
+        'seller_id'       => function (){
+            return factory('App\Seller')->create()->id;
+        },
     ];
 });

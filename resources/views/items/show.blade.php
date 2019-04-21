@@ -15,7 +15,7 @@
                             <div>입고가 : {{ $item->buy_price }} 원</div>
                             <div>입고수량 : {{ $item->quantity }} 개</div>
                             <div>합계액 : {{ $item->quantity * $item->buy_price }} 원</div>
-                            <div>마진: {{ $item->sell_price - $item->buyprice }} 원</div>
+                            <div>마진: {{ $item->sell_price - ($item->buyprice) }} 원</div>
                             <div>기대수익: {{ ($item->sell_price - $item->buyprice)*$item->quantity }} 원</div>
                         </article>
                         <hr>
