@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Box;
 use App\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -28,16 +35,23 @@ class ItemController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Box $box
+     *
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
-    public function store(Request $request)
+    public function store(Box $box)
     {
-        //
+        $box->addItem([
+            'product_name' => request('product_name'),
+            'quantity' => request('quantity'),
+        ]);
+        
+        return back();
     }
 
     /**

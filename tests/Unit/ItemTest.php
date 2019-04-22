@@ -23,11 +23,18 @@ class ItemTest extends TestCase
         $this->assertInstanceOf('App\Seller',$item->seller);
     }
     
+    /** @test */
+    public function un_auth_user_can_not_browse_items()
+    {
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+        $this->get('/items');
+    }
     
     /** @test */
-    public function user_can_browse_all_items()
+    public function auth_user_can_browse_all_items()
     {
-        $item = factory('App\Item')->create();
+        $this->be(factory('App\User')->create());
+        //$item = factory('App\Item')->create();
         $response = $this->get('/items');
         $response->assertStatus(200);
     }

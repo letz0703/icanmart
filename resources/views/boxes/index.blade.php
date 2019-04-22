@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         @foreach($boxes as $box)
-                            <p> {{ $box->arrived_at }}</p>
+                            <p>입고일: {{ $box->arrived_at }}</p>
                             <article>{{ $box->title }} {{ $box->amount }}</article>
                             <hr>
                         @endforeach
