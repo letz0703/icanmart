@@ -1,4 +1,6 @@
-<article>{{ $item->product_name }}</article>
-<p>{{ $item->quantity }}개</p>
-<p> X {{ $item->buy_price }}</p>
-<p>{{ $item->amount }}</p>
+<ul>
+    <li>
+        {{ $item->product_name }} {{ $item->quantity }}개
+        X {{ $item->buy_price }} : {{ $item->amount }}
+    </li>
+</ul>

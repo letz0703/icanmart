@@ -10,7 +10,9 @@
                     <div class="card-body">
                         @foreach($boxes as $box)
                             <p>입고일: {{ $box->arrived_at }}</p>
+                        <a href="{{ $box->path() }}">
                             <article>{{ $box->title }} {{ $box->amount }}</article>
+                        </a>
                             <hr>
                         @endforeach
                     </div>

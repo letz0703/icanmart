@@ -49,6 +49,7 @@ class ItemController extends Controller
         $box->addItem([
             'product_name' => request('product_name'),
             'quantity' => request('quantity'),
+            'buy_price' => request('buy_price')
         ]);
         
         return back();
