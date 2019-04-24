@@ -12,7 +12,8 @@ class ItemTest extends TestCase
     /** @test */
     public function it_belongs_to_a_box()
     {
-        $item = factory('App\Item')->create();
+        //$item = factory('App\Item')->create();
+        $item = create('App\Item');
         $this->assertInstanceOf('App\Box', $item->box);
     }
     
@@ -24,16 +25,17 @@ class ItemTest extends TestCase
     }
     
     /** @test */
-    public function un_auth_user_can_not_browse_items()
-    {
-        $this->expectException('Illuminate\Auth\AuthenticationException');
-        $this->get('/items');
-    }
+    //public function un_auth_user_can_not_browse_items()
+    //{
+    //    $this->expectException('Illuminate\Auth\AuthenticationException');
+    //    $this->get('/items');
+    //}
     
     /** @test */
     public function auth_user_can_browse_all_items()
     {
-        $this->be(factory('App\User')->create());
+        //$this->be(factory('App\User')->create());
+        $this->signIn();
         //$item = factory('App\Item')->create();
         $response = $this->get('/items');
         $response->assertStatus(200);
