@@ -36,10 +36,10 @@ class BoxManageTest extends TestCase
         $this->expectException('Illuminate\Auth\AuthenticationException');
         
         $box = factory('App\Box')->create();
-        $item = factory('App\Item')->create(['box_id' => $box->id]);
-        $this->post('/boxes/1/items', []);
-        $this->get($box->path())
-             ->assertSee($item->product_name);
+        //$item = factory('App\Item')->create(['box_id' => $box->id]);
+        $this->post($box->path().'/items', [])
+             ->assertRedirect('login');
+             //->assertSee($item->product_name);
     }
     
     
@@ -51,7 +51,7 @@ class BoxManageTest extends TestCase
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id' => $box->id]);
         //dd($item);
-        $this->post('/boxes/' . $box->id . '/items', $item->toArray());
+        $this->post($box->path().'/items', $item->toArray());
         $this->get($box->path())
              ->assertSee($item->product_name);
     }

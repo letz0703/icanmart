@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class BoxtTest extends TestCase
 {
+    
     use RefreshDatabase;
     
     /** @test */
@@ -21,8 +22,18 @@ class BoxtTest extends TestCase
     public function a_box_has_items()
     {
         $box = factory('App\Box')->create();
-        $item = factory('App\Item')->create(['box_id'=>$box->id]);
+        $item = factory('App\Item')->create(['box_id' => $box->id]);
         $this->assertInstanceOf(Collection::class, $box->items);
     }
+    
+    /** @test */
+    public function it_can_make_a_string_path()
+    {
+        $this->signIn();
+        $box = factory('App\Box')->create();
+        $this->post('/boxes', $box->toArray());
+        $this->assertEquals($box->path(), "/boxes/{$box->seller->name}/{$box->id}");
+    }
+    
     
 }

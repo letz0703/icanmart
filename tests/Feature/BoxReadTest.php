@@ -23,7 +23,7 @@ class BoxReadTest extends TestCase
     {
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id'=>$box->id]);
-        $this->get('/boxes/'.$box->id)
+        $this->get($box->path())
              ->assertSee($item->product_name);
     }
     

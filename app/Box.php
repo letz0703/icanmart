@@ -6,16 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Box extends Model
 {
+    
     //
     protected $guarded = [];
     
     public function path()
     {
-        return '/boxes/'.$this->id;
+        return "/boxes/{$this->seller->name}/{$this->id}";
     }
+    
     public function seller()
     {
-        return $this->belongsTo('App\Seller','seller_id');
+        return $this->belongsTo('App\Seller');
     }
     
     public function items()
@@ -26,6 +28,7 @@ class Box extends Model
     public function addItem($item)
     {
         $this->items()->create($item);
+        
         return back();
     }
     

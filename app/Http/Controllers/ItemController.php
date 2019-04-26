@@ -45,7 +45,7 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function store(Box $box)
+    public function store($channelName, Box $box)
     {
         $box->addItem([
             'product_name' => request('product_name'),

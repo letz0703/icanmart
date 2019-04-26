@@ -19,7 +19,7 @@ class BoxController extends Controller
         return view('boxes.index', compact('boxes') );
     }
     
-    public function show(Box $box)
+    public function show($sellerId, Box $box)
     {
         $items = $box->items;
         
