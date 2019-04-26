@@ -37,7 +37,7 @@ class BoxManageTest extends TestCase
         
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id' => $box->id]);
-        $this->post('/boxes/1/items',[]);
+        $this->post('/boxes/1/items', []);
         $this->get($box->path())
              ->assertSee($item->product_name);
     }
@@ -50,10 +50,29 @@ class BoxManageTest extends TestCase
         
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id' => $box->id]);
-        
+        //dd($item);
         $this->post('/boxes/' . $box->id . '/items', $item->toArray());
         $this->get($box->path())
              ->assertSee($item->product_name);
     }
+    
+    ///** @test */
+    //public function user_can_see_sum_of_items_in_a_box()
+    //{
+    //    $box = create('App\Box');
+    //
+    //    $items = create('App\Item', [
+    //        'box_id' => $box->id,
+    //        'buy_price' => 1000,
+    //        'quantity' => 2
+    //    ], 2);
+    //
+    //    //$box->amount = $items->amount;
+    //
+    //    dd($box->amount);
+    //    //$this->get($box->path())
+    //    //     ->assertEqual('box')
+    //}
+    
     
 }

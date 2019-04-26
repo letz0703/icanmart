@@ -10,7 +10,7 @@ class Item extends Model
     //
     public function path()
     {
-        return '/items/'.$this->id;
+        return '/items/'.$this->category->slug.'/'.$this->id;
     }
     
     public function box()
@@ -26,6 +26,11 @@ class Item extends Model
     public function getAmountAttribute()
     {
         return $this->buy_price * $this->quantity;
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
     
     

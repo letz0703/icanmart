@@ -23,9 +23,10 @@ class ItemController extends Controller
     {
         //return Item::get();
         $items = Item::latest()->get();
-        return view('items.index',compact('items'));
+        
+        return view('items.index', compact('items'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -48,53 +49,57 @@ class ItemController extends Controller
     {
         $box->addItem([
             'product_name' => request('product_name'),
-            'quantity' => request('quantity'),
-            'buy_price' => request('buy_price')
+            'quantity'     => request('quantity'),
+            'buy_price'    => request('buy_price'),
+            'category_id'     => request('category_id')
         ]);
         
         return back();
     }
-
+    
     /**
      * Display the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  \App\Item $item
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show($categoryId, Item $item)
     {
-        return view('items.show',compact('item'));
+        return view('items.show', compact('item'));
     }
     
     
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  \App\Item $item
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Item $item)
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Item  $item
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Item                $item
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Item $item)
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Item  $item
+     * @param  \App\Item $item
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Item $item)

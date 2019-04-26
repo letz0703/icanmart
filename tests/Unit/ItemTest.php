@@ -18,13 +18,28 @@ class ItemTest extends TestCase
     }
     
     /** @test */
+    public function it_belongs_to_category()
+    {
+        $item = create('App\Item');
+        $this->assertInstanceOf('App\Category', $item->category);
+    }
+    
+    /** @test */
+    public function it_can_make_a_string_path()
+    {
+        $item = create('App\Item');
+        $this->get($item->path(),$item->toArray());
+        $this->assertEquals($item->path(),"/items/{$item->category->slug}/{$item->id}");
+    }
+    
+    /** @test */
     public function it_has_a_seller()
     {
         $item = factory('App\Item')->create();
         $this->assertInstanceOf('App\Seller',$item->seller);
     }
     
-    /** @test */
+    ///** @test */
     //public function un_auth_user_can_not_browse_items()
     //{
     //    $this->expectException('Illuminate\Auth\AuthenticationException');
@@ -32,10 +47,10 @@ class ItemTest extends TestCase
     //}
     
     /** @test */
-    public function auth_user_can_browse_all_items()
+    public function users_can_browse_all_items()
     {
         //$this->be(factory('App\User')->create());
-        $this->signIn();
+        //$this->signIn();
         //$item = factory('App\Item')->create();
         $response = $this->get('/items');
         $response->assertStatus(200);

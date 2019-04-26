@@ -2,6 +2,7 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
+use App\Category;
 use App\Item;
 use App\User;
 use Illuminate\Support\Str;
@@ -24,15 +25,26 @@ $factory->define(Item::class, function (Faker $faker){
         'product_name' => $faker->text(20),
         'description'  => $faker->text(40),
         'expire_date'  => $faker->date(),
-        'channel'      => $faker->text(20),
         'buy_price'    => $faker->numberBetween(1000, 10000),
         'sell_price'   => $faker->numberBetween(1000, 10000),
         'quantity'     => $faker->numberBetween(1, 100),
         'box_id'       => function (){
             return factory('App\Box')->create()->id;
         },
-        'seller_id'       => function (){
+        'seller_id'    => function (){
             return factory('App\Seller')->create()->id;
         },
+        'category_id' => function () {
+            return factory('App\Category')->create()->id;
+        }
+    ];
+});
+
+$factory->define(Category::class, function (Faker $faker){
+    $name = $faker->word;
+    
+    return [
+        'name' => $name,
+        'slug' => $name
     ];
 });

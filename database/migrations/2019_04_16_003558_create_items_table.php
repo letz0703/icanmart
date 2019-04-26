@@ -20,11 +20,12 @@ class CreateItemsTable extends Migration
             $table->text('description')->nullable();
             $table->date('expire_date')->nullable();
             $table->string('channel')->nullable();
+            $table->unsignedInteger('box_id')->nullable();
             $table->unsignedInteger('seller_id')->nullable();
+            $table->unsignedInteger('category_id')->nullable();
             $table->integer('buy_price')->nullable();
             $table->integer('sell_price')->nullable();
             $table->unsignedInteger('quantity')->nullable();
-            $table->unsignedInteger('box_id')->nullable();
             $table->timestamps();
         });
     }

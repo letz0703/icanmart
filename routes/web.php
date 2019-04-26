@@ -18,9 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/items', 'ItemController@index');
-Route::get('/items/{item}', 'ItemController@show');
+Route::post('/items', 'ItemController@store');
+
+Route::get('/items/{category}/{item}', 'ItemController@show');
+
 Route::get('/boxes', 'BoxController@index');
+Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
 Route::get('/boxes/{box}', 'BoxController@show');
 Route::post('/boxes/{box}/items','ItemController@store');

@@ -22,6 +22,7 @@ class BoxController extends Controller
     public function show(Box $box)
     {
         $items = $box->items;
+        
         return view('boxes.show', compact('box','items'));
     }
     
@@ -35,9 +36,17 @@ class BoxController extends Controller
             'amount' => request('amount')
         ]);
         
+        //if ( notNullValue($box->items->count)) {
+        //    $box->update(['amount'=>$box->items->amount]);
+        //}
+        
         return redirect($box->path());
-        
-        
+    
+    }
+    
+    public function create()
+    {
+        return view('boxes.create');
     }
     
     
