@@ -40,21 +40,30 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Box $box
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
+     * @internal param Box $box
+     *
      * @internal param Request $request
      */
-    public function store($channelName, Box $box)
+    public function store(Request $request)
     {
-        $box->addItem([
+        $this->validate($request, [
+            'seller_id' => 'required|exists:sellers, id',
+        ]);
+        
+        $item = Item::create([
             'product_name' => request('product_name'),
             'quantity'     => request('quantity'),
             'buy_price'    => request('buy_price'),
-            'category_id'     => request('category_id')
+            'category_id'  => request('category_id'),
+            'seller_id'    => request('seller_id'),
         ]);
         
-        return back();
+        //dd($item->path());
+        //return back();
+        return redirect($item->path());
     }
     
     /**

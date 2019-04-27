@@ -28,6 +28,10 @@ class BoxController extends Controller
     
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'seller_id' => 'required'
+        ]);
         //dd($request->all());
         $box = Box::create([
             'seller_id' => request('seller_id'),

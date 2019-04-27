@@ -19,6 +19,32 @@ class BoxtTest extends TestCase
     }
     
     /** @test */
+    public function it_requires_title()
+    {
+        $this->createBox(['title' => null])
+             ->assertSessionHasErrors('title');
+
+    }
+    
+    /** @test */
+    public function it_requires_a_seller()
+    {
+        $this->createBox(['seller_id' => null])
+             ->assertSessionHasErrors('seller_id');
+        
+    }
+    
+    public function createBox($overrides = [])
+    {
+        $this->signIn()->withExceptionHandling();
+    
+        $box = factory('App\Box')->make($overrides);
+    
+        return $this->post('/boxes', $box->toArray());
+    }
+    
+    
+    /** @test */
     public function a_box_has_items()
     {
         $box = factory('App\Box')->create();
@@ -34,6 +60,8 @@ class BoxtTest extends TestCase
         $this->post('/boxes', $box->toArray());
         $this->assertEquals($box->path(), "/boxes/{$box->seller->name}/{$box->id}");
     }
+    
+
     
     
 }

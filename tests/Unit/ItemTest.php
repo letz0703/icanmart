@@ -7,6 +7,7 @@ use Tests\TestCase;
 
 class ItemTest extends TestCase
 {
+    
     use RefreshDatabase;
     
     /** @test */
@@ -28,15 +29,35 @@ class ItemTest extends TestCase
     public function it_can_make_a_string_path()
     {
         $item = create('App\Item');
-        $this->get($item->path(),$item->toArray());
-        $this->assertEquals($item->path(),"/items/{$item->category->slug}/{$item->id}");
+        $this->get($item->path(), $item->toArray());
+        $this->assertEquals($item->path(), "/items/{$item->category->slug}/{$item->id}");
     }
     
     /** @test */
     public function it_has_a_seller()
     {
         $item = factory('App\Item')->create();
-        $this->assertInstanceOf('App\Seller',$item->seller);
+        $this->assertInstanceOf('App\Seller', $item->seller);
+    }
+    
+    /** @test */
+    public function it_requires_a_valid_seller_id()
+    {
+        factory('App\Seller',2)->create();
+        
+        $this->postItem(['seller_id' => null])
+             ->assertSessionHasErrors('seller_id');
+        $this->postItem(['seller_id' => 999])
+             ->assertSessionHasErrors('seller_id');
+    }
+    
+    public function postItem($overrides = [])
+    {
+        $this->signIn()->withExceptionHandling();
+        
+        $item = make('App\Item', $overrides);
+        
+        return $this->post('/items', $item->toArray());
     }
     
     ///** @test */
@@ -55,4 +76,6 @@ class ItemTest extends TestCase
         $response = $this->get('/items');
         $response->assertStatus(200);
     }
+    
+    
 }
