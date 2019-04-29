@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Box;
 use App\Item;
+use App\Seller;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -34,36 +35,53 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
     
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     *box
      *
      * @return \Illuminate\Http\Response
      * @internal param Box $box
      *
      * @internal param Request $request
      */
-    public function store(Request $request)
+    public function store($sellerName = null, $boxId = null, Request $request)
     {
         $this->validate($request, [
-            'seller_id' => 'required|exists:sellers, id',
+            'seller_id' => 'required|exists:sellers,id',
         ]);
         
-        $item = Item::create([
-            'product_name' => request('product_name'),
-            'quantity'     => request('quantity'),
-            'buy_price'    => request('buy_price'),
-            'category_id'  => request('category_id'),
-            'seller_id'    => request('seller_id'),
-        ]);
-        
-        //dd($item->path());
-        //return back();
-        return redirect($item->path());
+        if ($sellerName && $boxId){
+            $sellerId = Seller::where('name', $sellerName)->first()->id;
+            $item = Item::create([
+                'seller_id'    => $sellerId,
+                'box_id'    => $boxId,
+                'product_name' => request('product_name'),
+                'quantity'     => request('quantity'),
+                //'category_id'  => request('category_id'),
+                'buy_price'    => request('buy_price'),
+                'expire_date'    => request('expire_date'),
+            ]);
+            
+            return back();
+        } else{
+            $item = Item::create([
+                'seller_id'    => request('seller_id'),
+                'barcode'      => request('barcode'),
+                'product_name' => request('product_name'),
+                'quantity'     => request('quantity'),
+                'expire_date'  => request('expire_date'),
+                'buy_price'    => request('buy_price'),
+                'sell_price'   => request('sell_price'),
+                //'category_id'  => request('category_id'),
+            ]);
+            return redirect($item->path());
+        }
+    
     }
     
     /**
@@ -73,7 +91,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($categoryId, Item $item)
+    public function show(Item $item)
     {
         return view('items.show', compact('item'));
     }

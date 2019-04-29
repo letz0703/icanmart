@@ -10,7 +10,7 @@ class Item extends Model
     //
     public function path()
     {
-        return '/items/'.$this->category->slug.'/'.$this->id;
+        return '/items/'.$this->id;
     }
     
     public function box()

@@ -7,16 +7,21 @@
                     <div class="card-header">{{ $item->product_name }}</div>
                     <div class="card-body">
                         <article>
-                            <h5> {{ $item->product_name }} - {{ $item->sell_price }} 원</h5>
+                            <h5> {{ $item->product_name }}</h5>
+                            <h3>{{ $item->sell_price }} 원</h3>
                             <div>{{ $item->description }}</div>
                             <hr>
                             <p> 유통기한 {{ $item->expire_date }}</p>
-                            <div>판매가 : {{ $item->sell_price }} 원</div>
-                            <div>입고가 : {{ $item->buy_price }} 원</div>
+                            <div>sell price : {{ $item->sell_price }} 원</div>
+                            <div>buy price : {{ $item->buy_price }} 원</div>
                             <div>입고수량 : {{ $item->quantity }} 개</div>
                             <div>합계액 : {{ $item->quantity * $item->buy_price }} 원</div>
-                            <div>마진: {{ $item->sell_price - ($item->buyprice) }} 원</div>
-                            <div>기대수익: {{ ($item->sell_price - $item->buyprice)*$item->quantity }} 원</div>
+                            @php
+                                $margin = $item->sell_price - $item->buy_price;
+                                $profit = $margin*$item->quantity
+                                @endphp
+                            <div>마진: {{ $margin }} 원</div>
+                            <div>기대수익: {{  $profit }} 원</div>
                         </article>
                         <hr>
                     </div>

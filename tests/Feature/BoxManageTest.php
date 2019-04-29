@@ -46,7 +46,7 @@ class BoxManageTest extends TestCase
     /** @test */
     public function auth_user_can_add_items_to_a_box()
     {
-        $this->be(factory('App\User')->create());
+        $this->be(factory('App\User')->create())->withExceptionHandling();
         
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id' => $box->id]);
@@ -55,6 +55,8 @@ class BoxManageTest extends TestCase
         $this->get($box->path())
              ->assertSee($item->product_name);
     }
+    
+
     
     ///** @test */
     //public function user_can_see_sum_of_items_in_a_box()

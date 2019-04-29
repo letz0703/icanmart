@@ -19,9 +19,9 @@ class BoxController extends Controller
         return view('boxes.index', compact('boxes') );
     }
     
-    public function show($sellerId, Box $box)
+    public function show($sellerName, Box $box)
     {
-        $items = $box->items;
+        $items = Item::where('box_id',$box->id)->latest()->get();
         
         return view('boxes.show', compact('box','items'));
     }

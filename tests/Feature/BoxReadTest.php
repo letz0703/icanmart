@@ -19,10 +19,11 @@ class BoxReadTest extends TestCase
     }
     
     /** @test */
-    public function a_user_can_see_inside_box()
+    public function a_user_can_see_items_in_a_box()
     {
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id'=>$box->id]);
+        //dd($box->path());
         $this->get($box->path())
              ->assertSee($item->product_name);
     }

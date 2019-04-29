@@ -26,12 +26,12 @@ class ItemTest extends TestCase
     }
     
     /** @test */
-    public function it_can_make_a_string_path()
-    {
-        $item = create('App\Item');
-        $this->get($item->path(), $item->toArray());
-        $this->assertEquals($item->path(), "/items/{$item->category->slug}/{$item->id}");
-    }
+    //public function it_can_make_a_string_path()
+    //{
+    //    $item = create('App\Item');
+    //    $this->get($item->path(), $item->toArray());
+    //    $this->assertEquals($item->path(), "/items/{$item->category->slug}/{$item->id}");
+    //}
     
     /** @test */
     public function it_has_a_seller()
@@ -44,7 +44,7 @@ class ItemTest extends TestCase
     public function it_requires_a_valid_seller_id()
     {
         factory('App\Seller',2)->create();
-        
+    
         $this->postItem(['seller_id' => null])
              ->assertSessionHasErrors('seller_id');
         $this->postItem(['seller_id' => 999])
