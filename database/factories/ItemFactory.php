@@ -22,7 +22,7 @@ use Faker\Generator as Faker;
 $factory->define(Item::class, function (Faker $faker){
     return [
         'barcode'      => $faker->numberBetween(100000000, 20000000),
-        'product_name' => $faker->text(20),
+        'product_name' => $faker->colorName(),
         'description'  => $faker->text(40),
         'expire_date'  => $faker->date(),
         'buy_price'    => $faker->numberBetween(1000, 10000),

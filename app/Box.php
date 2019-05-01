@@ -10,6 +10,7 @@ class Box extends Model
     //
     protected $guarded = [];
     
+    
     public function path()
     {
         return "/boxes/{$this->seller->name}/{$this->id}";
@@ -17,7 +18,7 @@ class Box extends Model
     
     public function seller()
     {
-        return $this->belongsTo('App\Seller');
+        return $this->belongsTo(Seller::class);
     }
     
     public function items()

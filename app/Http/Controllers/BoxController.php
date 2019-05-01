@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Box;
 use App\Item;
+use App\Seller;
 use Illuminate\Http\Request;
 
 class BoxController extends Controller
@@ -13,9 +14,13 @@ class BoxController extends Controller
         $this->middleware('auth')->only('store');
     }
     //
-    public function index()
+    public function index(Seller $seller)
     {
-        $boxes = Box::latest()->get();
+        if ($seller->exists){
+            $boxes = $seller->boxes()->latest()->get();
+        } else {
+            $boxes = Box::latest()->get();
+        }
         return view('boxes.index', compact('boxes') );
     }
     

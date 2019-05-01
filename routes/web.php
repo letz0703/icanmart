@@ -28,5 +28,6 @@ Route::get('/items/{item}', 'ItemController@show');
 Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
+Route::get('/boxes/{seller}', 'BoxController@index');
 Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
