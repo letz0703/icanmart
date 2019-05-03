@@ -15,7 +15,9 @@
                                 <select name="seller_id" id="seller_id" class="form-control">
                                     <option value="">선택</option>
                                     @foreach(App\Seller::all() as $seller)
-                                        <option value="{{ $seller->id }}">{{ $seller->name }}</option>
+                                        <option value="{{ $seller->id }}"
+                                                {{ old('seller_id') == $seller->id ? 'selected' : '' }}
+                                        >{{ $seller->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -46,14 +48,14 @@
                                     결제완료
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline form-group">
                                 <input class="form-check-input" type="radio" name="paid" id="paid" value="unpaid">
                                 <label class="form-check-label" for="upaid">
                                     미결제
                                 </label>
                             </div>
 
-                            <div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary">add</button>
                             </div>
                             @if (count($errors))
