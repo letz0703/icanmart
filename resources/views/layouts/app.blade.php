@@ -34,7 +34,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/boxes">입고관리</a>
+                            <a class="nav-link" href="/boxes">입고리스트</a>
+                        </li>
+                        <li>
+                            <a href="/boxes/create" class="nav-link">입고등록</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                구매처별
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach(\App\Seller::all() as $seller)
+                                    <a class="dropdown-item" href="/boxes/{{ $seller->name }}">{{ $seller->name }}</a>
+                                @endforeach
+                                {{--<div class="dropdown-divider"></div>--}}
+                                {{--<a class="dropdown-item" href="#">Something else here</a>--}}
+                            </div>
                         </li>
                     </ul>
 

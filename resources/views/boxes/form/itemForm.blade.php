@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
         <label for="barcode">Barcode:</label>
-        <input type="text" id="barcode" name="barcode" placeholder="Barcode">
+        <input type="text" id="barcode" name="barcode">
     </div>
     <div class="form-group">
         <label for="product_name">제품명:</label>
@@ -29,7 +29,8 @@
     <div class="form-group">
         <label for="expire_date">Expire_date:</label>
         <input type="date" id="expire_date" name="expire_date"
-               placeholder="Expire_date">
+               value="{{ Carbon\Carbon::now()->addMonth(6)->format('Y-m-d') }}"
+        >
     </div>
-    <button type="submit" class="btn btn-primary btn-sm">add</button>
+    <button type=" submit" class="btn btn-primary btn-sm">add</button>
 </form>

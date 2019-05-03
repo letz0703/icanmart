@@ -11,30 +11,33 @@
                         <form action="/boxes" method="POST">
                             @csrf
                             <div class="form-group">
-                                <select class="form-control" id="seller_id" name="seller_id">
-                                    <option selected>사입처 선택</option>
-                                    <option value="1">수입</option>
-                                    <option value="2">6층</option>
-                                    <option value="3">중앙</option>
-                                    <option value="4">보따리</option>
+                                <label for="seller_id">구입처 :</label>
+                                <select name="seller_id" id="seller_id" class="form-control">
+                                    <option value="">선택</option>
+                                    @foreach(App\Seller::all() as $seller)
+                                        <option value="{{ $seller->id }}">{{ $seller->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="arrived_at">입고일:</label>
 
                                 <input type="date" id="arrived_at" name="arrived_at"
-                                       value="년.일.월"
-                                       placeholder="{{ \Carbon\Carbon::today() }}"
+                                       {{--value="{{ old('arrive_at') }}"--}}
+                                       value="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                        {{--placeholder="{{ \Carbon\Carbon::today() }}"--}}
                                 >
                             </div>
                             <div class="form-group">
                                 <label for="title">박스요약:</label>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title"
+                                       value="{{ old('title') }}"
+                                >
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="amount">금액:</label>
-                                <input type="text" id="amount" name="amount" placeholder="amount">원
+                                <input type="text" id="amount" name="amount" value="{{ old('amount') }}">원
                             </div>
 
                             <div class="form-check form-check-inline">
@@ -50,7 +53,16 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-default">add</button>
+                            <div>
+                                <button type="submit" class="btn btn-primary">add</button>
+                            </div>
+                            @if (count($errors))
+                                <ul class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </form>
                     </div>
                 </div>

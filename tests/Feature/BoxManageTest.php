@@ -22,11 +22,14 @@ class BoxManageTest extends TestCase
     public function auth_user_can_create_box()
     {
         $this->actingAs(factory('App\User')->create());
-        $box = factory('App\Box')->create();
+        $box = factory('App\Box')->make();
         //dd($box);
-        $this->post('/boxes', $box->toArray());
-        $this->get($box->path())
-             ->assertSee($box->title);
+        $response = $this->post('/boxes', $box->toArray());
+        $this->get($response->headers->get('Location'))
+             ->assertSee($box->title)
+             ->assertSee($box->seller->name);
+        //$this->get($box->path())
+        //     ->assertSee($box->title);
     }
     
     
