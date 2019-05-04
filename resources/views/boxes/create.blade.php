@@ -12,9 +12,9 @@
                             @csrf
                             <div class="form-group">
                                 <label for="seller_id">구입처 :</label>
-                                <select name="seller_id" id="seller_id" class="form-control">
+                                <select name="seller_id" id="seller_id" class="form-control" required>
                                     <option value="">선택</option>
-                                    @foreach(App\Seller::all() as $seller)
+                                    @foreach( $sellers as $seller )
                                         <option value="{{ $seller->id }}"
                                                 {{ old('seller_id') == $seller->id ? 'selected' : '' }}
                                         >{{ $seller->name }}</option>
@@ -34,7 +34,7 @@
                                 <label for="title">박스요약:</label>
                                 <input type="text" id="title" name="title"
                                        value="{{ old('title') }}"
-                                >
+                                       required>
                             </div>
 
                             <div class="form-group">
