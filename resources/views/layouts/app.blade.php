@@ -44,7 +44,7 @@
                                 구매처별
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @foreach(\App\Seller::all() as $seller)
+                                @foreach($sellers as $seller)
                                     <a class="dropdown-item" href="/boxes/{{ $seller->name }}">{{ $seller->name }}</a>
                                 @endforeach
                                 {{--<div class="dropdown-divider"></div>--}}
