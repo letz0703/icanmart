@@ -9,7 +9,7 @@
                         @foreach($items as $item)
                             <article>
                                 <a href="{{ $item->path() }}">
-                                    <h5>{{ $item->product_name }} {{ $item->created_at }}</h5>
+                                    <h5>{{ $item->product_name }} ({{ $item->seller->name }}) {{ $item->created_at }}</h5>
                                 </a>
                                 <div>{{ $item->quantity }} x {{ $item->buy_price }} = {{ $item->amount }} 원</div>
                             </article>

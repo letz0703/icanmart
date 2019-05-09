@@ -9,6 +9,7 @@
                         <article>
                             <h5> {{ $item->product_name }}</h5>
                             <h3>{{ $item->sell_price }} 원</h3>
+                            <h2>{{ $item->seller_name }}</h2>
                             <div>{{ $item->description }}</div>
                             <hr>
                             <p> 유통기한 {{ $item->expire_date }}</p>
