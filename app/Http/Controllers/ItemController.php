@@ -23,8 +23,14 @@ class ItemController extends Controller
     public function index()
     {
         //return Item::get();
-        $items = Item::latest()->get();
+        $items = Item::latest();
         
+        if ($barcode = request('barcode')){
+            $items = Item::where('barcode', $barcode);
+        }
+        
+        $items = $items->get();
+    
         return view('items.index', compact('items'));
     }
     
