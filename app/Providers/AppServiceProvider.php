@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \View::share('sellers', Seller::all());
-        //\View::composer('*', function ($view){
-        //    $view->with('sellers', Seller::all());
-        //});
+        //\View::share('sellers', Seller::all());
+        \View::composer('*', function ($view){
+            $view->with('sellers', Seller::all());
+        });
     }
 }
