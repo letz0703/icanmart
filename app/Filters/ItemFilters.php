@@ -4,7 +4,6 @@
 namespace App\Filters;
 
 
-use Illuminate\Http\Request;
 
 class ItemFilters extends Filters
 {
