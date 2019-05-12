@@ -23,23 +23,20 @@ abstract class Filters
     {
         $this->builder = $builder;
         
-        foreach ($this->filters as $filter){
-            if ( ! $this->hasFilters($filter))
-                return;
-            
-            return $this->$filter($this->request->$filter);
+        foreach ($this->getFilters() as $filter => $value){
+            if (method_exists($this, $filter)){
+                return $this->$filter($value);
+            }
         }
         
         return $this->builder;
     }
     
     /**
-     * @param $filter
-     *
-     * @return bool
+     * @return array
      */
-    protected function hasFilters($filter): bool
+    protected function getFilters(): array
     {
-        return method_exists($this, $filter) && $this->request->has($filter);
+        return $this->request->only($this->filters);
     }
 }
