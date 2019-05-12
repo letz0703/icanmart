@@ -13,6 +13,7 @@ class ItemFilters
      * @var Request
      */
     protected $request;
+    protected $builder;
     
     public function __construct(Request $request)
     {
@@ -21,11 +22,19 @@ class ItemFilters
     
     public function apply($builder)
     {
-        if (!$barcode = $this->request->barcode){
-            return $builder;
+        $this->builder = $builder;
+        if ( $this->request->has('barcode')){
+            return $this->barcode($this->request->barcode);
         }
-        
-        return $builder->where('barcode', $barcode);
+        return $this->builder;
+    }
+    
+    /**
+     * @return mixed
+     */
+    protected function barcode($barcode)
+    {
+        return $this->builder->where('barcode', $barcode);
     }
     
 }
