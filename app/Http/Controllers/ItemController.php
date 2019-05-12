@@ -22,14 +22,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //return Item::get();
-        $items = Item::latest();
-        
-        if ($barcode = request('barcode')){
-            $items = Item::where('barcode', $barcode);
-        }
-        
-        $items = $items->get();
+        $items = $this->getItems();
     
         return view('items.index', compact('items'));
     }
@@ -138,5 +131,22 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+    }
+    
+    /**
+     * @return mixed
+     */
+    protected function getItems()
+    {
+        //return Item::get();
+        $items = Item::latest();
+        
+        if ($barcode = request('barcode')){
+            $items = Item::where('barcode', $barcode);
+        }
+        
+        $items = $items->get();
+        
+        return $items;
     }
 }

@@ -37,4 +37,19 @@ class BoxReadTest extends TestCase
              ->assertSee($item->product_name);
     }
     
+    /** @test */
+    public function users_can_filter_boxes_by_any_seller_name()
+    {
+        $seller = create('App\Seller',['name'=>'test_seller']);
+    
+        //$this->signIn();
+        $boxesBySeller = create('App\Box',['seller_id'=>$seller->id]);
+        $boxesNotBySeller = create('App\Box');
+        
+        $this->get('/boxes?from=test_seller')
+             ->assertSee($boxesBySeller->title)
+             ->assertDontSee($boxesNotBySeller->title);
+    }
+    
+    
 }

@@ -33,6 +33,12 @@ class Box extends Model
         return back();
     }
     
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
+    }
+    
+    
     //public function sumUpItems()
     //{
     //   $this->update(['amount' => $this->items()->amount]);
