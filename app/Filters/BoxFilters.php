@@ -5,6 +5,10 @@ namespace App\Filters;
 use App\Seller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class BoxFilters
+ * @package App\Filters
+ */
 class BoxFilters
 {
     
@@ -12,6 +16,7 @@ class BoxFilters
      * @var Request
      */
     protected $request;
+    protected $builder;
     
     public function __construct(Request $request)
     {
@@ -20,12 +25,24 @@ class BoxFilters
     
     public function apply($builder)
     {
-        if ( ! $boxSellerName = $this->request->from){
-            return $builder;
+        $this->builder = $builder;
+        
+        if ($this->request->has('from')){
+            return $this->from($this->request->from);
         }
+        return $builder;
+    }
+    
+    /**
+     * @param $boxSellerName
+     *
+     * @return mixed
+     */
+    protected function from($boxSellerName)
+    {
         $seller = Seller::where('name', $boxSellerName)->firstOrFail();
         
-        return $builder->where('seller_id', $seller->id);
+        return $this->builder->where('seller_id', $seller->id);
     }
     
 }
