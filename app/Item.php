@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
+    
     protected $guarded = [];
+    
     //
     public function path()
     {
-        return '/items/'.$this->id;
+        return '/items/' . $this->id;
     }
     
     public function box()
@@ -31,6 +33,11 @@ class Item extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
     }
     
     

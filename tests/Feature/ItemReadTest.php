@@ -13,7 +13,7 @@ class ItemReadTest extends TestCase
     public function items_can_be_filtered_by_barcode()
     {
         $itemWithBarcode = factory('App\Item')->create(['barcode' => '1234']);
-        $itemWithOtherBarcode = $item = factory('App\Item')->create();
+        $itemWithOtherBarcode = factory('App\Item')->create();
         //dd($itemWithBarcode);
         $this->get('/items?barcode=1234')
              ->assertSee($itemWithBarcode->product_name)

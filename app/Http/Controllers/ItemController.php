@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Box;
+use App\Filters\ItemFilters;
 use App\Item;
 use App\Seller;
 use Illuminate\Http\Request;
@@ -18,11 +19,14 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param ItemFilters $filters
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ItemFilters $filters)
     {
-        $items = $this->getItems();
+        $items = Item::latest();
+        $items = $items->filter($filters)->get();
     
         return view('items.index', compact('items'));
     }
@@ -136,17 +140,13 @@ class ItemController extends Controller
     /**
      * @return mixed
      */
-    protected function getItems()
-    {
-        //return Item::get();
-        $items = Item::latest();
-        
-        if ($barcode = request('barcode')){
-            $items = Item::where('barcode', $barcode);
-        }
-        
-        $items = $items->get();
-        
-        return $items;
-    }
+    //protected function getItems(ItemFilters $filters)
+    //{
+    //    //return Item::get();
+    //    //$items = Item::latest();
+    //    Item::filter($filters)->get();
+    //
+    //
+    //    return $items;
+    //}
 }
