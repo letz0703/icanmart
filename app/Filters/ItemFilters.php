@@ -6,28 +6,10 @@ namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-class ItemFilters
+class ItemFilters extends Filters
 {
+    protected $filters = ['barcode'];
     
-    /**
-     * @var Request
-     */
-    protected $request;
-    protected $builder;
-    
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
-    
-    public function apply($builder)
-    {
-        $this->builder = $builder;
-        if ( $this->request->has('barcode')){
-            return $this->barcode($this->request->barcode);
-        }
-        return $this->builder;
-    }
     
     /**
      * @return mixed
