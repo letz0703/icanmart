@@ -25,8 +25,7 @@ class ItemController extends Controller
      */
     public function index(ItemFilters $filters)
     {
-        $items = Item::latest();
-        $items = $items->filter($filters)->get();
+        $items = $this->getItems($filters);
     
         return view('items.index', compact('items'));
     }
@@ -135,6 +134,16 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+    }
+    
+    /**
+     * @param ItemFilters $filters
+     *
+     * @return mixed
+     */
+    protected function getItems(ItemFilters $filters)
+    {
+        return Item::latest()->filter($filters)->get();
     }
     
     /**

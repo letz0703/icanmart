@@ -23,14 +23,7 @@ class BoxController extends Controller
     //
     public function index(Seller $seller, BoxFilters $filters)
     {
-        //$boxes = $this->getBoxes($seller);
-        if ($seller->exists){
-            $boxes = $seller->boxes()->latest();
-        } else {
-            $boxes = Box::latest();
-        }
-        
-        $boxes = $boxes->filter($filters)->get();
+        $boxes = $this->getBoxes($seller, $filters);
     
         return view('boxes.index', compact('boxes'));
     }
@@ -67,5 +60,25 @@ class BoxController extends Controller
     public function create()
     {
         return view('boxes.create');
+    }
+    
+    /**
+     * @param Seller     $seller
+     * @param BoxFilters $filters
+     *
+     * @return mixed
+     */
+    protected function getBoxes(Seller $seller, BoxFilters $filters)
+    {
+        $boxes = Box::latest()->filter($filters);
+        
+        if ($seller->exists){
+            $boxes->where('seller_id', $seller->id);
+            //$boxes = $seller->boxes()->latest();
+        }
+        
+        $boxes = $boxes->get();
+        
+        return $boxes;
     }
 }
