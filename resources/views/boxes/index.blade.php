@@ -8,14 +8,27 @@
                     <div class="card-header">Boxes</div>
 
                     <div class="card-body">
-                        {{--@php--}}
-                            {{--$boxes->paginate(1)--}}
-                        {{--@endphp--}}
                         @foreach($boxes as $box)
-                            <p>입고일: {{ $box->arrived_at }}</p>
-                        <a href="{{ $box->path() }}">
-                            <article>{{ $box->title }} {{ $box->amount }}</article>
-                        </a>
+                            <div class="level">
+                                <div class="flex">
+                                    <a href="{{ $box->path() }}">
+                                        {{ $box->arrived_at }}
+                                        {{ $box->seller->name }}:
+                                    </a>
+                                        {{ $box->title }}
+                                </div>
+                                <div>
+                                    {{ $box->items_count }}
+                                    {{ str_plural('item',$box->items_count) }}
+                                    [ total: {{ $box->amount }} 원 ]
+                                </div>
+                            </div>
+
+                                <div>
+                                    @foreach($box->items as $item)
+                                        {{ $item->product_name }}
+                                    @endforeach
+                                </div>
                             <hr>
                         @endforeach
                         {{ $boxes->links() }}

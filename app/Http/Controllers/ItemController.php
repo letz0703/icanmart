@@ -26,6 +26,11 @@ class ItemController extends Controller
     public function index(ItemFilters $filters)
     {
         $items = $this->getItems($filters);
+        
+        
+        //if (request()->wantsJson()) {
+        //    return $items;
+        //}
     
         return view('items.index', compact('items'));
     }
@@ -144,7 +149,10 @@ class ItemController extends Controller
      */
     protected function getItems(ItemFilters $filters)
     {
-        return Item::latest()->filter($filters)->get();
+        $items = Item::filter($filters)->latest();
+        
+        //dd($items->toSql());
+        return $items->get();
     }
     
     /**

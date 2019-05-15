@@ -5,9 +5,11 @@ namespace App\Filters;
 
 
 
+use App\Item;
+
 class ItemFilters extends Filters
 {
-    protected $filters = ['barcode'];
+    protected $filters = ['barcode', 'popular'];
     
     
     /**
@@ -17,5 +19,11 @@ class ItemFilters extends Filters
     {
         return $this->builder->where('barcode', $barcode);
     }
+    
+    protected function popular()
+    {
+        return $this->builder->orderBy('barcode','desc');
+    }
+    
     
 }
