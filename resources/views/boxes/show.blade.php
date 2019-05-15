@@ -2,19 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ $box->title }}</div>
-
-                    <div class="card-body">
-                        <article>{{ $box->seller->name }}</article>
-                        <p>{{ $box->arrived_at }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Box Items</div>
@@ -32,12 +20,28 @@
                                     $box->amount += $item->amount;
                                 @endphp
                             @endforeach
-                            <h4>박스 합계금액: {{ $box->amount  }}원</h4>
+                            <h4>합계금액: {{ $box->amount  }}원</h4>
                         </div>
                     @endif
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">{{ $box->title }}</div>
+
+                    <div class="card-body">
+                        <h4>합계금액: {{ $box->amount  }}원</h4>
+                        <article>구입처 : {{ $box->seller->name }}</article>
+                        <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
+                        <p>아이템수: {{ $box->items()->count() }}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
     </div>
     </div>
 @endsection

@@ -95,7 +95,8 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return view('items.show', compact('item'));
+        //$seller = Seller::where('id',$item->seller_id)->get();
+        return view('items.show', compact('item','seller'));
     }
     
     
