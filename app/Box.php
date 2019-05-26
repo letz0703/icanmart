@@ -31,6 +31,7 @@ class Box extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+                    ;
     }
     
     public function addItem($item)

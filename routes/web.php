@@ -31,3 +31,5 @@ Route::post('/boxes', 'BoxController@store');
 Route::get('/boxes/{seller}', 'BoxController@index');
 Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
+
+Route::get('/items/{item}/profile','ItemProfileController@show');

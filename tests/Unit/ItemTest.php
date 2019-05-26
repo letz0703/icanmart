@@ -77,5 +77,14 @@ class ItemTest extends TestCase
         $response->assertStatus(200);
     }
     
+    /** @test */
+    public function an_item_has_a_profile()
+    {
+        $item = create('App\Item');
+        $this->get("/items/{$item->product_name}/profile")
+             ->assertSee($item->product_name);
+    }
+    
+    
     
 }
