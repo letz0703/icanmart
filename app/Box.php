@@ -15,6 +15,7 @@ class Box extends Model
     
     //
     protected $guarded = [];
+    protected $with = ['seller','items'];
     
     
     public function path()

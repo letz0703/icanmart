@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->isLocal()){
+            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        }
     }
     
     /**
@@ -25,9 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //\View::share('sellers', Seller::all());
         \View::composer('*', function ($view){
-            $view->with('sellers', Seller::all());
+            $sellers = \Cache::rememberForever('sellers', function (){
+                return Seller::all();
+            });
+            
+            $view->with('sellers', $sellers);
         });
     }
 }
