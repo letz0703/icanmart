@@ -5,12 +5,29 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Box Items</div>
+                    <div class="card-header">
+                    <div class="level">
+                        <span class="flex">
+                            {{ $box->arrived_at }} {{ $box->seller->name }}
+                        </span>
+                        <div>
+                            <form action="{{ $box->path() }}" method="POST">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-sm">
+                                    Delete Box
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
                     @if (auth()->check())
                         <div class="card-body">
                             @include('boxes.form.itemForm')
                         </div>
                         <div class="card-body">
+                            <h2>Box Items</h2>
+                            <hr>
                             @php
                                 $box->amount = 0;
                             @endphp
@@ -20,6 +37,7 @@
                                     $box->amount += $item->amount;
                                 @endphp
                             @endforeach
+                            <hr>
                             <h4>합계금액: {{ $box->amount  }}원</h4>
                         </div>
                     @endif
