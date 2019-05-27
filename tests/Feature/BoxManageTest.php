@@ -60,6 +60,16 @@ class BoxManageTest extends TestCase
     }
     
     /** @test */
+    public function guest_may_not_delete_any_box()
+    {
+        $this->withExceptionHandling();
+        $box = factory('App\Box')->create();
+        //$response = $this->json('Delete',$box->path());
+        $response = $this->delete($box->path());
+        $response->assertRedirect('login');
+    }
+    
+    /** @test */
     public function a_box_can_be_deleted()
     {
         $this->signIn();

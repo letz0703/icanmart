@@ -17,7 +17,7 @@ class BoxController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth')->only(['store', 'create']);
+        $this->middleware('auth')->only(['store', 'create', 'destroy']);
     }
     
     //
