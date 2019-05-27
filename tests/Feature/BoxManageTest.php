@@ -66,7 +66,8 @@ class BoxManageTest extends TestCase
         
         $box = factory('App\Box')->create();
         
-        $this->json('Delete',$box->path());
+        $response = $this->json('Delete',$box->path());
+        $response->assertStatus(204);
         
         $this->assertDatabaseMissing('boxes',['id' => $box->id]);
         

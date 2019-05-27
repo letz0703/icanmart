@@ -38,6 +38,7 @@ class BoxController extends Controller
     public function destroy($seller, Box $box)
     {
         $box->delete();
+        return response([],204);
     }
     
     
