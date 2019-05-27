@@ -11,6 +11,10 @@ class Box extends Model
         static::addGlobalScope('itemCount', function($builder){
             $builder->withCount('items');
         });
+        
+        static::deleting( function($box){
+            $box->items()->delete();
+        });
     }
     
     //
