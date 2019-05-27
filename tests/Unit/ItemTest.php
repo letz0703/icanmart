@@ -43,8 +43,8 @@ class ItemTest extends TestCase
     /** @test */
     public function it_requires_a_valid_seller_id()
     {
-        factory('App\Seller',2)->create();
-    
+        factory('App\Seller', 2)->create();
+        
         $this->postItem(['seller_id' => null])
              ->assertSessionHasErrors('seller_id');
         $this->postItem(['seller_id' => 999])
@@ -81,10 +81,17 @@ class ItemTest extends TestCase
     public function an_item_has_a_profile()
     {
         $item = create('App\Item');
-        $this->get("/items/{$item->product_name}/profile")
+        $this->get("/items/profile/1")
              ->assertSee($item->product_name);
     }
     
+    /** @test */
+    public function profile_shows_purchase_history_of_the_item()
+    {
+        $item = create('App\Item');
+        $this->get("/items/profile/{$item->id}")
+             ->assertSee($item->box->seller_name);
+    }
     
     
 }

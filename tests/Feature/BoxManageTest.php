@@ -59,6 +59,19 @@ class BoxManageTest extends TestCase
              ->assertSee($item->product_name);
     }
     
+    /** @test */
+    public function a_box_can_be_deleted()
+    {
+        $this->signIn();
+        
+        $box = factory('App\Box')->create();
+        
+        $this->json('Delete',$box->path());
+        
+        $this->assertDatabaseMissing('boxes',['id' => $box->id]);
+        
+    }
+    
 
     
     ///** @test */

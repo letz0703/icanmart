@@ -35,6 +35,12 @@ class BoxController extends Controller
         return view('boxes.show', compact('box', 'items'));
     }
     
+    public function destroy($seller, Box $box)
+    {
+        $box->delete();
+    }
+    
+    
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -81,4 +87,5 @@ class BoxController extends Controller
         
         return $boxes;
     }
+    
 }

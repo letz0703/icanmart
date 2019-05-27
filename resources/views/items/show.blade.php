@@ -5,11 +5,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h2>
-                        {{ $item->product_name }}
-                        </h2>
-                        ({{ $item->box->arrived_at }} 입고)
-                        @if($item->barcode)바코드: {{ $item->barcode }} @endif
+                        <h2> {{ $item->product_name }} </h2>
+                        <div> ({{ $item->box->arrived_at }} 입고)
+                        ($item->barcode)바코드: {{ $item->barcode }}
+                        </div>
                     </div>
                     <div class="card-body">
                         <article>

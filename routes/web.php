@@ -23,13 +23,14 @@ Route::get('/items', 'ItemController@index');
 Route::post('/items', 'ItemController@store');
 Route::get('/items/create', 'ItemController@create');
 
+Route::get('/items/profile/{item}','ItemProfileController@show');
 Route::get('/items/{item}', 'ItemController@show');
 
 Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
-Route::get('/boxes/{seller}', 'BoxController@index');
-Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
+Route::get('/boxes/{seller}/{box}', 'BoxController@show');
+Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');
+Route::get('/boxes/{seller}', 'BoxController@index');
 
-Route::get('/items/{item}/profile','ItemProfileController@show');

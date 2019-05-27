@@ -46,7 +46,6 @@ class Box extends Model
         return $filters->apply($query);
     }
     
-    
     //public function sumUpItems()
     //{
     //   $this->update(['amount' => $this->items()->amount]);

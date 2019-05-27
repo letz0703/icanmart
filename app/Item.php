@@ -25,10 +25,10 @@ class Item extends Model
         return $this->belongsTo('App\Seller');
     }
     
-    public function getRouteKeyName()
-    {
-        return 'product_name';
-    }
+    //public function getRouteKeyName()
+    //{
+    //    return 'barcode';
+    //}
     
     
     public function getAmountAttribute()
