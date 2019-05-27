@@ -32,5 +32,6 @@ Route::post('/boxes', 'BoxController@store');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
 Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');
+Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::get('/boxes/{seller}', 'BoxController@index');
 
