@@ -65,11 +65,13 @@ class BoxManageTest extends TestCase
         $this->signIn();
         
         $box = factory('App\Box')->create();
+        $item = create('App\Item',['box_id'=>$box->id]);
         
         $response = $this->json('Delete',$box->path());
         $response->assertStatus(204);
         
         $this->assertDatabaseMissing('boxes',['id' => $box->id]);
+        $this->assertDatabaseMissing('items', ['id' => $item->id]);
         
     }
     
