@@ -9,7 +9,15 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class BoxPolicy
 {
     use HandlesAuthorization;
-
+    
+    //public function before($user)
+    //{
+    //    if ($user->name === 'rainskiss'){
+    //        return true;
+    //    }
+    //}
+    
+    
     /**
      * Determine whether the user can view the box.
      *
@@ -42,7 +50,7 @@ class BoxPolicy
      */
     public function update(User $user, Box $box)
     {
-        //
+        //return $thread->user_id == $user->id;
     }
 
     /**

@@ -11,6 +11,7 @@
                             {{ $box->arrived_at }} {{ $box->seller->name }}
                         </span>
                         <div>
+                            @can('update', $box)
                             <form action="{{ $box->path() }}" method="POST">
                                 @csrf
                                 {{ method_field('DELETE') }}
@@ -18,6 +19,7 @@
                                     Delete Box
                                 </button>
                             </form>
+                            @endcan
                         </div>
                     </div>
                     </div>
