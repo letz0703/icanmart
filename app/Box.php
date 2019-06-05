@@ -15,6 +15,15 @@ class Box extends Model
         static::deleting( function($box){
             $box->items()->delete();
         });
+        
+        static::created( function($box){
+            Activity::create([
+                'user_id' => auth()->id(),
+                'type' => 'created_box',
+                'object_id' => $box->id,
+                'object_type' => 'App\Box'
+            ]);
+        });
     }
     
     //
