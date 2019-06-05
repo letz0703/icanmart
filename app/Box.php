@@ -17,13 +17,18 @@ class Box extends Model
         });
         
         static::created( function($box){
-            Activity::create([
-                'user_id' => auth()->id(),
-                'type' => 'created_box',
-                'object_id' => $box->id,
-                'object_type' => 'App\Box'
-            ]);
+            $box->recordActivity('created');
         });
+    }
+    
+    public function recordActivity($eventType)
+    {
+        Activity::create([
+            'user_id' => auth()->id(),
+            'type' => $eventType.'_'.strtolower(class_basename($this)),
+            'object_id' => $this->id,
+            'object_type' => get_class($this)
+        ]);
     }
     
     //
