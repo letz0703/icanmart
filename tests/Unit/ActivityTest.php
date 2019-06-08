@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Activity;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
@@ -22,5 +23,9 @@ class ActivityTest extends TestCase
             'object_id' => $box->id,
             'object_type' => 'App\Box'
         ]);
+        
+        $activity = Activity::first();
+        
+        $this->assertEquals($activity->object->id, $box->id);
     }
 }
