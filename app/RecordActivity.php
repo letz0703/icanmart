@@ -5,12 +5,18 @@ namespace App;
 
 trait RecordActivity
 {
-    
     protected static function bootRecordActivity()
     {
-        static::created( function($box){
-            $box->recordActivity('created');
-        });
+        foreach (static::activitiesToRecord() as $event){
+            static::$event(function ($model) use ($event) {
+                $model->recordActivity($event);
+            });
+        }
+    }
+    
+    protected static function activitiesToRecord()
+    {
+        return ['created'];
     }
     
     
@@ -18,8 +24,8 @@ trait RecordActivity
     {
         //Activity::create([
         $this->activity()->create([
-            'user_id'     => auth()->id(),
-            'type'        => $eventType . '_' . strtolower(class_basename($this)),
+            'user_id' => auth()->id(),
+            'type'    => $eventType . '_' . strtolower(class_basename($this)),
         ]);
     }
     

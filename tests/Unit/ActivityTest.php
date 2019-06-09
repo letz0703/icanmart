@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Activity;
+use App\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
@@ -28,4 +29,14 @@ class ActivityTest extends TestCase
         
         $this->assertEquals($activity->object->id, $box->id);
     }
+    
+    /** @test */
+    public function it_records_when_a_item_is_created()
+    {
+        $this->signIn();
+        create('App\Item');
+        
+        $this->assertEquals(2, Activity::count());
+    }
+    
 }

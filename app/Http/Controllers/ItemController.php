@@ -101,6 +101,7 @@ class ItemController extends Controller
     public function show(Item $item)
     {
         //$seller = Seller::where('id',$item->seller_id)->get();
+        //dd($item);
         return view('items.show', compact('item','seller'));
     }
     
