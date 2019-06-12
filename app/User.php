@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+    
+    public function boxes()
+    {
+        return $this->hasMany(Box::class);
+    }
+    
+    
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBonjisTable extends Migration
+class CreateBongjisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBonjisTable extends Migration
      */
     public function up()
     {
-        Schema::create('bonjis', function (Blueprint $table) {
+        Schema::create('bongjis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateBonjisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonjis');
+        Schema::dropIfExists('bongjis');
     }
 }

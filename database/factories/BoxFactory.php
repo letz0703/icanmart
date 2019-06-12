@@ -8,6 +8,9 @@ $factory->define(Box::class, function (Faker $faker){
         'seller_id' => function (){
             return factory('App\Seller')->create()->id;
         },
+        'user_id' => function (){
+            return factory('App\User')->create()->id;
+        },
         'arrived_at'=> $faker->date(),
         'title' => $faker->sentence(),
         'amount' => $faker->numberBetween(1000,10000),

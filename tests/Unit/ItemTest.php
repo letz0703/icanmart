@@ -93,14 +93,14 @@ class ItemTest extends TestCase
              ->assertSee($item->box->seller_name);
     }
     
-    /** @test */
-    public function items_can_be_sold()
-    {
-        $bongji = create('App\Bongji');
-        $item = create('App\Item');
-        $this->post('/bongi/create');
-        $this->assertSee($bongji->amount);
-    }
+    ///** @test */
+    //public function items_can_be_sold()
+    //{
+    //    $bongji = create('App\Bongji');
+    //    $item = create('App\Item');
+    //    $this->post('/bongi/create');
+    //    $this->assertSee($bongji->amount);
+    //}
     
     
     
