@@ -35,5 +35,5 @@ Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');
 Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::get('/boxes/{seller}', 'BoxController@index');
 
-Route::get('/profiles/{user}','UserProfileController@show');
+Route::get('/profiles/{user}','UserProfileController@show')->name('profile');
 

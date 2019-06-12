@@ -56,6 +56,7 @@ class BoxController extends Controller
         //dd($request->all());
         $box = Box::create([
             'seller_id'  => request('seller_id'),
+            'user_id'  => request('user_id'),
             'arrived_at' => request('arrived_at'),
             'title'      => request('title'),
             'amount'     => request('amount'),
