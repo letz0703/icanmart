@@ -86,7 +86,7 @@ class ItemTest extends TestCase
     }
     
     /** @test */
-    public function profile_shows_purchase_history_of_the_item()
+    public function profile_shows_box_purchase_history()
     {
         $item = create('App\Item');
         $this->get("/items/profile/{$item->id}")

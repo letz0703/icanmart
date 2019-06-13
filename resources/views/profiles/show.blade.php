@@ -12,8 +12,10 @@
                 @foreach($boxes as $box)
                     <div class="card">
                         <div class="level card-header">
-                            <span class="flex"> {{ $box->title }} </span>
-                            created at {{ $box->created_at->format("Y-m-d") }}
+                            <span class="flex">
+                                {{ $box->title }} Purchased from {{ $box->seller->name }}
+                            </span>
+                             on {{ $box->created_at->format("Y-m-d") }}
                         </div>
 
                         @if ($box->items()->exists())
@@ -25,7 +27,7 @@
                             @endif
                     </div>
                 @endforeach
-                {{--{{ $item->product_name }}--}}
+                {{ $boxes->links() }}
             </div>
         </div>
     </div>

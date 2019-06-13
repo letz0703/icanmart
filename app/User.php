@@ -44,7 +44,7 @@ class User extends Authenticatable
     
     public function boxes()
     {
-        return $this->hasMany(Box::class);
+        return $this->hasMany(Box::class)->latest();
     }
     
     
