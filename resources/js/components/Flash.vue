@@ -1,14 +1,17 @@
 <template>
-    <div class="alert alert-flash alert-warning" role="alert">
+    <div class="alert alert-flash alert-warning" role="alert" v-show="show">
         <strong>Success! </strong> {{ body }}
     </div>
 </template>
 
 <script>
     export default {
+        prop: ['message'],
+
         data() {
             return {
-                body: 'temp message'
+                body: 'temp message',
+                show: false,
             }
         }
     }

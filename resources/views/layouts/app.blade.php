@@ -36,7 +36,7 @@
     <main class="py-4">
         @yield('content')
     </main>
-    <flash message="임시메시지"></flash>
+    <flash message="{{ session('flash') }}"></flash>
 </div>
 </body>
 </html>
