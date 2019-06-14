@@ -6,13 +6,20 @@
 
 <script>
     export default {
-        prop: ['message'],
+        props: ['message'],
 
         data() {
             return {
-                body: 'temp message',
+                body: '',
                 show: false,
             }
+        },
+
+        created() {
+           if (this.message) {
+               this.body = this.message;
+               this.show = true;
+           }
         }
     }
 </script>

@@ -67,7 +67,8 @@ class BoxController extends Controller
         //    $box->update(['amount'=>$box->items->amount]);
         //}
         
-        return redirect($box->path());
+        return redirect($box->path())
+                ->with('flash', 'Box Created');
         
     }
     
