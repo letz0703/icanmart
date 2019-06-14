@@ -15,7 +15,13 @@
                                         {{ $box->arrived_at }}
                                         {{ $box->seller->name }}:
                                     </a>
-                                        {{ $box->title }}
+                                        {{ $box->title }} [
+                                    @if ($box->paid)
+                                        paid
+                                    @else
+                                        <span style="color:red;">unpaid</span>
+                                    @endif
+                                    ]
                                 </div>
                                 <div>
                                     {{ $box->items_count }}

@@ -8,7 +8,13 @@
                     <div class="card-header">
                     <div class="level">
                         <span class="flex">
-                            {{ $box->arrived_at }} {{ $box->seller->name }}
+                            {{ $box->arrived_at }} {{ $box->seller->name }} [
+                            @if ($box->paid)
+                                paid
+                            @else
+                                <span style="color:red;">unpaid</span>
+                            @endif
+                            ]
                         </span>
                         <div>
                             @can('update', $box)

@@ -47,13 +47,13 @@
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="paid" id="paid" value="paid" checked>
+                                <input class="form-check-input" type="radio" name="paid" id="paid" value=1 checked>
                                 <label class="form-check-label" for="paid">
                                     결제완료
                                 </label>
                             </div>
                             <div class="form-check form-check-inline form-group">
-                                <input class="form-check-input" type="radio" name="paid" id="paid" value="unpaid">
+                                <input class="form-check-input" type="radio" name="paid" id="paid" value=0>
                                 <label class="form-check-label" for="upaid">
                                     미결제
                                 </label>

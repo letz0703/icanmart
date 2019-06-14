@@ -60,6 +60,7 @@ class BoxController extends Controller
             'arrived_at' => request('arrived_at'),
             'title'      => request('title'),
             'amount'     => request('amount'),
+            'paid'     => request('paid'),
         ]);
         
         //if ( notNullValue($box->items->count)) {
