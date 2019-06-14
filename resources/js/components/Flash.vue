@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-flash alert-warning" role="alert">
         <strong>Success! </strong> {{ body }}
     </div>
 </template>
@@ -13,3 +13,11 @@
         }
     }
 </script>
+
+<style>
+    .alert-flash {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+    }
+</style>
