@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                    <div class="level">
+                        <div class="level">
                         <span class="flex">
                             {{ $box->arrived_at }} {{ $box->seller->name }} [
                             @if ($box->paid)
@@ -16,18 +16,18 @@
                             @endif
                             ]
                         </span>
-                        <div>
-                            @can('update', $box)
-                            <form action="{{ $box->path() }}" method="POST">
-                                @csrf
-                                {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-sm">
-                                    Delete Box
-                                </button>
-                            </form>
-                            @endcan
+                            <div>
+                                @can('update', $box)
+                                    <form action="{{ $box->path() }}" method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Delete Box
+                                        </button>
+                                    </form>
+                                @endcan
+                            </div>
                         </div>
-                    </div>
                     </div>
                     @if (auth()->check())
                         <div class="card-body">

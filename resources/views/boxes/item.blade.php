@@ -9,7 +9,7 @@
             <form action="{{ $box->path() }}/{{$item->id}}" method="post">
                 @csrf
                 {{ method_field('delete') }}
-                <button type="submit" class="btn btn-primary btn-sm">delete</button>
+                <button type="submit" class="btn btn-danger btn-sm">delete</button>
             </form>
         </div>
         </div>
