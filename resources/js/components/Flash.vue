@@ -16,12 +16,12 @@
         },
 
         created() {
-           if (this.message) {
+            if (this.message){
                 this.flash(this.message);
-           }
-           window.events.$on('flash', message => {
-               this.flash(message);
-           })
+            }
+            window.events.$on('flash', message =>{
+                this.flash(message);
+            })
         },
 
         methods: {
@@ -32,9 +32,9 @@
             },
 
             hide() {
-                setTimeout(() => {
+                setTimeout(() =>{
                     this.show = false;
-                },3000);
+                }, 3000);
             }
         }
     }

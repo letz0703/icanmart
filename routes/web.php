@@ -25,6 +25,7 @@ Route::get('/items/create', 'ItemController@create');
 
 Route::get('/items/profile/{item}','ItemProfileController@show');
 Route::get('/items/{item}', 'ItemController@show');
+Route::delete('/items/{item}', 'ItemController@destroy');
 
 Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');

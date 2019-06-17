@@ -15,6 +15,10 @@
                                 <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
                             </div>
                             <div class="form-group">
+                                <input type="hidden" id="user_id" name="user_id" placeholder="User_id">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="seller_id">구입처 :</label>
                                 <select name="seller_id" id="seller_id" class="form-control" required>
                                     <option value="">선택</option>

@@ -25,6 +25,10 @@
                                 <input type="text" id="barcode" name="barcode" value="">
                             </div>
                             <div class="form-group">
+                                <input type="hidden" id="user_id" name="user_id">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="product_name">아이템명:</label>
                                 <input type="text" id="product_name" name="product_name">
                             </div>

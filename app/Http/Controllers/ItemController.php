@@ -13,7 +13,7 @@ class ItemController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth')->only('store');
+        $this->middleware('auth')->only(['store', 'destroy']);
     }
     
     /**
@@ -67,6 +67,7 @@ class ItemController extends Controller
             $item = Item::create([
                 'seller_id'    => $sellerId,
                 'box_id'    => $boxId,
+                'user_id' => auth()->id(),
                 'product_name' => request('product_name'),
                 'quantity'     => request('quantity'),
                 //'category_id'  => request('category_id'),
@@ -140,7 +141,11 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        if ( $item->user_id != auth()->id()) {
+            return response([], 403);
+        }
+        $item->delete();
+        return back();
     }
     
     /**

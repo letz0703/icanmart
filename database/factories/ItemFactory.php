@@ -31,6 +31,9 @@ $factory->define(Item::class, function (Faker $faker){
         'box_id'       => function (){
             return factory('App\Box')->create()->id;
         },
+        'user_id'       => function (){
+            return factory('App\User')->create()->id;
+        },
         'seller_id'    => function (){
             return factory('App\Seller')->create()->id;
         },
