@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Box;
 use App\Filters\ItemFilters;
 use App\Item;
 use App\Seller;
@@ -31,7 +30,7 @@ class ItemController extends Controller
         //if (request()->wantsJson()) {
         //    return $items;
         //}
-    
+        
         return view('items.index', compact('items'));
     }
     
@@ -66,20 +65,21 @@ class ItemController extends Controller
             $sellerId = Seller::where('name', $sellerName)->first()->id;
             $item = Item::create([
                 'seller_id'    => $sellerId,
-                'box_id'    => $boxId,
-                'user_id' => auth()->id(),
+                'box_id'       => $boxId,
+                'user_id'      => auth()->id(),
                 'product_name' => request('product_name'),
                 'quantity'     => request('quantity'),
                 //'category_id'  => request('category_id'),
                 'buy_price'    => request('buy_price'),
-                'expire_date'    => request('expire_date'),
+                'expire_date'  => request('expire_date'),
             ]);
             
             return back();
-        } else{
+        } else {
             $item = Item::create([
                 'seller_id'    => request('seller_id'),
                 'barcode'      => request('barcode'),
+                'user_id'      => auth()->id(),
                 'product_name' => request('product_name'),
                 'quantity'     => request('quantity'),
                 'expire_date'  => request('expire_date'),
@@ -89,7 +89,7 @@ class ItemController extends Controller
             ]);
             return redirect($item->path());
         }
-    
+        
     }
     
     /**
@@ -103,7 +103,7 @@ class ItemController extends Controller
     {
         //$seller = Seller::where('id',$item->seller_id)->get();
         //dd($item);
-        return view('items.show', compact('item','seller'));
+        return view('items.show', compact('item', 'seller'));
     }
     
     
@@ -141,7 +141,8 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        if ( $item->user_id != auth()->id()) {
+        //$this->authorize('update', $item);
+        if ($item->user_id != auth()->id()){
             return response([], 403);
         }
         $item->delete();

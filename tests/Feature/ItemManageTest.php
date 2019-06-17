@@ -25,18 +25,18 @@ class ItemManageTest extends TestCase
     {
         $this->withExceptionHandling();
         $item = create('App\Item');
-        //$this->delete("/items/{$item->id}")
-        //     ->assertRedirect('/login');
+        $this->delete("/items/{$item->id}")
+             ->assertRedirect('/login');
         $this->signIn()
              ->delete("/items/{$item->id}")
-            ->assertStatus(403);
+             ->assertStatus(403);
     }
     
     /** @test */
     public function auth_user_can_delete_items()
     {
         $this->signIn();
-        $item = create('App\Item',['user_id' => auth()->id()]);
+        $item = create('App\Item', ['user_id' => auth()->id()]);
         $this->delete("/items/{$item->id}")
              ->assertStatus(302);
         

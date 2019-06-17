@@ -39,6 +39,7 @@ class BoxController extends Controller
     {
         //$box->items()->delete();
         $box->delete();
+        
         if (request()->wantsJson()){
             return response([],204);
         }
