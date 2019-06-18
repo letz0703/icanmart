@@ -1,3 +1,5 @@
 2019년
 6월
-L: BOX pament 토글 with Box.vue
+L:
+1. BOX pament 토글 with Box.vue 9cdbc7a
+2. PATCH paid status with Test
