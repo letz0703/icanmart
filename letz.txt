@@ -12,4 +12,4 @@ L: Box Amount Update Button
         BoxAmount.Vue
 Z: b0493dc
 
-
+L: Delete button to VUE
