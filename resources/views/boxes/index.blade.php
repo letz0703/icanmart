@@ -15,12 +15,14 @@
                                         {{ $box->arrived_at }}
                                         {{ $box->seller->name }}:
                                     </a>
+                                    @can('update')
                                     <span v-if="paid">
-                                        <button class="btn btn-primary btn-sm" @click="paid=false">paid</button>
+                                        <button class="btn btn-primary btn-sm" @click="unpaid">paid</button>
                                     </span>
                                     <span v-else>
-                                            <button class="btn btn-danger btn-sm" @click="paid = true">unpaid</button>
+                                            <button class="btn btn-danger btn-sm" @click="make">unpaid</button>
                                     </span>
+                                    @endcan
                                         {{--{{ $box->title }} [--}}
                                     {{--@if ($box->paid)--}}
                                         {{--paid--}}
