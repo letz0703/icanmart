@@ -8,7 +8,7 @@
                     <div class="card-header">Boxes</div>
                     <div class="card-body">
                         @foreach($boxes as $box)
-                            <box :attributes="{{ $box }}" inline-template>
+                            <box :attributes="{{ $box }}" inline-template v-cloak>
                             <div class="level">
                                 <div class="flex">
                                     <a href="{{ $box->path() }}">
@@ -36,9 +36,10 @@
                                     {{ str_plural('item',$box->items_count) }}
                                     [ total: {{ $box->amount }} 원 ]
                                 </div>
-                            </div>
-                            </box>
 
+                            </div>
+
+                            </box>
                             <div>
                                 @foreach($box->items as $item)
                                     {{ $item->product_name }}
