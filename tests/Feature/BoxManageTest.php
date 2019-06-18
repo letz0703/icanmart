@@ -84,6 +84,29 @@ class BoxManageTest extends TestCase
         $this->assertDatabaseMissing('items', ['id' => $item->id]);
         
     }
+    /** @test */
+    public function unauth_user_cannot_update_boxes()
+    {
+        $this->withExceptionHandling();
+        $box = create('App\Box');
+        $this->patch("/boxes/{$box->id}/")
+             ->assertRedirect('/login');
+       $this->signIn()->patch("/boxes/{$box->id}/")
+             ->assertStatus(403);
+        //$this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
+    }
+    
+    /** @test */
+    public function auth_user_can_update_paid_status_of_boxes()
+    {
+        $this->signIn();
+        $box = create('App\Box',['user_id' => auth()->id(), 'paid' => false]);
+        
+        $this->patch("/boxes/{$box->id}/",['paid' => true]);
+        
+        $this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
+    }
+    
     
 
     

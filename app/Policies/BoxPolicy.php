@@ -50,9 +50,9 @@ class BoxPolicy
      */
     public function update(User $user, Box $box)
     {
-        //return $thread->user_id == $user->id;
+        return $box->user_id == $user->id;
     }
-
+    
     /**
      * Determine whether the user can delete the box.
      *

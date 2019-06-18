@@ -30,6 +30,7 @@ Route::delete('/items/{item}', 'ItemController@destroy');
 Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
+Route::patch('/boxes/{box}', 'BoxController@update');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
 Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');

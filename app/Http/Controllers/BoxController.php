@@ -17,7 +17,7 @@ class BoxController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth')->only(['store', 'create', 'destroy']);
+        $this->middleware('auth')->only(['store', 'create', 'destroy','update']);
     }
     
     //
@@ -72,6 +72,13 @@ class BoxController extends Controller
                 ->with('flash', 'Box Created');
         
     }
+    
+    public function update(Box $box)
+    {
+        $this->authorize('update',$box);
+        $box->update(['paid' => request('paid')]);
+    }
+    
     
     public function create()
     {
