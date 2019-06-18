@@ -5,4 +5,7 @@ L: BOX payment status
     2. PATCH paid status with Test
     3. 데이터베이스 변경 및 상태 반영 완료
     4. 마무리 [cloak] { display: none } on app.blade
+Z: 917ea26
+
+L: Item Amount
 
