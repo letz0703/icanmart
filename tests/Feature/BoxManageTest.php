@@ -91,7 +91,7 @@ class BoxManageTest extends TestCase
         $box = create('App\Box');
         $this->patch("/boxes/{$box->id}/")
              ->assertRedirect('/login');
-       $this->signIn()->patch("/boxes/{$box->id}/")
+       $this->signIn()->patch("/boxes/{$box->id}/payment")
              ->assertStatus(403);
         //$this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
     }
@@ -102,13 +102,23 @@ class BoxManageTest extends TestCase
         $this->signIn();
         $box = create('App\Box',['user_id' => auth()->id(), 'paid' => false]);
         
-        $this->patch("/boxes/{$box->id}/",['paid' => true]);
+        $this->patch("/boxes/{$box->id}/payment",['paid' => true]);
         
         $this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
     }
     
+    /** @test */
+    public function auth_user_can_update_box_amount()
+    {
+        $this->signIn();
+        $box = create('App\Box',['user_id' => auth()->id()]);
+        //dd($box);
+        $this->patch("/boxes/{$box->id}",['amount' => 2000]);
+        $this->assertDatabaseHas('boxes',['id'=>$box->id, 'amount' => 2000]);
+    }
     
-
+    
+    
     
     ///** @test */
     //public function user_can_see_sum_of_items_in_a_box()

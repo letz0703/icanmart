@@ -7,5 +7,9 @@ L: BOX payment status
     4. 마무리 [cloak] { display: none } on app.blade
 Z: 917ea26
 
-L: Item Amount
+L: Box Amount Update Button
+    E: Route::patch('/boxes/{id}/', BoxController@update)
+        BoxAmount.Vue
+Z: b0493dc
+
 

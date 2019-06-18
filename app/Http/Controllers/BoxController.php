@@ -76,7 +76,9 @@ class BoxController extends Controller
     public function update(Box $box)
     {
         $this->authorize('update',$box);
-        $box->update(['paid' => request('paid')]);
+        $box->update([
+            'amount' => request('amount')
+        ]);
     }
     
     
