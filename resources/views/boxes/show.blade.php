@@ -16,8 +16,8 @@
                             @endif
                             ]
                         </span>
-                            <div>
-                                @can('update', $box)
+                            @can('update', $box)
+                                <div>
                                     <form action="{{ $box->path() }}" method="POST">
                                         @csrf
                                         {{ method_field('DELETE') }}
@@ -25,8 +25,8 @@
                                             Delete Box
                                         </button>
                                     </form>
-                                @endcan
-                            </div>
+                                </div>
+                            @endcan
                         </div>
                     </div>
                     @if (auth()->check())
