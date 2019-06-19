@@ -11,8 +11,11 @@ class BoxItemController extends Controller
     //
     public function destroy($seller, Box $box, Item $item)
     {
-        //dd($item);
-        //$item = $box->items()->where('id', $item)->get();
+        if ( request()->expectsJson()){
+            $item->delete();
+            return response(['status'=>'reply deleted']);
+        }
+        
         $item->delete();
         
         return redirect($box->path());

@@ -10,6 +10,7 @@ class Item extends Model
     use RecordActivity;
     
     protected $guarded = [];
+    protected $with = ['seller'];
     
     //
     public function path()

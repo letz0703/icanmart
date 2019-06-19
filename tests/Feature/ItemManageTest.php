@@ -15,6 +15,7 @@ class ItemManageTest extends TestCase
     {
         $box = create('App\Box');
         $item = create('App\Item', ['box_id' => $box->id]);
+        //dd($box->path());
         
         $this->json('Delete', $box->path() . '/' . $item->id);
         $this->assertDatabaseMissing('items', ['id' => $item->id]);
