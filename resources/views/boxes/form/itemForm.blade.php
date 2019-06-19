@@ -15,11 +15,11 @@
         <input type="text" id="barcode" name="barcode">
     </div>
     <div class="form-group">
-        <label for="product_name">제품명:</label>
+        <label for="product_name" required>제품명:</label>
         <input type="text" id="product_name" name="product_name">
     </div>
     <div class="form-group">
-        <label for="quantity">수량:</label>
+        <label for="quantity" required>수량:</label>
         <input type="text" id="quantity" name="quantity"> 개
     </div>
     <div class="form-group">

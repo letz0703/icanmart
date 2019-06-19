@@ -7,7 +7,7 @@
             X {{ $item->buy_price }} : {{ $item->amount }}
         </div>
         <div>
-            <button class="btn btn-danger btn-sm" @click="destroy">delete</button>
+            <button class="btn btn-danger btn-sm" @click="destroy">X</button>
             {{--<form action="{{ $box->path() }}/{{$item->id}}" method="post">--}}
                 {{--@csrf--}}
                 {{--{{ method_field('delete') }}--}}

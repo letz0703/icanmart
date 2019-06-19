@@ -49,7 +49,7 @@
                             <div class="level">
                             <h4 class="flex">합계금액: {{ $box->amount  }}원</h4>
                             <box-amount  inline-template :attributes="{{ $box }}">
-                                <button class="btn btn-primary btn-sm" @click="update">update</button>
+                                <button class="btn btn-info" @click="update">post</button>
                             </box-amount>
                             </div>
                         </div>

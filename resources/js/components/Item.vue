@@ -14,6 +14,7 @@
                 axios.delete(this.box_path + '/' + this.attributes.id);
                 $(this.$el).fadeOut(100, () =>{
                     flash('deleted');
+                    window.location.reload();
                 });
             }
         }
