@@ -13,3 +13,4 @@ L: Box Amount Update Button
 Z: b0493dc
 
 L: Delete button to VUE
+E: show.bla, Box.vue
