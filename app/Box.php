@@ -25,6 +25,7 @@ class Box extends Model
     //
     protected $guarded = [];
     protected $with = ['seller', 'items'];
+    protected $appends= ['isPaid'];
     
     
     public function path()
@@ -53,6 +54,17 @@ class Box extends Model
     {
         return $filters->apply($query);
     }
+    
+    public function isPaid()
+    {
+        return ! ! $this->paid;
+    }
+    
+    public function getIsPaidAttribute()
+    {
+        return $this->isPaid();
+    }
+    
     
     //public function sumUpItems()
     //{
