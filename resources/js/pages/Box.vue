@@ -1,16 +1,25 @@
 <script>
     import NewItem from '../components/NewItem.vue';
-    
-    export default {
-        props: [''],
+    import Items from '../components/Items.vue';
 
-        components: { NewItem },
+    export default {
+        props: ['data'],
+
+        components: { NewItem , Items},
 
         data() {
             return {
                 endpoint: location.pathname,
 
             }
-        }
+        },
+
+        methods: {
+            updateAmount(value){
+                axios.patch(this.endpoint, {
+                    amount: value
+                });
+            }
+        },
     }
 </script>

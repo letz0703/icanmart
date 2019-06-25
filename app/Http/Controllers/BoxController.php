@@ -73,9 +73,13 @@ class BoxController extends Controller
         
     }
     
-    public function update(Box $box)
+    public function update($seller, Box $box)
     {
-        $this->authorize('update',$box);
+        //$this->authorize('update',$box);
+        if (request()->expectsJson()){
+            return response([], 202);
+        }
+        
         $box->update([
             'amount' => request('amount')
         ]);

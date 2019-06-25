@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <box-view inline-template :seller = "{{ $box->seller }}">
+    <box-view :data="{{ $box }}" inline-template :seller = "{{ $box->seller }}">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -38,24 +38,27 @@
                             <new-item :seller="{{ $box->seller }}" :box-id="{{ $box->id }}"
                                       :endpoint="endpoint"
                             ></new-item>
-                            <h2>Box Items</h2>
-                            <hr>
-                            @php
-                                $box->amount = 0;
-                            @endphp
-                            @foreach( $items as $item)
-                                @include('boxes.item')
-                                @php
-                                    $box->amount += $item->amount;
-                                @endphp
-                            @endforeach
-                            <hr>
-                            <div class="level">
-                            <h4 class="flex">합계금액: {{ $box->amount  }}원</h4>
-                            <box-amount  inline-template :attributes="{{ $box }}">
-                                <button class="btn btn-info" @click="update">post</button>
-                            </box-amount>
-                            </div>
+                                <items :data="{{ $box->items }}" :bamount="{{ $box->amount }}"
+                                        @reduced="updateAmount"
+                                ></items>
+                            {{--<h2>Box Items</h2>--}}
+                            {{--<hr>--}}
+                            {{--@php--}}
+                                {{--$box->amount = 0;--}}
+                            {{--@endphp--}}
+                            {{--@foreach( $items as $item)--}}
+                                {{--@include('boxes.item')--}}
+                                {{--@php--}}
+                                    {{--$box->amount += $item->amount;--}}
+                                {{--@endphp--}}
+                            {{--@endforeach--}}
+                            {{--<hr>--}}
+                            {{--<div class="level">--}}
+                            {{--<h4 class="flex">합계금액: {{ $box->amount  }}원</h4>--}}
+                            {{--<box-amount  inline-template :attributes="{{ $box }}">--}}
+                                {{--<button class="btn btn-info" @click="update">post</button>--}}
+                            {{--</box-amount>--}}
+                            {{--</div>--}}
                         </div>
                     @endif
                 </div>
