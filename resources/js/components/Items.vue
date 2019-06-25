@@ -28,7 +28,7 @@
             reduce(value){
                 this.box_amount = this.box_amount- value;
                 this.$emit('reduced', this.box_amount);
-                                console.log('value changed', value);
+//                                console.log('value changed', value);
             }
         },
         
