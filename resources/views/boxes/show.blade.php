@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <box-view inline-template :seller = "{{ $box->seller }}">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -30,10 +31,13 @@
                         </div>
                     </div>
                     @if (auth()->check())
+                        {{--<div class="card-body">--}}
+                            {{--@include('boxes.form.itemForm')--}}
+                        {{--</div>--}}
                         <div class="card-body">
-                            @include('boxes.form.itemForm')
-                        </div>
-                        <div class="card-body">
+                            <new-item :seller="{{ $box->seller }}" :box-id="{{ $box->id }}"
+                                      :endpoint="endpoint"
+                            ></new-item>
                             <h2>Box Items</h2>
                             <hr>
                             @php
@@ -72,4 +76,5 @@
 
         </div>
     </div>
+    </box-view>
 @endsection

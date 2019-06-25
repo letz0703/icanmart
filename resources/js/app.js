@@ -24,6 +24,7 @@ Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('box', require('./components/Box.vue').default);
 Vue.component('box-amount', require('./components/BoxAmount.vue').default);
 Vue.component('item', require('./components/Item.vue').default);
+Vue.component('box-view', require('./pages/Box.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

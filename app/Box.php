@@ -66,6 +66,7 @@ class Box extends Model
     }
     
     
+    
     //public function sumUpItems()
     //{
     //   $this->update(['amount' => $this->items()->amount]);
