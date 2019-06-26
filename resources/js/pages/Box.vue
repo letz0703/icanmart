@@ -11,6 +11,7 @@
             return {
                 endpoint: location.pathname,
                 box_amount: this.data.amount,
+                item_count: this.data.items_count
 
             }
         },
@@ -20,6 +21,7 @@
                 axios.patch(this.endpoint, {
                     amount: value
                 });
+                this.item_count --;
 //                this.box_amount = this.box_amount + value;
             }
         },

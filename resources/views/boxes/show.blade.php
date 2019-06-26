@@ -38,9 +38,11 @@
                                 <new-item :seller="{{ $box->seller }}" :boxid="{{ $box->id }}"
                                           :endpoint="endpoint"
                                 ></new-item>
+
                                 <items :data="{{ $box->items }}" :bamount="{{ $box->amount }}"
                                 @reduced="updateAmount"
                                 ></items>
+
                                 {{--<h2>Box Items</h2>--}}
                                 {{--<hr>--}}
                                 {{--@php--}}
@@ -69,10 +71,10 @@
                         <div class="card-header">{{ $box->title }}</div>
 
                         <div class="card-body">
-                            <h4>합계금액: {{ $box->amount  }}원</h4>
+                            <h4>합계금액: <span v-text="box_amount"></span>원</h4>
                             <article>구입처 : {{ $box->seller->name }}</article>
                             <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
-                            <p>아이템수: {{ $box->items()->count() }}</p>
+                            <p>아이템수: <span v-text="item_count"></span></p>
                         </div>
                     </div>
                 </div>
