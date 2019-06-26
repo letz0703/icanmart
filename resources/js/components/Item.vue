@@ -21,7 +21,7 @@
         data() {
             return {
                 item: this.data,
-                seller_name: this.data.seller.name,
+                seller_name: this.data.seller_name,
                 box_path: '/boxes/' + this.seller_name + '/' + this.data.box_id,
             }
         },

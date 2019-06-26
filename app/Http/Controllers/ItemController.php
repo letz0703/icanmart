@@ -73,8 +73,8 @@ class ItemController extends Controller
                 'buy_price'    => request('buy_price'),
                 'expire_date'  => request('expire_date'),
             ]);
-            
-            return back();
+            //return back(); 이놈 필요 없는 놈이 말썽 부림 2019년 6월 27일 새벽
+    
         } else {
             $item = Item::create([
                 'seller_id'    => request('seller_id'),
@@ -87,6 +87,12 @@ class ItemController extends Controller
                 'sell_price'   => request('sell_price'),
                 //'category_id'  => request('category_id'),
             ]);
+            
+            if ( request()->expectsJson())
+            {
+                return $item;
+            }
+            
             return redirect($item->path());
         }
         

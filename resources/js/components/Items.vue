@@ -2,6 +2,15 @@
     <div>
         <h2>Box Items</h2>
         <hr>
+        <new-item
+                :seller="sellerp"
+                :boxid="boxidp"
+                :endpoint="endpoint"
+                @created = "add"
+        ></new-item>
+        <hr>
+        <h2>Items in the Box</h2>
+        <hr>
         <div v-for="(item, index) in items" :key="item.id">
             <item :data="item" class="mt-1" @sumed="reduce" @deleted="remove(index)"></item>
         </div>
@@ -11,20 +20,28 @@
 </template>
 
 <script>
+    import NewItem from './NewItem.vue';
     import Item from './Item.vue';
     export default {
-        props: ['data','bamount'],
+        props: ['data','bamount','boxid','seller'],
 
-        components: { Item },
+        components: { Item , NewItem },
 
         data() {
             return {
                 items: this.data,
-                box_amount: this.bamount
+                box_amount: this.bamount,
+                sellerp: this.seller,
+                boxidp: this.boxid,
+                endpoint: location.pathname,
             }
         },
 
         methods: {
+            add(newItem) {
+                this.items.push(newItem);
+            },
+
             reduce(value){
                 this.box_amount = this.box_amount- value;
                 this.$emit('reduced', this.box_amount);
@@ -35,7 +52,6 @@
 //                this.$emit('reduce_count');
             }
         },
-        
 
     }
 </script>

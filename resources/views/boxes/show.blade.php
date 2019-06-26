@@ -35,12 +35,14 @@
                             {{--@include('boxes.form.itemForm')--}}
                             {{--</div>--}}
                             <div class="card-body">
-                                <new-item :seller="{{ $box->seller }}" :boxid="{{ $box->id }}"
-                                          :endpoint="endpoint"
-                                ></new-item>
+                                {{--<new-item :seller="{{ $box->seller }}" :boxid="{{ $box->id }}"--}}
+                                          {{--:endpoint="endpoint"--}}
+                                {{--></new-item>--}}
 
-                                <items :data="{{ $box->items }}" :bamount="{{ $box->amount }}"
-                                @reduced="updateAmount"
+                                <items :data="{{ $box->items }}"
+                                       :bamount="{{ $box->amount }}"
+                                       :boxid="{{ $box->id }}"
+                                       :seller="{{ $box->seller }}" @reduced="updateAmount"
                                 ></items>
 
                                 {{--<h2>Box Items</h2>--}}
