@@ -2,8 +2,8 @@
     <div>
         <h2>Box Items</h2>
         <hr>
-        <div v-for="item in items">
-            <item :data="item" class="mt-1" @sumed="reduce"></item>
+        <div v-for="(item, index) in items" :key="item.id">
+            <item :data="item" class="mt-1" @sumed="reduce" @deleted="remove(index)"></item>
         </div>
         <hr>
         <h4>BOX AMOUNT: <span v-text="box_amount"></span></h4>
@@ -29,6 +29,9 @@
                 this.box_amount = this.box_amount- value;
                 this.$emit('reduced', this.box_amount);
 //                                console.log('value changed', value);
+            },
+            remove(index){
+                this.items.splice(index, 1);
             }
         },
         

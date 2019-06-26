@@ -40,9 +40,8 @@
 
                 this.$emit('sumed', item_sum);
                 flash('deleted');
-                this.$emit('deleted')
+                this.$emit('deleted', this.data.id);
 //                    window.location.reload();
-//                });
             }
         }
     }

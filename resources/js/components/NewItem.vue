@@ -37,12 +37,12 @@
 
 <script>
     export default {
-        props: ['seller','boxId','endpoint'],
+        props: ['seller','boxid','endpoint'],
 
         data() {
             return {
                 seller_id: this.seller.id,
-                box_id: this.boxId,
+                box_id: this.boxid,
                 barcode: '',
                 product_name:'',
                 quantity:'',
