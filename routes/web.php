@@ -31,13 +31,16 @@ Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
 Route::patch('/boxes/{box}', 'BoxController@update');
-Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 Route::patch('/boxes/{seller}/{box}','BoxController@update');
-Route::post('/boxes/{seller}/{box}/items','ItemController@store');
-Route::get('/boxes/{seller}/{box}', 'BoxController@show');
-Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');
-Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::get('/boxes/{seller}', 'BoxController@index');
+Route::get('/boxes/{seller}/{box}','BoxController@show');
+Route::get('/boxes/{seller}/{box}/items','BoxItemController@index');
+Route::delete('/boxes/{seller}/{box}','BoxController@destroy');
+Route::post('/boxes/{seller}/{box}/items','ItemController@store');
+Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
+//Route::patch('/boxes/{box}/payment', 'PaymentController@update');
+
+
 
 Route::get('/profiles/{user}','UserProfileController@show')->name('profile');
 

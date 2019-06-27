@@ -43,5 +43,17 @@ class ItemManageTest extends TestCase
         
     }
     
+    /** @test */
+    public function users_can_fetch_associated_items_in_a_box()
+    {
+        $box = create('App\Box');
+        create('App\Item',['box_id'=>$box->id],2);
+        $response = $this->getJson($box->path().'/items')->json();
+        //dd($response);
+        $this->assertCount(1, $response['data']);
+        $this->assertEquals(2, $response['total']);
+    }
+    
+    
     
 }

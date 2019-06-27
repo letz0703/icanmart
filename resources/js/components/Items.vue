@@ -23,13 +23,17 @@
     import NewItem from './NewItem.vue';
     import Item from './Item.vue';
     export default {
-        props: ['data','bamount','boxid','seller'],
+        props: ['bamount','boxid','seller'],
 
         components: { Item , NewItem },
 
+        created() {
+            this.fetch();
+        },
+
         data() {
             return {
-                items: this.data,
+                items: [],
                 box_amount: this.bamount,
                 sellerp: this.seller,
                 boxidp: this.boxid,
@@ -38,6 +42,19 @@
         },
 
         methods: {
+            fetch() {
+                axios.get(this.url())
+                     .then(this.refresh);
+            },
+
+            url() {
+                return location.pathname + '/items';
+            },
+
+            refresh(response) {
+                console.log(response);
+            },
+
             add(newItem) {
                 this.items.push(newItem);
             },

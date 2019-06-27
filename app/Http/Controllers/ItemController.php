@@ -26,10 +26,9 @@ class ItemController extends Controller
     {
         $items = $this->getItems($filters);
         
-        
-        //if (request()->wantsJson()) {
-        //    return $items;
-        //}
+        if (request()->wantsJson()) {
+            return $items;
+        }
         
         return view('items.index', compact('items'));
     }
@@ -107,9 +106,10 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //$seller = Seller::where('id',$item->seller_id)->get();
-        //dd($item);
-        return view('items.show', compact('item', 'seller'));
+        //$seller = $item->seller;
+        //return view('items.show', compact('item', 'seller'));
+        
+        return view('items.show', compact('item'));
     }
     
     

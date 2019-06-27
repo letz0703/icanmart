@@ -39,8 +39,7 @@
                                           {{--:endpoint="endpoint"--}}
                                 {{--></new-item>--}}
 
-                                <items :data="{{ $box->items }}"
-                                       :bamount="{{ $box->amount }}"
+                                <items :bamount="{{ $box->amount }}"
                                        :boxid="{{ $box->id }}"
                                        :seller="{{ $box->seller }}" @reduced="updateAmount"
                                 ></items>

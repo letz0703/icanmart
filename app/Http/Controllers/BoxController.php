@@ -32,6 +32,11 @@ class BoxController extends Controller
     {
         $items = Item::where('box_id', $box->id)->latest()->get();
         
+        if (request()->expectsJson()) {
+            return $items;
+        }
+        
+        //return view('boxes.show', compact('box', 'items'));
         return view('boxes.show', compact('box', 'items'));
     }
     
