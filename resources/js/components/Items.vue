@@ -14,6 +14,7 @@
         <div v-for="(item, index) in items" :key="item.id">
             <item :data="item" class="mt-1" @sumed="reduce" @deleted="remove(index)"></item>
         </div>
+        <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
         <h4>BOX AMOUNT: <span v-text="box_amount"></span></h4>
     </div>
@@ -46,13 +47,13 @@
         },
 
         methods: {
-            fetch() {
-                axios.get(this.url())
+            fetch(page=1) {
+                axios.get(this.url(page))
                      .then(this.refresh);
             },
 
-            url() {
-                return location.pathname + '/items';
+            url(page) {
+                return location.pathname + '/items?page='+page;
             },
 
             refresh({data}) {

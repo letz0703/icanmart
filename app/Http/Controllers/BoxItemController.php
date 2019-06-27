@@ -9,7 +9,7 @@ class BoxItemController extends Controller
 {
     public function index($seller, Box $box)
     {
-        return $box->items()->paginate(1);
+        return $box->items()->paginate(20);
     }
     
     //
