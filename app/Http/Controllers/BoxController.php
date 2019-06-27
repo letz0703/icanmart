@@ -30,14 +30,14 @@ class BoxController extends Controller
     
     public function show($sellerName, Box $box)
     {
-        $items = Item::where('box_id', $box->id)->latest()->get();
-        
-        if (request()->expectsJson()) {
-            return $items;
-        }
+        //$items = Item::where('box_id', $box->id)->latest()->get();
+        //
+        //if (request()->expectsJson()) {
+        //    return $items;
+        //}
         
         //return view('boxes.show', compact('box', 'items'));
-        return view('boxes.show', compact('box', 'items'));
+        return view('boxes.show', compact('box'));
     }
     
     public function destroy($seller, Box $box)

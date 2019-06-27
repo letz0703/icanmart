@@ -22,10 +22,14 @@
 <script>
     import NewItem from './NewItem.vue';
     import Item from './Item.vue';
+    import collection from '../mixins/collection.vue';
+
     export default {
         props: ['bamount','boxid','seller'],
 
         components: { Item , NewItem },
+
+        mixins: [ collection ],
 
         created() {
             this.fetch();
@@ -33,7 +37,7 @@
 
         data() {
             return {
-                items: [],
+                dataSet: false,
                 box_amount: this.bamount,
                 sellerp: this.seller,
                 boxidp: this.boxid,
@@ -51,23 +55,18 @@
                 return location.pathname + '/items';
             },
 
-            refresh(response) {
-                console.log(response);
-            },
+            refresh({data}) {
+//                console.log(response);
+                this.dataSet = data;
+                this.items = data.data;
 
-            add(newItem) {
-                this.items.push(newItem);
             },
-
             reduce(value){
                 this.box_amount = this.box_amount- value;
                 this.$emit('reduced', this.box_amount);
             },
 
-            remove(index){
-                this.items.splice(index, 1);
-//                this.$emit('reduce_count');
-            }
+
         },
 
     }
