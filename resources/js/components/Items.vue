@@ -16,6 +16,9 @@
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
+        <div class="level">
+
+        </div>
         <h4>BOX AMOUNT: <span v-text="box_amount"></span></h4>
     </div>
 </template>
@@ -60,7 +63,6 @@
                 //                console.log(response);
                 this.dataSet = data;
                 this.items = data.data;
-
             },
 
             updateAmount(value) {
@@ -71,7 +73,7 @@
 
             reduce(value){
                 this.box_amount = this.box_amount - value;
-                this.fetch(this.dataSet.current_page);
+//                this.fetch(this.dataSet.current_page);
                 this.$emit('reduced', this.box_amount);
 //                this.refresh;
             },

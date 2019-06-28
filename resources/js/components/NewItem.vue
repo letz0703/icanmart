@@ -68,6 +68,11 @@
                 this.itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', this.itemAmount);
                 flash('added');
+                this.barcode = '',
+                    this.product_name = '',
+                    this.quantity = '',
+                    this.buy_price = '',
+                    this.itemAmount = ''
             }
 
             //            refresh(data){

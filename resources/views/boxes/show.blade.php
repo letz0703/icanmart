@@ -75,7 +75,7 @@
                         <div class="card-header">{{ $box->title }}</div>
 
                         <div class="card-body">
-                            <h4>합계금액: <span v-text="box_amount"></span>원</h4>
+                            <h4>시작합계금액: <span v-text="box_amount"></span>원</h4>
                             <article>구입처 : {{ $box->seller->name }}</article>
                             <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
                             <p>아이템수: <span v-text="item_count"></span></p>
