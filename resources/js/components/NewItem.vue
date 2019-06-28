@@ -47,8 +47,10 @@
                 product_name: '',
                 quantity: '',
                 buy_price: '',
+                itemAmount: ''
             }
         },
+
         methods: {
             addItem() {
                 axios.post(this.endpoint + '/items', {
@@ -59,21 +61,19 @@
                     product_name: this.product_name,
                     quantity: this.quantity,
                     buy_price: this.buy_price,
-                })
-                     .then(response =>{
-                         //                         console.log('value changed',response.data);
-                         //                         this.$emit('created', response.data);
-                         flash('item has been posted');
-                         //
-                         //                         this.barcode = '';
-                         //                         this.product_name = '';
-                         //                         this.quantity = '';
-                         //                         this.buy_price = '';
-                         //                         console.log('value changed',data.data);
-                         window.location.reload()
+                }).then(this.broadcast);
+            },
 
-                     });
+            broadcast() {
+                this.itemAmount = this.quantity * this.buy_price;
+                this.$emit('created', this.itemAmount);
+                flash('added');
             }
+
+            //            refresh(data){
+            //                console.log(data.data);
+            //            }
+
         },
     }
 </script>

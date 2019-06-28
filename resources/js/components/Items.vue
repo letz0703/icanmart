@@ -6,7 +6,7 @@
                 :seller="sellerp"
                 :boxid="boxidp"
                 :endpoint="endpoint"
-                @created = "add"
+                @created="updateAmount"
         ></new-item>
         <hr>
         <h2>Items in the Box</h2>
@@ -26,11 +26,11 @@
     import collection from '../mixins/collection.vue';
 
     export default {
-        props: ['bamount','boxid','seller'],
+        props: ['bamount', 'boxid', 'seller'],
 
-        components: { Item , NewItem },
+        components: { Item, NewItem },
 
-        mixins: [ collection ],
+        mixins: [collection],
 
         created() {
             this.fetch();
@@ -47,24 +47,33 @@
         },
 
         methods: {
-            fetch(page=1) {
+            fetch(page = 1) {
                 axios.get(this.url(page))
                      .then(this.refresh);
             },
 
             url(page) {
-                return location.pathname + '/items?page='+page;
+                return location.pathname + '/items?page=' + page;
             },
 
-            refresh({data}) {
-//                console.log(response);
+            refresh({ data }) {
+                //                console.log(response);
                 this.dataSet = data;
                 this.items = data.data;
 
             },
+
+            updateAmount(value) {
+                this.box_amount = this.box_amount + value;
+                this.fetch(this.dataSet.current_page);
+                this.$emit('itemup', this.box_amount);
+            },
+
             reduce(value){
-                this.box_amount = this.box_amount- value;
+                this.box_amount = this.box_amount - value;
+                this.fetch(this.dataSet.current_page);
                 this.$emit('reduced', this.box_amount);
+//                this.refresh;
             },
 
 

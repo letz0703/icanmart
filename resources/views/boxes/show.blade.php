@@ -36,12 +36,15 @@
                             {{--</div>--}}
                             <div class="card-body">
                                 {{--<new-item :seller="{{ $box->seller }}" :boxid="{{ $box->id }}"--}}
-                                          {{--:endpoint="endpoint"--}}
+                                {{--:endpoint="endpoint"--}}
                                 {{--></new-item>--}}
 
-                                <items :bamount="{{ $box->amount }}"
-                                       :boxid="{{ $box->id }}"
-                                       :seller="{{ $box->seller }}" @reduced="updateAmount"
+                                <items
+                                        :bamount="{{ $box->amount }}"
+                                        :boxid="{{ $box->id }}"
+                                        :seller="{{ $box->seller }}"
+                                @reduced="updateAmount"
+                                @itemup="addAmount"
                                 ></items>
 
                                 {{--<h2>Box Items</h2>--}}

@@ -23,6 +23,14 @@
                 });
                 this.item_count --;
 //                this.box_amount = this.box_amount + value;
+            },
+
+            addAmount(value){
+                axios.patch(this.endpoint, {
+                    amount: value
+                });
+                this.item_count ++;
+                //                this.box_amount = this.box_amount + value;
             }
         },
     }
