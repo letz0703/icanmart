@@ -2,7 +2,6 @@
     <div>
         <div class="level">
             <div class="flex">
-                <!--<a href="{{ $box->path() }}">-->
                 <a :href="endpoint">
                     <span v-text="data.arrived_at"></span>
                     <span v-text="data.title"></span>
@@ -21,19 +20,25 @@
                 <button class="btn btn-danger btn-sm" @click="pay">unpaid</button>
                 </span>
             </div>
+            </div>
+            <box-items :items="data.items"></box-items>
             <!--@endcan-->
-        </div>
     </div>
 </template>
 
 <script>
+    import boxItems from './BoxItems';
+
     export default {
         props: ['data'],
+
+        components: { boxItems },
 
         data() {
             return {
                 paid: this.data.paid,
-                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
+//                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
+                endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.id}`
             }
         },
         computed: {

@@ -25,6 +25,10 @@
             <label for="buy_price">입고단가:</label>
             <input type="text" id="buy_price" name="buy_price" v-model="buy_price"> 원
         </div>
+        <div class="form-group">
+            <label for="buy_price">expire data:</label>
+            <input type="date" id="expire_data" name="expire_date" v-model="expireDate"> 원
+        </div>
         <!--<div class="form-group">-->
         <!--<label for="expire_date">Expire_date:</label>-->
         <!--<input type="date" id="expire_date" name="expire_date"-->
@@ -47,7 +51,8 @@
                 product_name: '',
                 quantity: '',
                 buy_price: '',
-                itemAmount: ''
+                itemAmount: '',
+                expireDate: ''
             }
         },
 
@@ -61,6 +66,7 @@
                     product_name: this.product_name,
                     quantity: this.quantity,
                     buy_price: this.buy_price,
+                    expire_date: this.expireDate
                 }).then(this.broadcast);
             },
 

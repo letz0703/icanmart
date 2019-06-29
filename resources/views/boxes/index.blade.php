@@ -41,11 +41,7 @@
                             {{--</div>--}}
 
                             </box>
-                            <div>
-                                @foreach($box->items as $item)
-                                    {{ $item->product_name }}
-                                @endforeach
-                            </div>
+
                             <hr>
                         @endforeach
                         {{ $boxes->links() }}

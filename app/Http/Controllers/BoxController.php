@@ -107,7 +107,7 @@ class BoxController extends Controller
      */
     protected function getBoxes(Seller $seller, BoxFilters $filters)
     {
-        $boxes = Box::latest()->filter($filters)->paginate(20);
+        $boxes = Box::latest()->filter($filters)->paginate(10);
         
         if ($seller->exists){
             $boxes->where('seller_id', $seller->id);
