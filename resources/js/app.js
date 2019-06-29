@@ -22,6 +22,7 @@ require('./bootstrap');
 
 Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('box', require('./components/Box.vue').default);
+Vue.component('boxes-view', require('./components/Boxes.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('box-amount', require('./components/BoxAmount.vue').default);
 // Vue.component('item', require('./components/Item.vue').default);

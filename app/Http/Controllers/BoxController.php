@@ -85,9 +85,12 @@ class BoxController extends Controller
         //    return response([], 202);
         //}
         
-        $box->update([
-            'amount' => request('amount')
-        ]);
+        $box->update(request(['paid']));
+        //$box->update([
+        //    //'amount' => request('amount'),
+        //    //'paid' => request('paid')
+        //]);
+        
     }
     
     
