@@ -18,4 +18,9 @@ E: show.bla, Box.vue
 6월 29일 토요일
 L: Boxes.vue
     E: boxes/index.blade, <boxes-vue inline-template>
-L: url 주소에서 ?page=2&foo=bar 로 접속시 해당 페이지 보이게 하
+L: url 주소에서 ?page=2&foo=bar 로 접속시 해당 페이지 보이게 하기
+    E: index.bla , BoxController@index
+        T: VUE 보다 {{ $boxes->links() }} 가 났네. e4b3c09
+
+6월 30일 일요일
+
