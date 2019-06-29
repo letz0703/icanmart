@@ -50,7 +50,7 @@ class ItemManageTest extends TestCase
         create('App\Item',['box_id'=>$box->id],2);
         $response = $this->getJson($box->path().'/items')->json();
         //dd($response);
-        $this->assertCount(1, $response['data']);
+        $this->assertCount(2, $response['data']);
         $this->assertEquals(2, $response['total']);
     }
     

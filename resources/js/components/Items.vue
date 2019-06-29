@@ -12,14 +12,14 @@
         <h2>Items in the Box</h2>
         <hr>
         <div v-for="(item, index) in items" :key="item.id">
-            <item :data="item" class="mt-1" @sumed="reduce" @deleted="remove(index)"></item>
+            <item :data="item" class="mt-1" @deleted="reduce"></item>
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
         <div class="level">
 
         </div>
-        <h4>BOX AMOUNT: <span v-text="box_amount"></span></h4>
+        <h4>BOX AMOUNT: <span v-text="boxAmount"></span></h4>
     </div>
 </template>
 
@@ -42,7 +42,7 @@
         data() {
             return {
                 dataSet: false,
-                box_amount: this.bamount,
+                boxAmount: this.bamount,
                 sellerp: this.seller,
                 boxidp: this.boxid,
                 endpoint: location.pathname,
@@ -71,10 +71,11 @@
                 this.$emit('itemup', this.box_amount);
             },
 
-            reduce(value){
+            reduce(id, amount){
+                this.remove(id);
                 this.box_amount = this.box_amount - value;
 //                this.fetch(this.dataSet.current_page);
-                this.$emit('reduced', this.box_amount);
+                this.$emit('reduced', this.boxAmount);
 //                this.refresh;
             },
 

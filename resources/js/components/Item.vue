@@ -5,7 +5,7 @@
                 <span v-text="item.product_name"></span>:
                 <span v-text="item.quantity"></span>개 X
                 <span v-text="item.buy_price"></span>원 =
-                <span v-text="amount"></span>원
+                <span v-text="itemAmount"></span>원
             </div>
             <div>
                 <button class="btn btn-danger btn-sm" @click="destroy">x</button>
@@ -27,7 +27,7 @@
         },
 
         computed: {
-            amount() {
+            itemAmount() {
                 return this.item.quantity * this.item.buy_price;
             }
         },
@@ -36,11 +36,11 @@
             destroy() {
                 axios.delete(this.box_path + '/' + this.data.id);
 //                $(this.$el).fadeOut(100, () =>{
-                let item_sum = this.item.quantity * this.item.buy_price;
+                let item_sum = this.itemAmount
 
-                this.$emit('sumed', item_sum);
+//                this.$emit('sumed', this.itemAmount);
                 flash('deleted');
-                this.$emit('deleted', this.data.id);
+                this.$emit('deleted', this.data.id, item_sum);
 //                    window.location.reload();
             }
         }

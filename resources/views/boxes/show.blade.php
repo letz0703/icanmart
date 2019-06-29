@@ -43,9 +43,7 @@
                                         :bamount="{{ $box->amount }}"
                                         :boxid="{{ $box->id }}"
                                         :seller="{{ $box->seller }}"
-                                @reduced="updateAmount"
-                                @itemup="addAmount"
-                                ></items>
+                                @reduced="updateAmount" @itemup="addAmount" ></items>
 
                                 {{--<h2>Box Items</h2>--}}
                                 {{--<hr>--}}

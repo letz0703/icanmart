@@ -56,9 +56,9 @@ class ItemController extends Controller
      */
     public function store($sellerName = null, $boxId = null, Request $request)
     {
-        //$this->validate($request, [
-        //    'seller_id' => 'required|exists:sellers,id',
-        //]);
+        $this->validate($request, [
+            'seller_id' => 'required|exists:sellers,id',
+        ]);
         
         if ($sellerName && $boxId){
             $sellerId = Seller::where('name', $sellerName)->first()->id;

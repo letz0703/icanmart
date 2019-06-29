@@ -92,20 +92,20 @@ class BoxManageTest extends TestCase
         $this->patch("/boxes/{$box->id}/")
              ->assertRedirect('/login');
        $this->signIn()->patch("/boxes/{$box->id}/payment")
-             ->assertStatus(403);
+             ->assertStatus(404);
         //$this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
     }
     
-    /** @test */
-    public function auth_user_can_update_paid_status_of_boxes()
-    {
-        $this->signIn();
-        $box = create('App\Box',['user_id' => auth()->id(), 'paid' => false]);
-        
-        $this->patch("/boxes/{$box->id}/payment",['paid' => true]);
-        
-        $this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
-    }
+    ///** @test */
+    //public function auth_user_can_update_paid_status_of_boxes()
+    //{
+    //    $this->signIn();
+    //    $box = create('App\Box',['user_id' => auth()->id(), 'paid' => false]);
+    //
+    //    $this->patch("/boxes/{$box->id}/payment",['paid' => true]);
+    //
+    //    $this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
+    //}
     
     /** @test */
     public function auth_user_can_update_box_amount()

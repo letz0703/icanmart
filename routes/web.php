@@ -40,7 +40,7 @@ Route::get('/boxes/{seller}/{box}/items','BoxItemController@index');
 Route::delete('/boxes/{seller}/{box}','BoxController@destroy');
 Route::post('/boxes/{seller}/{box}/items','ItemController@store');
 Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
-//Route::patch('/boxes/{box}/payment', 'PaymentController@update');
+Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 
 
 

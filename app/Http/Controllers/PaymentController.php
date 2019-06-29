@@ -10,9 +10,11 @@ class PaymentController extends Controller
     //
     public function update(Box $box)
     {
-        $this->authorize('update',$box);
+        $this->authorize('update', $box);
         $box->update([
             'paid' => request('paid'),
         ]);
     }
 }
+
+
