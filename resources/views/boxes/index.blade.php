@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <boxes-view inline-template>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Boxes</div>
                     <div class="card-body">
+
                         @foreach($boxes as $box)
                             <box :attributes="{{ $box }}" inline-template v-cloak>
                             <div class="level">
@@ -53,4 +55,5 @@
             </div>
         </div>
     </div>
+    </boxes-view>
 @endsection

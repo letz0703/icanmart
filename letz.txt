@@ -14,3 +14,8 @@ Z: b0493dc
 
 L: Delete button to VUE
 E: show.bla, Box.vue
+
+6월 29일 토요일
+L: Boxes.vue
+    E: boxes/index.blade, <boxes-vue inline-template>
+L: url 주소에서 ?page=2&foo=bar 로 접속시 해당 페이지 보이게 하
