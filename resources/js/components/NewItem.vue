@@ -26,8 +26,9 @@
             <input type="text" id="buy_price" name="buy_price" v-model="buy_price"> 원
         </div>
         <div class="form-group">
-            <label for="buy_price">expire data:</label>
-            <input type="date" id="expire_data" name="expire_date" v-model="expireDate"> 원
+            <!--<label for="expire_date">expire data:</label>-->
+            <label>Expire Date: </label>
+            <input type="date" id="expire_data" name="expire_date" v-model="expireDate">
         </div>
 
         <div v-if="signedIn">
@@ -37,6 +38,8 @@
 </template>
 
 <script>
+    //    import moment from 'moment';
+
     export default {
         props: ['seller', 'boxid', 'endpoint'],
 
@@ -49,12 +52,26 @@
                 quantity: '',
                 buy_price: '',
                 itemAmount: '',
-                expireDate: moment().format('Y-m-d'),
+                expireDate: '',
                 signedIn: window.App.signedIn
             }
         },
 
+        computed: {
+            setDate() {
+                const toTwoDigits = num => num < 10 ? '0' + num : num;
+                let today = new Date();
+                let year = today.getFullYear();
+                //                let month = toTwoDigits(today.getMonth() + 1);
+                let month = toTwoDigits(today.getMonth() + 6);
+                let day = toTwoDigits(today.getDate());
+                //                return `${year}-${month}-${day}`;
+                return this.expireDate = `${year}-${month}-${day}`;
+            }
+        },
+
         methods: {
+
             addItem() {
                 axios.post(this.endpoint + '/items', {
                     seller_id: this.seller.id,
