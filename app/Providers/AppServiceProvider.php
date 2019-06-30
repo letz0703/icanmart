@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Seller;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
             
             $view->with('sellers', $sellers);
         });
+        
+        Carbon::setLocale(config('app.locale'));
+    
     }
 }
