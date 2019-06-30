@@ -49,7 +49,7 @@
                 quantity: '',
                 buy_price: '',
                 itemAmount: '',
-                expireDate: '',
+                expireDate: moment().format('Y-m-d'),
                 signedIn: window.App.signedIn
             }
         },
