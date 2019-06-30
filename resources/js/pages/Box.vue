@@ -12,12 +12,11 @@
                 endpoint: location.pathname,
                 boxAmount: this.data.amount,
                 item_count: this.data.items_count,
+                paid: this.data.paid
             }
         },
 
         methods: {
-
-
             addAmount(value){
                 this.boxAmount += value;
                 //                this.boxAmount +=value

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-if="user">
         <h2>Box Items</h2>
         <hr>
         <new-item
@@ -9,6 +10,7 @@
                 @created="updateAmount"
         ></new-item>
         <hr>
+        </div>
         <h2>Items in the Box</h2>
         <hr>
         <div v-for="(item, index) in items" :key="item.id">
@@ -16,10 +18,6 @@
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
-        <!--<div class="level">-->
-
-        <!--</div>-->
-        <!--<h4>BOX AMOUNT: <span v-text="boxAmount"></span></h4>-->
     </div>
 </template>
 
@@ -46,6 +44,7 @@
                 sellerp: this.seller,
                 boxidp: this.boxid,
                 endpoint: location.pathname,
+                user: window.App.user
             }
         },
 
@@ -73,7 +72,7 @@
             pass(itemAmount){
 //                this.boxAmount -= amount;
 //                this.fetch(this.dataSet.current_page);
-                this.$emit('reduce-item-amount', itemAmount);
+                this.$emit('reduce', itemAmount);
 //                this.refresh;
             },
 

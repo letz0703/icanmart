@@ -30,7 +30,7 @@
                                 @endcan
                             </div>
                         </div>
-                        @if (auth()->check())
+{{--                        @if (auth()->check())--}}
                             {{--<div class="card-body">--}}
                             {{--@include('boxes.form.itemForm')--}}
                             {{--</div>--}}
@@ -58,7 +58,7 @@
                                 {{--</box-amount><!---->--}}
                                 </div>
                             </div>
-                        @endif
+                        {{--@endif--}}
                     </div>
 
                 <div class="col-md-4">

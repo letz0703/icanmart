@@ -29,13 +29,10 @@
             <label for="buy_price">expire data:</label>
             <input type="date" id="expire_data" name="expire_date" v-model="expireDate"> 원
         </div>
-        <!--<div class="form-group">-->
-        <!--<label for="expire_date">Expire_date:</label>-->
-        <!--<input type="date" id="expire_date" name="expire_date"-->
-        <!--&lt;!&ndash;value="{{ Carbon\Carbon::now()->addMonth(6)->format('Y-m-d') }}"&ndash;&gt;-->
-        <!--&gt;-->
-        <!--</div>-->
-        <button type=" submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
+
+        <div v-if="signedIn">
+            <button type=" submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
+        </div>
     </div>
 </template>
 
@@ -52,7 +49,8 @@
                 quantity: '',
                 buy_price: '',
                 itemAmount: '',
-                expireDate: ''
+                expireDate: '',
+                signedIn: window.App.signedIn
             }
         },
 
@@ -72,7 +70,7 @@
 
             broadcast() {
                 let itemAmount = this.quantity * this.buy_price;
-                this.$emit('created', itemAmount );
+                this.$emit('created', itemAmount);
                 flash('added');
                 this.barcode = '',
                     this.product_name = '',

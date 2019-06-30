@@ -25,3 +25,11 @@ L: url 주소에서 ?page=2&foo=bar 로 접속시 해당 페이지 보이게 하
 6월 30일 일요일
 박스 amount 표시 문제 해결함. df57546
 
+
+7월 1일 월요일
+L: new item 로그인 후 작성하게 만들기
+    E: layouts/app.blade window.App = {!! json_encode([ 'signedIn'=>
+        T: <div v-if='signedIn'>
+Z: done
+
+
