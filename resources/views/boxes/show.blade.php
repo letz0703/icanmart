@@ -35,15 +35,11 @@
                             {{--@include('boxes.form.itemForm')--}}
                             {{--</div>--}}
                             <div class="card-body">
-                                {{--<new-item :seller="{{ $box->seller }}" :boxid="{{ $box->id }}"--}}
-                                {{--:endpoint="endpoint"--}}
-                                {{--></new-item>--}}
-
                                 <items
                                         :bamount="{{ $box->amount }}"
                                         :boxid="{{ $box->id }}"
                                         :seller="{{ $box->seller }}"
-                                @reduced="updateAmount" @itemup="addAmount" ></items>
+                                @reduced="updateAmount" @item-added="addAmount" ></items>
 
                                 {{--<h2>Box Items</h2>--}}
                                 {{--<hr>--}}
@@ -58,22 +54,21 @@
                                 {{--@endforeach--}}
                                 {{--<hr>--}}
                                 {{--<div class="level">--}}
+                                <h4 class="flex">합계금액: <span v-text="boxAmount"></span></h4>
                                 {{--<h4 class="flex">합계금액: {{ $box->amount  }}원</h4>--}}
                                 {{--<box-amount  inline-template :attributes="{{ $box }}">--}}
                                 {{--<button class="btn btn-info" @click="update">post</button>--}}
-                                {{--</box-amount>--}}
-                                {{--</div>--}}
+                                {{--</box-amount><!---->--}}
+                                </div>
                             </div>
                         @endif
                     </div>
-                </div>
 
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">{{ $box->title }}</div>
-
                         <div class="card-body">
-                            <h4>시작합계금액: <span v-text="box_amount"></span>원</h4>
+                            <h4>박스금액: <span v-text="boxAmount"></span>원</h4>
                             <article>구입처 : {{ $box->seller->name }}</article>
                             <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
                             <p>아이템수: <span v-text="item_count"></span></p>

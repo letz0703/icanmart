@@ -32,7 +32,7 @@ Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
 Route::patch('/boxes/{box}', 'BoxController@update');
 
-Route::patch('/boxes/{seller}/{box}','BoxController@update');
+Route::patch('/boxes/{seller}/{box}','BoxItemController@update');
 
 Route::get('/boxes/{seller}', 'BoxController@index');
 Route::get('/boxes/{seller}/{box}','BoxController@show');

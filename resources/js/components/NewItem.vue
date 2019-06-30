@@ -71,8 +71,8 @@
             },
 
             broadcast() {
-                this.itemAmount = this.quantity * this.buy_price;
-                this.$emit('created', this.itemAmount);
+                let itemAmount = this.quantity * this.buy_price;
+                this.$emit('created', itemAmount );
                 flash('added');
                 this.barcode = '',
                     this.product_name = '',

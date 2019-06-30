@@ -10,27 +10,28 @@
         data() {
             return {
                 endpoint: location.pathname,
-                box_amount: this.data.amount,
+                boxAmount: this.data.amount,
                 item_count: this.data.items_count,
             }
         },
 
         methods: {
             updateAmount(value){
+                this.item_count--;
+
                 axios.patch(this.endpoint, {
                     amount: value
                 });
-                this.item_count--;
 //                this.box_amount -= value;
             },
 
             addAmount(value){
+                this.boxAmount += value;
+                //                this.boxAmount +=value
                 axios.patch(this.endpoint, {
-                    amount: value
+                    amount: this.boxAmount
                 });
                 this.item_count++;
-//                this.boxAmount +=value
-//                this.box_amount += value;
             },
         },
     }

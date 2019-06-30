@@ -14,20 +14,20 @@ use Illuminate\Http\Request;
  */
 class BoxController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth')->only(['store', 'create', 'destroy','update']);
     }
-    
+
     //
     public function index(Seller $seller, BoxFilters $filters)
     {
         $boxes = $this->getBoxes($seller, $filters);
-    
+
         return view('boxes.index', compact('boxes'));
     }
-    
+
     public function show($sellerName, Box $box)
     {
         //$items = Item::where('box_id', $box->id)->latest()->get();
@@ -35,24 +35,24 @@ class BoxController extends Controller
         //if (request()->expectsJson()) {
         //    return $items;
         //}
-        
+
         //return view('boxes.show', compact('box', 'items'));
         return view('boxes.show', compact('box'));
     }
-    
+
     public function destroy($seller, Box $box)
     {
         //$box->items()->delete();
         $box->delete();
-        
+
         if (request()->wantsJson()){
             return response([],204);
         }
-        
+
         return redirect('boxes');
     }
-    
-    
+
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -68,38 +68,38 @@ class BoxController extends Controller
             'amount'     => request('amount'),
             'paid'     => request('paid'),
         ]);
-        
+
         //if ( notNullValue($box->items->count)) {
         //    $box->update(['amount'=>$box->items->amount]);
         //}
-        
+
         return redirect($box->path())
                 ->with('flash', 'Box Created');
-        
+
     }
-    
+
     public function update(Box $box)
     {
         //$this->authorize('update',$box);
-        //if (request()->expectsJson()){
-        //    return response([], 202);
-        //}
-        
+        // if (request()->expectsJson()){
+            // $box->update()
+           // return response([], 202);
+        // }
+
         //$box->update(request(['paid','amount']));
-        $box->update(request()->toArray());
-        //$box->update([
-        //    //'amount' => request('amount'),
-        //    //'paid' => request('paid')
-        //]);
-        
+        // $box->update(request()->toArray());
+        $box->update([
+           'amount' => request('amount'),
+           'paid' => $box->paid
+        ]);
+
     }
-    
-    
+
     public function create()
     {
         return view('boxes.create');
     }
-    
+
     /**
      * @param Seller     $seller
      * @param BoxFilters $filters
@@ -109,15 +109,15 @@ class BoxController extends Controller
     protected function getBoxes(Seller $seller, BoxFilters $filters)
     {
         $boxes = Box::latest()->filter($filters)->paginate(10);
-        
+
         if ($seller->exists){
             $boxes->where('seller_id', $seller->id);
             //$boxes = $seller->boxes()->latest();
         }
-        
+
         //$boxes = $boxes->get();
-        
+
         return $boxes;
     }
-    
+
 }

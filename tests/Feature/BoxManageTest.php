@@ -54,7 +54,8 @@ class BoxManageTest extends TestCase
         $box = factory('App\Box')->create();
         $item = factory('App\Item')->create(['box_id' => $box->id]);
         //dd($item);
-        $this->post($box->path().'/items', $item->toArray());
+        //$this->post($box->path().'/items', $item->toArray());
+        $this->post($box->path(), $item->toArray());
         $this->get($box->path())
              ->assertSee($item->product_name);
     }

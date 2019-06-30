@@ -16,10 +16,10 @@
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
-        <div class="level">
+        <!--<div class="level">-->
 
-        </div>
-        <h4>BOX AMOUNT: <span v-text="boxAmount"></span></h4>
+        <!--</div>-->
+        <!--<h4>BOX AMOUNT: <span v-text="boxAmount"></span></h4>-->
     </div>
 </template>
 
@@ -66,9 +66,8 @@
             },
 
             updateAmount(value) {
-                this.box_amount = this.box_amount + value;
                 this.fetch(this.dataSet.current_page);
-                this.$emit('itemup', this.box_amount);
+                this.$emit('item-added', value);
             },
 
             reduce(id, amount){

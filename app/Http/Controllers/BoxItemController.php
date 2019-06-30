@@ -12,6 +12,11 @@ class BoxItemController extends Controller
         return $box->items()->paginate(20);
     }
     
+    public function update($sellerName, Box $box)
+    {
+        $box->update(request(['amount','paid']));
+    }
+    
     //
     public function destroy($seller, Box $box, Item $item)
     {
