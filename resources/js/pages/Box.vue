@@ -16,14 +16,7 @@
         },
 
         methods: {
-            updateAmount(value){
-                this.item_count--;
 
-                axios.patch(this.endpoint, {
-                    amount: value
-                });
-//                this.box_amount -= value;
-            },
 
             addAmount(value){
                 this.boxAmount += value;
@@ -33,6 +26,17 @@
                 });
                 this.item_count++;
             },
+
+            reduceBoxAmount(itemAmount){
+                this.boxAmount -= itemAmount;
+                axios.patch(this.endpoint, {
+                    amount: this.boxAmount
+                });
+
+                this.item_count--;
+            },
+
+
         },
     }
 </script>

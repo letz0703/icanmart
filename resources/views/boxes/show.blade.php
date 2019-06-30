@@ -35,11 +35,8 @@
                             {{--@include('boxes.form.itemForm')--}}
                             {{--</div>--}}
                             <div class="card-body">
-                                <items
-                                        :bamount="{{ $box->amount }}"
-                                        :boxid="{{ $box->id }}"
-                                        :seller="{{ $box->seller }}"
-                                @reduced="updateAmount" @item-added="addAmount" ></items>
+                                <items :bamount="{{ $box->amount }}" :boxid="{{ $box->id }}" :seller="{{ $box->seller }}"
+                                @reduce-item-amount="reduceBoxAmount" @item-added="addAmount"></items>
 
                                 {{--<h2>Box Items</h2>--}}
                                 {{--<hr>--}}
@@ -75,7 +72,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </box-view>

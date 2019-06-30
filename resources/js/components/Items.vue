@@ -12,7 +12,7 @@
         <h2>Items in the Box</h2>
         <hr>
         <div v-for="(item, index) in items" :key="item.id">
-            <item :data="item" class="mt-1" @deleted="reduce"></item>
+            <item :data="item" class="mt-1" @deleted="remove(index)" @pass-item-amount="pass"></item>
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
@@ -70,11 +70,10 @@
                 this.$emit('item-added', value);
             },
 
-            reduce(id, amount){
-                this.remove(id);
-                this.box_amount = this.box_amount - value;
+            pass(itemAmount){
+//                this.boxAmount -= amount;
 //                this.fetch(this.dataSet.current_page);
-                this.$emit('reduced', this.boxAmount);
+                this.$emit('reduce-item-amount', itemAmount);
 //                this.refresh;
             },
 

@@ -21,26 +21,30 @@
         data() {
             return {
                 item: this.data,
-                seller_name: this.data.seller_name,
-                box_path: '/boxes/' + this.seller_name + '/' + this.data.box_id,
+                seller_name: this.data.seller.name,
+                box_path: '/boxes/' + this.data.seller.name + '/' + this.data.box_id,
+                itemAmount: this.data.quantity * this.data.buy_price
             }
         },
 
         computed: {
-            itemAmount() {
-                return this.item.quantity * this.item.buy_price;
-            }
+//            itemAmount() {
+//                return this.item.quantity * this.item.buy_price;
+//            }
         },
 
         methods: {
             destroy() {
-                axios.delete(this.box_path + '/' + this.data.id);
+                axios.delete(this.box_path + '/' + this.data.id)
+                    .then( () => {
+                        flash('deleted');
+                        this.$emit('deleted', this.data.id);
+                        this.$emit('pass-item-amount', this.itemAmount);
+                });
 //                $(this.$el).fadeOut(100, () =>{
-                let item_sum = this.itemAmount
 
-//                this.$emit('sumed', this.itemAmount);
-                flash('deleted');
-                this.$emit('deleted', this.data.id, item_sum);
+//                console.log('changed',iamount);
+
 //                    window.location.reload();
             }
         }
