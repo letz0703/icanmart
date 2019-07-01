@@ -6,12 +6,21 @@
                 <div class="card">
                     <div class="card-header">Items</div>
                     <div class="card-body">
+                        <form action="/items?barcode=">
+                            <div class="form-group">
+                                <label for="barcode">바코드</label>
+                                <input type="text" id="barcode" name="barcode" focus>
+                                <button type="submit" class="btn btn-primary btn-sm">검색</button>
+                            </div>
+                            <hr>
+                        </form>
+
                         @foreach($items as $item)
                             <article>
                                 <div class="level">
                                     <a href="{{ $item->path() }}" class="flex">
                                         <h5>{{ $item->product_name }} ({{ $item->seller->name }}
-                                            ) {{ $item->created_at }}</h5>
+                                            ) {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>
                                     </a>
                                     <div> 바코드 : {{ $item->barcode }}</div>
                                 </div>
@@ -25,3 +34,8 @@
         </div>
     </div>
 @endsection
+<script>
+    window.onload = function() {
+        document.getElementById("barcode").focus();
+    };
+</script>

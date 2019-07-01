@@ -42,6 +42,8 @@ Route::post('/boxes/{seller}/{box}/items','ItemController@store');
 Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 
+Route::get('/barcode', 'BarcodeController@index');
+
 
 
 Route::get('/profiles/{user}','UserProfileController@show')->name('profile');

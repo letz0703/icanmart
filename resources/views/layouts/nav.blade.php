@@ -20,7 +20,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="nav-link" href="/boxes">박스별</a>
-                        <a class="nav-link" href="/items?barcode=">바코드 검색</a>
+                        <a class="nav-link" href="/items">바코드 검색</a>
 
                         {{--<div class="dropdown-divider"></div>--}}
                         {{--<a class="dropdown-item" href="#">Something else here</a>--}}
