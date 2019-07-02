@@ -26,9 +26,9 @@
             <input type="text" id="buy_price" name="buy_price" v-model="buy_price"> 원
         </div>
         <div class="form-group">
-            <!--<label for="expire_date">expire data:</label>-->
             <label>Expire Date: </label>
-            <input type="date" id="expire_data" name="expire_date" v-model="expireDate">
+            <input type="date" id="expire_data" name="expire_date" v-model="expireDate"
+            >
         </div>
 
         <div v-if="signedIn">
@@ -52,13 +52,12 @@
                 quantity: '',
                 buy_price: '',
                 itemAmount: '',
-                expireDate: '',
                 signedIn: window.App.signedIn
             }
         },
 
         computed: {
-            setDate() {
+            expireDate() {
                 const toTwoDigits = num => num < 10 ? '0' + num : num;
                 let today = new Date();
                 let year = today.getFullYear();
@@ -66,7 +65,7 @@
                 let month = toTwoDigits(today.getMonth() + 6);
                 let day = toTwoDigits(today.getDate());
                 //                return `${year}-${month}-${day}`;
-                return this.expireDate = `${year}-${month}-${day}`;
+                return `${year}-${month}-${day}`;
             }
         },
 
