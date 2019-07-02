@@ -36,7 +36,7 @@
                             {{--</div>--}}
                             <div class="card-body">
                                 <items :bamount="{{ $box->amount }}" :boxid="{{ $box->id }}" :seller="{{ $box->seller }}"
-                                @reduce-item-amount="reduceBoxAmount" @item-added="addAmount"></items>
+                                @reduce="reduceBoxAmount" @item-added="addAmount"></items>
 
                                 {{--<h2>Box Items</h2>--}}
                                 {{--<hr>--}}
