@@ -65,7 +65,7 @@ class BoxController extends Controller
             'user_id'  => request('user_id'),
             'arrived_at' => request('arrived_at'),
             'title'      => request('title'),
-            'amount'     => request('amount'),
+            'amount'     => request('amount')?:0,
             'paid'     => request('paid'),
         ]);
 

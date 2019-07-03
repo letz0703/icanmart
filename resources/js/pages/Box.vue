@@ -1,11 +1,12 @@
 <script>
     import NewItem from '../components/NewItem.vue';
     import Items from '../components/Items.vue';
+    import PaidButton from '../components/PaidButton.vue'
 
     export default {
         props: ['data'],
 
-        components: { NewItem, Items },
+        components: { NewItem, Items, PaidButton },
 
         data() {
             return {

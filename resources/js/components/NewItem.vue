@@ -41,7 +41,7 @@
     //    import moment from 'moment';
 
     export default {
-        props: ['seller', 'boxid', 'endpoint'],
+        props: ['seller', 'boxid'],
 
         data() {
             return {
@@ -72,7 +72,7 @@
         methods: {
 
             addItem() {
-                axios.post(this.endpoint + '/items', {
+                axios.post(location.pathname + '/items', {
                     seller_id: this.seller.id,
                     box_id: this.boxid,
                     barcode: this.barcode,
@@ -94,11 +94,6 @@
                     this.buy_price = '',
                     this.itemAmount = ''
             }
-
-            //            refresh(data){
-            //                console.log(data.data);
-            //            }
-
         },
     }
 </script>

@@ -8,15 +8,18 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="level">
-                        <span class="flex">
-                            {{ $box->arrived_at }} {{ $box->seller->name }} [
-                            @if ($box->paid)
-                                paid
-                            @else
-                                <span style="color:red;">unpaid</span>
-                            @endif
-                            ]
+                                <paid-button :payment="paid" class="mr-2"></paid-button>
+                                <span class="mr-3"> {{ $box->title }}</span>
+                                <span class="flex">
+                            {{ $box->arrived_at }} {{ $box->seller->name }}
                         </span>
+
+                                {{--@if ($box->paid)--}}
+                                {{--paid--}}
+                                {{--@else--}}
+                                {{--<span style="color:red;">unpaid</span>--}}
+                                {{--@endif--}}
+
                                 @can('update', $box)
                                     <div>
                                         <form action="{{ $box->path() }}" method="POST">
@@ -30,36 +33,36 @@
                                 @endcan
                             </div>
                         </div>
-{{--                        @if (auth()->check())--}}
-                            {{--<div class="card-body">--}}
-                            {{--@include('boxes.form.itemForm')--}}
-                            {{--</div>--}}
-                            <div class="card-body">
-                                <items :bamount="{{ $box->amount }}" :boxid="{{ $box->id }}" :seller="{{ $box->seller }}"
-                                @reduce="reduceBoxAmount" @item-added="addAmount"></items>
+                        {{--                        @if (auth()->check())--}}
+                        {{--<div class="card-body">--}}
+                        {{--@include('boxes.form.itemForm')--}}
+                        {{--</div>--}}
+                        <div class="card-body">
+                            <items :bamount="{{ $box->amount }}" :boxid="{{ $box->id }}" :seller="{{ $box->seller }}"
+                            @reduce="reduceBoxAmount" @item-added="addAmount"></items>
 
-                                {{--<h2>Box Items</h2>--}}
-                                {{--<hr>--}}
-                                {{--@php--}}
-                                {{--$box->amount = 0;--}}
-                                {{--@endphp--}}
-                                {{--@foreach( $items as $item)--}}
-                                {{--@include('boxes.item')--}}
-                                {{--@php--}}
-                                {{--$box->amount += $item->amount;--}}
-                                {{--@endphp--}}
-                                {{--@endforeach--}}
-                                {{--<hr>--}}
-                                {{--<div class="level">--}}
-                                <h4 class="flex">합계금액: <span v-text="boxAmount"></span></h4>
-                                {{--<h4 class="flex">합계금액: {{ $box->amount  }}원</h4>--}}
-                                {{--<box-amount  inline-template :attributes="{{ $box }}">--}}
-                                {{--<button class="btn btn-info" @click="update">post</button>--}}
-                                {{--</box-amount><!---->--}}
-                                </div>
-                            </div>
-                        {{--@endif--}}
+                            {{--<h2>Box Items</h2>--}}
+                            {{--<hr>--}}
+                            {{--@php--}}
+                            {{--$box->amount = 0;--}}
+                            {{--@endphp--}}
+                            {{--@foreach( $items as $item)--}}
+                            {{--@include('boxes.item')--}}
+                            {{--@php--}}
+                            {{--$box->amount += $item->amount;--}}
+                            {{--@endphp--}}
+                            {{--@endforeach--}}
+                            {{--<hr>--}}
+                            {{--<div class="level">--}}
+                            <h4 class="flex">합계금액: <span v-text="boxAmount"></span></h4>
+                            {{--<h4 class="flex">합계금액: {{ $box->amount  }}원</h4>--}}
+                            {{--<box-amount  inline-template :attributes="{{ $box }}">--}}
+                            {{--<button class="btn btn-info" @click="update">post</button>--}}
+                            {{--</box-amount><!---->--}}
+                        </div>
                     </div>
+                    {{--@endif--}}
+                </div>
 
                 <div class="col-md-4">
                     <div class="card">

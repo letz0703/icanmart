@@ -6,7 +6,6 @@
         <new-item
                 :seller="sellerp"
                 :boxid="boxidp"
-                :endpoint="endpoint"
                 @created="updateAmount"
         ></new-item>
         <hr>
