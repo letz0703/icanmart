@@ -11,6 +11,7 @@
                                 <label for="barcode">바코드</label>
                                 <input type="text" id="barcode" name="barcode" focus>
                                 <button type="submit" class="btn btn-primary btn-sm">검색</button>
+                                <button class="btn-sm"><a href="/items"> 전체보기 </a></button>
                             </div>
                             <hr>
                         </form>
@@ -22,12 +23,18 @@
                                         <h5>{{ $item->product_name }} ({{ $item->seller->name }}
                                             ) {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>
                                     </a>
-                                    <div> 바코드 : {{ $item->barcode }}</div>
+                                    <div> 바코드 : {{ $item->barcode }} </div>
+
                                 </div>
                                 <div>{{ $item->quantity }} x {{ $item->buy_price }} = {{ $item->amount }} 원</div>
                             </article>
                             <hr>
+
+                            @if(request('barcode'))
+                            <div>현재고: {{ $item->inventoryQuantity() }}</div>
+                            @endif
                         @endforeach
+
                     </div>
                 </div>
             </div>

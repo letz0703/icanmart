@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="amount">금액:</label>
-                                <input type="text" id="amount" name="amount" value="{{ old('amount') }}">원
+                                <input type="hidden" id="amount" name="amount" value=0>
                             </div>
 
                             <div class="form-check form-check-inline">

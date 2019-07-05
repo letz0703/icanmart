@@ -18,13 +18,14 @@ trait Inventoriable
     
     public function addInventory($item)
     {
-        if (! $this->barcodeExist($item)){
+        if ( ! $this->barcodeExist($item)){
             //if (false){
             $this->inventories()->create([
-                'barcode'  => $item->barcode,
-                'quantity' => $item->quantity,
+                'item_name' => $item->product_name,
+                'barcode'   => $item->barcode,
+                'quantity'  => $item->quantity,
             ]);
-            return ;
+            return;
         }
         
         $this->updateInventoryQuantity($item);
@@ -33,13 +34,13 @@ trait Inventoriable
     
     public function barcodeExist($item)
     {
-        return Inventory::where('barcode',$item->barcode)->exists();
+        return Inventory::where('barcode', $item->barcode)->exists();
     }
     
     public function updateInventoryQuantity($item)
     {
-        $old_item = Inventory::where('barcode',$item->barcode)->first();
-        $quantity = $old_item->quantity + $item->quantity;
-        $old_item->update(['quantity'=>$quantity]);
+        $old_inventory = Inventory::where('barcode', $item->barcode)->first();
+        $new_quantity = $old_inventory->quantity + $item->quantity;
+        $old_inventory->update(['quantity' => $new_quantity]);
     }
 }

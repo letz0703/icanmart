@@ -28,10 +28,29 @@ class Item extends Model
         return $this->belongsTo('App\Seller');
     }
     
-    //public function getRouteKeyName()
+    public function inventoryQuantity()
+    {
+        $barcodedItem= $this->inventories()->where('barcode', request('barcode'))->first();
+        //dd($barcodedItem);
+        if ($barcodedItem) {
+            return $barcodedItem->quantity;
+        }
+    
+        return ;
+    
+        //if ( $item->inventories->where($this->barcodeExist($this))){
+        //    return $this->inventories->quantity;
+        //}
+        //dd($item->quantity);
+        //
+        //return $this->quantity;
+    }
+    
+    //public function getInventoryQuantityAttribute()
     //{
-    //    return 'barcode';
+    //    return $this->inventoryQuantity();
     //}
+    
     
     public function getAmountAttribute()
     {
@@ -47,5 +66,10 @@ class Item extends Model
     {
         return $filters->apply($query);
     }
+    
+    //public function getRouteKeyName()
+    //{
+    //    return 'barcode';
+    //}
     
 }

@@ -41,7 +41,7 @@ class ItemController extends Controller
         $item = Item::create([
             'seller_id'    => $sellerId ? : requst('seller_id'),
             'box_id'       => request('box_id') ? : null,
-            'barcode'      => requst('barcode') ? : null,
+            'barcode'      => request('barcode') ? : null,
             'user_id'      => auth()->id(),
             'product_name' => request('product_name'),
             'quantity'     => request('quantity'),
@@ -51,7 +51,13 @@ class ItemController extends Controller
             'sell_price'   => request('sell_price') ? : null,
         ]);
         
-        //$this->updateInventory(request('barcode', request('quantity'));
+        if ($item->inventories()->where('barcode', $item->barcode)->exists()){
+            $item->updateInventoryQuantity($item);
+        }
+        
+        else {
+            $item->addInventory($item);
+        }
         
         if (request()->expectsJson()){
             return $item;

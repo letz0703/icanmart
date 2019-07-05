@@ -16,8 +16,10 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('item_id');
+            $table->string('item_name');
             $table->unsignedInteger('barcode')->nullable();
             $table->unsignedInteger('quantity');
+            $table->unsignedInteger('minimum_stock_quantity')->nullable();
             $table->timestamps();
         });
     }
