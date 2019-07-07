@@ -47,7 +47,7 @@ class Box extends Model
     {
         $this->items()->create($item);
         
-        return back();
+        return $this;
     }
     
     public function scopeFilter($query, $filters)
@@ -64,6 +64,12 @@ class Box extends Model
     {
         return $this->isPaid();
     }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     
     
     

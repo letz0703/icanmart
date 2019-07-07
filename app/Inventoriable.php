@@ -9,6 +9,8 @@
 namespace App;
 
 
+use App\Notifications\OutOfStock;
+
 trait Inventoriable
 {
     public function inventories()
@@ -24,13 +26,35 @@ trait Inventoriable
                 'item_name' => $item->product_name,
                 'barcode'   => $item->barcode,
                 'quantity'  => $item->quantity,
+                'minimum_stock_quantity' => $item->minimum_stock_quantity?:null
             ]);
+            
+            if ( $this->isOutOfStock($item)) {
+                $this->notifyOutOfStock($item);
+            }
+            
             return;
         }
         
         $this->updateInventoryQuantity($item);
-        
+    
     }
+    
+    public function notifyOutOfStock($item)
+    {
+        //$creator = User::where('id', $item->box->user_id)->get();
+        //$creator->notify(new OutOfStock($item));
+        auth()->user()->notify(new OutOfStock($item));
+    }
+    
+    
+    public function isOutOfStock($item)
+    {
+        //return true;
+        $msq = $item->inventories()->first()->minimum_stock_quantity;
+        return  !! $item->quantity < $msq ;
+    }
+    
     
     public function reduceInventoryQuantity($item)
     {

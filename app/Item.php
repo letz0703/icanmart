@@ -25,7 +25,13 @@ class Item extends Model
         });
     }
     
-    
+    public function reduceInventoryQuantity($item)
+    {
+        $inventory = Inventory::where('barcode', $item->barcode)->first();
+        $inventory_quantity = $inventory->quantity;
+        $reduced_quantity = $inventory_quantity - $item->quantity;
+        $inventory->update(['quantity' => $reduced_quantity]);
+    }
     
     //
     public function path()
