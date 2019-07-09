@@ -23,13 +23,13 @@ trait Inventoriable
         if ( ! $this->barcodeExist($item)){
             //if (false){
             $this->inventories()->create([
-                'item_name' => $item->product_name,
-                'barcode'   => $item->barcode,
-                'quantity'  => $item->quantity,
-                'minimum_stock_quantity' => $item->minimum_stock_quantity?:null
+                'item_name'              => $item->product_name,
+                'barcode'                => $item->barcode,
+                'quantity'               => $item->quantity,
+                'minimum_stock_quantity' => $item->minimum_stock_quantity + $item->quantity
             ]);
             
-            if ( $this->isOutOfStock($item)) {
+            if ($this->isOutOfStock($item)){
                 $this->notifyOutOfStock($item);
             }
             
@@ -37,7 +37,7 @@ trait Inventoriable
         }
         
         $this->updateInventoryQuantity($item);
-    
+        
     }
     
     public function notifyOutOfStock($item)
@@ -50,9 +50,7 @@ trait Inventoriable
     
     public function isOutOfStock($item)
     {
-        //return true;
-        $msq = $item->inventories()->first()->minimum_stock_quantity;
-        return  !! $item->quantity < $msq ;
+        return  $item->inventories->first()->minimum_stock_quantity > $item->quantity;
     }
     
     

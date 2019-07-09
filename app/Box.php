@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\OutOfStock;
 use Illuminate\Database\Eloquent\Model;
 
 class Box extends Model
@@ -46,8 +47,12 @@ class Box extends Model
     public function addItem($item)
     {
         $this->items()->create($item);
-        
-        return $this;
+        //foreach ($item->inventories as $inventory){
+        //    if ( $inventory->minimum_stock_quantity > $inventory->quantity)
+        //    {
+        //        auth()->user()->notify(new OutOfStock($item));
+        //    }
+        //}
     }
     
     public function scopeFilter($query, $filters)

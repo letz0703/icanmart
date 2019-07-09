@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Inventory;
+use App\Notifications\OutOfStock;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -22,46 +24,42 @@ class NotificationTest extends TestCase
         
         $item->inventories()->update(['minimum_stock_quantity' => 100]);
         
-        $inventory = $item->inventories->first();
-        $this->assertEquals(100, $inventory->minimum_stock_quantity);
+        $this->assertEquals(100, $item->inventories()->first()->minimum_stock_quantity);
     }
     
     /** @test */
-    public function it_check_current_stock_quantity_when_a_item_is_created()
+    public function it_knows_if_an_item_is_out_of_stock()
     {
+        $item = create('App\Item',[
+            'product_name'=>'곤약젤리','barcode'=>1234, 'quantity'=>10
+        ]);
         
-        $item = create('App\Item', ['quantity' => 49]);
+        $item->inventories->first()->update(['minimum_stock_quantity'=>100]);
+        $this->assertTrue($item->IsOutOfStock($item));
         
-        $item->inventories()->update(['minimum_stock_quantity' => 50]);
-        $this->assertTrue($item->isOutOfStock($item));
-        
-        $item2 = create('App\Item', ['quantity' => 2]);
-        $this->assertFalse($item->IsOutOfStock($item2));
-        
+        $item->inventories->first()->update(['minimum_stock_quantity'=>5]);
+        $this->assertFalse($item->IsOutOfStock($item));
     }
     
     /** @test */
     public function it_can_notify_user()
     {
-        create('App\Item');
-        dd(auth()->user()->notifications);
+        $item = create('App\Item');
+        auth()->user()->notify(new OutOfStock($item));
         //auth()->user()->notify(new OutOfStock($item));
         $this->assertCount(1, auth()->user()->notifications);
     }
     
     /** @test */
-    public function it_notifies_user_when_item_is_less_than_minmum_stock_quantity()
-    {
-        $item = create('App\Item', ['barcode' => 1234, 'quantity' => 50]);
-        
-        $item->inventories()->update(['minimum_stock_quantity' => 100]);
-        //dd($item->inventories);
-        $item2 = create('App\Item', ['barcode' => 1234, 'quantity' => 10]);
-        
-        //dd($item2->quantity);
-        
-        $this->assertCount(1, auth()->user()->notifications);
-        
-        //$this->assertTrue($item->isOutOfStock($item));
-    }
+    //public function it_notify_auth_user_when_items_are_less_than_msq()
+    //{
+    //
+    //    $item = create('App\Item', [
+    //        'product_name'=> '곤약젤리','barcode' => 1234, 'quantity' => 50
+    //    ]);
+    //
+    //    $this->assertCount(1, auth()->user()->notifications);
+    //
+    //
+    //}
 }
