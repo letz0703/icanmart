@@ -9,7 +9,7 @@ $factory->define(Box::class, function (Faker $faker){
             return factory('App\Seller')->create()->id;
         },
         'user_id' => function (){
-            return factory('App\User')->create()->id;
+            return auth()->user()? : factory('App\User')->create()->id;
         },
         'arrived_at'=> $faker->date(),
         'title' => $faker->sentence(),

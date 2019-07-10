@@ -18,8 +18,9 @@ class Box extends Model
             $builder->withCount('items');
         });
         
-        static::created(function(){
-            auth()->user()->notify(new BoxWasCreated());
+        static::created(function($box){
+            $user = $box->user? : auth()->user();
+             $user->notify(new BoxWasCreated());
         });
         
         static::deleting(function ($box){

@@ -45,7 +45,7 @@ class NotificationTest extends TestCase
     /** @test */
     public function it_can_notify_user()
     {
-        $item = create('App\Item');
+        create(DatabaseNotification::class);
         //auth()->user()->notify(new OutOfStock($item));
         //auth()->user()->notify(new OutOfStock($item));
         $this->assertCount(1, auth()->user()->notifications);
@@ -56,21 +56,23 @@ class NotificationTest extends TestCase
     {
         $this->assertCount(0, auth()->user()->notifications);
     
-        $box = create('App\Box');
+        $box = create('App\Box',['user_id'=>auth()->id()]);
         
         $this->assertCount(1, auth()->user()->fresh()->notifications);
     }
     
     /** @test */
     public function user_can_clear_notificaitons()
-    {   create(DatabaseNotification::class);
-        //$box = create('App\Box');
-        //$this->assertCount(1, auth()->user()->unreadNotifications);
-        $notificationId = auth()->user()->unreadNotifications->first()->id;
-        //dd($notificationId);
-        $this->delete('/profiles/'.auth()->user()->name.'/notifications/'.$notificationId);
-        $this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
+    {
+        create(DatabaseNotification::class);
+    
+        tap(auth()->user(), function($user){
+            $notificationId = $user->unreadNotifications->first()->id;
+            $this->delete("/profiles/{$user->name}/notifications/{$notificationId}");
+            $this->assertCount(0, $user->fresh()->unreadNotifications);
+        });
     }
+    
     
     
     
