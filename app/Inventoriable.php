@@ -20,23 +20,28 @@ trait Inventoriable
     
     public function addInventory($item)
     {
-        if ( ! $this->barcodeExist($item)){
-            //if (false){
-            $this->inventories()->create([
-                'item_name'              => $item->product_name,
-                'barcode'                => $item->barcode,
-                'quantity'               => $item->quantity,
-                'minimum_stock_quantity' => $item->minimum_stock_quantity + $item->quantity
+        if ( $this->barcodeExist($item)){
+            $inventory = Inventory::where('barcode', $item->barcode)->first();
+            //dd($inventory->quantity);
+            $inventory->update([
+                'quantity' => $inventory->quantity+ $item->quantity
             ]);
             
-            if ($this->isOutOfStock($item)){
-                $this->notifyOutOfStock($item);
-            }
-            
-            return;
+            //return $inventory;
         }
         
-        $this->updateInventoryQuantity($item);
+        $inventory = $this->inventories()->create([
+            'item_name'              => $item->product_name,
+            'barcode'                => $item->barcode,
+            'quantity'               => $item->quantity,
+            'minimum_stock_quantity' => $item->minimum_stock_quantity
+        ]);
+        //$this->updateInventoryQuantity($item);
+    
+        //if ($this->isOutOfStock($item)){
+        //    $this->notifyOutOfStock($item);
+        //}
+        return $inventory;
         
     }
     
@@ -50,7 +55,8 @@ trait Inventoriable
     
     public function isOutOfStock($item)
     {
-        return  $item->inventories->first()->minimum_stock_quantity > $item->quantity;
+        //dd($this->inventories->first());
+        return $item->inventories->first()->minimum_stock_quantity > $item->quantity;
     }
     
     
