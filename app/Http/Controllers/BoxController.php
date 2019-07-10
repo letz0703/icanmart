@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Box;
 use App\Filters\BoxFilters;
-use App\Item;
 use App\Seller;
 use Illuminate\Http\Request;
 
@@ -68,6 +67,8 @@ class BoxController extends Controller
             'amount'     => request('amount')?:0,
             'paid'     => request('paid'),
         ]);
+        
+      
 
         //if ( notNullValue($box->items->count)) {
         //    $box->update(['amount'=>$box->items->amount]);

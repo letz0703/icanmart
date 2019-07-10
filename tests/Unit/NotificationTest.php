@@ -45,10 +45,33 @@ class NotificationTest extends TestCase
     public function it_can_notify_user()
     {
         $item = create('App\Item');
-        auth()->user()->notify(new OutOfStock($item));
+        //auth()->user()->notify(new OutOfStock($item));
         //auth()->user()->notify(new OutOfStock($item));
         $this->assertCount(1, auth()->user()->notifications);
     }
+    
+    /** @test */
+    public function user_should_be_notified_when_a_box_is_created()
+    {
+        $this->assertCount(0, auth()->user()->notifications);
+    
+        $box = create('App\Box');
+        
+        $this->assertCount(1, auth()->user()->fresh()->notifications);
+    }
+    
+    /** @test */
+    public function user_can_clear_notificaitons()
+    {
+        $box = create('App\Box');
+        $this->assertCount(1, auth()->user()->unreadNotifications);
+        $notificationId = auth()->user()->unreadNotifications->first()->id;
+        //dd($notificationId);
+        $this->delete('/profiles/'.auth()->user()->name.'/notifications/'.$notificationId);
+        $this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
+    }
+    
+    
     
     /** @test */
     //public function it_notify_auth_user_when_items_are_less_than_msq()

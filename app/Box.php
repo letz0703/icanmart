@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\BoxWasCreated;
 use App\Notifications\OutOfStock;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,10 @@ class Box extends Model
         parent::boot();
         static::addGlobalScope('itemCount', function ($builder){
             $builder->withCount('items');
+        });
+        
+        static::created(function(){
+            auth()->user()->notify(new BoxWasCreated());
         });
         
         static::deleting(function ($box){

@@ -22,12 +22,14 @@ trait Inventoriable
     {
         if ( $this->barcodeExist($item)){
             $inventory = Inventory::where('barcode', $item->barcode)->first();
-            //dd($inventory->quantity);
             $inventory->update([
-                'quantity' => $inventory->quantity+ $item->quantity
+                'quantity' => $item->quantity + $inventory->quantity
             ]);
+            //dd($inventory->quantity);
+            //$item->inventories()->first()->update(['quantity' => 100]);
+            //dd($inventory->quantity);
             
-            //return $inventory;
+            return ;
         }
         
         $inventory = $this->inventories()->create([
@@ -36,6 +38,7 @@ trait Inventoriable
             'quantity'               => $item->quantity,
             'minimum_stock_quantity' => $item->minimum_stock_quantity
         ]);
+        
         //$this->updateInventoryQuantity($item);
     
         //if ($this->isOutOfStock($item)){
@@ -55,8 +58,8 @@ trait Inventoriable
     
     public function isOutOfStock($item)
     {
-        //dd($this->inventories->first());
-        return $item->inventories->first()->minimum_stock_quantity > $item->quantity;
+        $itemInventory = Inventory::where('barcode',$item->barcode)->first();
+        return $itemInventory->minimum_stock_quantity > $item->quantity;
     }
     
     
@@ -65,6 +68,9 @@ trait Inventoriable
         $inventory = Inventory::where('barcode', $item->barcode)->first();
         $inventory_quantity = $inventory->quantity;
         $reduced_quantity = $inventory_quantity - $item->quantity;
+        if($reduced_quantity < $inventory->minimum_stock_quantity){
+            auth()->user()->notify($item);
+        }
         $inventory->update(['quantity' => $reduced_quantity]);
     }
     
