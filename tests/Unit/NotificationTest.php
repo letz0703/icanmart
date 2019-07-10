@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Inventory;
 use App\Notifications\OutOfStock;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Notifications\DatabaseNotification;
 use Tests\TestCase;
 
 class NotificationTest extends TestCase
@@ -62,9 +63,9 @@ class NotificationTest extends TestCase
     
     /** @test */
     public function user_can_clear_notificaitons()
-    {
-        $box = create('App\Box');
-        $this->assertCount(1, auth()->user()->unreadNotifications);
+    {   create(DatabaseNotification::class);
+        //$box = create('App\Box');
+        //$this->assertCount(1, auth()->user()->unreadNotifications);
         $notificationId = auth()->user()->unreadNotifications->first()->id;
         //dd($notificationId);
         $this->delete('/profiles/'.auth()->user()->name.'/notifications/'.$notificationId);
