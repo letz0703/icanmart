@@ -11,6 +11,10 @@ class Box extends Model
     
     use RecordActivity;
     
+    protected $guarded = [];
+    protected $with = ['seller','creator','items'];
+    protected $appends= ['isPaid'];
+    
     protected static function boot()
     {
         parent::boot();
@@ -19,8 +23,10 @@ class Box extends Model
         });
         
         static::created(function($box){
-            $user = $box->user? : auth()->user();
-             $user->notify(new BoxWasCreated());
+            $users = User::where('id','!=',$box->user_id)->get();
+            foreach ($users as $user){
+                $user->notify(new BoxWasCreated($box));
+            }
         });
         
         static::deleting(function ($box){
@@ -29,16 +35,16 @@ class Box extends Model
         
     }
     
-    //
-    protected $guarded = [];
-    protected $with = ['seller', 'items'];
-    protected $appends= ['isPaid'];
-    
-    
     public function path()
     {
         return "/boxes/{$this->seller->name}/{$this->id}";
     }
+    
+    public function creator()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+    
     
     public function seller()
     {

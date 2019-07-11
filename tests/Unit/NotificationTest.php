@@ -52,16 +52,6 @@ class NotificationTest extends TestCase
     }
     
     /** @test */
-    public function user_should_be_notified_when_a_box_is_created()
-    {
-        $this->assertCount(0, auth()->user()->notifications);
-    
-        $box = create('App\Box',['user_id'=>auth()->id()]);
-        
-        $this->assertCount(1, auth()->user()->fresh()->notifications);
-    }
-    
-    /** @test */
     public function user_can_clear_notificaitons()
     {
         create(DatabaseNotification::class);

@@ -47,5 +47,6 @@ Route::get('/barcode', 'BarcodeController@index');
 
 
 Route::get('/profiles/{user}','UserProfileController@show')->name('profile');
+Route::get('/profiles/{user}/notifications','NotificationController@index');
 Route::delete('/profiles/{user}/notifications/{notification}','NotificationController@destroy');
 

@@ -10,15 +10,20 @@ use Illuminate\Notifications\Messages\MailMessage;
 class BoxWasCreated extends Notification
 {
     use Queueable;
-
+    /**
+     * @var
+     */
+    public $box;
+    
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $box \App\Box
      */
-    public function __construct()
+    public function __construct($box)
     {
         //
+        $this->box = $box;
     }
 
     /**
@@ -42,7 +47,9 @@ class BoxWasCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'new Box was Created'
+            //'message' => 'new Box was Created'
+            'message' => $this->box->title.' was created by '.$this->box->creator->name,
+            'link' => $this->box->path()
         ];
     }
 }
