@@ -28,4 +28,17 @@ class Inventory extends Model
     {
         return $this->hasMany(Item::class);
     }
+    
+    public function isOutOfStock()
+    {
+        return $this->minimum_stock_quantity > $this->quantity;
+    }
+    
+    public function setMSQ($value)
+    {
+        $this->minimum_stock_quantity = $value;
+    }
+    
+    
 }
+

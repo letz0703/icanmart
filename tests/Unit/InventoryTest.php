@@ -30,6 +30,20 @@ class InventoryTest extends TestCase
     }
     
     /** @test */
+    public function it_can_compare_msq_and_current_stock()
+    {
+        $item = create('App\Item', ['barcode' => 1234, 'quantity' => 100]);
+        $itemInventory = $item->inventories->first();
+        $itemInventory->setMSQ(110);
+        $this->assertTrue(
+            $itemInventory->isOutOfStock()
+        );
+        $itemInventory->setMSQ(50);
+        $this->assertFalse(
+            $itemInventory->isOutOfStock()
+        );
+    }
+    /** @test */
     //public function it_notify_user_when_a_item_is_less_than_msq()
     //{
     //    $item = create('App\Item',[

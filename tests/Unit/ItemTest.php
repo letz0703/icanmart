@@ -2,10 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Notifications\BoxWasCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Notification;
 
 class ItemTest extends TestCase
 {
@@ -106,8 +104,8 @@ class ItemTest extends TestCase
     /** @test */
     public function its_inventory_quantity_is_increase_when_the_same_barcoded_item_is_added()
     {
-        $item = create('App\Item',['barcode'=>1234, 'quantity'=>10]);
-        create('App\Item',['barcode'=>1234, 'quantity'=> 30]);
+        $item = create('App\Item', ['barcode' => 1234, 'quantity' => 10]);
+        create('App\Item', ['barcode' => 1234, 'quantity' => 30]);
         $this->assertEquals(40, $item->inventories->first()->quantity);
     }
     
@@ -115,7 +113,7 @@ class ItemTest extends TestCase
     public function it_know_minimum_stock_quantity()
     {
         $item = create('App\Item');
-        $msq = $item->inventories->first()->update(['minimum_stock_quantity'=>10]);
+        $msq = $item->inventories->first()->update(['minimum_stock_quantity' => 10]);
         $this->assertEquals(10, $item->inventories->first()->minimum_stock_quantity);
     }
     
@@ -125,12 +123,15 @@ class ItemTest extends TestCase
         //dd($box);
         $this->signIn();
         $this->assertCount(0, auth()->user()->notifications);
-        $box = create('App\Box',[
-            'user_id' => 1000
+        $box = create('App\Box', [
+            'user_id' => 1000,
         ]);
-        $this->post("/boxes",$box->toArray());
+        $this->post("/boxes", $box->toArray());
         $this->assertCount(1, auth()->user()->fresh()->notifications);
     }
+    
+   
+    
     
     
     
@@ -144,7 +145,6 @@ class ItemTest extends TestCase
     //    $this->post('/bongi/create');
     //    $this->assertSee($bongji->amount);
     //}
-    
     
     
 }
