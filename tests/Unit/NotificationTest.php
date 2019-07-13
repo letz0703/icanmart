@@ -36,10 +36,10 @@ class NotificationTest extends TestCase
         ]);
         
         $item->inventories->first()->update(['minimum_stock_quantity'=>100]);
-        $this->assertTrue($item->IsOutOfStock($item));
+        $this->assertTrue($item->inventories->first()->isOutOfStock($item));
         
         $item->inventories->first()->update(['minimum_stock_quantity'=>5]);
-        $this->assertFalse($item->IsOutOfStock($item));
+        $this->assertFalse($item->inventories->first()->isOutOfStock($item));
     }
     
     /** @test */

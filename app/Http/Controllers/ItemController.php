@@ -51,7 +51,7 @@ class ItemController extends Controller
             'sell_price'   => request('sell_price') ? : null,
         ]);
         
-        if ($item->inventories()->where('barcode', $item->barcode)->exists()){
+        if ($item->barcodeExist($item)){
             $item->updateInventoryQuantity($item);
         }
         

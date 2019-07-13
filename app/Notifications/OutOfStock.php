@@ -12,14 +12,19 @@ class OutOfStock extends Notification
      * @var
      */
     protected $item;
+    /**
+     * @var
+     */
+    private $quantity;
     
     /**
      * Create a new notification instance.
      */
     
-    public function __construct($item)
+    public function __construct($item, $quantity)
     {
         $this->item = $item;
+        $this->quantity = $quantity;
     }
     
     /**
@@ -44,7 +49,7 @@ class OutOfStock extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Item is about to out of stock. Purchase It',
+            'message' => $this->item->product_name.'is about to out of stock'.$this->quantity
         ];
     }
 }
