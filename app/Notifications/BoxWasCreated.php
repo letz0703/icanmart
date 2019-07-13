@@ -47,8 +47,9 @@ class BoxWasCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //'message' => 'new Box was Created'
+            //'message' => 'new Box was Created',
             'message' => $this->box->title.' was created by '.$this->box->creator->name,
+            
             'link' => $this->box->path()
         ];
     }

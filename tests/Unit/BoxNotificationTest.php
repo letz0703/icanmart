@@ -29,8 +29,9 @@ class BoxNotificationTest extends TestCase
         Notification::fake();
         
         $this->signIn();
-        create('App\Box',['user_id' => create('App\User')->id]);
-    
+        $box = create('App\Box',['user_id' => create('App\User')->id]);
+        $this->post("/boxes",$box->toArray());
+        
         Notification::assertSentTo(auth()->user(), BoxWasCreated::class);
     }
     

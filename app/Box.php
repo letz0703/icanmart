@@ -22,12 +22,15 @@ class Box extends Model
             $builder->withCount('items');
         });
         
-        static::created(function($box){
-            $users = User::where('id','!=',$box->user_id)->get();
-            foreach ($users as $user){
-                $user->notify(new BoxWasCreated($box));
-            }
-        });
+        //static::created(function($box){
+        //    auth()->user()->notify(new BoxWasCreated($box));
+        //    //$users = User::where('id','!==',$box->user_id)->get();
+        //    //$users = User::all();
+        //    //
+        //    //foreach ($users as $user){
+        //    //    $user->notify(new BoxWasCreated($box));
+        //    //}
+        //});
         
         static::deleting(function ($box){
             $box->items()->delete();
