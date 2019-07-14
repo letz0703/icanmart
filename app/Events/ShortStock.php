@@ -12,7 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class ShortStock
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use SerializesModels;
     public $item;
     public $quantity;
     

@@ -15,7 +15,7 @@ class OutOfStock extends Notification
     /**
      * @var
      */
-    private $quantity;
+    protected $quantity;
     
     /**
      * Create a new notification instance.

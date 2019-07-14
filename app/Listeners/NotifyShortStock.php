@@ -8,11 +8,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NotifyShortStock
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
     public function __construct()
     {
         //
