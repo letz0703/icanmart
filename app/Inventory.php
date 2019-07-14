@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\ShortStock;
 use App\Notifications\OutOfStock;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,9 @@ class Inventory extends Model
             //dd($model->inventories);
             if (! $inventory->isOutOfStock() && auth()->check()){
                 $item = Item::whereId($inventory->item_id)->first();
-                auth()->user()->notify(new OutOfStock($item,$inventory->fresh()->quantity));
+                $quantity = $inventory->quantity;
+                event(new ShortStock($item, $quantity));
+                //auth()->user()->notify(new OutOfStock($item,$inventory->fresh()->quantity));
             }
         });
     }
@@ -41,6 +44,10 @@ class Inventory extends Model
         $this->minimum_stock_quantity = $value;
     }
     
+    public function notify($item, $quantity)
+    {
+        auth()->user()->notify(new OutOfStock($item,$quantity));
+    }
     
 }
 
