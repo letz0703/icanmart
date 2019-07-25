@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('channel')->nullable();
             $table->unsignedInteger('box_id')->nullable();
             $table->unsignedInteger('seller_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('category_id')->nullable();
             $table->integer('buy_price')->nullable();
             $table->integer('sell_price')->nullable();

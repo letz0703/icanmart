@@ -37,11 +37,8 @@
                                     {{--{{ str_plural('item',$box->items_count) }}--}}
                                     {{--[ total: {{ $box->amount }} 원 ]--}}
                                 {{--</div>--}}
-
                             {{--</div>--}}
-
                             </box>
-
                             <hr>
                         @endforeach
                         {{ $boxes->links() }}
