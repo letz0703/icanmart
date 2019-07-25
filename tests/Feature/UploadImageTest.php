@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class UploadImageTest extends TestCase
@@ -26,6 +28,22 @@ class UploadImageTest extends TestCase
         $this->json('POST', '/items/' . $item->id . '/image', [
             'image' => 'not-an-image',
         ])->assertStatus(422); // Unprocessible Entity
+    }
+    
+    /** @test */
+    public function user_can_add_image_for_an_item()
+    {
+        $this->signIn();
+        $item = create('App\Item');
+        
+        Storage::fake('public');
+        
+        $this->json('POST', '/items/' . $item->id . '/image', [
+            'image' => $file = UploadedFile::fake()->image('list-image.jpg'),
+        ]);
+        
+        Storage::disk('public')->assertExists('images/'.$file->hashName());
+        
     }
     
     

@@ -27,6 +27,7 @@ class CreateItemsTable extends Migration
             $table->integer('buy_price')->nullable();
             $table->integer('sell_price')->nullable();
             $table->unsignedInteger('quantity')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }
