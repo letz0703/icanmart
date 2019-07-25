@@ -34,7 +34,7 @@ class UploadImageTest extends TestCase
     public function user_can_add_image_for_an_item()
     {
         $this->signIn();
-        $item = create('App\Item');
+        $item = create('App\Item', ['image_path' => '']);
         
         Storage::fake('public');
         
@@ -42,7 +42,10 @@ class UploadImageTest extends TestCase
             'image' => $file = UploadedFile::fake()->image('list-image.jpg'),
         ]);
         
-        Storage::disk('public')->assertExists('images/'.$file->hashName());
+        //dd($item->fresh()->image_path);
+        $this->assertEquals('images/' . $file->hashName(), $item->fresh()->image_path);
+        
+        Storage::disk('public')->assertExists('images/' . $file->hashName());
         
     }
     

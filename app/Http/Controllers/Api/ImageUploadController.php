@@ -14,12 +14,12 @@ class ImageUploadController extends Controller
             'image' => ['required', 'image']
         ]);
         
+        $file = request()->file('image');
+        
         $item->update([
-            'image_path' => request()
-                ->file('image')
-                ->store('images','public')
+            'image_path' => $file->store('images','public')
         ]);
         
-        
+        return back();
     }
 }
