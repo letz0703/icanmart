@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 align-items-center">
                 <div class="page-header">
+                    {{--<img src="{{ asset($item->image()) }}" width="40">--}}
                     <h1>
                         {{ $profileUser->name }}
                     </h1>

@@ -19,6 +19,9 @@
                         @foreach($items as $item)
                             <article>
                                 <div class="level">
+                                    <img src="{{ $item->image() }}" width="40" height="40"
+                                         class="mr-2"
+                                    >
                                     <a href="{{ $item->path() }}" class="flex">
                                         <h5>{{ $item->product_name }} ({{ $item->seller->name }}
                                             ) {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>

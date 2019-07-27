@@ -23,10 +23,10 @@ Route::get('/items', 'ItemController@index');
 Route::post('/items', 'ItemController@store');
 Route::get('/items/create', 'ItemController@create');
 
-Route::get('/items/profile/{item}','ItemProfileController@show');
 Route::get('/items/{item}', 'ItemController@show');
 Route::delete('/items/{item}', 'ItemController@destroy');
-Route::post('/items/{item}/image','Api\ImageUploadController@store')->middleware('auth');
+Route::post('/items/{item}/image','Api\ImageUploadController@store')->middleware('auth')->name('image');
+Route::get('/items/profile/{item}','ItemProfileController@show');
 
 Route::get('/boxes', 'BoxController@index');
 Route::get('/boxes/create', 'BoxController@create');

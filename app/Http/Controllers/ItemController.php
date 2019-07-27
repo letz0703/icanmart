@@ -34,6 +34,7 @@ class ItemController extends Controller
     public function store($sellerName = null, $boxId = null, Request $request)
     {
         $this->validate($request, [
+            'product_name' => 'required',
             'seller_id' => 'required|exists:sellers,id',
         ]);
         
