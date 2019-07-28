@@ -29,7 +29,7 @@ class Item extends Model
     public function image()
     {
         //dd($this->iamge_path);
-        return $this->image_path?: "images/default.jpg";
+        return $this->image_path?: "images/default.gif";
         //if(!$this->image_path){
         //    return ('/images/default.jpg');
         //}

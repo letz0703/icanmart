@@ -52,7 +52,7 @@ class UploadImageTest extends TestCase
     public function a_user_can_determine_image_path()
     {
         $item = create('App\Item');
-        $this->assertEquals('images/default.jpg', $item->image());
+        $this->assertEquals('images/default.gif', $item->image());
         $item->image_path = 'images/letz.jpg';
         $this->assertEquals('images/letz.jpg', $item->image());
     }
