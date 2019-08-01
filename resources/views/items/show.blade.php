@@ -5,16 +5,17 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <img src="{{ asset($item->image()) }}" width="100">
+                        <image-form :item="{{ $item }}"></image-form>
+                        {{--<img src="{{ asset($item->image()) }}" width="100">--}}
 
-                        <h2> {{ $item->product_name }} </h2>
-                        <form action="{{ route('image',$item) }}" method="POST"
-                              enctype="multipart/form-data"
-                        >
-                            @csrf
-                            <input type="file" name="image">
-                            <button class="btn btn-sm btn-primary" type="submit">add image</button>
-                        </form>
+                        {{--<h2> {{ $item->product_name }} </h2>--}}
+                        {{--<form action="{{ route('image',$item) }}" method="POST"--}}
+                              {{--enctype="multipart/form-data"--}}
+                        {{-->--}}
+                            {{--@csrf--}}
+                            {{--<input type="file" name="image">--}}
+                            {{--<button class="btn btn-sm btn-primary" type="submit">add image</button>--}}
+                        {{--</form>--}}
                         <div>
                             @if ($item->box)
                                 <span>

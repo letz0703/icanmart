@@ -25,6 +25,7 @@ Vue.component('box', require('./components/Box.vue').default);
 Vue.component('boxes-view', require('./components/Boxes.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('box-amount', require('./components/BoxAmount.vue').default);
+Vue.component('image-form', require('./components/ImageForm.vue').default);
 Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
 // Vue.component('item', require('./components/Item.vue').default);
 Vue.component('box-view', require('./pages/Box.vue').default);

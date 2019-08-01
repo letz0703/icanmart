@@ -26,10 +26,10 @@ class Item extends Model
         });
     }
     
-    public function image()
+    public function getImagePathAttribute($image)
     {
         //dd($this->iamge_path);
-        return $this->image_path?: "images/default.gif";
+        return asset($image?:'images/default.gif');
         //if(!$this->image_path){
         //    return ('/images/default.jpg');
         //}

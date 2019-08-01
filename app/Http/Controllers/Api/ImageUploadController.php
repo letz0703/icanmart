@@ -20,6 +20,8 @@ class ImageUploadController extends Controller
             'image_path' => $file->store('images','public')
         ]);
         
-        return back();
+        return response([], 204);
+        
+        //return back();
     }
 }
