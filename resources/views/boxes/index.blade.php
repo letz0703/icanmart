@@ -23,7 +23,9 @@
                         </div>
                         <div class="card-body">
                             @foreach($viewed_boxes as $viewed)
-                                <li>{{ $viewed->title }}</li>
+                                <a href="{{ url($viewed->path) }}">
+                                    <li>{{ $viewed->title }}</li>
+                                </a>
                             @endforeach
                         </div>
                     </div>
