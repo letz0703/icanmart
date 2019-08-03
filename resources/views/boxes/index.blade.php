@@ -22,7 +22,9 @@
                             Recent View
                         </div>
                         <div class="card-body">
-                            Redis Thread here
+                            @foreach($viewed_boxes as $viewed)
+                                <li>{{ $viewed->title }}</li>
+                            @endforeach
                         </div>
                     </div>
                 </div>

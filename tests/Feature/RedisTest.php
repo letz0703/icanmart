@@ -23,5 +23,8 @@ class RedisTest extends TestCase
         $box = create('App\Box');
         $this->call('GET', $box->path());
         $this->assertCount(1, Redis::zrevrange('viewed_boxes', 0, -1));
+        $viewed_boxes = Redis::zrevrange('viewed_boxes',0, -1);
+        dd($viewed_boxes);
+        $this->assertEquals(json_decode($viewed_boxes[0])->title, $box->title);
     }
 }

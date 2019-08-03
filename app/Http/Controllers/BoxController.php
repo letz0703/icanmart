@@ -26,7 +26,12 @@ class BoxController extends Controller
     {
         $boxes = $this->getBoxes($seller, $filters);
         
-        return view('boxes.index', compact('boxes'));
+        $viewed_boxes = array_map('json_decode', Redis::zrevrange('viewed_boxes', 0, -1));
+        //$viewed_boxes = collect(Redis::zrevrange('viewed_boxes', 0, -1))->map(function($box){
+        //    return json_decode($box);
+        //});
+    
+        return view('boxes.index', compact('boxes','viewed_boxes'));
     }
     
     public function show($sellerName, Box $box)
