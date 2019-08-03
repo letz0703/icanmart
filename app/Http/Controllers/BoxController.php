@@ -7,6 +7,7 @@ use App\Filters\BoxFilters;
 use App\Notifications\BoxWasCreated;
 use App\Seller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 /**
  * Class BoxController
@@ -30,13 +31,11 @@ class BoxController extends Controller
     
     public function show($sellerName, Box $box)
     {
-        //$items = Item::where('box_id', $box->id)->latest()->get();
-        //
-        //if (request()->expectsJson()) {
-        //    return $items;
-        //}
+        Redis::zincrby('viewed_boxes', 1, json_encode([
+            'title' => $box->title,
+            'path' => $box->path()
+        ]));
         
-        //return view('boxes.show', compact('box', 'items'));
         return view('boxes.show', compact('box'));
     }
     
