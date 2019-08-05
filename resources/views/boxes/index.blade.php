@@ -22,11 +22,15 @@
                             Recent View
                         </div>
                         <div class="card-body">
-                            @foreach($viewed_boxes as $viewed)
-                                <a href="{{ url($viewed->path) }}">
-                                    <li>{{ $viewed->title }}</li>
-                                </a>
-                            @endforeach
+                            <ul class="list-group">
+                                @foreach($viewed_boxes as $viewed)
+                                    <li class="list-group-item">
+                                        <a href="{{ url($viewed->path) }}">
+                                            {{ $viewed->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>

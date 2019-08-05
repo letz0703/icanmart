@@ -6,8 +6,8 @@ use App\Box;
 use App\Filters\BoxFilters;
 use App\Notifications\BoxWasCreated;
 use App\Seller;
+use App\ViewedBoxes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 /**
  * Class BoxController
@@ -22,24 +22,23 @@ class BoxController extends Controller
     }
     
     //
-    public function index(Seller $seller, BoxFilters $filters)
+    public function index(Seller $seller, BoxFilters $filters, ViewedBoxes $viewed)
     {
         $boxes = $this->getBoxes($seller, $filters);
         
-        $viewed_boxes = array_map('json_decode', Redis::zrevrange('viewed_boxes', 0, -1));
-        //$viewed_boxes = collect(Redis::zrevrange('viewed_boxes', 0, -1))->map(function($box){
-        //    return json_decode($box);
-        //});
-    
-        return view('boxes.index', compact('boxes','viewed_boxes'));
+        if (request()->wantsJson()){
+            return $boxes;
+        };
+        
+        return view('boxes.index', [
+            'boxes'        => $boxes,
+            'viewed_boxes' => $viewed->get(),
+        ]);
     }
     
-    public function show($sellerName, Box $box)
+    public function show($sellerName, Box $box, ViewedBoxes $viewed)
     {
-        Redis::zincrby('viewed_boxes', 1, json_encode([
-            'title' => $box->title,
-            'path' => $box->path()
-        ]));
+        $viewed->push($box);
         
         return view('boxes.show', compact('box'));
     }
@@ -63,7 +62,7 @@ class BoxController extends Controller
             'title'     => 'required',
             'seller_id' => 'required',
         ]);
-
+        
         $box = Box::create([
             'seller_id'  => request('seller_id'),
             'user_id'    => auth()->id(),
@@ -73,7 +72,7 @@ class BoxController extends Controller
             'paid'       => request('paid'),
         ]);
         
-        if (auth()->id() && auth()->id()!== request('user_id')){
+        if (auth()->id() && auth()->id() !== request('user_id')){
             auth()->user()->notify(new BoxWasCreated($box));
         }
         
