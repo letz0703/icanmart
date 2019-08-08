@@ -20,9 +20,8 @@
                 <button class="btn btn-danger btn-sm" @click="pay">unpaid</button>
                 </span>
             </div>
-            </div>
-            <box-items :items="data.items"></box-items>
-            <!--@endcan-->
+        </div>
+        <box-items :items="data.items"></box-items>
     </div>
 </template>
 
@@ -37,7 +36,7 @@
         data() {
             return {
                 paid: this.data.paid,
-//                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
+                //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
                 endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.id}`
             }
         },
