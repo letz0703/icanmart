@@ -63,11 +63,14 @@ class BoxController extends Controller
             'seller_id' => 'required',
         ]);
         
+        $arrived_at = request('arrived_at') ? : request('created_at');
+        
         $box = Box::create([
             'seller_id'  => request('seller_id'),
             'user_id'    => auth()->id(),
-            'arrived_at' => request('arrived_at'),
+            'arrived_at' => $arrived_at,
             'title'      => request('title'),
+            'slug'       => request('arrived_at'),
             'amount'     => request('amount') ? : 0,
             'paid'       => request('paid'),
         ]);
@@ -126,5 +129,8 @@ class BoxController extends Controller
         
         return $boxes;
     }
+    
+   
+    
     
 }

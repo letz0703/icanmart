@@ -58,10 +58,14 @@ class BoxtTest extends TestCase
         $this->signIn();
         $box = factory('App\Box')->create();
         $this->post('/boxes', $box->toArray());
-        $this->assertEquals($box->path(), "/boxes/{$box->seller->name}/{$box->id}");
+        $this->assertEquals($box->path(), "/boxes/{$box->seller->name}/{$box->slug}");
     }
     
-
-    
+    /** @test */
+    public function a_box_can_make_a_string_path()
+    {
+        $box = create('App\Box');
+        $this->assertEquals("/boxes/{$box->seller->name}/{$box->slug}", $box->path());
+    }
     
 }

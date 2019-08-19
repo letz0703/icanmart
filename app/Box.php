@@ -40,7 +40,7 @@ class Box extends Model
     
     public function path()
     {
-        return "/boxes/{$this->seller->name}/{$this->id}";
+        return "/boxes/{$this->seller->name}/{$this->slug}";
     }
     
     public function creator()
@@ -88,6 +88,11 @@ class Box extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
     
     

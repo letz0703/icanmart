@@ -18,6 +18,7 @@ class CreateBoxesTable extends Migration
             $table->unsignedInteger('seller_id')->nullable();
             $table->date('arrived_at')->nullable();
             $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->integer('amount')->default(0);
             $table->boolean('paid')->default(false);
             $table->timestamps();
