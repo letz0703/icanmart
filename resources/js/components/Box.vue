@@ -37,7 +37,7 @@
             return {
                 paid: this.data.paid,
                 //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
-                endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.id}`
+                endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.slug}`
             }
         },
         computed: {
