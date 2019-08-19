@@ -37,9 +37,10 @@
             return {
                 paid: this.data.paid,
                 //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
-                endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.slug}`
+                endpoint: `${location.pathname}${this.data.seller.name}/${this.data.slug}`
             }
         },
+
         computed: {
             classes() {
                 return ['btn', 'btn-sm', this.paid ? 'btn-primary' : 'btn-danger'];

@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Box;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -67,5 +69,22 @@ class BoxtTest extends TestCase
         $box = create('App\Box');
         $this->assertEquals("/boxes/{$box->seller->name}/{$box->slug}", $box->path());
     }
+    
+    /** @test */
+    public function a_box_requires_unique_slug()
+    {
+        $this->signIn();
+        $box = create('App\Box',[
+            'title' => 'Foo Title',
+            'slug' => 'foo-title'
+        ]);
+        //dd($box);
+        $this->post(route('boxes'), $box->toArray());
+        $this->assertTrue(Box::whereSlug('foo-title-2')->exists());
+        $this->post(route('boxes'), $box->toArray());
+        $this->assertTrue(Box::whereSlug('foo-title-3')->exists());
+    
+    }
+    
     
 }

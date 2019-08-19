@@ -7,6 +7,7 @@ use App\Filters\BoxFilters;
 use App\Notifications\BoxWasCreated;
 use App\Seller;
 use App\ViewedBoxes;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 /**
@@ -62,15 +63,13 @@ class BoxController extends Controller
             'title'     => 'required',
             'seller_id' => 'required',
         ]);
-        
-        $arrived_at = request('arrived_at') ? : request('created_at');
-        
+    
         $box = Box::create([
             'seller_id'  => request('seller_id'),
             'user_id'    => auth()->id(),
-            'arrived_at' => $arrived_at,
+            'arrived_at' => request('arrived_at')?:Carbon::now()->format('Y-m-d'),
             'title'      => request('title'),
-            'slug'       => request('arrived_at'),
+            'slug'       => request('title'),
             'amount'     => request('amount') ? : 0,
             'paid'       => request('paid'),
         ]);

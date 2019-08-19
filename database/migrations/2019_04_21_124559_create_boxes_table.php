@@ -11,8 +11,7 @@ class CreateBoxesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('boxes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('seller_id')->nullable();

@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Notifications\BoxWasCreated;
-use App\Notifications\OutOfStock;
 use Illuminate\Database\Eloquent\Model;
 
 class Box extends Model
@@ -12,8 +10,8 @@ class Box extends Model
     use RecordActivity;
     
     protected $guarded = [];
-    protected $with = ['seller','creator','items'];
-    protected $appends= ['isPaid'];
+    protected $with = ['seller', 'creator', 'items'];
+    protected $appends = ['isPaid'];
     
     protected static function boot()
     {
@@ -33,6 +31,7 @@ class Box extends Model
         //});
         
         static::deleting(function ($box){
+            // Letz 손봐야 함 $box->items->each->delete();
             $box->items()->delete();
         });
         
@@ -95,8 +94,24 @@ class Box extends Model
         return 'slug';
     }
     
+    public function setSlugAttribute($value)
+    {
+        if (static::whereSlug($slug = str_slug($value))->exists()){
+            $slug = $this->incrementSlug($slug);
+        }
+        $this->attributes['slug'] = $slug;
+    }
     
-    
+    public function incrementSlug($slug)
+    {
+        $max = static::whereTitle($this->title)->latest('id')->value('slug');
+        if (is_numeric($max[ -1 ])){
+            return preg_replace_callback('/(\d+)$/', function ($matches){
+                return $matches[1]+1;
+            }, $max);
+        }
+        return "{$slug}-2";
+    }
     
     //public function sumUpItems()
     //{

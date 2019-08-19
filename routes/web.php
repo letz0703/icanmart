@@ -28,7 +28,7 @@ Route::delete('/items/{item}', 'ItemController@destroy');
 Route::post('/items/{item}/image','Api\ImageUploadController@store')->middleware('auth')->name('image');
 Route::get('/items/profile/{item}','ItemProfileController@show');
 
-Route::get('/boxes', 'BoxController@index');
+Route::get('/boxes', 'BoxController@index')->name('boxes');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
 Route::patch('/boxes/{box}', 'BoxController@update');
