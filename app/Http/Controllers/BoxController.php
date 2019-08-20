@@ -67,9 +67,9 @@ class BoxController extends Controller
         $box = Box::create([
             'seller_id'  => request('seller_id'),
             'user_id'    => auth()->id(),
-            'arrived_at' => request('arrived_at')?:Carbon::now()->format('Y-m-d'),
+            'arrived_at' => request('arrived_at'),
             'title'      => request('title'),
-            'slug'       => request('title'),
+            'slug'       => request('arrived_at'),
             'amount'     => request('amount') ? : 0,
             'paid'       => request('paid'),
         ]);

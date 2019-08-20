@@ -75,16 +75,12 @@ class BoxtTest extends TestCase
     {
         $this->signIn();
         $box = create('App\Box',[
-            'title' => 'Foo Title',
-            'slug' => 'foo-title'
+            'arrived_at' => "2019-08-20",
+            'slug' => "2019-08-20"
         ]);
-        //dd($box);
         $this->post(route('boxes'), $box->toArray());
-        $this->assertTrue(Box::whereSlug('foo-title-2')->exists());
+        $this->assertTrue(Box::whereSlug('2019-08-20-2')->exists());
         $this->post(route('boxes'), $box->toArray());
-        $this->assertTrue(Box::whereSlug('foo-title-3')->exists());
-    
+        $this->assertTrue(Box::whereSlug('2019-08-20-3')->exists());
     }
-    
-    
 }
