@@ -16,6 +16,7 @@
             return {
                 body: this.message,
                 show: false,
+                level: 'success',
             }
         },
 

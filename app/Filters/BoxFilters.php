@@ -4,10 +4,6 @@ namespace App\Filters;
 
 use App\Seller;
 
-/**
- * Class BoxFilters
- * @package App\Filters
- */
 class BoxFilters extends Filters
 {
     protected $filters = ['from'];
