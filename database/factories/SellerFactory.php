@@ -4,8 +4,10 @@ use App\Seller;
 use Faker\Generator as Faker;
 
 $factory->define(Seller::class, function (Faker $faker){
+    $name = $faker->colorName();
     return [
-        'name'  => $faker->colorName(),
+        'name'  => $name,
+        'slug'  => str_slug($name),
         'phone' => $faker->phoneNumber,
     ];
     
