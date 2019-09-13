@@ -38,19 +38,19 @@ class BoxReadTest extends TestCase
     }
     
     /** @test */
-    public function users_can_filter_boxes_by_any_seller_name()
-    {
-        $seller = create('App\Seller',['name' => 'test','slug'=>'test']);
-        //dd($seller);
-    
-        //$this->signIn();
-        $boxFromSeller = create('App\Box',['seller_id'=>$seller->id]);
-        $boxNotFromSeller = create('App\Box');
-        
-        $this->get('/boxes/'.$seller->slug)
-             ->assertSee($boxFromSeller->title)
-             ->assertDontSee($boxNotFromSeller->title);
-    }
+    //public function users_can_filter_boxes_by_any_seller_name()
+    //{
+    //    $seller = create('App\Seller',['name' => 'test','slug'=>'test']);
+    //    //dd($seller);
+    //
+    //    //$this->signIn();
+    //    $boxFromSeller = create('App\Box',['seller_id'=>$seller->id]);
+    //    $boxNotFromSeller = create('App\Box');
+    //
+    //    $this->get('/boxes/'.$seller->slug)
+    //         ->assertSee($boxFromSeller->title)
+    //         ->assertDontSee($boxNotFromSeller->title);
+    //}
     
     
 }
