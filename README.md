@@ -17,8 +17,10 @@ mv .env.example .env
 
 ### Step 2.
 > Next, create new database and reference its name and username/password within this projects .env file.
+> Set QUEUE_DRIVER=database
 ```
-    Example goes here
+SCOUT_QUEUE=true 
+QUEUE_CONNECTION=database
 ```
 
 ### Step 3.
