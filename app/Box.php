@@ -23,16 +23,6 @@ class Box extends Model
             $builder->withCount('items');
         });
         
-        //static::created(function($box){
-        //    auth()->user()->notify(new BoxWasCreated($box));
-        //    //$users = User::where('id','!==',$box->user_id)->get();
-        //    //$users = User::all();
-        //    //
-        //    //foreach ($users as $user){
-        //    //    $user->notify(new BoxWasCreated($box));
-        //    //}
-        //});
-        
         static::deleting(function ($box){
             // Letz 손봐야 함 $box->items->each->delete();
             $box->items()->delete();
@@ -63,12 +53,6 @@ class Box extends Model
     public function addItem($item)
     {
         $this->items()->create($item);
-        //foreach ($item->inventories as $inventory){
-        //    if ( $inventory->minimum_stock_quantity > $inventory->quantity)
-        //    {
-        //        auth()->user()->notify(new OutOfStock($item));
-        //    }
-        //}
     }
     
     public function lock()
@@ -117,11 +101,4 @@ class Box extends Model
         }
         $this->attributes['slug'] = $slug;
     }
-    
-    //public function sumUpItems()
-    //{
-    //   $this->update(['amount' => $this->items()->amount]);
-    //}
-    
-    
 }
