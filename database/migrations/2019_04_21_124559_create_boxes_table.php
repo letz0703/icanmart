@@ -18,6 +18,7 @@ class CreateBoxesTable extends Migration
             $table->date('arrived_at')->nullable();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
+            $table->boolean('locked')->default(false);
             $table->integer('amount')->default(0);
             $table->boolean('paid')->default(false);
             $table->timestamps();

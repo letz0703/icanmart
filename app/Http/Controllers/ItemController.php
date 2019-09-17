@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Box;
 use App\Filters\ItemFilters;
 use App\Item;
 use App\Seller;
@@ -31,8 +32,12 @@ class ItemController extends Controller
         return view('items.create');
     }
     
-    public function store($sellerName = null, $boxId = null, Request $request)
+    public function store($sellerName = null, Box $box, Request $request)
     {
+        if ($box->locked){
+            return response('This Box is locked', 422);
+        }
+        
         $this->validate($request, [
             'product_name' => 'required',
             'seller_id' => 'required|exists:sellers,id',

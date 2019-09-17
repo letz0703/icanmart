@@ -14,6 +14,13 @@ class BoxItemController extends Controller
     
     public function update($sellerName, Box $box)
     {
+        if (request()->has('locked')){
+            if (! auth()->user()->isAdmin()){
+                return response('',403);
+            }
+            $box->lock();
+        }
+        
         $box->update(request(['amount','paid']));
     }
     

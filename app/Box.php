@@ -12,6 +12,9 @@ class Box extends Model
     protected $guarded = [];
     protected $with = ['seller', 'creator', 'items'];
     protected $appends = ['isPaid'];
+    protected $casts= [
+        'locked' => 'boolean'
+    ];
     
     protected static function boot()
     {
@@ -47,7 +50,6 @@ class Box extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
     
-    
     public function seller()
     {
         return $this->belongsTo(Seller::class);
@@ -68,6 +70,17 @@ class Box extends Model
         //    }
         //}
     }
+    
+    public function lock()
+    {
+        $this->update(['locked' => true]);
+    }
+    
+    public function unlock()
+    {
+        $this->update(['locked' => false]);
+    }
+    
     
     public function scopeFilter($query, $filters)
     {

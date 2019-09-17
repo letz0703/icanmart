@@ -87,7 +87,7 @@ class BoxController extends Controller
         
     }
     
-    public function update(Box $box)
+    public function update($sellerName, Box $box)
     {
         //$this->authorize('update',$box);
         // if (request()->expectsJson()){
@@ -97,6 +97,7 @@ class BoxController extends Controller
         
         //$box->update(request(['paid','amount']));
         // $box->update(request()->toArray());
+        
         $box->update([
             'amount' => request('amount'),
             'paid'   => $box->paid,
