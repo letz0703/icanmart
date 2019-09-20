@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'email'
     ];
 
     /**
@@ -34,6 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'isAdmin' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
     
@@ -47,10 +48,8 @@ class User extends Authenticatable
         return $this->hasMany(Box::class)->latest();
     }
     
-    public function isAdmin()
-    {
-        return in_array($this->name, ['rainskiss', 'letz0703']);
-    }
-    
-    
+    //public function isAdmin()
+    //{
+    //    return in_array($this->name, ['rainskiss', 'letz0703']);
+    //}
 }

@@ -26,6 +26,7 @@ $factory->define(User::class, function (Faker $faker){
         'email_verified_at' => now(),
         'password'          => $password ? : $password = bcrypt('secret'),
         'remember_token'    => Str::random(10),
+        'isAdmin'           => false,
         'confirmed'         => true,
     ];
 });
@@ -38,8 +39,6 @@ $factory->state('App\User', 'unconfirmed', function (){
 
 $factory->state('App\User', 'administrator', function (){
     return [
-        'name'      => 'rainskiss',
-        'email'     => 'rainskiss@nate.com',
-        'confirmed' => true,
+        'isAdmin' => true,
     ];
 });
