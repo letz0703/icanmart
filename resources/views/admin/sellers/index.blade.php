@@ -10,6 +10,9 @@
             <th>Slug</th>
             <th>Description</th>
             <th>Boxes</th>
+            @foreach ($items as $item)
+
+            @endforeach
         </tr>
         </thead>
         <tbody>
@@ -18,7 +21,7 @@
                 <td>{{ $seller->name }}</td>
                 <td>{{ $seller->slug }}</td>
                 <td>{{ $seller->description }}</td>
-{{--                <td>{{ count($seller->boxes) }}</td>--}}
+                <td>{{ count($seller->boxes) }}</td>
             </tr>
         @empty
             <tr>

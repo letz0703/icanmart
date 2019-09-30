@@ -93,7 +93,7 @@ class Box extends Model
     
     public function setSlugAttribute($value)
     {
-        $slug = str_slug($value);
+        $slug = $this->make_slug($value);
         $origin = $slug;
         $count = 2;
         while (static::whereSlug($slug)->exists()){
@@ -101,4 +101,10 @@ class Box extends Model
         }
         $this->attributes['slug'] = $slug;
     }
+    
+    function make_slug($string)
+    {
+        return preg_replace('/\s+/u','-',trim($string));
+    }
+    
 }
