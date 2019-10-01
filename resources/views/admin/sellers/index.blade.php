@@ -10,9 +10,6 @@
             <th>Slug</th>
             <th>Description</th>
             <th>Boxes</th>
-            @foreach ($items as $item)
-
-            @endforeach
         </tr>
         </thead>
         <tbody>

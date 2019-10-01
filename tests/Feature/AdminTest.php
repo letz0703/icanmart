@@ -33,7 +33,7 @@ class AdminTest extends TestCase
         $this->signInAdmin();
         $seller = make('App\Seller',['name' => '6FL']);
         $response = $this->post('/admin/sellers', $seller->toArray());
-        //$this->assertDatabaseHas('sellers', ['name' => $seller->name]);
+        $this->assertDatabaseHas('sellers', ['name' => $seller->name]);
         //dd($response->headers);
         $this->get($response->headers->get('Location'))
              ->assertSee('6FL');
