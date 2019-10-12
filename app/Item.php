@@ -4,11 +4,12 @@ namespace App;
 
 use App\Notifications\OutOfStock;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Item extends Model
 {
     
-    use RecordActivity, Inventoriable;
+    use RecordActivity, Inventoriable, Searchable;
     
     protected $guarded = [];
     protected $with = ['seller'];
