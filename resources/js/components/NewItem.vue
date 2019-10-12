@@ -92,7 +92,8 @@
                     this.product_name = '',
                     this.quantity = '',
                     this.buy_price = '',
-                    this.itemAmount = ''
+                    this.itemAmount = '',
+                    this.expire_date = ''
             }
         },
     }
