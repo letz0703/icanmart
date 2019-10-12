@@ -27,6 +27,14 @@ class Item extends Model
         });
     }
     
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        //Customize array...
+        return $array;
+    }
+    
+    
     public function getImagePathAttribute($image)
     {
         //dd($this->iamge_path);
