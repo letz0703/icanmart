@@ -16,10 +16,11 @@ class UsersTableSeeder extends Seeder
         
         factory(User::class)
             ->create([
-                'name'     => 'rainskiss',
-                'email'    => env('ADMIN_EMAIL', 'admin@example.com'),
-                'password' => bcrypt(env('ADMIN_PASSWORD', bcrypt('admin'))),
-                'isAdmin'  => true,
+                'name'      => 'rainskiss',
+                'email'     => env('ADMIN_EMAIL', 'admin@example.com'),
+                'password'  => bcrypt(env('ADMIN_PASSWORD', bcrypt('admin'))),
+                'isAdmin'   => true,
+                'confirmed' => true,
             ]);
     }
 }
