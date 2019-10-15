@@ -10,7 +10,6 @@
                                    class="form-control"
                                    name="query"
                                    placeholder="Search for Item"
-                                   autofocus="true"
                             >
                             <button type="submit" class="btn btn-outline-info btn-sm">
                                 Search
@@ -18,8 +17,6 @@
                         </div>
                     </form>
                 </div>
-
-                {{--                <app></app>--}}
                 <div class="card">
                     <div class="card-header">
                         Items
