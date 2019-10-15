@@ -8,6 +8,10 @@
 window.Vue = require('vue');
 require('./bootstrap');
 
+import Search from './components/Search.vue';
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +31,7 @@ Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('box-amount', require('./components/BoxAmount.vue').default);
 Vue.component('image-form', require('./components/ImageForm.vue').default);
 Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
+Vue.component('search', require('./components/Search.vue').default);
 // Vue.component('item', require('./components/Item.vue').default);
 Vue.component('box-view', require('./pages/Box.vue').default);
 

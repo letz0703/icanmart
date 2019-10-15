@@ -27,13 +27,6 @@ class Item extends Model
         });
     }
     
-    public function toSearchableArray()
-    {
-        $array = $this->toArray();
-        //Customize array...
-        return $array;
-    }
-    
     
     public function getImagePathAttribute($image)
     {
@@ -56,7 +49,8 @@ class Item extends Model
     //
     public function path()
     {
-        return '/items/' . $this->id;
+        //return '/items/' . $this->id;
+        return "/items/{$this->id}";
     }
     
     public function box()
@@ -107,10 +101,8 @@ class Item extends Model
     {
         return $filters->apply($query);
     }
-    
-    //public function getRouteKeyName()
+    //public function toSearchableArray()
     //{
-    //    return 'barcode';
+    //    return $this->array()+['path' => $this->path()];
     //}
-    
 }

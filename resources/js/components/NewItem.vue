@@ -38,12 +38,17 @@
 </template>
 
 <script>
-    //    import moment from 'moment';
+    import moment from 'moment';
+    // Vue.filter('formatDate', function(value){
+    //     if (value) {
+    //         return moment(String(value)).format('yyyy-mm-dd')
+    //     }
+    // });
 
     export default {
         props: ['seller', 'boxid'],
 
-        data() {
+        data(){
             return {
                 seller_id: this.seller.id,
                 box_id: this.boxid,
@@ -52,26 +57,28 @@
                 quantity: '',
                 buy_price: '',
                 itemAmount: '',
-                signedIn: window.App.signedIn
+                expireDate: '',
+                signedIn: window.App.signedIn,
             }
         },
 
-        computed: {
-            expireDate() {
-                const toTwoDigits = num => num < 10 ? '0' + num : num;
-                let today = new Date();
-                let year = today.getFullYear();
-                //                let month = toTwoDigits(today.getMonth() + 1);
-                let month = toTwoDigits(today.getMonth() + 6);
-                let day = toTwoDigits(today.getDate());
-                //                return `${year}-${month}-${day}`;
-                return `${year}-${month}-${day}`;
-            }
-        },
+        // computed: {
+        //     expireDate() {
+        //         // return moment.now();
+        //         const toTwoDigits = num => num < 10 ? '0' + num : num;
+        //         let today = new Date();
+        //         let year = today.getFullYear();
+        //         //                let month = toTwoDigits(today.getMonth() + 1);
+        //         let month = toTwoDigits(today.getMonth());
+        //         let day = toTwoDigits(today.getDate());
+        //         //                return `${year}-${month}-${day}`;
+        //         return `${year}-${month}-${day}`;
+        //     }
+        // },
 
         methods: {
 
-            addItem() {
+            addItem(){
                 axios.post(location.pathname + '/items', {
                     seller_id: this.seller.id,
                     box_id: this.boxid,
@@ -80,11 +87,11 @@
                     product_name: this.product_name,
                     quantity: this.quantity,
                     buy_price: this.buy_price,
-                    expire_date: this.expireDate
+                    expire_date: this.expireDate,
                 }).then(this.broadcast);
             },
 
-            broadcast() {
+            broadcast(){
                 let itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', itemAmount);
                 flash('added');
@@ -94,7 +101,7 @@
                     this.buy_price = '',
                     this.itemAmount = '',
                     this.expire_date = ''
-            }
+            },
         },
     }
 </script>
