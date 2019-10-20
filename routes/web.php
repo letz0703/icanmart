@@ -54,8 +54,8 @@ Route::group([
     'middleware' => 'admin',
     'namespace' => 'Admin'
 ], function(){
-    Route::get('/', 'DashboardController@index')->name('admin.dashboard.index');
     Route::post('/sellers', 'SellerController@store')->name('admin.sellers.store');
+    Route::get('/', 'DashboardController@index')->name('admin.dashboard.index');
     Route::get('/sellers','SellerController@index')->name('admin.sellers.index');
     Route::get('/sellers/create','SellerController@create')->name('admin.sellers.create');
 });

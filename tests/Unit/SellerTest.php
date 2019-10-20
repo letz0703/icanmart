@@ -18,4 +18,24 @@ class SellerTest extends TestCase
         //$response = $this->get('/boxes/'.$seller->name);
         $this->assertTrue($seller->boxes->contains($box));
     }
+    
+    /** @test */
+    public function seller_has_name_and_description()
+    {
+        $seller = create('App\Seller');
+        $this->assertDatabaseHas('sellers', [
+            'name' => $seller->name,
+            'description' => $seller->description
+        ]);
+    }
+    
+    ///** @test */
+    //public function seller_has_description()
+    //{
+    //    $seller = factory('App\Seller')->create();
+    //
+    //    dd($seller);
+    //}
+    
+    
 }

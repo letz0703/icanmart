@@ -96,15 +96,16 @@ class Box extends Model
         $slug = $this->make_slug($value);
         $origin = $slug;
         $count = 2;
-        while (static::whereSlug($slug)->exists()){
+        while (static::where('slug', $slug)->exists()){
             $slug = "{$origin}-" . $count++;
         }
         $this->attributes['slug'] = $slug;
     }
-    
+   
     function make_slug($string)
     {
-        return preg_replace('/\s+/u','-',trim($string));
+        $slug = preg_replace('/\s+/u','-',trim($string));
+        return $slug = str_slug($slug);
     }
     
 }

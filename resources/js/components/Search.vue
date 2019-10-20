@@ -14,7 +14,7 @@
                         <ais-hits>
                             <div slot="item" slot-scope="{ item }">
                                 <a :href="'/items/'+item.id">
-                                    <ais-highlight :hit="item" attribute="product_name"/>
+                                    <ais-highlight :hit="item" attribute="sell_price"/>
                                 </a>
                             </div>
                         </ais-hits>

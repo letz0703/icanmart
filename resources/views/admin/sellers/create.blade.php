@@ -13,6 +13,11 @@
                    required>
         </div>
         <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-link btn-sm">Add</button>
         </div>
 

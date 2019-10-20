@@ -12,12 +12,18 @@ class Seller extends Model
     
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'slug';
     }
     
     public function boxes()
     {
         return $this->hasMany(Box::class);
+    }
+    
+    public function make_slug($string)
+    {
+        $slug = preg_replace('/\s+/u', '-', trim($string));
+        return $slug = str_slug($slug);
     }
     
 }
