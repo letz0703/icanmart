@@ -17,8 +17,8 @@ class CreateSellersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',50);
             $table->string('slug',50);
+            $table->string('description',100);
             $table->string('phone')->nullable();
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

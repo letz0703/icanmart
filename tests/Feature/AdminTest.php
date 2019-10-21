@@ -30,16 +30,41 @@ class AdminTest extends TestCase
     /** @test */
     public function an_admin_can_create_sellers()
     {
+        //$admin = factory('App\User')->state('administrator')->create();
+        //$this->actingAs($admin);
         $this->signInAdmin();
-        $seller = make('App\Seller',['name' => '6FL']);
-        $response = $this->post('/admin/sellers', $seller->toArray());
-        $this->assertDatabaseHas('sellers', ['name' => $seller->name]);
-        //dd($response->headers);
+        
+        $seller = create('App\Seller');
+        //dd($seller);
+        $response = $this->post(route('admin.sellers.store'), $seller->toArray());
+        //$this->assertDatabaseHas('sellers', ['name' => $seller->name]);
         $this->get($response->headers->get('Location'))
-             ->assertSee('6FL');
+             ->assertSee($seller->name);
+    }
+    
+    /** @test */
+    public function a_seller_requires_name()
+    {
+        $this->withExceptionHandling();
+        $response = $this->createSeller(['name' => null]);
+        $response->assertSessionHasErrors('name');
+    }
+    
+    /** @test */
+    public function a_seller_requires_description()
+    {
+        $this->withExceptionHandling();
+        $response = $this->createSeller(['name'=>'wow','description' => null]);
+        $response->assertSessionHasErrors('description');
     }
     
     
+    public function createSeller($overrides = [])
+    {
+        $this->signInAdmin();
+        $seller = make('App\Seller', $overrides);
+        return $this->post(route('admin.sellers.store'), $seller->toArray());
+    }
     
     
 }

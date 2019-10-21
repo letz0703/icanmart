@@ -16,25 +16,22 @@ class SellerController extends Controller
     
     public function create()
     {
-        return view('admin.sellers.create');
+        return view('admin.sellers.create', [
+            'sellers' => new Seller,
+        ]);
     }
     
     public function store()
     {
-        dd(request()->all());
         $data = request()->validate([
             'name'        => 'required',
             'description' => 'required',
         ]);
         
-        $seller = Seller::create([
-            'name' => request('name'),
-            'description' => request('description'),
-            'slug' => $this->make_slug(\request('name')),
-            'phone' => request('phone')
-        ]);
+        $seller = Seller::create($data + ['slug' => str_slug($data['name'])]);
         
-        \Illuminate\Support\Facades\Cache::forget('sellers');
+        
+        cache()->forget('sellers');
         
         if (request()->wantsJson()) {
             return response($seller, 201);

@@ -23,18 +23,31 @@ class SellerController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'name' => 'required|unique:sellers',
+            'name'        => 'required',
+            'description' => 'required',
+            'phone'       => '',
         ]);
         
-        $seller = Seller::create($data+['slug'=>str_slug($data['name'])]);
-        Cache::forget('sellers');
+        //$seller = Seller::create($data + ['slug' => str_slug($data['name'])]);
+        $seller = Seller::create($data + [
+                'slug' => $this->make_slug($data['name']),
+            ]);
+        
+        
+        cache()->forget('sellers');
         
         if (request()->wantsJson()) {
             return response($seller, 201);
         }
-    
+        
         return redirect(route('admin.sellers.index'))
-            ->with('flash', 'Your seller has been created');
+            ->with('flash', 'Seller 생성됨');
+    }
+    
+    public function make_slug($string)
+    {
+        $slug = preg_replace('/\s+/u', '-', trim($string));
+        return $slug = str_slug($slug);
     }
     
 }

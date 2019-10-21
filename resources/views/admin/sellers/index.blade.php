@@ -9,6 +9,7 @@
             <th>Name</th>
             <th>Slug</th>
             <th>Description</th>
+            <th>phone</th>
             <th>Boxes</th>
         </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td>{{ $seller->name }}</td>
                 <td>{{ $seller->slug }}</td>
                 <td>{{ $seller->description }}</td>
+                <td>{{ $seller->phone }}</td>
                 <td>{{ count($seller->boxes) }}</td>
             </tr>
         @empty

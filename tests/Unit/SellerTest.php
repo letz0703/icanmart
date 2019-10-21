@@ -29,13 +29,17 @@ class SellerTest extends TestCase
         ]);
     }
     
-    ///** @test */
-    //public function seller_has_description()
-    //{
-    //    $seller = factory('App\Seller')->create();
-    //
-    //    dd($seller);
-    //}
+    /** @test */
+    public function seller_has_description()
+    {
+        $seller = factory('App\Seller')->create([
+            'name' => '5',
+            'description' => 'good shop',
+            'phone' => '1234'
+        ]);
+        
+        $this->assertDatabaseHas('sellers', ['description' => $seller->description]);
+    }
     
     
 }
