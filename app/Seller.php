@@ -26,4 +26,5 @@ class Seller extends Model
         return $slug = str_slug($slug);
     }
     
+    
 }

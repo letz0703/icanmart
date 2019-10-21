@@ -50,14 +50,14 @@ Route::get('/profiles/{user}', 'UserProfileController@show')->name('profile');
 Route::get('/profiles/{user}/notifications', 'NotificationController@index');
 Route::delete('/profiles/{user}/notifications/{notification}', 'NotificationController@destroy');
 Route::group([
-    'prefix' => 'admin',
+    'prefix'     => 'admin',
     'middleware' => 'admin',
-    'namespace' => 'Admin'
-], function(){
-    Route::post('/sellers', 'SellerController@store')->name('admin.sellers.store');
-    Route::get('/', 'DashboardController@index')->name('admin.dashboard.index');
-    Route::get('/sellers','SellerController@index')->name('admin.sellers.index');
-    Route::get('/sellers/create','SellerController@create')->name('admin.sellers.create');
+    'namespace'  => 'Admin',
+], function (){
+    Route::get('', 'DashboardController@index')->name('admin.dashboard.index');
+    Route::post('sellers', 'SellerController@store')->name('admin.sellers.store');
+    Route::get('sellers', 'SellerController@index')->name('admin.sellers.index');
+    Route::get('sellers/create', 'SellerController@create')->name('admin.sellers.create');
 });
 
 
