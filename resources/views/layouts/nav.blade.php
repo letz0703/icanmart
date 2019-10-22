@@ -19,11 +19,9 @@
                         입고리스트
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link" href="/items/create" >아이템 등록</a>
+                        <a class="nav-link" href="/items/search">바코드 검색</a>
                         <a class="nav-link" href="/boxes">박스별</a>
-                        <a class="nav-link" href="/items">바코드 검색</a>
-
-                        {{--<div class="dropdown-divider"></div>--}}
-                        {{--<a class="dropdown-item" href="#">Something else here</a>--}}
                     </div>
                 </li>
                 </li>
@@ -58,7 +56,7 @@
                     </li>
                 @endif
                 @else
-                    <user-notifications></user-notifications>
+{{--                    <user-notifications></user-notifications>--}}
                     @if (auth()->user()->isAdmin)
                         <li><a href="/admin"><sup>admin board</sup></a></li>
                     @endif
