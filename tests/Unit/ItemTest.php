@@ -40,16 +40,16 @@ class ItemTest extends TestCase
         $this->assertInstanceOf('App\Seller', $item->seller);
     }
     
-    /** @test */
-    public function it_requires_a_valid_seller_id()
-    {
-        factory('App\Seller', 2)->create();
-        
-        $this->postItem(['seller_id' => null])
-             ->assertSessionHasErrors('seller_id');
-        $this->postItem(['seller_id' => 999])
-             ->assertSessionHasErrors('seller_id');
-    }
+    ///** @test */
+    //public function it_requires_a_valid_seller_id()
+    //{
+    //    factory('App\Seller', 2)->create();
+    //
+    //    $this->postItem(['seller_id' => null])
+    //         ->assertSessionHasErrors('seller_id');
+    //    $this->postItem(['seller_id' => 999])
+    //         ->assertSessionHasErrors('seller_id');
+    //}
     
     public function postItem($overrides = [])
     {
