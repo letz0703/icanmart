@@ -19,7 +19,7 @@
                         <div>
                             @if ($item->box)
                                 <span>
-                                [{{ $item->box->arrived_at }} 입고]
+                                [{{ $item->created_at->format('Y-m-d') }} 입고]
                             </span>
                             @endif
                         </div>
@@ -28,7 +28,9 @@
                 </div>
                 <div class="card-body">
                     <article>
+                        @if($item->seller)
                         <h5>구입처: {{ $item->seller->name }}</h5>
+                        @endif
                         <h5>판매가:
                             @if ($item->sell_price)
                                 {{ $item->sell_price }} 원
@@ -48,13 +50,16 @@
                         @if (auth()->check())
                             <h4 style="color:green;">사입가 : {{ $item->buy_price}}</h4>
                             <div>입고수량 :{{ $item->quantity }} 개</div>
-                            <div>합계액 :                     원</div>
+                            @php
+                                $sum = $item->quantity * $item->buy_price;
+                            @endphp
+                            <div>합계액 : {{$sum}}                    원</div>
                             @php
                                 $margin = $item->sell_price - $item->buy_price;
                                 $profit = $margin*$item->quantity;
                                 $profit_rate = $margin/$item->buy_price*100;
                             @endphp
-                            <div>마진:               원</div>
+                            <div>마진: {{ $margin}}              원</div>
                             <h3> 기대수익: {{ $profit }} 원 [ {{ $profit_rate}} % ]</h3>
                         @endif
                     </article>
