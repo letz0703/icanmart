@@ -13,13 +13,15 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 {{--<li class="nav-item">--}}
+                <li>
+                    <a class="nav-link" href="/items/create" >아이템 등록</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         입고리스트
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="nav-link" href="/items/create" >아이템 등록</a>
                         <a class="nav-link" href="/items/search">바코드 검색</a>
                         <a class="nav-link" href="/boxes">박스별</a>
                     </div>

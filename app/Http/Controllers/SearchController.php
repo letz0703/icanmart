@@ -15,7 +15,8 @@ class SearchController extends Controller
         if (!request('query')){
             $items = Item::all();
         } else {
-            $items = Item::search(request('query'))->get();
+            $items = Item::search(request('query'))
+                         ->get();
         }
         
         if (request()->wantsJson()){
