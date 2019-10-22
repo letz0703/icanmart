@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">
     <style>
         html, body {
             background-color: #fff;
@@ -87,25 +88,8 @@
             <a href="items/search">제품검색</a>
             <a href="boxes/create">입고등록</a>
         </div>
-        <div id="welcome">
-            <ul>
-                <li v-for="notice in message" v-text="notice"></li>
-            </ul>
-        </div>
+
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-    var welcome = new Vue({
-
-        el: '#welcome',
-
-        data: {
-            message: ['Under Construction'],
-        },
-
-    })
-</script>
 </body>
 </html>

@@ -15,6 +15,10 @@ Route::get('/', function (){
     return view('welcome');
 });
 
+Route::get('/icanmart', function (){
+    return view('icanmart');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

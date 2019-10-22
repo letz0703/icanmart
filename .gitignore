@@ -27,3 +27,5 @@ Thumbs.db
 .DS_Store
 /storage/*.index
 
+resources/views/icanmart.html
+resources/views/icanmart.js
