@@ -10,6 +10,19 @@ class ItemManageTest extends TestCase
     
     use RefreshDatabase;
     
+    
+    /** @test */
+    public function user_can_add_items()
+    {
+        
+        $this->signInAdmin();
+        $item = create('App\Item');
+        //dd($item);
+        $this->post('/items/', $item->toArray());
+        $this->assertDatabaseHas('items',['id' =>  $item->id]);
+        
+    }
+    
     /** @test */
     public function items_in_a_box_can_be_deleted()
     {

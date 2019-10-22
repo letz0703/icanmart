@@ -87,6 +87,7 @@
         <div class="links">
             <a href="items/search">제품검색</a>
             <a href="boxes/create">입고등록</a>
+            <a href="items/create">아이템등록</a>
         </div>
 
     </div>

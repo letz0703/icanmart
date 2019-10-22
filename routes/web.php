@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/items', 'ItemController@index');
-Route::post('/items', 'ItemController@store');
+Route::post('/items', 'ItemAddController@store');
 Route::get('/items/create', 'ItemController@create');
 
 Route::get('/items/search', 'SearchController@show');
