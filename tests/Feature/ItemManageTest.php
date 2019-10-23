@@ -67,6 +67,17 @@ class ItemManageTest extends TestCase
         $this->assertEquals(2, $response['total']);
     }
     
+    /** @test */
+    public function auth_user_can_delete_items_in_a_box()
+    {
+        $this->signIn();
+        $box = create('App\Box');
+        $item = create('App\Item',['box_id'=>$box->id]);
+        $response = $this->delete("/boxes/{$box->seller->name}/{$box->slug}/{$item->id}");
+        //dd($response);
+        $this->assertDatabaseMissing('items', ['id' => $item->id]);
+    }
+    
     
     
 }

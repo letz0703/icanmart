@@ -33,7 +33,7 @@ class BoxItemController extends Controller
     {
         if (request()->expectsJson()){
             $item->delete();
-            return response(['status' => 'reply deleted']);
+            return response(['status' => 'item deleted']);
         }
         
         $item->delete();

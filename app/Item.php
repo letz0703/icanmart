@@ -37,7 +37,6 @@ class Item extends Model
         //}
     }
     
-    
     public function reduceInventoryQuantity($item)
     {
         $inventory = Inventory::where('barcode', $item->barcode)->first();

@@ -6,24 +6,54 @@
 
     <title>Vue Test</title>
     <!-- Styles -->
-    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">
+    <!-- <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+
+    <!-- Lesson2. Add names -->
 <div id="icanmart">
-    <input type="text" id="input" v-model="message">
+    <input id="input" type="text">
     <button id="button">Add</button>
-    <p>The Value of the input is : {{ message }}</p>
     <ul>
-<!--        <li v-for="name in names">{{ name }}</li>-->
         <li v-for="name in names" v-text="name"></li>
     </ul>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="">
-
-
+<script>
+    var sample2 =
+    new Vue({
+        el: '#icanmart',
+        data: {
+            names: ['jane', 'John', 'Mary']
+        },
+        mounted() {
+            document.querySelector('#button').addEventListener('click', () => {
+                let name = document.querySelector('#input').value;
+                sample2.names.push(name);
+            });
+        }
+    });
 </script>
-<!--<script src="icanmart.js"></script>-->
+<!-- END lesson 2 -->
+
+    <!-- Lesson 1 -->
+<!-- <div id="icanmart">
+    <input type="text" id="input" v-model="message">
+    <p> This value of the input is : {{ message }} </p>
+</div>
+
+<script>
+    // document.querySelector('#input').value = data.message;
+
+    new Vue({
+
+        el : "#icanmart",
+        data: {
+            message: 'Hello World'
+        }
+
+    });
+</script> -->
 </body>
 </html>
