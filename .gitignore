@@ -28,3 +28,4 @@ Thumbs.db
 /storage/*.index
 
 *.cache
+resources/views/icanmart.html

@@ -6,13 +6,79 @@
 
     <title>Vue Test</title>
     <!-- Styles -->
+    <style>
+        .color-red {
+            color: red;
+        }
+        .color-blue {
+            color: blue;
+        }
+        .is-loading {
+            background: blue;
+        }
+
+    </style>
     <!-- <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma"> -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 
+    <div id="icanmart">
+        <h1 :class="className">Hello World</h1>
+        <!-- <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button> -->
+        <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button>
+        <button @click="reset">Reset</button>
+        <button :disabled="disabled">Disabled</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#icanmart',
+            data: {
+                className: "color-red",
+                isLoading: false,
+                disabled: false,
+            },
+            methods: {
+                toggleClass() {
+                    this.isLoading = true;
+                    this.className = "color-blue";
+                    this.disabled = true;
+                },
+                reset() {
+                    this.isLoading = false;
+                    this.className = "color-red";
+                    this.disabled = false;
+
+                }
+            }
+        });
+    </script>
+<!-- button binding -->
+   <!--  <div id="icanmart">
+        <button
+            :title="title"
+            @click="method"
+            v-text="title"
+        >Hover Me</button>
+    </div>
+
+    <script>
+        var icanmart = new Vue({
+            el: '#icanmart',
+            data: {
+                title: "Now the title is being set through Javascript."
+            },
+            methods: {
+                method(){
+                    this.title = "clicked"
+                }
+            }
+        });
+    </script> -->
+    <!-- End button binding -->
+
     <!-- Lesson2. Add names -->
-<div id="icanmart">
+<!-- <div id="icanmart">
     <input id="input" type="text">
     <button id="button">Add</button>
     <ul>
@@ -34,7 +100,7 @@
             });
         }
     });
-</script>
+</script> -->
 <!-- END lesson 2 -->
 
     <!-- Lesson 1 -->
