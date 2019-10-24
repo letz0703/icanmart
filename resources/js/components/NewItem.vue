@@ -14,8 +14,12 @@
             <input type="text" id="barcode" name="barcode" v-model="barcode">
         </div>
         <div class="form-group">
-            <label for="product_name" required>제품명:</label>
+            <label for="product_name" required>Item Name:</label>
             <input type="text" id="product_name" name="product_name" v-model="product_name">
+        </div>
+        <div class="form-group">
+            <label for="description" required>제품 설명:</label>
+            <input type="text" id="description" name="description" v-model="description">
         </div>
         <div class="form-group">
             <label for="quantity" required>수량:</label>
@@ -58,16 +62,28 @@
                 box_id: this.boxid,
                 barcode: '',
                 product_name: '',
+                description: '',
                 quantity: '',
                 buy_price: '',
                 sell_price: '',
                 itemAmount: '',
                 expireDate: new Date().toISOString().slice(0,10),
                 signedIn: window.App.signedIn,
+                oldItems:'',
             }
         },
 
-        // computed: {
+        watch: {
+
+            barcode: function() {
+                // alert('hi');
+                this.getData();
+                //     .then((oldItems)=>{
+                //     console.log(oldItems);
+                // });
+            }
+        },
+
         //     expireDate() {
         //         // return moment.now();
         //         const toTwoDigits = num => num < 10 ? '0' + num : num;
@@ -80,11 +96,31 @@
         //         return `${year}-${month}-${day}`;
         //     }
         // },
-        mounted() {
-            this.getToday;
-        },
+
+
 
         methods: {
+            getData() {
+                // alert('hi');
+                var oldItems = axios.get('/items/', {
+                    params: {
+                        barcode: this.barcode
+                    }
+                }).then(({data}) => {
+                    // console.log(data);
+                    if (data.length){
+                        let latestOne = data[0];
+                        // alert(latestOne.product_name);
+                        this.product_name = latestOne.product_name;
+                        this.description = latestOne.description;
+                        this.quantity = latestOne.quantity;
+                        this.buy_price = latestOne.buy_price;
+                        this.sell_price = latestOne.sell_price;
+                        // this.expireDate = latestOne.expireDate;
+                    }
+                });
+
+            },
 
             addItem(){
                 axios.post(location.pathname + '/items', {
@@ -93,6 +129,7 @@
                     barcode: this.barcode,
                     user_id: window.App.user,
                     product_name: this.product_name,
+                    description: this.description,
                     quantity: this.quantity,
                     buy_price: this.buy_price,
                     sell_price: this.sell_price,
@@ -110,11 +147,12 @@
             reset(){
                 this.barcode = '';
                 this.product_name = '';
+                this.description = '';
                 this.quantity = '';
                 this.buy_price = '';
                 this.sell_price = '';
                 this.itemAmount = '';
-                this.expire_date = '';
+                this.expire_date = new Date().toISOString().slice(0,10);
             },
 
         },
