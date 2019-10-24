@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->string('barcode',50)->nullable();
             $table->string('product_name');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->dateTimeTz('expire_date')->nullable();
             $table->string('channel')->nullable();
             $table->unsignedInteger('box_id')->nullable();
