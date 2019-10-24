@@ -60,7 +60,7 @@
                 @else
 {{--                    <user-notifications></user-notifications>--}}
                     @if (auth()->user()->isAdmin)
-                        <li><a href="/admin"><sup>admin board</sup></a></li>
+                        <li><a href="{{route('admin.sellers.index')}}"><sup>admin board</sup></a></li>
                     @endif
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -76,7 +76,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                            <form id="logout-form" action="route('logout')" method="POST"
                                   style="display: none;">
                                 @csrf
                             </form>
