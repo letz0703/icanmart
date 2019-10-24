@@ -26,8 +26,12 @@
             <input type="text" id="buy_price" name="buy_price" v-model="buy_price"> 원
         </div>
         <div class="form-group">
+            <label for="sell_price">판매가:</label>
+            <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
+        </div>
+        <div class="form-group">
             <label>Expire Date: </label>
-            <input type="date" id="expire_data" name="expire_date" v-model="expireDate"
+            <input type="date" id="expire-data" name="expire-date" v-model="expireDate"
             >
         </div>
 
@@ -56,8 +60,9 @@
                 product_name: '',
                 quantity: '',
                 buy_price: '',
+                sell_price: '',
                 itemAmount: '',
-                expireDate: '',
+                expireDate: new Date().toISOString().slice(0,10),
                 signedIn: window.App.signedIn,
             }
         },
@@ -75,6 +80,9 @@
         //         return `${year}-${month}-${day}`;
         //     }
         // },
+        mounted() {
+            this.getToday;
+        },
 
         methods: {
 
@@ -87,6 +95,7 @@
                     product_name: this.product_name,
                     quantity: this.quantity,
                     buy_price: this.buy_price,
+                    sell_price: this.sell_price,
                     expire_date: this.expireDate,
                 }).then(this.broadcast);
             },
@@ -95,13 +104,21 @@
                 let itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', itemAmount);
                 flash('added');
-                this.barcode = '',
-                    this.product_name = '',
-                    this.quantity = '',
-                    this.buy_price = '',
-                    this.itemAmount = '',
-                    this.expire_date = ''
+                this.reset();
+
             },
+            reset(){
+                this.barcode = '';
+                this.product_name = '';
+                this.quantity = '';
+                this.buy_price = '';
+                this.sell_price = '';
+                this.itemAmount = '';
+                this.expire_date = '';
+            },
+
         },
+
+
     }
 </script>
