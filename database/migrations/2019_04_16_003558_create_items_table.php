@@ -15,7 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('barcode')->nullable();
+            $table->string('barcode',50)->nullable();
             $table->string('product_name');
             $table->text('description')->nullable();
             $table->dateTimeTz('expire_date')->nullable();
