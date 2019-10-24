@@ -10547,6 +10547,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
  // Vue.filter('formatDate', function(value){
 //     if (value) {
 //         return moment(String(value)).format('yyyy-mm-dd')
@@ -10561,14 +10569,24 @@ __webpack_require__.r(__webpack_exports__);
       box_id: this.boxid,
       barcode: '',
       product_name: '',
+      description: '',
       quantity: '',
       buy_price: '',
+      sell_price: '',
       itemAmount: '',
-      expireDate: '',
-      signedIn: window.App.signedIn
+      expireDate: new Date().toISOString().slice(0, 10),
+      signedIn: window.App.signedIn,
+      oldItems: ''
     };
   },
-  // computed: {
+  watch: {
+    barcode: function barcode() {
+      // alert('hi');
+      this.getData(); //     .then((oldItems)=>{
+      //     console.log(oldItems);
+      // });
+    }
+  },
   //     expireDate() {
   //         // return moment.now();
   //         const toTwoDigits = num => num < 10 ? '0' + num : num;
@@ -10582,6 +10600,29 @@ __webpack_require__.r(__webpack_exports__);
   //     }
   // },
   methods: {
+    getData: function getData() {
+      var _this = this;
+
+      // alert('hi');
+      var oldItems = axios.get('/items/', {
+        params: {
+          barcode: this.barcode
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+
+        // console.log(data);
+        if (data.length) {
+          var latestOne = data[0]; // alert(latestOne.product_name);
+
+          _this.product_name = latestOne.product_name;
+          _this.description = latestOne.description;
+          _this.quantity = latestOne.quantity;
+          _this.buy_price = latestOne.buy_price;
+          _this.sell_price = latestOne.sell_price; // this.expireDate = latestOne.expireDate;
+        }
+      });
+    },
     addItem: function addItem() {
       axios.post(location.pathname + '/items', {
         seller_id: this.seller.id,
@@ -10589,8 +10630,10 @@ __webpack_require__.r(__webpack_exports__);
         barcode: this.barcode,
         user_id: window.App.user,
         product_name: this.product_name,
+        description: this.description,
         quantity: this.quantity,
         buy_price: this.buy_price,
+        sell_price: this.sell_price,
         expire_date: this.expireDate
       }).then(this.broadcast);
     },
@@ -10598,7 +10641,17 @@ __webpack_require__.r(__webpack_exports__);
       var itemAmount = this.quantity * this.buy_price;
       this.$emit('created', itemAmount);
       flash('added');
-      this.barcode = '', this.product_name = '', this.quantity = '', this.buy_price = '', this.itemAmount = '', this.expire_date = '';
+      this.reset();
+    },
+    reset: function reset() {
+      this.barcode = '';
+      this.product_name = '';
+      this.description = '';
+      this.quantity = '';
+      this.buy_price = '';
+      this.sell_price = '';
+      this.itemAmount = '';
+      this.expire_date = new Date().toISOString().slice(0, 10);
     }
   }
 });
@@ -91582,7 +91635,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "product_name", required: "" } }, [
-        _vm._v("제품명:")
+        _vm._v("Item Name:")
       ]),
       _vm._v(" "),
       _c("input", {
@@ -91602,6 +91655,33 @@ var render = function() {
               return
             }
             _vm.product_name = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "description", required: "" } }, [
+        _vm._v("제품 설명:")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.description,
+            expression: "description"
+          }
+        ],
+        attrs: { type: "text", id: "description", name: "description" },
+        domProps: { value: _vm.description },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.description = $event.target.value
           }
         }
       })
@@ -91662,6 +91742,32 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "sell_price" } }, [_vm._v("판매가:")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.sell_price,
+            expression: "sell_price"
+          }
+        ],
+        attrs: { type: "text", id: "sell_price", name: "sell_price" },
+        domProps: { value: _vm.sell_price },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.sell_price = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" 원\n    ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
       _c("label", [_vm._v("Expire Date: ")]),
       _vm._v(" "),
       _c("input", {
@@ -91673,7 +91779,7 @@ var render = function() {
             expression: "expireDate"
           }
         ],
-        attrs: { type: "date", id: "expire_data", name: "expire_date" },
+        attrs: { type: "date", id: "expire-data", name: "expire-date" },
         domProps: { value: _vm.expireDate },
         on: {
           input: function($event) {
@@ -104781,14 +104887,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/NewItem.vue ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewItem_vue_vue_type_template_id_689550b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewItem.vue?vue&type=template&id=689550b8& */ "./resources/js/components/NewItem.vue?vue&type=template&id=689550b8&");
 /* harmony import */ var _NewItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewItem.vue?vue&type=script&lang=js& */ "./resources/js/components/NewItem.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _NewItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _NewItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -104818,7 +104925,7 @@ component.options.__file = "resources/js/components/NewItem.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/NewItem.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105258,8 +105365,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/letz/Desktop/letz/letz/icanmart/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/letz/Desktop/letz/letz/icanmart/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/rainskiss/code/icanmart/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/rainskiss/code/icanmart/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
