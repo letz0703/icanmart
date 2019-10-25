@@ -39,8 +39,6 @@ class ItemController extends Controller
         }
         
         $this->validate($request, [
-            'product_name' => 'required',
-            'seller_id' => 'required|exists:sellers,id',
         ]);
         
         $sellerId = Seller::where('name', $sellerName)->first()->id;

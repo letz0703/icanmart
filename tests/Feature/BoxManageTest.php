@@ -48,17 +48,8 @@ class BoxManageTest extends TestCase
     
     
     /** @test */
-    public function auth_user_can_add_items_to_a_box()
     {
-        $this->be(factory('App\User')->create())->withExceptionHandling();
         
-        $box = factory('App\Box')->create();
-        $item = factory('App\Item')->create(['box_id' => $box->id]);
-        //dd($item);
-        //$this->post($box->path().'/items', $item->toArray());
-        $this->post($box->path(), $item->toArray());
-        $this->get($box->path())
-             ->assertSee($item->product_name);
     }
     
     /** @test */

@@ -46,8 +46,10 @@ Route::get('/boxes/{seller}', 'BoxController@index');
 Route::get('/boxes/{seller}/{box}', 'BoxController@show');
 Route::get('/boxes/{seller}/{box}/items', 'BoxItemController@index');
 Route::delete('/boxes/{seller}/{box}', 'BoxController@destroy');
+
 Route::post('/boxes/{seller}/{box}/items', 'ItemController@store')
      ->name('item.box.store');
+
 Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 

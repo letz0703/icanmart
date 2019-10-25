@@ -40,7 +40,7 @@
         </div>
 
         <div v-if="signedIn">
-            <button type=" submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
+            <button type="submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
         </div>
     </div>
 </template>
