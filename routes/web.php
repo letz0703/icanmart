@@ -11,6 +11,8 @@
 |
 */
 
+App::setLocale('kr');
+
 Route::get('/', function (){
     return view('welcome');
 });

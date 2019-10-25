@@ -95,8 +95,8 @@ return [
     |
     */
 
-    //'fallback_locale' => 'en',
-    'fallback_locale' => 'kr',
+    'fallback_locale' => 'en',
+    //'fallback_locale' => 'kr',
 
     /*
     |--------------------------------------------------------------------------

@@ -27,8 +27,11 @@ class SellerController extends Controller
             'name'        => 'required',
             'description' => 'required',
         ]);
+        //$data['name'] = $this->make_slug($data['name']);
+        $slug = $this->make_slug($data['name']);
+        //$data['description'] = $this->make_slug($data['description']);
         
-        $seller = Seller::create($data + ['slug' => str_slug($data['name'])]);
+        $seller = Seller::create($data + ['slug' => $slug]);
         
         
         cache()->forget('sellers');
@@ -41,10 +44,11 @@ class SellerController extends Controller
             ->with('flash', 'Seller 생성됨');
     }
     
-    public function make_slug($string)
+    public function make_slug($name)
     {
-        $slug = pre_replace('/\s+/u', '-', trim($string));
-        return $slug = str_slug($slug);
+        //str_slug($name);
+        $slug = preg_replace('/\s+/u','_', trim($name));
+        return $slug;
     }
     
     
