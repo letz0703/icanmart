@@ -48,8 +48,17 @@ class BoxManageTest extends TestCase
     
     
     /** @test */
+    public function admin_can_add_items_to_a_box()
     {
+        $this->signInAdmin();
+        $box = create('App\Box');
+        $this->post('/boxes', $box->toArray());
+        $this->assertDatabaseHas('boxes', ['id' => $box->id]);
         
+        $item = make('App\Item',['box_id'=>$box->id]);
+        $response = $this->postJson('/boxes/'.$box->seller.'/'.$box->slug.'/items', $item->toArray())
+             ->json();
+        $this->assertCount(1, $box->fresh()->items);
     }
     
     /** @test */

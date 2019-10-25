@@ -32,22 +32,25 @@ class ItemController extends Controller
         return view('items.create');
     }
     
-    public function store($sellerName = null, Box $box, Request $request)
+    public function store($sellerSlug, Box $box, Request $request)
     {
         if ($box->locked){
             return response('This Box is locked', 422);
         }
         
         $this->validate($request, [
+            'product_name' => 'required',//'seller_id' => 'required|exists:sellers,id',
         ]);
         
-        $sellerId = Seller::where('name', $sellerName)->first()->id;
+        $sellerId = request('seller_id');
+        
         $item = Item::create([
-            'seller_id'    => $sellerId ? : requst('seller_id'),
+            'seller_id'    => $sellerId ? : $sellerId,
             'box_id'       => request('box_id') ? : null,
             'barcode'      => request('barcode') ? : null,
             'user_id'      => auth()->id(),
             'product_name' => request('product_name'),
+            'description' => request('description'),
             'quantity'     => request('quantity'),
             //'category_id'  => request('category_id'),
             'expire_date'  => request('expire_date'),
