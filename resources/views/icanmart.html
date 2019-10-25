@@ -24,21 +24,51 @@
 <body>
 
     <div id="icanmart">
-        <h1 :class="className">Hello World</h1>
-        <!-- <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button> -->
-        <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button>
-        <button @click="reset">Reset</button>
-        <button :disabled="disabled">Disabled</button>
+        <h1 :class="className">{{ reversedTitle }}</h1>
+        <p v-text="new Date()"></p>
+        <h2>To Do</h2>
+        <input type="text" id="taskInput" v-model="taskInput">
+        <button type="submit" id="submit" @click="addTask">add</button>
+
+        <h4>Incomplete Tasks</h4>
+        <ul>
+            <li v-for=" task in incompleteTasks" v-text="task.message"></li>
+        </ul>
+
+        <h4>All tasks</h4>
+        <ul>
+            <li v-for="task in tasks">{{ task.message }}</li>
+        </ul>
+
+
     </div>
     <script>
-        new Vue({
+        var vm =new Vue({
             el: '#icanmart',
             data: {
+                tasks: [
+                    {message: 'go shopping', completed: false},
+                    {message: 'watch Miss Troat', completed: true}
+                ],
+                taskInput: '',
                 className: "color-red",
                 isLoading: false,
                 disabled: false,
+                title: "iCANMART"
             },
+            computed: {
+                reversedTitle() {
+                     return this.title.split('').reverse().join('');
+                },
+                incompleteTasks() {
+                    return this.tasks.filter(one => !one.completed);
+                }
+            },
+
             methods: {
+                addTask(){
+                    this.tasks.push({"message":this.taskInput,"completed":false})
+                },
                 toggleClass() {
                     this.isLoading = true;
                     this.className = "color-blue";
@@ -53,7 +83,14 @@
             }
         });
     </script>
-<!-- button binding -->
+     <!-- button class -->
+         <!-- <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button> -->
+        <!--  <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button>
+         <button @click="reset">Reset</button>
+         <button :disabled="disabled">Disabled</button> -->
+     <!-- End button class -->
+
+    <!-- button binding -->
    <!--  <div id="icanmart">
         <button
             :title="title"
@@ -103,7 +140,7 @@
 </script> -->
 <!-- END lesson 2 -->
 
-    <!-- Lesson 1 -->
+<!-- Lesson 1 -->
 <!-- <div id="icanmart">
     <input type="text" id="input" v-model="message">
     <p> This value of the input is : {{ message }} </p>
