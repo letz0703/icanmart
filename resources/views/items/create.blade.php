@@ -51,7 +51,9 @@
                             <div class="form-group">
                                 <label for="sell_price">판매가:</label>
                                 <input type="text" id="sell_price" name="sell_price">
-                            </div>
+                        </div>
+                            <button value="default" style="display: none;" ></button>
+
 
                             <button type="submit" class="btn btn-outline-danger">add</button>
                         </form>
@@ -64,8 +66,11 @@
                         <div class="container">
                             <h3>최근 아이템 목록</h3>
                             @foreach($items as $item)
-                                <p>{{ $item->product_name }} / 판매가 {{ $item->sell_price }}/
-                                    입고일: {{ $item->created_at->format('Y-m-d') }}
+                                <p>
+                                    <a href="{{$item->path()}}">
+                                        {{ $item->product_name }} / 판매가 {{ $item->sell_price }}/
+                                        입고일: {{ $item->created_at->format('Y-m-d') }}
+                                    </a>
                                 </p>
                             @endforeach
                         </div>
