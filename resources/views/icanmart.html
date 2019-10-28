@@ -3,10 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Vue Test</title>
+
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <style>
+        body {
+            padding-top: 40px;
+        }
         .color-red {
             color: red;
         }
@@ -19,78 +23,48 @@
 
     </style>
     <!-- <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma"> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
 </head>
 <body>
+    <div id="icanmart" class="container">
+        <ic-message title="ICANMART NOTICE" body="Hello World"></ic-message>
 
-    <div id="icanmart">
-        <h1 :class="className">{{ reversedTitle }}</h1>
-        <p v-text="new Date()"></p>
-        <h2>To Do</h2>
-        <input type="text" id="taskInput" v-model="taskInput">
-        <button type="submit" id="submit" @click="addTask">add</button>
-
-        <h4>Incomplete Tasks</h4>
-        <ul>
-            <li v-for=" task in incompleteTasks" v-text="task.message"></li>
-        </ul>
-
-        <h4>All tasks</h4>
-        <ul>
-            <li v-for="task in tasks">{{ task.message }}</li>
-        </ul>
-
-
+        <div>
+            <h1 :class="className">{{ reversedTitle }}</h1>
+            <p v-text="new Date()"></p>
+            <h2>To Do</h2>
+            <input type="text" id="taskInput" v-model="taskInput">
+            <button type="submit" id="submit" @click="addTask">add</button>
+        </div>
+        <div>
+            <h4>Incomplete Tasks</h4>
+            <ul>
+                <li v-for=" task in incompleteTasks" v-text="task.message"></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Complete Tasks</h4>
+            <task-list></task-list>
+        </div>
+        <div>
+            <h4>All tasks</h4>
+            <ul>
+                <li v-for="task in tasks">{{ task.message }}</li>
+            </ul>
+        </div>
     </div>
-    <script>
-        var vm =new Vue({
-            el: '#icanmart',
-            data: {
-                tasks: [
-                    {message: 'go shopping', completed: false},
-                    {message: 'watch Miss Troat', completed: true}
-                ],
-                taskInput: '',
-                className: "color-red",
-                isLoading: false,
-                disabled: false,
-                title: "iCANMART"
-            },
-            computed: {
-                reversedTitle() {
-                     return this.title.split('').reverse().join('');
-                },
-                incompleteTasks() {
-                    return this.tasks.filter(one => !one.completed);
-                }
-            },
 
-            methods: {
-                addTask(){
-                    this.tasks.push({"message":this.taskInput,"completed":false})
-                },
-                toggleClass() {
-                    this.isLoading = true;
-                    this.className = "color-blue";
-                    this.disabled = true;
-                },
-                reset() {
-                    this.isLoading = false;
-                    this.className = "color-red";
-                    this.disabled = false;
-
-                }
-            }
-        });
-    </script>
-     <!-- button class -->
-         <!-- <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../js/icanmart.js"></script>
+    <!-- <script type ="text/javascript" src="https://www.jsdelivr.com/package/npm/bulma"></script> -->
+    <!-- button class -->
+    <!-- <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button> -->
         <!--  <button :class="{'is-loading':isLoading}" @click="toggleClass">Make Blue</button>
          <button @click="reset">Reset</button>
          <button :disabled="disabled">Disabled</button> -->
-     <!-- End button class -->
+         <!-- End button class -->
 
-    <!-- button binding -->
+         <!-- button binding -->
    <!--  <div id="icanmart">
         <button
             :title="title"
