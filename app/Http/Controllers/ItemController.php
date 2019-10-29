@@ -50,7 +50,7 @@ class ItemController extends Controller
             'barcode'      => request('barcode') ? : null,
             'user_id'      => auth()->id(),
             'product_name' => request('product_name'),
-            'description' => request('description'),
+            //'description' => request('description'),
             'quantity'     => request('quantity'),
             //'category_id'  => request('category_id'),
             'expire_date'  => request('expire_date'),

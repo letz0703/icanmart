@@ -34,6 +34,7 @@ Vue.component('user-notifications', require('./components/UserNotifications.vue'
 Vue.component('search', require('./components/Search.vue').default);
 // Vue.component('item', require('./components/Item.vue').default);
 Vue.component('box-view', require('./pages/Box.vue').default);
+Vue.component('item-in', require('./pages/ItemIn.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
