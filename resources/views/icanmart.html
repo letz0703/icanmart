@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <style>
         body {
-            padding-top: 40px;
+            padding: 40px 20px;
         }
 
         .color-red {
@@ -30,8 +30,15 @@
 </head>
 <body>
 <div id="icanmart" class="container">
-    <ic-message title="ICANMART NOTICE" body="Hello World"></ic-message>
+    <!--    <ic-message title="ICANMART NOTICE" body="Hello World"></ic-message>-->
 
+    <div>
+        <tabs>
+            <tab name="해야할 일">TO DO CONTENT</tab>
+            <tab name="구입할 것">TO BUY CONTENT</tab>
+        </tabs>
+
+    </div>
     <div>
         <h1 :class="className">{{ reversedTitle }}</h1>
         <p v-text="new Date()"></p>
