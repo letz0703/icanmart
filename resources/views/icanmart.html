@@ -34,40 +34,46 @@
 
     <div>
         <tabs>
-            <tab name="해야할 일">TO DO CONTENT</tab>
+            <tab name="해야할 일" :selected="true">
+                <div>
+                    <div>
+                        <!--                        <h1 :class="className">{{ reversedTitle }}</h1>-->
+                        <!--                        <p v-text="new Date()"></p>-->
+                        <!--                        <h2>To Do</h2>-->
+                        <form class="form-group">
+                            <input type="text" class="form-control" id="taskInput" v-model="taskInput">
+                            <button type="submit" id="submit" @click="addTask">add</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Incomplete Tasks</h4>
+                        <ul>
+                            <li v-for=" task in incompleteTasks" v-text="task.message"></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Complete Tasks</h4>
+                        <task-list></task-list>
+                    </div>
+                    <div class="container">
+                        <modal v-if="showModal" @close="showModal = false">
+                            <p> Insert Any Text Here </p>
+                        </modal>
+                        <button @click="showModal=true">Show Modal</button>
+                    </div>
+                    <div>
+                        <h4>All tasks</h4>
+                        <ul>
+                            <li v-for="task in tasks">{{ task.message }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </tab>
             <tab name="구입할 것">TO BUY CONTENT</tab>
         </tabs>
 
     </div>
-    <div>
-        <h1 :class="className">{{ reversedTitle }}</h1>
-        <p v-text="new Date()"></p>
-        <h2>To Do</h2>
-        <input type="text" id="taskInput" v-model="taskInput">
-        <button type="submit" id="submit" @click="addTask">add</button>
-    </div>
-    <div>
-        <h4>Incomplete Tasks</h4>
-        <ul>
-            <li v-for=" task in incompleteTasks" v-text="task.message"></li>
-        </ul>
-    </div>
-    <div>
-        <h4>Complete Tasks</h4>
-        <task-list></task-list>
-    </div>
-    <div class="container">
-        <modal v-if="showModal" @close="showModal = false">
-            <p> Insert Any Text Here </p>
-        </modal>
-        <button @click="showModal=true">Show Modal</button>
-    </div>
-    <div>
-        <h4>All tasks</h4>
-        <ul>
-            <li v-for="task in tasks">{{ task.message }}</li>
-        </ul>
-    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

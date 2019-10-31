@@ -3,7 +3,9 @@ Vue.component('tabs', {
     <div>
         <div class="tabs">
             <ul>
-                <li v-for="tab in tabs"><a href="#">{{ tab.name }}</a></li>
+                <li v-for="tab in tabs" :class="{'is-active': tab.isActive}">
+                    <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
+                </li>
             </ul>
         </div>
         <div class="tabs-details">
@@ -19,17 +21,40 @@ Vue.component('tabs', {
     created(){
         this.tabs = this.$children;
     },
+    methods: {
+        selectTab(selectedTab){
+            // alert('selecting');
+            this.tabs.forEach(tab => {
+                tab.isActive = (tab.name == selectedTab.name);
+            });
+        }
+    }
 });
 
 Vue.component('tab', {
     template: `
-        <div><slot></slot></div>
+        <div v-show="isActive"><slot></slot></div>
     `,
     props: {
         name: { required: true },
+        selected: { default: false },
     },
+    data() {
+        return {
+            isActive: false,
+        }
+    },
+    mounted() {
+        this.isActive = this.selected;
+    },
+    computed: {
+        href() {
+            return '#'+this.name.toLowerCase().replace(/ /g, '-');
+        }
+    }
 
 });
+
 Vue.component('modal', {
     template: `
         <div class="modal is-active">
@@ -103,7 +128,7 @@ var vm = new Vue({
             { message: 'watch Miss Troat', completed: true },
         ],
         taskInput: '',
-        className: "color-red",
+        className: "",
         isLoading: false,
         disabled: false,
         title: "SKSAT",
