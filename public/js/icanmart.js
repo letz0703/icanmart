@@ -1,3 +1,51 @@
+window.Event = new Vue();
+
+Vue.component('coupon', {
+    // template: '<input placeholder="Enter your code" @blur"applied">',
+    template: '<input placeholder="Enter your code" @blur="applied">',
+    methods: {
+        applied(){
+            Event.$emit('couponApplied');
+        },
+    },
+
+});
+
+Vue.component('tab', {
+    template: `
+    <div>
+        <div v-show="isActive"><slot></slot></div>
+        <h1 v-if="couponUsed">쿠폰을 사용하셨습니다.</h1>
+    </div>
+    `,
+    props: {
+        name: { required: true },
+        selected: { default: false },
+    },
+    data(){
+        return {
+            isActive: false,
+            couponUsed: false,
+        }
+    },
+    mounted(){
+        this.isActive = this.selected;
+    },
+    computed: {
+        href(){
+            return '#' + this.name.toLowerCase().replace(/ /g, '-');
+        },
+    },
+
+    created(){
+        // Event.$on('couponApplied',() => alert('Coupon Applied'));
+        Event.$on('couponApplied',() => {
+            if (this.isActive){
+                this.couponUsed = true;
+            }
+        });
+    },
+});
 Vue.component('tabs', {
     template: `
     <div>
