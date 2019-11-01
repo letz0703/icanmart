@@ -46,6 +46,7 @@ Vue.component('tab', {
         });
     },
 });
+
 Vue.component('tabs', {
     template: `
     <div>
@@ -75,33 +76,10 @@ Vue.component('tabs', {
             this.tabs.forEach(tab => {
                 tab.isActive = (tab.name == selectedTab.name);
             });
-        }
-    }
+        },
+    },
 });
 
-Vue.component('tab', {
-    template: `
-        <div v-show="isActive"><slot></slot></div>
-    `,
-    props: {
-        name: { required: true },
-        selected: { default: false },
-    },
-    data() {
-        return {
-            isActive: false,
-        }
-    },
-    mounted() {
-        this.isActive = this.selected;
-    },
-    computed: {
-        href() {
-            return '#'+this.name.toLowerCase().replace(/ /g, '-');
-        }
-    }
-
-});
 
 Vue.component('modal', {
     template: `
