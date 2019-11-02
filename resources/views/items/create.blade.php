@@ -18,7 +18,9 @@
 
                                 <div class="form-group">
                                     <label for="product_name">아이템명:</label>
-                                    <input type="text" id="product_name" name="product_name">
+                                    <input type="text" id="product_name" name="product_name"
+                                           v-focus
+                                    >
                                 </div>
 
                                 <div class="form-group">

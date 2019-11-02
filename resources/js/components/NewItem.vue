@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="barcode">Barcode:</label>
-            <input type="text" id="barcode" name="barcode" v-model="barcode">
+            <input type="text" id="barcode" name="barcode" v-model="barcode" v-focus>
         </div>
         <div class="form-group">
             <label for="product_name" required>Item Name:</label>
@@ -81,6 +81,13 @@
                 //     .then((oldItems)=>{
                 //     console.log(oldItems);
                 // });
+            }
+        },
+        directives: {
+            focus: {
+                inserted: function(el){
+                    el.focus();
+                }
             }
         },
 
