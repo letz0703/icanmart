@@ -21,6 +21,10 @@ Route::get('/icanmart', function (){
     return view('icanmart');
 });
 
+Route::get('/icanmart-inline', function(){
+    return view('icanmart-inline');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue Test</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <style>
+        body {
+            padding: 40px 20px;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .color-blue {
+            color: blue;
+        }
+
+        .is-loading {
+            background: blue;
+        }
+
+    </style>
+    <!-- <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma"> -->
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
+</head>
+<body>
+<div id="icanmart" class="container">
+    <progress-view inline-template>
+        <div>
+            <p>
+                {{ progressRate }}
+            </p>
+            <button class="btn-sm" @click="progressRate += 10">Increse Rate</button>
+        </div>
+    </progress-view>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../../js/icanmart-inline-template.js"></script>
+</body>
+</html>
