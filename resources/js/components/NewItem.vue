@@ -144,13 +144,13 @@
                     expire_date: this.expireDate,
                 }).then(this.broadcast);
                 this.$refs.barcode.focus();
+                this.reset();
             },
 
             broadcast(){
                 let itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', itemAmount);
                 flash('added');
-                this.reset();
 
             },
             reset(){
