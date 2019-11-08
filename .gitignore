@@ -1,5 +1,4 @@
 /node_modules
-/public/hot
 #/public/storage
 /public/js/app.js
 /public/hot
@@ -28,5 +27,4 @@ Thumbs.db
 /storage/*.index
 
 *.cache
-resources/views/icanmart.html
 resources/views/icanmart.html
