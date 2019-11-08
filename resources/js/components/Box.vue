@@ -50,7 +50,7 @@
             },
             endpoint() {
                 return [
-                    (location.pathname.indexOf("/${this.data.seller.slug}") !== -1)?
+                    (location.pathname.indexOf(this.data.seller.slug) > -1)?
                     `${location.pathname}/${this.data.slug}`
                     :`${location.pathname}/${this.data.seller.slug}/${this.data.slug}`
                 ];
