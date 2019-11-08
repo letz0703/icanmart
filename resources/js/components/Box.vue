@@ -37,7 +37,10 @@
             return {
                 paid: this.data.paid,
                 //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
-                endpoint: `${location.pathname}/${this.data.seller.name}/${this.data.slug}`
+                // endpoint: location.pathname.indexOf(this.data.seller.slug)?
+                //         `${location.pathname}/${this.data.seller.slug}/${this.data.slug}`
+                //     :,
+                // endpoint2:${location.pathname}/${this.data.slug}`
             }
         },
 
@@ -45,6 +48,14 @@
             classes() {
                 return ['btn', 'btn-sm', this.paid ? 'btn-primary' : 'btn-danger'];
             },
+            endpoint() {
+                return [
+                    (location.pathname.indexOf("/${this.data.seller.slug}") !== -1)?
+                    `${location.pathname}/${this.data.slug}`
+                    :`${location.pathname}/${this.data.seller.slug}/${this.data.slug}`
+                ];
+            }
+
         },
 
         methods: {
