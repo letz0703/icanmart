@@ -10129,14 +10129,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      paid: this.data.paid,
-      //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
-      endpoint: "".concat(location.pathname, "/").concat(this.data.seller.name, "/").concat(this.data.slug)
+      paid: this.data.paid //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
+      // endpoint: location.pathname.indexOf(this.data.seller.slug)?
+      //         `${location.pathname}/${this.data.seller.slug}/${this.data.slug}`
+      //     :,
+      // endpoint2:${location.pathname}/${this.data.slug}`
+
     };
   },
   computed: {
     classes: function classes() {
       return ['btn', 'btn-sm', this.paid ? 'btn-primary' : 'btn-danger'];
+    },
+    endpoint: function endpoint() {
+      return [location.pathname.indexOf("/${this.data.seller.slug}") !== -1 ? "".concat(location.pathname, "/").concat(this.data.slug) : "".concat(location.pathname, "/").concat(this.data.seller.slug, "/").concat(this.data.slug)];
     }
   },
   methods: {
@@ -10791,6 +10797,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var instantsearch_css_themes_algolia_min_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(instantsearch_css_themes_algolia_min_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var instantsearch_js_es_lib_routers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! instantsearch.js/es/lib/routers */ "./node_modules/instantsearch.js/es/lib/routers/index.js");
 /* harmony import */ var instantsearch_js_es_lib_stateMappings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! instantsearch.js/es/lib/stateMappings */ "./node_modules/instantsearch.js/es/lib/stateMappings/index.js");
+//
+//
 //
 //
 //
@@ -15482,7 +15490,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*body {*/\n/*    font-family: sans-serif;*/\n/*    padding: 1em;*/\n/*}*/\n.ais-Highlight-highlighted {\n    background: yellowgreen;\n    font-style: normal;\n}\n\n/*.header {*/\n/*    display: flex;*/\n/*    align-items: center;*/\n/*    min-height: 50px;*/\n/*    padding: 0.5rem 1rem;*/\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n/*    color: #fff;*/\n/*    margin-bottom: 1rem;*/\n/*}*/\n\n/*.header a {*/\n/*    color: #fff;*/\n/*    text-decoration: none;*/\n/*}*/\n\n/*.header-title {*/\n/*    font-size: 1.2rem;*/\n/*    font-weight: normal;*/\n/*}*/\n\n/*.header-title::after {*/\n/*    content: ' ▸ ';*/\n/*    padding: 0 0.5rem;*/\n/*}*/\n\n/*.header-subtitle {*/\n/*    font-size: 1.2rem;*/\n/*}*/\n\n/*.container {*/\n/*    max-width: 1200px;*/\n/*    margin: 0 auto;*/\n/*    padding: 1rem;*/\n/*}*/\n.search-panel {\n    display: flex;\n}\n.search-panel__filters {\n    flex: 1;\n    margin-right: 1em;\n}\n.search-panel__results {\n    flex: 3;\n}\n.searchbox {\n    margin-bottom: 2rem;\n}\n.pagination {\n    margin: 2rem auto;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*body {*/\n/*    font-family: sans-serif;*/\n/*    padding: 1em;*/\n/*}*/\n.ais-Highlight-highlighted {\n    background: yellowgreen;\n    font-style: normal;\n}\n\n/*.header {*/\n/*    display: flex;*/\n/*    align-items: center;*/\n/*    min-height: 50px;*/\n/*    padding: 0.5rem 1rem;*/\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n/*    color: #fff;*/\n/*    margin-bottom: 1rem;*/\n/*}*/\n\n/*.header a {*/\n/*    color: #fff;*/\n/*    text-decoration: none;*/\n/*}*/\n\n/*.header-title {*/\n/*    font-size: 1.2rem;*/\n/*    font-weight: normal;*/\n/*}*/\n\n/*.header-title::after {*/\n/*    content: ' ▸ ';*/\n/*    padding: 0 0.5rem;*/\n/*}*/\n\n/*.header-subtitle {*/\n/*    font-size: 1.2rem;*/\n/*}*/\n\n/*.container {*/\n/*    max-width: 1200px;*/\n/*    margin: 0 auto;*/\n/*    padding: 1rem;*/\n/*}*/\n.search-panel {\n    display: flex;\n}\n.search-panel__filters {\n    flex: 1;\n    margin-right: 1em;\n}\n.search-panel__results {\n    flex: 3;\n}\n.searchbox {\n    margin-bottom: 2rem;\n}\n.pagination {\n    margin: 2rem auto;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -91355,7 +91363,7 @@ var render = function() {
         return _c("div", [
           _c("li", [
             _c("span", {
-              domProps: { textContent: _vm._s(item.product_name + " ") }
+              domProps: { textContent: _vm._s(item.description + " ") }
             }),
             _c("span", {
               domProps: { textContent: _vm._s(item.quantity + "개") }
@@ -92013,6 +92021,13 @@ var render = function() {
                   _c("ais-search-box", {
                     staticClass: "searchbox",
                     attrs: { autofocus: true }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../storage/app/public/images/logo-algolia-nebula-blue-full.png */ "./storage/app/public/images/logo-algolia-nebula-blue-full.png"),
+                      height: "10"
+                    }
                   }),
                   _vm._v(" "),
                   _c("ais-refinement-list", {
@@ -105444,6 +105459,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./storage/app/public/images/logo-algolia-nebula-blue-full.png":
+/*!*********************************************************************!*\
+  !*** ./storage/app/public/images/logo-algolia-nebula-blue-full.png ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-algolia-nebula-blue-full.png?57c56ea4b99b30c8f2cc03b65e8bb849";
 
 /***/ }),
 

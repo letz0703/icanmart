@@ -16,32 +16,33 @@
                 <li>
                     <a class="nav-link" href="/items/create" >아이템 등록</a>
                 </li>
+                <li>
+                    <a class="nav-link" href="/items/search">아이템 검색</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         입고리스트
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="nav-link" href="/items/search">바코드 검색</a>
-                        <a class="nav-link" href="/boxes">박스별</a>
+                        <a class="nav-link" href="/boxes">전체</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            구매처별
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach($sellers as $seller)
+                                <a class="dropdown-item" href="/boxes/{{ $seller->slug }}">{{ $seller->description }}</a>
+                            @endforeach
+                            {{--<div class="dropdown-divider"></div>--}}
+                            {{--<a class="dropdown-item" href="#">Something else here</a>--}}
+                        </div>
                     </div>
+
                 </li>
                 </li>
                 <li>
                     <a href="/boxes/create" class="nav-link">입고등록</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        구매처별
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @foreach($sellers as $seller)
-                            <a class="dropdown-item" href="/boxes/{{ $seller->name }}">{{ $seller->name }}</a>
-                        @endforeach
-                        {{--<div class="dropdown-divider"></div>--}}
-                        {{--<a class="dropdown-item" href="#">Something else here</a>--}}
-                    </div>
                 </li>
             </ul>
 

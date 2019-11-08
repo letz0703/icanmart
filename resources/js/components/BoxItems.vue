@@ -3,7 +3,7 @@
         <ul>
         <div v-for="item in items">
             <li>
-            <span v-text="item.product_name+' '"></span><span v-text="item.quantity+'개'"></span>
+            <span v-text="item.description+' '"></span><span v-text="item.quantity+'개'"></span>
             </li>
         </div>
         </ul>
