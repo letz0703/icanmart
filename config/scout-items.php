@@ -16,7 +16,16 @@ return [
     |
     */
 
-    'searchableAttributes' => null,
+    'searchableAttributes' => [
+        'barcode',
+        'product_name',
+        'description',
+        'expire_date',
+        'channel',
+        'buy_price',
+        'sell_price',
+        'quantity',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +41,7 @@ return [
     |
     */
 
-    'customRanking' => null,
+    'customRanking' => ['desc(created_at)', 'desc(updated_at)'],
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +72,7 @@ return [
     |
     */
 
-    'disableTypoToleranceOnAttributes' => null,
+    'disableTypoToleranceOnAttributes' => ['barcode'],
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +88,7 @@ return [
     |
     */
 
-    'attributesForFaceting' => null,
+    'attributesForFaceting' => ['category_id'],
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +135,7 @@ return [
     |
     */
 
-    'queryLanguages' => null,
+    'queryLanguages' => ['kr', 'en'],
 
     /*
     |--------------------------------------------------------------------------

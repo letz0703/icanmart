@@ -30,9 +30,9 @@
                                             </button>
                                         </form>
                                     </div>
-                                    <div>
-                                        <a href="/items/create"><button type="text">Add Item</button></a>
-                                    </div>
+{{--                                    <div>--}}
+{{--                                        <a href="/items/create"><button type="text">Add Item</button></a>--}}
+{{--                                    </div>--}}
                                 @endcan
                             </div>
                         </div>

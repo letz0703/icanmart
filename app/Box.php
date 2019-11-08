@@ -32,7 +32,7 @@ class Box extends Model
     
     public function path()
     {
-        return "/boxes/{$this->seller->name}/{$this->slug}";
+        return "/boxes/{$this->seller->slug}/{$this->slug}";
     }
     
     public function creator()

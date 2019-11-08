@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="user">
-        <h2>Box Items</h2>
+        <h2>Add Items</h2>
         <hr>
         <new-item
                 :seller="sellerp"
