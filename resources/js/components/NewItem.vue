@@ -12,7 +12,9 @@
         <div class="form-group">
             <label for="barcode">Barcode:</label>
             <input ref="barcode"
-                   type="text" id="barcode" name="barcode" v-model="barcode">
+                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus
+                   required
+            >
         </div>
         <div class="form-group">
             <label for="product_name" required>Item Name:</label>
@@ -120,18 +122,17 @@
                     sell_price: this.sell_price,
                     expire_date: this.expireDate,
                 }).then(this.broadcast);
-                this.reset();
+                // this.reset();
                 this.$refs.barcode.focus();
             },
-            
+
             getData() {
                 // alert('hi');
-                var oldItems = axios.get('/items/', {
+                axios.get('/items/', {
                     params: {
                         barcode: this.barcode
                     }
                 }).then(({data}) => {
-                    // console.log(data);
                     if (data.length){
                         let latestOne = data[0];
                         // alert(latestOne.product_name);
@@ -141,17 +142,16 @@
                         this.buy_price = latestOne.buy_price;
                         this.sell_price = latestOne.sell_price;
                         // this.expireDate = latestOne.expireDate;
+                        console.log(data);
                     }
                 });
-
             },
-
-
 
             broadcast(){
                 let itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', itemAmount);
                 flash('added');
+                this.reset();
 
             },
             reset(){

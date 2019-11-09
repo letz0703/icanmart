@@ -26,7 +26,7 @@
     import collection from '../mixins/collection.vue';
 
     export default {
-        props: ['boxAmount', 'boxid', 'seller'],
+        props: ['boxAmount', 'boxId', 'seller'],
 
         components: { Item, NewItem },
 
@@ -41,7 +41,7 @@
                 dataSet: false,
                 itemAmount: this.boxAmount,
                 sellerp: this.seller,
-                boxidp: this.boxid,
+                boxidp: this.boxId,
                 endpoint: location.pathname,
                 user: window.App.user
             }
