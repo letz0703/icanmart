@@ -10456,7 +10456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['bamount', 'boxid', 'seller'],
+  props: ['boxAmount', 'boxid', 'seller'],
   components: {
     Item: _Item_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     NewItem: _NewItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -10468,7 +10468,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       dataSet: false,
-      boxAmount: this.bamount,
+      itemAmount: this.boxAmount,
       sellerp: this.seller,
       boxidp: this.boxid,
       endpoint: location.pathname,
@@ -10493,7 +10493,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fetch(this.dataSet.current_page);
       this.$emit('item-added', value);
     },
-    pass: function pass(itemAmount) {
+    uppass: function uppass(itemAmount) {
       //                this.boxAmount -= amount;
       //                this.fetch(this.dataSet.current_page);
       this.$emit('reduce', itemAmount); //                this.refresh;
@@ -10572,15 +10572,14 @@ __webpack_require__.r(__webpack_exports__);
   props: ['seller', 'boxid'],
   data: function data() {
     return {
-      seller_id: this.seller.id,
       box_id: this.boxid,
+      seller_id: this.seller.id,
       barcode: '',
       product_name: '',
       description: '',
       quantity: '',
       buy_price: '',
       sell_price: '',
-      itemAmount: '',
       expireDate: new Date().toISOString().slice(0, 10),
       signedIn: window.App.signedIn,
       oldItems: ''
@@ -10614,6 +10613,22 @@ __webpack_require__.r(__webpack_exports__);
   //     }
   // },
   methods: {
+    addItem: function addItem() {
+      axios.post(location.pathname + '/items', {
+        seller_id: this.seller.id,
+        box_id: this.boxid,
+        barcode: this.barcode,
+        user_id: window.App.user,
+        product_name: this.product_name,
+        description: this.description,
+        quantity: this.quantity,
+        buy_price: this.buy_price,
+        sell_price: this.sell_price,
+        expire_date: this.expireDate
+      }).then(this.broadcast);
+      this.reset();
+      this.$refs.barcode.focus();
+    },
     getData: function getData() {
       var _this = this;
 
@@ -10636,22 +10651,6 @@ __webpack_require__.r(__webpack_exports__);
           _this.sell_price = latestOne.sell_price; // this.expireDate = latestOne.expireDate;
         }
       });
-    },
-    addItem: function addItem() {
-      axios.post(location.pathname + '/items', {
-        seller_id: this.seller.id,
-        box_id: this.boxid,
-        barcode: this.barcode,
-        user_id: window.App.user,
-        product_name: this.product_name,
-        description: this.description,
-        quantity: this.quantity,
-        buy_price: this.buy_price,
-        sell_price: this.sell_price,
-        expire_date: this.expireDate
-      }).then(this.broadcast);
-      this.$refs.barcode.focus();
-      this.reset();
     },
     broadcast: function broadcast() {
       var itemAmount = this.quantity * this.buy_price;
@@ -91558,7 +91557,7 @@ var render = function() {
                 deleted: function($event) {
                   return _vm.remove(index)
                 },
-                "pass-item-amount": _vm.pass
+                "up-item-amount": _vm.uppass
               }
             })
           ],
@@ -91655,8 +91654,7 @@ var render = function() {
             rawName: "v-model",
             value: _vm.barcode,
             expression: "barcode"
-          },
-          { name: "focus", rawName: "v-focus" }
+          }
         ],
         ref: "barcode",
         attrs: { type: "text", id: "barcode", name: "barcode" },

@@ -13,7 +13,7 @@
         <h2>Items in the Box</h2>
         <hr>
         <div v-for="(item, index) in items" :key="item.id">
-            <item :data="item" class="mt-1" @deleted="remove(index)" @pass-item-amount="pass"></item>
+            <item :data="item" class="mt-1" @deleted="remove(index)" @up-item-amount="uppass"></item>
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>
@@ -26,7 +26,7 @@
     import collection from '../mixins/collection.vue';
 
     export default {
-        props: ['bamount', 'boxid', 'seller'],
+        props: ['boxAmount', 'boxid', 'seller'],
 
         components: { Item, NewItem },
 
@@ -39,7 +39,7 @@
         data() {
             return {
                 dataSet: false,
-                boxAmount: this.bamount,
+                itemAmount: this.boxAmount,
                 sellerp: this.seller,
                 boxidp: this.boxid,
                 endpoint: location.pathname,
@@ -68,7 +68,7 @@
                 this.$emit('item-added', value);
             },
 
-            pass(itemAmount){
+            uppass(itemAmount){
 //                this.boxAmount -= amount;
 //                this.fetch(this.dataSet.current_page);
                 this.$emit('reduce', itemAmount);

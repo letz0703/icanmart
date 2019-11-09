@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="barcode">Barcode:</label>
             <input ref="barcode"
-                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus>
+                   type="text" id="barcode" name="barcode" v-model="barcode">
         </div>
         <div class="form-group">
             <label for="product_name" required>Item Name:</label>
@@ -59,15 +59,14 @@
 
         data(){
             return {
-                seller_id: this.seller.id,
                 box_id: this.boxid,
+                seller_id: this.seller.id,
                 barcode: '',
                 product_name: '',
                 description: '',
                 quantity: '',
                 buy_price: '',
                 sell_price: '',
-                itemAmount: '',
                 expireDate: new Date().toISOString().slice(0,10),
                 signedIn: window.App.signedIn,
                 oldItems:'',
@@ -78,7 +77,7 @@
 
             barcode: function() {
                 // alert('hi');
-                this.getData();
+                    this.getData();
                 //     .then((oldItems)=>{
                 //     console.log(oldItems);
                 // });
@@ -108,6 +107,23 @@
 
 
         methods: {
+            addItem(){
+                axios.post(location.pathname + '/items', {
+                    seller_id: this.seller.id,
+                    box_id: this.boxid,
+                    barcode: this.barcode,
+                    user_id: window.App.user,
+                    product_name: this.product_name,
+                    description: this.description,
+                    quantity: this.quantity,
+                    buy_price: this.buy_price,
+                    sell_price: this.sell_price,
+                    expire_date: this.expireDate,
+                }).then(this.broadcast);
+                this.reset();
+                this.$refs.barcode.focus();
+            },
+            
             getData() {
                 // alert('hi');
                 var oldItems = axios.get('/items/', {
@@ -130,22 +146,7 @@
 
             },
 
-            addItem(){
-                axios.post(location.pathname + '/items', {
-                    seller_id: this.seller.id,
-                    box_id: this.boxid,
-                    barcode: this.barcode,
-                    user_id: window.App.user,
-                    product_name: this.product_name,
-                    description: this.description,
-                    quantity: this.quantity,
-                    buy_price: this.buy_price,
-                    sell_price: this.sell_price,
-                    expire_date: this.expireDate,
-                }).then(this.broadcast);
-                this.$refs.barcode.focus();
-                this.reset();
-            },
+
 
             broadcast(){
                 let itemAmount = this.quantity * this.buy_price;
