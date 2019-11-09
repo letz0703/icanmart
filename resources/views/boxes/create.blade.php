@@ -45,10 +45,10 @@
                                        required>
                             </div>
 
-                            <div class="form-group">
-                                <label for="amount">금액:</label>
-                                <input type="hidden" id="amount" name="amount" value=0>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="amount">금액:</label>--}}
+{{--                                <input type="hidden" id="amount" name="amount" value=0>--}}
+{{--                            </div>--}}
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="paid" id="paid" value=1 checked>
