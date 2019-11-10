@@ -10,22 +10,22 @@
                     <div class="card-body">
                         <form action="/boxes" method="POST">
                             @csrf
-                            <div class="form-group">
+                            <div class="control">
                                 <label for="writer">작성자: {{ auth()->user()->name }}</label>
                                 <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
                             </div>
-                            <div class="form-group">
-                                <input type="hidden" id="user_id" name="user_id" placeholder="User_id">
+                            <div>
+                                <input type="hidden" id="user_id" name="user_id">
                             </div>
 
                             <div class="form-group">
                                 <label for="seller_id">구입처 :</label>
-                                <select name="seller_id" id="seller_id" class="form-control" required>
+                                <select name="seller_id" id="seller_id" required>
                                     <option value="">선택</option>
                                     @foreach( $sellers as $seller )
                                         <option value="{{ $seller->id }}"
                                                 {{ old('seller_id') == $seller->id ? 'selected' : '' }}
-                                        >{{ $seller->name }}</option>
+                                        >{{ $seller->description }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,8 +41,7 @@
                             <div class="form-group">
                                 <label for="title">박스요약:</label>
                                 <input type="text" id="title" name="title"
-                                       value="{{ old('title') }}"
-                                       required>
+                                       value="{{ old('title') }}" required>
                             </div>
 
 {{--                            <div class="form-group">--}}

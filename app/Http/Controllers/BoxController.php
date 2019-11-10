@@ -57,11 +57,12 @@ class BoxController extends Controller
     }
     
     
-    public function store(Request $request)
+    public function store()
     {
-        $this->validate($request, [
+        $this->validate(request(), [
             'title'     => 'required',
             'seller_id' => 'required',
+            'description' => 'required'
         ]);
     
         $box = Box::create([
@@ -77,10 +78,6 @@ class BoxController extends Controller
         if (auth()->id() && auth()->id() !== request('user_id')){
             auth()->user()->notify(new BoxWasCreated($box));
         }
-        
-        //if ( notNullValue($box->items->count)) {
-        //    $box->update(['amount'=>$box->items->amount]);
-        //}
         
         return redirect($box->path())
             ->with('flash', 'Box Created');
