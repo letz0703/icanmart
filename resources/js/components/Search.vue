@@ -10,7 +10,7 @@
                         <ais-search-box class="searchbox" :autofocus="true"/>
 
 
-                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">
+<!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
                         <ais-refinement-list attribute="seller.name"></ais-refinement-list>
 
                         <ais-hits>

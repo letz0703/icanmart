@@ -62,7 +62,7 @@ class BoxController extends Controller
         $this->validate(request(), [
             'title'     => 'required',
             'seller_id' => 'required',
-            'description' => 'required'
+            'title' => 'required'
         ]);
     
         $box = Box::create([
