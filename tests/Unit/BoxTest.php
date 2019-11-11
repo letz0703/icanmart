@@ -67,7 +67,7 @@ class BoxtTest extends TestCase
     public function a_box_can_make_a_string_path()
     {
         $box = create('App\Box');
-        $this->assertEquals("/boxes/{$box->seller->name}/{$box->slug}", $box->path());
+        $this->assertEquals("/boxes/{$box->seller->slug}/{$box->slug}", $box->path());
     }
     
     /** @test */

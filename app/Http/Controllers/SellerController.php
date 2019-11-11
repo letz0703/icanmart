@@ -21,6 +21,9 @@ class SellerController extends Controller
         ]);
     }
     
+   
+    
+    
     public function store()
     {
         $data = request()->validate([
