@@ -70,6 +70,11 @@ Route::group([
     Route::post('sellers', 'SellerController@store')->name('admin.sellers.store');
     Route::get('sellers', 'SellerController@index')->name('admin.sellers.index');
     Route::get('sellers/create', 'SellerController@create')->name('admin.sellers.create');
+    Route::get('/sellers/{seller}/edit', 'SellerController@edit')
+         ->name('admin.sellers.edit');
+    Route::patch('/sellers/{seller}', 'SellerController@update')
+         ->name('admin.sellers.update');
+    
 });
 
 

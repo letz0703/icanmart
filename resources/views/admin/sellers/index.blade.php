@@ -11,6 +11,7 @@
             <th>Description</th>
             <th>phone</th>
             <th>Boxes</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +22,11 @@
                 <td>{{ $seller->description }}</td>
                 <td>{{ $seller->phone }}</td>
                 <td>{{ count($seller->boxes) }}</td>
+                <td>
+                    <a href="{{ route('admin.sellers.edit',$seller->slug) }}"
+                       class="btn btn-sm">Edit
+                    </a>
+                </td>
             </tr>
         @empty
             <tr>
