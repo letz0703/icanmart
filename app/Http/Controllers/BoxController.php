@@ -44,19 +44,6 @@ class BoxController extends Controller
         return view('boxes.show', compact('box'));
     }
     
-    public function destroy($seller, Box $box)
-    {
-        //$box->items()->delete();
-        $box->delete();
-        
-        if (request()->wantsJson()){
-            return response([], 204);
-        }
-        
-        return redirect('boxes');
-    }
-    
-    
     public function store()
     {
         $this->validate(request(), [
@@ -82,6 +69,19 @@ class BoxController extends Controller
         return redirect($box->path())
             ->with('flash', 'Box Created');
         
+    }
+    
+    
+    public function destroy($seller, Box $box)
+    {
+        //$box->items()->delete();
+        $box->delete();
+        
+        if (request()->wantsJson()){
+            return response([], 204);
+        }
+        
+        return redirect('boxes');
     }
     
     public function update($sellerName, Box $box)

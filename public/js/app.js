@@ -92184,7 +92184,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("ais-refinement-list", {
-                    attrs: { attribute: "seller.name" }
+                    attrs: { attribute: "sell_price" }
                   }),
                   _vm._v(" "),
                   _c("ais-hits", {

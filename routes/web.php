@@ -21,6 +21,9 @@ Route::get('/icanmart', function (){
     return view('icanmart');
 });
 
+Route::get('/tasks', 'TaskController@index');
+Route::post('/tasks', 'TaskController@store');
+
 Route::get('/icanmart-inline', function(){
     return view('icanmart-inline');
 });

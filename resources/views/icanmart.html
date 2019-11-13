@@ -40,7 +40,7 @@
                         <!--                        <h1 :class="className">{{ reversedTitle }}</h1>-->
                         <!--                        <p v-text="new Date()"></p>-->
                         <!--                        <h2>To Do</h2>-->
-                        <form class="form-group">
+                        <form class="form-group" method="post" action="/icanmart/tasks">
                             <input type="text" class="form-control" id="taskInput" v-model="taskInput">
                             <button type="submit" id="submit" @click="addTask">add</button>
                         </form>
