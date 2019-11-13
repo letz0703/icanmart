@@ -13,7 +13,7 @@ class SearchController extends Controller
     {
         //dd(request('query'));
         if (!request('query')){
-            $items = Item::all();
+            $items = Item::latest()->get();
         } else {
             $items = Item::search(request('query'))
                          ->get();
