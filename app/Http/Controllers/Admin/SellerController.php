@@ -18,7 +18,7 @@ class SellerController extends Controller
     
     public function create()
     {
-        return view('admin.sellers.create');
+        return view('admin.sellers.create', ['seller' => new Seller()]);
     }
     
     public function edit(Seller $seller)
