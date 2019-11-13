@@ -10549,7 +10549,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$emit('deleted', _this.data.id);
 
-        _this.$emit('pass-item-amount', _this.itemAmount);
+        _this.$emit('down-item-amount', _this.itemAmount);
       }); //                $(this.$el).fadeOut(100, () =>{
       //                console.log('changed',iamount);
       //                    window.location.reload();
@@ -10571,6 +10571,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewItem_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewItem.vue */ "./resources/js/components/NewItem.vue");
 /* harmony import */ var _Item_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Item.vue */ "./resources/js/components/Item.vue");
 /* harmony import */ var _mixins_collection_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/collection.vue */ "./resources/js/mixins/collection.vue");
+//
+//
+//
 //
 //
 //
@@ -91714,7 +91717,8 @@ var render = function() {
                 deleted: function($event) {
                   return _vm.remove(index)
                 },
-                "up-item-amount": _vm.uppass
+                "up-item-amount": _vm.uppass,
+                "down-item-amount": _vm.uppass
               }
             })
           ],

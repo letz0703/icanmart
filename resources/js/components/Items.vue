@@ -17,7 +17,10 @@
         <h2>Items in the Box</h2>
         <hr>
         <div v-for="(item, index) in items" :key="item.id">
-            <item :data="item" class="mt-1" @deleted="remove(index)" @up-item-amount="uppass"></item>
+            <item :data="item" class="mt-1" @deleted="remove(index)"
+                  @up-item-amount="uppass"
+                  @down-item-amount="uppass"
+            ></item>
         </div>
         <paginator :dataSet="dataSet" @updated="fetch"></paginator>
         <hr>

@@ -41,7 +41,7 @@
                     .then( () => {
                         flash('deleted');
                         this.$emit('deleted', this.data.id);
-                        this.$emit('pass-item-amount', this.itemAmount);
+                        this.$emit('down-item-amount', this.itemAmount);
                 });
 
 //                $(this.$el).fadeOut(100, () =>{
