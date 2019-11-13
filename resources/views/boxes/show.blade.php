@@ -30,9 +30,9 @@
                                             </button>
                                         </form>
                                     </div>
-{{--                                    <div>--}}
-{{--                                        <a href="/items/create"><button type="text">Add Item</button></a>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div>--}}
+                                    {{--                                        <a href="/items/create"><button type="text">Add Item</button></a>--}}
+                                    {{--                                    </div>--}}
                                 @endcan
                             </div>
                         </div>
@@ -41,8 +41,10 @@
                         {{--@include('boxes.form.itemForm')--}}
                         {{--</div>--}}
                         <div class="card-body">
-                            <items :box-amount="{{ $box->amount }}" :box-id="{{ $box->id }}" :seller="{{ $box->seller }}"
-                            @reduce="reduceBoxAmount" @item-added="addAmount"></items>
+                            <items :box-amount="{{ $box->amount }}" :box-id="{{ $box->id }}"
+                                   :seller="{{ $box->seller }}"
+                                   :box-locked="locked"
+                                   @reduce="reduceBoxAmount" @item-added="addAmount"></items>
 
                             {{--<h2>Box Items</h2>--}}
                             {{--<hr>--}}
@@ -75,6 +77,11 @@
                             <article>구입처 : {{ $box->seller->name }}</article>
                             <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
                             <p>아이템수: <span v-text="item_count"></span></p>
+                            <button class="btn btn-primary btn-sm ml-1"
+                                    :class="{ 'btn-danger':locked }"
+{{--                                    v-if="authorize('isAdmin')"--}}
+                                    @click="toggleLock" v-text="locked?'locked': 'Lock'">
+                            </button>
                         </div>
                     </div>
                 </div>

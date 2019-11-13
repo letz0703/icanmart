@@ -60,7 +60,7 @@ class BoxtTest extends TestCase
         $this->signIn();
         $box = factory('App\Box')->create();
         $this->post('/boxes', $box->toArray());
-        $this->assertEquals($box->path(), "/boxes/{$box->seller->name}/{$box->slug}");
+        $this->assertEquals($box->path(), "/boxes/{$box->seller->slug}/{$box->slug}");
     }
     
     /** @test */

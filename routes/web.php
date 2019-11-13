@@ -57,6 +57,13 @@ Route::post('/boxes/{seller}/{box}/items', 'ItemController@store')
 Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 
+// Locked Box
+Route::post('/locked-boxes/{thread}', 'LockedBoxController@store')
+     ->name('locked-box.store')->middleware('admin');
+Route::delete('/locked-boxes/{box}', 'LockedBoxController@destroy')
+     ->name('locked-box.destroy')->middleware('admin');
+
+
 Route::get('/barcode', 'BarcodeController@index');
 Route::get('/profiles/{user}', 'UserProfileController@show')->name('profile');
 Route::get('/profiles/{user}/notifications', 'NotificationController@index');

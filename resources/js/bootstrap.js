@@ -33,6 +33,19 @@ window.flash = function(message){
     window.events.$emit('flash', message);
 } // flash('메시지')
 
+let authorizations = require('./authorizations');
+Vue.prototype.authorize = function(...params){
+    if (! window.App.signedIn) return false;
+    if ( typeof params[0] === 'string'){
+        return authorizations[params[0]](params[1]);
+    }
+    return params[0](window.App.user);
+    // let user = window.App.user;
+    // return user ? handler(user) : false;
+};
+
+Vue.prototype.signedIn = window.App.signedIn;
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just

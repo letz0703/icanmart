@@ -34,9 +34,9 @@ class ItemController extends Controller
     
     public function store($sellerSlug, Box $box, Request $request)
     {
-        //if ($box->locked){
-        //    return response('This Box is locked', 422);
-        //}
+        if ($box->locked){
+            return response('This Box is locked', 422);
+        }
         
         $this->validate($request, [
             'product_name' => 'required',//'seller_id' => 'required|exists:sellers,id',

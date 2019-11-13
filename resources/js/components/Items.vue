@@ -1,14 +1,18 @@
 <template>
     <div>
         <div v-if="user">
-        <h2>Add Items</h2>
-        <hr>
-        <new-item
-                :seller="sellerp"
-                :boxid="boxidp"
-                @created="updateAmount"
-        ></new-item>
-        <hr>
+            <div v-if="!boxLocked">
+                <h2>Add Items</h2>
+                <hr>
+                <new-item
+                    :seller="sellerp"
+                    :boxid="boxidp"
+                    @created="updateAmount"
+
+                ></new-item>
+                <hr>
+            </div>
+
         </div>
         <h2>Items in the Box</h2>
         <hr>
@@ -26,53 +30,53 @@
     import collection from '../mixins/collection.vue';
 
     export default {
-        props: ['boxAmount', 'boxId', 'seller'],
+        props: ['boxAmount', 'boxId', 'seller', 'boxLocked'],
 
         components: { Item, NewItem },
 
         mixins: [collection],
 
-        created() {
+        created(){
             this.fetch();
         },
 
-        data() {
+        data(){
             return {
                 dataSet: false,
                 itemAmount: this.boxAmount,
                 sellerp: this.seller,
                 boxidp: this.boxId,
                 endpoint: location.pathname,
-                user: window.App.user
+                user: window.App.user,
             }
         },
 
         methods: {
-            fetch(page = 1) {
+            fetch(page = 1){
                 axios.get(this.url(page))
                      .then(this.refresh);
             },
 
-            url(page) {
+            url(page){
                 return location.pathname + '/items?page=' + page;
             },
 
-            refresh({ data }) {
+            refresh({ data }){
                 //                console.log(response);
                 this.dataSet = data;
                 this.items = data.data;
             },
 
-            updateAmount(value) {
+            updateAmount(value){
                 this.fetch(this.dataSet.current_page);
                 this.$emit('item-added', value);
             },
 
             uppass(itemAmount){
-//                this.boxAmount -= amount;
-//                this.fetch(this.dataSet.current_page);
+                //                this.boxAmount -= amount;
+                //                this.fetch(this.dataSet.current_page);
                 this.$emit('reduce', itemAmount);
-//                this.refresh;
+                //                this.refresh;
             },
 
 

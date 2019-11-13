@@ -2,7 +2,7 @@
     <div>
         <div class="level">
             <div class="flex">
-                <span v-text="item.product_name"></span>:
+                <span v-text="item.description"></span>:
                 <span v-text="item.quantity"></span>개 X
                 <span v-text="item.buy_price"></span>원 =
                 <span v-text="itemAmount"></span>원
