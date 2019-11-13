@@ -20,7 +20,7 @@
                 </div>
                 {{--                <div class="card">--}}
                 <div class="card-header">
-                    Items
+                    Newly Arrived Items
                 </div>
                 <div class="card-body">
                     <ul class="list-group">

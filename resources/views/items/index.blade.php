@@ -23,7 +23,7 @@
                                          class="mr-2"
                                     >
                                     <a href="{{ $item->path() }}" class="flex">
-                                        <h5>{{ $item->product_name }} ({{ $item->seller->name }}
+                                        <h5>{{ $item->slug }} ({{ $item->seller->name }}
                                             ) {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>
                                     </a>
                                     <div> 바코드 : {{ $item->barcode }} </div>

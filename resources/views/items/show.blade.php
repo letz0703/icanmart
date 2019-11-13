@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <article>
                         @if($item->seller)
-                        <h5>구입처: {{ $item->seller->name }}</h5>
+                        <h5>구입처: {{ $item->seller->description }}</h5>
                         @endif
                         <h5>판매가:
                             @if ($item->sell_price)
