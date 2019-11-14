@@ -11145,8 +11145,29 @@ __webpack_require__.r(__webpack_exports__);
   props: [],
   data: function data() {
     return {
-      showButton: false
+      product_name: '',
+      description: '',
+      quantity: '',
+      buy_price: '',
+      sell_price: '',
+      barcode: '',
+      showButton: false,
+      errors: {}
     };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      // alert('submitting');
+      axios.post('/items', this.$data).then(function (response) {
+        alert('success');
+        location.reload();
+      })["catch"](function (errors) {
+        return _this.errors = errors.response.data;
+      } // errors => console.log(errors.response.data)
+      );
+    }
   }
 });
 
