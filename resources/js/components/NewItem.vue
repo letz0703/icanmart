@@ -12,9 +12,10 @@
         <div class="form-group">
             <label for="barcode">Barcode:</label>
             <input ref="barcode"
-                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus
-                   required
-            >
+                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus>
+        </div>
+        <div v-if="barcode">
+            <span  v-text="'지난주문 : '+seller.description+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
         </div>
         <div class="form-group">
             <label for="product_name" required>Item Name:</label>
@@ -37,9 +38,9 @@
             <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
         </div>
         <div class="form-group">
-            <label>Expire Date: </label>
-            <input type="date" id="expire-data" name="expire-date" v-model="expireDate"
-            >
+            <label><span v-text="dateRemain"></span>: </label>
+            <input type="date" id="expire-data" name="expire-date" v-model="expireDate">
+
         </div>
 
         <div v-if="signedIn">
@@ -57,11 +58,11 @@
     // });
 
     export default {
-        props: ['seller', 'boxid'],
+        props: ['seller', 'boxId'],
 
         data(){
             return {
-                box_id: this.boxid,
+                box_id: this.boxId,
                 seller_id: this.seller.id,
                 barcode: '',
                 product_name: '',
@@ -72,6 +73,20 @@
                 expireDate: new Date().toISOString().slice(0,10),
                 signedIn: window.App.signedIn,
                 oldItems:'',
+                // oldItems:{},
+            }
+        },
+
+        computed: {
+            dateRemain() {
+                let exp = moment(this.expireDate);
+                let now = moment(new Date());
+                // let diff = now.to(exp);
+                let diff = exp.fromNow();
+                if (exp > now){
+                    return 'Expired ' + diff;
+                }
+                return '유통기한 지남';
             }
         },
 
@@ -113,6 +128,7 @@
                 axios.post(location.pathname + '/items', {
                     seller_id: this.seller.id,
                     box_id: this.boxid,
+                    box_id: this.boxId,
                     barcode: this.barcode,
                     user_id: window.App.user,
                     product_name: this.product_name,
@@ -141,7 +157,8 @@
                         this.quantity = latestOne.quantity;
                         this.buy_price = latestOne.buy_price;
                         this.sell_price = latestOne.sell_price;
-                        // this.expireDate = latestOne.expireDate;
+                        this.expireDate = moment(latestOne.expire_date).format('YYYY-MM-DD');
+                        this.createdAt = latestOne.created_at;
                         console.log(data);
                     }
                 });
@@ -162,7 +179,7 @@
                 this.buy_price = '';
                 this.sell_price = '';
                 this.itemAmount = '';
-                this.expire_date = new Date().toISOString().slice(0,10);
+                // this.expireDate = this.expireDate;
             },
 
         },
