@@ -2,12 +2,10 @@
     <div>
         <div class="form-group">
             <input type="hidden" id="seller_id" name="seller_id"
-                   v-model="seller_id"
-            >
+                   v-model="seller_id">
         </div>
         <div class="form-group">
-            <input type="hidden" id="box_id" name="box_id" v-model="box_id"
-            >
+            <input type="hidden" id="box_id" name="box_id" v-model="box_id">
         </div>
         <div class="form-group">
             <label for="barcode">Barcode:</label>
@@ -18,15 +16,15 @@
             <span  v-text="'지난주문 : '+seller.description+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
         </div>
         <div class="form-group">
-            <label for="product_name" required>Item Name:</label>
+            <label for="product_name">Item Name:</label>
             <input type="text" id="product_name" name="product_name" v-model="product_name">
         </div>
         <div class="form-group">
-            <label for="description" required>제품 설명:</label>
+            <label for="description">제품 설명:</label>
             <input type="text" id="description" name="description" v-model="description">
         </div>
         <div class="form-group">
-            <label for="quantity" required>수량:</label>
+            <label for="quantity">수량:</label>
             <input type="text" id="quantity" name="quantity" v-model="quantity"> 개
         </div>
         <div class="form-group">
@@ -71,8 +69,8 @@
                 buy_price: '',
                 sell_price: '',
                 expireDate: new Date().toISOString().slice(0,10),
+                createdAt: '',
                 signedIn: window.App.signedIn,
-                oldItems:'',
                 // oldItems:{},
             }
         },
@@ -100,6 +98,7 @@
                 // });
             }
         },
+
         directives: {
             focus: {
                 inserted: function(el){
@@ -127,7 +126,6 @@
             addItem(){
                 axios.post(location.pathname + '/items', {
                     seller_id: this.seller.id,
-                    box_id: this.boxid,
                     box_id: this.boxId,
                     barcode: this.barcode,
                     user_id: window.App.user,

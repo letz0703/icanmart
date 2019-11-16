@@ -16,7 +16,7 @@ class ItemReadTest extends TestCase
         $itemWithBarcode = factory('App\Item')->create(['barcode' => '1234']);
         $itemWithOtherBarcode = factory('App\Item')->create();
         //dd($itemWithBarcode);
-        $this->get('/items?barcode=1234')
+        $this->getJson('/items?barcode=1234')
              ->assertSee($itemWithBarcode->product_name)
              ->assertDontSee($itemWithOtherBarcode->product_name);
     }
