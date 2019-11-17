@@ -12,22 +12,22 @@ class BoxItemController extends Controller
         return $box->items()->paginate(20);
     }
     
-    /**
-     * @param          $sellerName
-     * @param \App\Box $box
-     *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
-    public function update($sellerName, Box $box)
-    {
-        if (request()->has('locked')){
-            if ( ! auth()->user()->isAdmin){
-                return response('', 403);
-            }
-            $box->lock();
-        }
-        $box->update(request(['amount', 'paid']));
-    }
+    ///**
+    // * @param          $sellerName
+    // * @param \App\Box $box
+    // *
+    // * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+    // */
+    //public function update($sellerName, Box $box)
+    //{
+    //    if (request()->has('locked')){
+    //        if ( ! auth()->user()->isAdmin){
+    //            return response('', 403);
+    //        }
+    //        $box->lock();
+    //    }
+    //    $box->update(request(['amount', 'paid']));
+    //}
     
     public function destroy($seller, Box $box, Item $item)
     {

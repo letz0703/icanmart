@@ -7,7 +7,7 @@
                 <span v-text="item.buy_price"></span>원 =
                 <span v-text="itemAmount"></span>원
             </div>
-            <div v-if="signedIn">
+            <div v-if="authorize('isAdmin')">
                 <button class="btn btn-danger btn-sm" @click="destroy">x</button>
             </div>
 
@@ -23,7 +23,7 @@
                 item: this.data,
                 seller_name: this.data.seller.name,
                 itemAmount: this.data.quantity * this.data.buy_price,
-                signedIn: window.App.signedIn
+                signedIn: window.App.signedIn,
             }
         },
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="user">
-            <div v-if="!boxLocked">
+            <div v-if="! boxLocked">
                 <h2>Add Items</h2>
                 <hr>
                 <new-item
@@ -51,6 +51,7 @@
                 boxidp: this.boxId,
                 endpoint: location.pathname,
                 user: window.App.user,
+                locked: this.boxLocked
             }
         },
 

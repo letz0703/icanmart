@@ -34,6 +34,17 @@ class ItemController extends Controller
         ]);
     }
     
+    public function update($sellerName, Box $box)
+    {
+        if (request()->has('locked')){
+            if ( ! auth()->user()->isAdmin){
+                return response('', 403);
+            }
+            $box->lock();
+        }
+        $box->update(request(['amount', 'paid','locked']));
+    }
+    
     public function store($sellerSlug, Box $box)
     {
         if ($box->locked){

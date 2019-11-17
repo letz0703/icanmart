@@ -39,6 +39,7 @@ $factory->state('App\User', 'unconfirmed', function (){
 
 $factory->state('App\User', 'administrator', function (){
     return [
+        'email' => "env('ADMIN_EMAIL')",
         'isAdmin' => true,
     ];
 });

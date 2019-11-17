@@ -15,14 +15,14 @@
                 item_count: this.data.items_count,
                 paid: this.data.paid,
                 locked: this.data.locked,
+                url: '/locked-boxes/'+this.data.slug
             }
         },
 
         methods: {
             toggleLock(){
-                let uri = `/locked-boxes/${this.data.slug}`;
-                axios[this.locked ? 'delete' : 'post'](uri);
-                this.locked = ! this.locked;
+                axios[this.locked ? 'delete' : 'post'](this.url);
+                this.locked = ! this.locked ;
             },
 
             addAmount(value){

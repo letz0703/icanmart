@@ -17,7 +17,7 @@ class LockBoxTest extends TestCase
         $this->patch($box->path(), [
             'locked' => true,
         ])->assertStatus(403);
-        $this->assertFalse($box->fresh()->locked);
+        $this->assertFalse(!! $box->fresh()->locked);
     }
     
     /** @test */
@@ -55,6 +55,27 @@ class LockBoxTest extends TestCase
         $response = $this->post($box->path() . '/items', $item->toArray());
         $response->assertStatus(422);
     }
+    
+    /** @test */
+    public function a_box_may_be_locked()
+    {
+        $box = create('App\Box');
+        $this->assertFalse($box->locked);
+    }
+    
+    /** @test */
+    public function once_locked_box_may_not_receive_any_item()
+    {
+        $this->withExceptionHandling();
+        $this->signIn();
+        $box = create('App\Box');
+        $box->lock();
+        $item = create('App\Item', ['box_id' => $box->id]);
+        $this->post($box->path().'/items',$item->toArray())
+            ->assertStatus(422);
+    }
+    
+    
     
     
 }

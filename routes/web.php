@@ -46,7 +46,7 @@ Route::get('/boxes', 'BoxController@index')->name('boxes');
 Route::get('/boxes/create', 'BoxController@create');
 Route::post('/boxes', 'BoxController@store');
 Route::patch('/boxes/{box}', 'BoxController@update');
-Route::patch('/boxes/{seller}/{box}', 'BoxItemController@update')
+Route::patch('/boxes/{seller}/{box}', 'ItemController@update')
      ->name('boxes.update');
 
 Route::get('/boxes/{seller}', 'BoxController@index');
@@ -61,7 +61,7 @@ Route::delete('/boxes/{seller}/{box}/{item}', 'BoxItemController@destroy');
 Route::patch('/boxes/{box}/payment', 'PaymentController@update');
 
 // Locked Box
-Route::post('/locked-boxes/{thread}', 'LockedBoxController@store')
+Route::post('/locked-boxes/{box}', 'LockedBoxController@store')
      ->name('locked-box.store')->middleware('admin');
 Route::delete('/locked-boxes/{box}', 'LockedBoxController@destroy')
      ->name('locked-box.destroy')->middleware('admin');

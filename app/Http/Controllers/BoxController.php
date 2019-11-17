@@ -88,6 +88,11 @@ class BoxController extends Controller
     {
         //$box->update(request(['paid','amount']));
         // $box->update(request()->toArray());
+        if ( request()->has('locked')){
+            if (! auth()->user()->isAmin()){
+               return response('',403);
+            }
+        }
         
         $box->update([
             'amount' => request('amount'),
