@@ -31,12 +31,13 @@ class SellerController extends Controller
         $data = request()->validate([
             'name'        => 'required',
             'description' => 'required',
+            'phone' => ''
         ]);
         
         //$seller = Seller::create($data + ['slug' => str_slug($data['name'])]);
         $seller = Seller::create($data + [
                 'slug' => $this->make_slug($data['name']),
-                'phone' => request('phone')
+                //'phone' => request('phone')
             ]);
         
         
