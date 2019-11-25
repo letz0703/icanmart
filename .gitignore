@@ -1,6 +1,6 @@
 /node_modules
 #/public/storage
-/public/js/app.js
+# /public/js/app.js
 /public/hot
 #/public/css/app.css
 /public/fonts -r
@@ -29,6 +29,4 @@ Thumbs.db
 *.cache
 resources/views/icanmart.html
 
-public/js/app.js
 
-public/js/app.js
