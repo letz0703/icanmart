@@ -1,8 +1,8 @@
 <template>
     <div>
         <form
-              @submit.prevent="onSubmit"
-              @keydown="form.errors.clear($event.target.name)"
+            @submit.prevent="onSubmit"
+            @keydown="form.errors.clear($event.target.name)"
         >
             <div class="form-group">
                 <label for="name">Seller Name:</label>
@@ -10,6 +10,12 @@
                 <span style="color:red;" v-text="form.errors.get('name')"
                       v-if="form.errors.has('name')"
                 ></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="slug" name="slug" v-model="form.slug">
+<!--                <span style="color:red;" v-text="form.errors.get('name')"-->
+<!--                      v-if="form.errors.has('name')"-->
+<!--                ></span>-->
             </div>
 
             <div class="form-group">
@@ -32,7 +38,9 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-sm btn-primary">Register Seller</button>
+                <button class="btn btn-sm btn-primary"
+                        :disabled="form.errors.any()">Register Seller
+                </button>
             </div>
         </form>
     </div>
@@ -50,12 +58,20 @@
             }
         }
 
+        any(){
+            return Object.keys(this.errors).length > 0;
+        }
+
+        has(filed){
+            return this.errors.hasOwnProperty(filed);
+        }
+
         record(errors){
             this.errors = errors.errors;
         }
 
         clear(field){
-            if (field) {
+            if (field){
                 delete this.errors[field];
                 return;
             }
@@ -63,9 +79,6 @@
             this.errors = {};
         }
 
-        has(filed){
-            return Object.keys(this.errors).length > 0;
-        }
     }
 
     class Form {
@@ -80,40 +93,56 @@
             this.errors = new Errors();
         }
 
-        data() {
-            let data = Object.assign({}, this);
-            delete data.originallData;
-            delete data.errors;
+        data(){
+            let data = {};
+            for (let property in this.originalData){
+                data[property] = this[property];
+            }
+            // let data = Object.assign({}, this);
+            // delete data.originalData;
+            // delete data.errors;
 
             return data;
         }
 
-        reset() {
-            for ( let field in this.originalData ){
+        reset(){
+            for (let field in this.originalData){
                 this[field] = ''
             }
 
+            this.errors.clear();
         }
 
         submit(requestType, url){
-            axios[requestType](url, this.data())
-                .then(this.onSuccess.bind(this))
-                .catch(this.onFail.bind(this));
+
+            return new Promise((resolve, reject) => {
+                axios[requestType](url, this.data())
+                // .then(this.onSuccess.bind(this))
+                    .then(response => {
+                        this.onSuccess(response.data);
+
+                        resolve(response.data);
+                    })
+                    // .catch(this.onFail.bind(this));
+                    .catch(error => {
+                        this.onFail(error.response.data);
+                        reject(error.response.data);
+                    });
+            });
         }
 
-        onSuccess( response ) {
-            console.log(response);
-            this.errors.clear();
+        onSuccess(data){
+            // console.log(response);
+            alert(data.message);
+
             this.reset();
         }
 
-        onFail(error) {
-            this.errors.record(error.response.data);
+        onFail(errors){
+            this.errors.record(errors);
         }
 
     }
-
-
 
     export default {
 
@@ -121,19 +150,21 @@
             return {
                 form: new Form({
                     name: '',
+                    slug: '',
                     description: '',
-                    phone: ''
+                    phone: '',
                 }),
                 endpoint: '/admin/sellers',
+                // }
             }
         },
 
         methods: {
             onSubmit(){
-                this.form.submit('post', this.endpoint);
-                    // .then(response => alert('Wow'));
+                this.form.submit('post', this.endpoint)
+                    .then(data => console.log(data))
+                    .catch(errors => console.log(errors));
             },
         },
-
     }
 </script>

@@ -28,3 +28,7 @@ Thumbs.db
 
 *.cache
 resources/views/icanmart.html
+
+public/js/app.js
+
+public/js/app.js
