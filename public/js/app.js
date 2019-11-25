@@ -11164,6 +11164,16 @@ function () {
       this.errors.clear();
     }
   }, {
+    key: "post",
+    value: function post(url) {
+      return this.submit('post', url);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(url) {
+      return this.submit('delete', url);
+    }
+  }, {
     key: "submit",
     value: function submit(requestType, url) {
       var _this = this;
@@ -11214,11 +11224,9 @@ function () {
   },
   methods: {
     onSubmit: function onSubmit() {
-      this.form.submit('post', this.endpoint).then(function (data) {
-        return console.log(data);
-      })["catch"](function (errors) {
-        return console.log(errors);
-      });
+      this.form["delete"](this.endpoint); // this.form.submit('post', this.endpoint)
+      //     .then(data => console.log(data))
+      //     .catch(errors => console.log(errors));
     }
   }
 });

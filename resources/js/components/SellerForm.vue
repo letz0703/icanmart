@@ -113,8 +113,15 @@
             this.errors.clear();
         }
 
-        submit(requestType, url){
+        post(url) {
+            return this.submit('post', url);
+        }
 
+        delete(url) {
+            return this.submit('delete', url);
+        }
+
+        submit(requestType, url){
             return new Promise((resolve, reject) => {
                 axios[requestType](url, this.data())
                 // .then(this.onSuccess.bind(this))
@@ -161,9 +168,10 @@
 
         methods: {
             onSubmit(){
-                this.form.submit('post', this.endpoint)
-                    .then(data => console.log(data))
-                    .catch(errors => console.log(errors));
+                this.form.delete(this.endpoint);
+                // this.form.submit('post', this.endpoint)
+                //     .then(data => console.log(data))
+                //     .catch(errors => console.log(errors));
             },
         },
     }
