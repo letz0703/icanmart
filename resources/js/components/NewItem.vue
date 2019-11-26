@@ -37,8 +37,9 @@
         </div>
         <div class="form-group">
             <label><span v-text="dateRemain"></span>: </label>
-            <input type="date" id="expire-data" name="expire-date" v-model="expireDate">
-
+            <input type="date" id="expire-data" name="expire-date" v-model="expireDate"
+                   ref="expire_date"
+            >
         </div>
 
         <div v-if="signedIn">
@@ -72,6 +73,7 @@
                 createdAt: '',
                 signedIn: window.App.signedIn,
                 // oldItems:{},
+
             }
         },
 
@@ -85,14 +87,14 @@
                     return 'Expired ' + diff;
                 }
                 return '유통기한 지남';
-            }
+            },
         },
 
         watch: {
-
             barcode: function() {
                 // alert('hi');
                     this.getData();
+                    this.$refs.expire_date.focus()
                 //     .then((oldItems)=>{
                 //     console.log(oldItems);
                 // });

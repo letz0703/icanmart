@@ -10712,6 +10712,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
  // Vue.filter('formatDate', function(value){
 //     if (value) {
 //         return moment(String(value)).format('yyyy-mm-dd')
@@ -10753,7 +10754,8 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     barcode: function barcode() {
       // alert('hi');
-      this.getData(); //     .then((oldItems)=>{
+      this.getData();
+      this.$refs.expire_date.focus(); //     .then((oldItems)=>{
       //     console.log(oldItems);
       // });
     }
@@ -92246,6 +92248,7 @@ var render = function() {
             expression: "expireDate"
           }
         ],
+        ref: "expire_date",
         attrs: { type: "date", id: "expire-data", name: "expire-date" },
         domProps: { value: _vm.expireDate },
         on: {
