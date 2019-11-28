@@ -94,7 +94,6 @@
             barcode: function() {
                 // alert('hi');
                     this.getData();
-                    this.$refs.expire_date.focus()
                 //     .then((oldItems)=>{
                 //     console.log(oldItems);
                 // });
