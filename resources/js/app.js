@@ -5,7 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
+import Vue from 'vue';
 require('./bootstrap');
 
 import Search from './components/Search.vue';

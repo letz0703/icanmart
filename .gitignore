@@ -28,5 +28,6 @@ Thumbs.db
 
 *.cache
 resources/views/icanmart.html
+/nova
 
 

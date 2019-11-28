@@ -16,7 +16,7 @@
         "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "teamtnt/laravel-scout-tntsearch-driver": "^7.2"
+        "laravel/nova": "~2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -52,6 +52,12 @@
         },
         "files":[ "tests/utilities/functions.php"]
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url" : "./nova"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
