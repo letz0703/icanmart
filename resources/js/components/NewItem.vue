@@ -12,6 +12,12 @@
             <input ref="barcode"
                    type="text" id="barcode" name="barcode" v-model="barcode" v-focus>
         </div>
+        <div class="form-group">
+            <label><span v-text="dateRemain"></span>: </label>
+            <input type="date" id="expire-data" name="expire-date" v-model="expireDate"
+                   ref="expire_date"
+            >
+        </div>
         <div v-if="barcode">
             <span  v-text="'지난주문 : '+seller.description+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
         </div>
@@ -35,13 +41,6 @@
             <label for="sell_price">판매가:</label>
             <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
         </div>
-        <div class="form-group">
-            <label><span v-text="dateRemain"></span>: </label>
-            <input type="date" id="expire-data" name="expire-date" v-model="expireDate"
-                   ref="expire_date"
-            >
-        </div>
-
         <div v-if="signedIn">
             <button type="submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
         </div>
