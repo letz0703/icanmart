@@ -8,21 +8,21 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Item extends Resource
+class Box extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Item';
+    public static $model = 'App\Box';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'product_name';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -30,7 +30,7 @@ class Item extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'product_name', 'barcode', 'description'
+        'id','title', 'arrived_at'
     ];
 
     /**
@@ -43,11 +43,9 @@ class Item extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('product name')->sortable(),
-            Trix::make('description'),
-            Text::make('buy_price'),
-            Text::make('sell_price'),
-            Text::make('box_id')->sortable(),
+            Text::make('Title')->sortable(),
+            Text::make('amount'),
+            Text::make('arrived_at')->sortable(),
         ];
     }
 

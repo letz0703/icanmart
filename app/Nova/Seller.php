@@ -5,24 +5,23 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Item extends Resource
+class Seller extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Item';
+    public static $model = 'App\Seller';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'product_name';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -30,7 +29,7 @@ class Item extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'product_name', 'barcode', 'description'
+        'id','name','slug','description'
     ];
 
     /**
@@ -43,11 +42,10 @@ class Item extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('product name')->sortable(),
-            Trix::make('description'),
-            Text::make('buy_price'),
-            Text::make('sell_price'),
-            Text::make('box_id')->sortable(),
+            Text::make('name'),
+            Text::make('description'),
+            Text::make('phone'),
+            
         ];
     }
 
