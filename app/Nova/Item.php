@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -43,8 +45,14 @@ class Item extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('product name')->sortable(),
-            Trix::make('description'),
+            Text::make('product name','product_name')->sortable(),
+            Trix::make('description','description'),
+            Text::make('barcode'),
+            Date::make('created_at'),
+            //Select::make('분류', 'category')->options([
+            //    'food' => 'Food',
+            //    'cigar' => 'Cigar'
+            //]),
             Text::make('buy_price'),
             Text::make('sell_price'),
             Text::make('box_id')->sortable(),

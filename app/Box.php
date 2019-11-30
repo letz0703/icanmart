@@ -13,6 +13,7 @@ class Box extends Model
     protected $with = ['seller', 'creator', 'items'];
     protected $appends = ['isPaid'];
     protected $casts= [
+        //'arrived_at' => 'date',
         'locked' => 'boolean'
     ];
     
