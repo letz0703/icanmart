@@ -1,4 +1,5 @@
 
+import Vue from 'vue';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,7 +7,7 @@
  */
 
 // window.Vue = require('vue');
-import Vue from 'vue';
+window.Vue = Vue;
 require('./bootstrap');
 
 import Search from './components/Search.vue';
