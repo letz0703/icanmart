@@ -52,11 +52,15 @@ class Box extends Resource
             BelongsTo::make('Seller'),
             HasMany::make('Items'),
     
-            Text::make('Title')->sortable(),
+            Text::make('Title')->sortable()->rules(['required']),
             Text::make('slug','slug')->onlyOnDetail(),
             Text::make('금액', 'amount'),
             Text::make('입고일', 'arrived_at')->sortable(),
-            Boolean::make('paid'),
+            Boolean::make('paid')->canSee(function($request){
+                return $request->user()->can('update', $this);
+                //return false;
+                
+            }),
         ];
     }
     
@@ -107,4 +111,10 @@ class Box extends Resource
     {
         return [];
     }
+    
+    public static function indexQuery(NovaRequest $request, $query )
+    {
+        return $query->where('user_id', $request->user()->id);
+    }
+    
 }

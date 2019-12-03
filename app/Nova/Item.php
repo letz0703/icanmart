@@ -45,10 +45,10 @@ class Item extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('product name','product_name')->sortable(),
-            Trix::make('description','description'),
+            Text::make('product name','product_name')->sortable()->rules(['required']),
+            Trix::make('description','description')->rules(['required']),
             Text::make('barcode'),
-            Date::make('created_at'),
+            Date::make('created_at')->rules(['required']),
             //Select::make('분류', 'category')->options([
             //    'food' => 'Food',
             //    'cigar' => 'Cigar'

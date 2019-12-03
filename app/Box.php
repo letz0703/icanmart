@@ -103,7 +103,7 @@ class Box extends Model
         $this->attributes['slug'] = $slug;
     }
    
-    function make_slug($string)
+    static function make_slug($string)
     {
         $slug = preg_replace('/\s+/u','-',trim($string));
         return $slug = str_slug($slug);

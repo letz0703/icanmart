@@ -42,10 +42,12 @@ class Seller extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name'),
-            Text::make('description'),
-            Text::make('phone'),
-            
+            Text::make('name')->rules(['required']),
+            Text::make('slug')->rules(['required']),
+            //Text::make('slug')->resolveUsing(function($name){
+            //    return \App\Box::make_slug($name);}),
+            Text::make('description')->rules(['required']),
+            Text::make('phone')->nullable(),
         ];
     }
 

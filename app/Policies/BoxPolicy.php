@@ -27,7 +27,7 @@ class BoxPolicy
      */
     public function view(User $user, Box $box)
     {
-        //
+        return $user->email === env('ADMIN_EMAIL');
     }
 
     /**
@@ -50,7 +50,8 @@ class BoxPolicy
      */
     public function update(User $user, Box $box)
     {
-        return $box->user_id == $user->id;
+        //return $box->user_id == $user->id;
+        return $user->isAdmin();
     }
     
     /**
@@ -62,7 +63,7 @@ class BoxPolicy
      */
     public function delete(User $user, Box $box)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
