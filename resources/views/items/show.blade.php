@@ -28,9 +28,11 @@
                 </div>
                 <div class="card-body">
                     <article>
+                        @can('update')
                         @if($item->seller)
                         <h5>구입처: {{ $item->seller->description }}</h5>
                         @endif
+                        @endcan
                         <h5>판매가:
                             @if ($item->sell_price)
                                 {{ $item->sell_price }} 원

@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/items', 'ItemController@index');
 Route::post('/items', 'ItemAddController@store');
-Route::get('/items/create', 'ItemController@create');
+Route::get('/items/create', 'ItemController@create')->middleware('auth');
 
 Route::get('/items/search', 'SearchController@show');
 Route::get('/items/{item}', 'ItemController@show');

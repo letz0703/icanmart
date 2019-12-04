@@ -112,10 +112,10 @@ class ItemController extends Controller
     
     function getItems(ItemFilters $filters)
     {
-        $items = Item::filter($filters)->latest();
+        $items = Item::filter($filters)->latest()->get();
         
         //dd($items->toSql());
-        return $items->get();
+        return $items;
     }
     
     //public function updateInventory($barcode, $quantity)

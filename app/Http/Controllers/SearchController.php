@@ -13,12 +13,11 @@ class SearchController extends Controller
     {
         //dd(request('query'));
         if (!request('query')){
-            $items = Item::latest()->get();
+            $items = Item::latest()->take(20)->get();
         } else {
             $items = Item::search(request('query'))
                          ->get();
         }
-        
         if (request()->wantsJson()){
             return $items;
         }

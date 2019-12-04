@@ -25,14 +25,17 @@
                 <div class="card-body">
                     <ul class="list-group">
                         @foreach($items as $item)
-{{--                            <a href="{{ url($item->path) }}">--}}
-                                <li class="list-group-item">
-                                    <a href="{{ url($item->path()) }}">
-                                        {{ $item->product_name }} {{ $item->sell_price }}[
+                            {{--                            <a href="{{ url($item->path) }}">--}}
+                            <li class="list-group-item">
+                                <a href="{{ url($item->path()) }}">
+                                    {{ $item->description }} / {{ $item->sell_price }}원
+                                    @can('update')
+                                        [
                                         <sup>{{ $item->buy_price }}</sup> ]
-                                    </a>
-                                </li>
-{{--                            </a>--}}
+                                    @endcan
+                                </a>
+                            </li>
+                            {{--                            </a>--}}
                         @endforeach
                     </ul>
                 </div>

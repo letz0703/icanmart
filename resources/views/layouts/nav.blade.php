@@ -13,11 +13,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 {{--<li class="nav-item">--}}
-                <li>
-                    <a class="nav-link" href="/items/create" >아이템 등록</a>
-                </li>
+
                 <li>
                     <a class="nav-link" href="/items/search">아이템 검색</a>
+                </li>
+                @can('update')
+                <li>
+                    <a class="nav-link" href="/items/create" >아이템 등록</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -44,6 +46,7 @@
                 <li>
                     <a href="/boxes/create" class="nav-link">입고등록</a>
                 </li>
+                    @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->

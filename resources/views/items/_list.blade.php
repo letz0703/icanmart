@@ -8,7 +8,7 @@
     @foreach($items as $item)
         <p>
             <a href="{{$item->path()}}">
-                {{ $item->product_name }} / 판매가 {{ $item->sell_price }}/
+                {{ $item->description }} / 판매가 {{ $item->sell_price }}/
                 입고일: {{ $item->created_at->format('Y-m-d') }}
             </a>
         </p>
