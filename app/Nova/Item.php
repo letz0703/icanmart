@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Scout\Searchable;
 
 class Item extends Resource
 {
@@ -24,8 +25,19 @@ class Item extends Resource
      *
      * @var string
      */
-    public static $title = 'product_name';
-
+    //public static $title = 'description';
+    public static $title = '';
+    public function title()
+    {
+        return $this->description.'-'.$this->buy_price
+               .'['.$this->sell_price.']';
+    }
+    public function subtitle()
+    {
+        return 'Seller:'.$this->seller->description;
+    }
+    
+    
     /**
      * The columns that should be searched.
      *
