@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
+use function factory;
 
 class SellerTest extends TestCase
 {
@@ -14,7 +15,7 @@ class SellerTest extends TestCase
     public function a_seller_has_many_boxes()
     {
         $seller = create('App\Seller');
-        $box = create('App\Box',[ 'seller_id'=>$seller->id]);
+        $box = create('App\Box', ['seller_id' => $seller->id]);
         //$response = $this->get('/boxes/'.$seller->name);
         $this->assertTrue($seller->boxes->contains($box));
     }
@@ -24,8 +25,8 @@ class SellerTest extends TestCase
     {
         $seller = create('App\Seller');
         $this->assertDatabaseHas('sellers', [
-            'name' => $seller->name,
-            'description' => $seller->description
+            'name'        => $seller->name,
+            'description' => $seller->description,
         ]);
     }
     
@@ -33,13 +34,12 @@ class SellerTest extends TestCase
     public function seller_has_description()
     {
         $seller = factory('App\Seller')->create([
-            'name' => '5',
+            'name'        => '5',
             'description' => 'good shop',
-            'phone' => '1234'
+            'phone'       => '1234',
         ]);
         
         $this->assertDatabaseHas('sellers', ['description' => $seller->description]);
     }
-    
     
 }

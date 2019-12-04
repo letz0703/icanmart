@@ -78,6 +78,7 @@ class SellerController extends Controller
         return redirect(route('admin.sellers.index'))
             ->with('flash', 'Seller has been updated');
     }
+    
     public function make_slug($string)
     {
         $slug = preg_replace('/\s+/u', '-', trim($string));

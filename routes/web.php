@@ -84,7 +84,6 @@ Route::group([
          ->name('admin.sellers.edit');
     Route::patch('/sellers/{seller}', 'SellerController@update')
          ->name('admin.sellers.update');
-    
 });
 
 

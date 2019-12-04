@@ -168,7 +168,7 @@
 
         methods: {
             onSubmit(){
-                this.form.delete(this.endpoint);
+                this.form.post(this.endpoint);
                 // this.form.submit('post', this.endpoint)
                 //     .then(data => console.log(data))
                 //     .catch(errors => console.log(errors));
