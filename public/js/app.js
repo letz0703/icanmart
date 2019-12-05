@@ -10727,6 +10727,7 @@ __webpack_require__.r(__webpack_exports__);
       barcode: '',
       product_name: '',
       description: '',
+      last_seller_name: '',
       quantity: '',
       buy_price: '',
       sell_price: '',
@@ -10810,6 +10811,7 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.product_name = latestOne.product_name;
           _this.description = latestOne.description;
+          _this.last_seller_name = latestOne.seller.name;
           _this.quantity = latestOne.quantity;
           _this.buy_price = latestOne.buy_price;
           _this.sell_price = latestOne.sell_price;
@@ -92120,7 +92122,7 @@ var render = function() {
             domProps: {
               textContent: _vm._s(
                 "지난주문 : " +
-                  _vm.seller.description +
+                  _vm.last_seller_name +
                   " : " +
                   _vm.createdAt +
                   " : " +

@@ -19,7 +19,7 @@
             >
         </div>
         <div v-if="barcode">
-            <span  v-text="'지난주문 : '+seller.description+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
+            <span  v-text="'지난주문 : '+last_seller_name+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
         </div>
         <div class="form-group">
             <label for="product_name">Item Name:</label>
@@ -65,6 +65,7 @@
                 barcode: '',
                 product_name: '',
                 description: '',
+                last_seller_name:'',
                 quantity: '',
                 buy_price: '',
                 sell_price: '',
@@ -152,6 +153,7 @@
                         // alert(latestOne.product_name);
                         this.product_name = latestOne.product_name;
                         this.description = latestOne.description;
+                        this.last_seller_name = latestOne.seller.name;
                         this.quantity = latestOne.quantity;
                         this.buy_price = latestOne.buy_price;
                         this.sell_price = latestOne.sell_price;
