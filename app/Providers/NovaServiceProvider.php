@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Nova\Metrics\BoxAmount;
+use App\Nova\Metrics\ItemsPerDay;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -58,6 +59,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new BoxAmount(),
+            new ItemsPerDay(),
             new Help,
         ];
     }
