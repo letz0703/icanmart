@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Nova\Metrics\BoxAmount;
 use App\Nova\Metrics\ItemsBySeller;
 use App\Nova\Metrics\ItemsPerDay;
+use Icanmart\Viewcache\Viewcache;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -29,6 +30,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function routes()
     {
+        // letz : 라우트가 캐쉬 되었을 경우
+        if ($this->app->routesAreCached()){
+            // letz: 이미 캐쉬되었다고 어떻게 알리지?
+            return ;
+        }
+        
         Nova::routes()
                 ->withAuthenticationRoutes()
                 ->withPasswordResetRoutes()
@@ -83,7 +90,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new Viewcache()
+        ];
     }
 
     /**
