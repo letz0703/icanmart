@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Nova\Metrics\BoxAmount;
 use App\Nova\Metrics\ItemsBySeller;
 use App\Nova\Metrics\ItemsPerDay;
+use Icanmart\NovaClock\NovaClock;
 use Icanmart\Viewcache\Viewcache;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
@@ -66,6 +67,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
+            (new NovaClock)->blink()->displaySeconds(),
             new BoxAmount(),
             new ItemsPerDay(),
             new ItemsBySeller(),
