@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Nova\Metrics\BoxAmount;
 use Icanmart\NovaClock\NovaClock;
+use Icanmart\StringLimit\StringLimit;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -53,8 +54,7 @@ class Box extends Resource
             ID::make()->sortable(),
             BelongsTo::make('Seller'),
             HasMany::make('Items'),
-    
-            Text::make('Title')->sortable()->rules(['required']),
+            StringLimit::make('Title')->sortable()->rules(['required'])->max(100),
             Text::make('slug','slug')->onlyOnDetail(),
             Text::make('금액', 'amount'),
             Text::make('입고일', 'arrived_at')->sortable(),

@@ -7,8 +7,12 @@
                 class="w-full form-control form-input form-input-bordered"
                 :class="errorClasses"
                 :placeholder="field.name"
+                :max="field.maxLength"
                 v-model="value"
             />
+            <p class="my-2 text-light">
+                {{ (field.maxLength - value.length)}} characters remaining.
+            </p>
         </template>
     </default-field>
 </template>

@@ -424,6 +424,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -10712,7 +10716,8 @@ var render = function() {
           attrs: {
             id: _vm.field.name,
             type: "text",
-            placeholder: _vm.field.name
+            placeholder: _vm.field.name,
+            max: _vm.field.maxLength
           },
           domProps: { value: _vm.value },
           on: {
@@ -10723,7 +10728,15 @@ var render = function() {
               _vm.value = $event.target.value
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "my-2 text-light" }, [
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.field.maxLength - _vm.value.length) +
+              " characters remaining.\n        "
+          )
+        ])
       ])
     ],
     2
