@@ -18,7 +18,8 @@
         "predis/predis": "^1.1",
         "laravel/nova": "~2.0",
         "icanmart/viewcache": "*",
-        "icanmart/nova-clock": "*"
+        "icanmart/nova-clock": "*",
+        "icanmart/string-limit": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -68,6 +69,10 @@
         {
             "type": "path",
             "url": "./nova-components/NovaClock"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/StringLimit"
         }
     ],
     "minimum-stability": "dev",
