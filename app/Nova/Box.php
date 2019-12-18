@@ -52,7 +52,7 @@ class Box extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Seller'),
+            BelongsTo::make('Seller')->sortable(),
             HasMany::make('Items'),
             StringLimit::make('Title')->sortable()->rules(['required'])->max(100),
             Text::make('slug','slug')->onlyOnDetail(),
