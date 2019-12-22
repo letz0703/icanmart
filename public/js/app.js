@@ -10532,6 +10532,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -15436,7 +15439,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*body {*/\n/*    font-family: sans-serif;*/\n/*    padding: 1em;*/\n/*}*/\n.ais-Highlight-highlighted {\n    background: yellowgreen;\n    font-style: normal;\n}\n\n/*.header {*/\n/*    display: flex;*/\n/*    align-items: center;*/\n/*    min-height: 50px;*/\n/*    padding: 0.5rem 1rem;*/\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n/*    color: #fff;*/\n/*    margin-bottom: 1rem;*/\n/*}*/\n\n/*.header a {*/\n/*    color: #fff;*/\n/*    text-decoration: none;*/\n/*}*/\n\n/*.header-title {*/\n/*    font-size: 1.2rem;*/\n/*    font-weight: normal;*/\n/*}*/\n\n/*.header-title::after {*/\n/*    content: ' ▸ ';*/\n/*    padding: 0 0.5rem;*/\n/*}*/\n\n/*.header-subtitle {*/\n/*    font-size: 1.2rem;*/\n/*}*/\n\n/*.container {*/\n/*    max-width: 1200px;*/\n/*    margin: 0 auto;*/\n/*    padding: 1rem;*/\n/*}*/\n.search-panel {\n    display: flex;\n}\n.search-panel__filters {\n    flex: 1;\n    margin-right: 1em;\n}\n.search-panel__results {\n    flex: 3;\n}\n.searchbox {\n    margin-bottom: 2rem;\n}\n.pagination {\n    margin: 2rem auto;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*body {*/\n/*    font-family: sans-serif;*/\n/*    padding: 1em;*/\n/*}*/\n.ais-Highlight-highlighted {\n    background: yellowgreen;\n    font-style: normal;\n}\n\n/*.header {*/\n/*    display: flex;*/\n/*    align-items: center;*/\n/*    min-height: 50px;*/\n/*    padding: 0.5rem 1rem;*/\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n/*    color: #fff;*/\n/*    margin-bottom: 1rem;*/\n/*}*/\n\n/*.header a {*/\n/*    color: #fff;*/\n/*    text-decoration: none;*/\n/*}*/\n\n/*.header-title {*/\n/*    font-size: 1.2rem;*/\n/*    font-weight: normal;*/\n/*}*/\n\n/*.header-title::after {*/\n/*    content: ' ▸ ';*/\n/*    padding: 0 0.5rem;*/\n/*}*/\n\n/*.header-subtitle {*/\n/*    font-size: 1.2rem;*/\n/*}*/\n\n/*.container {*/\n/*    max-width: 1200px;*/\n/*    margin: 0 auto;*/\n/*    padding: 1rem;*/\n/*}*/\n.search-panel {\n    display: flex;\n}\n.search-panel__filters {\n    flex: 1;\n    margin-right: 1em;\n}\n.search-panel__results {\n    flex: 3;\n}\n.searchbox {\n    margin-bottom: 2rem;\n}\n.pagination {\n    margin: 2rem auto;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -91560,10 +91563,6 @@ var render = function() {
                     attrs: { autofocus: true }
                   }),
                   _vm._v(" "),
-                  _c("ais-refinement-list", {
-                    attrs: { attribute: "sell_price" }
-                  }),
-                  _vm._v(" "),
                   _c("ais-hits", {
                     scopedSlots: _vm._u([
                       {
@@ -91583,7 +91582,19 @@ var render = function() {
                                 })
                               ],
                               1
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("p", {
+                              domProps: {
+                                textContent: _vm._s(item.sell_price + "원")
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("p", {
+                              domProps: {
+                                textContent: _vm._s(item.description)
+                              }
+                            })
                           ])
                         }
                       }

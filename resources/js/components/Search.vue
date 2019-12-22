@@ -11,13 +11,16 @@
 
 
 <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
-                        <ais-refinement-list attribute="sell_price"></ais-refinement-list>
+<!--                        <ais-refinement-list attribute="sell_price">-->
+<!--                        </ais-refinement-list>-->
 
                         <ais-hits>
                             <div slot="item" slot-scope="{ item }">
                                 <a :href="'/items/'+item.id">
                                     <ais-highlight :hit="item" attribute="product_name"/>
                                 </a>
+                                <p v-text="item.sell_price+'원'"></p>
+                                <p v-text="item.description"></p>
                             </div>
                         </ais-hits>
 
