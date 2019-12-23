@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">
+    {{--    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">--}}
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <style>
         html, body {
             background-color: #fff;
@@ -47,13 +49,14 @@
 
         .title {
             font-size: 84px;
+            font-weight: 400;
         }
 
         .links > a {
             color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
+            padding: 1em 1em;
+            font-size: 1.2em;
+            font-weight: 300;
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
@@ -81,7 +84,7 @@
     @endif
 
     <div class="content">
-        <div class="title m-b-md">
+        <div class="title">
             {{ env('APP_NAME') }}
         </div>
         <div class="links">
@@ -91,8 +94,27 @@
                 <a href="items/create">아이템등록</a>
             @endcan
         </div>
-
+        <div class="container">
+            <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="https://placeimg.com/640/480/any">
+                </div>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="https://placeimg.com/640/480/any2">
+                </div>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="https://placeimg.com/640/480/any3">
+                </div>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="https://placeimg.com/640/480/any4">
+                </div>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="https://placeimg.com/640/480/any5">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>
 </html>
