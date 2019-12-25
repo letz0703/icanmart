@@ -19,12 +19,16 @@
                         @foreach($items as $item)
                             <article>
                                 <div class="level">
-                                    <img src="{{ $item->image_path }}" width="40" height="40"
-                                         class="mr-2"
-                                    >
+{{--                                    <img src="{{ $item->image_path }}" width="40" height="40"--}}
+{{--                                         class="mr-2"--}}
+{{--                                    >--}}
                                     <a href="{{ $item->path() }}" class="flex">
-                                        <h5>{{ $item->slug }} ({{ $item->seller->name }}
-                                            ) {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>
+                                        <h5>
+                                            {{ $item->description }}
+                                            @if ( $item->seller)
+                                            ({{ $item->seller->name }})
+                                            @endif
+                                            {{ $item->created_at->format('Y-m-d H:i:s' ) }}</h5>
                                     </a>
                                     <div> 바코드 : {{ $item->barcode }} </div>
 

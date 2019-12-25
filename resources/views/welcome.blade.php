@@ -95,21 +95,21 @@
             @endcan
         </div>
         <div class="container">
-            <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+            <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
                 <div class="carousel-cell" style="width:640px; height:400px">
                     <img src="https://placeimg.com/640/480/any">
                 </div>
                 <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any2">
+                    <img src="https://placeimg.com/640/480/any?2">
                 </div>
                 <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any3">
+                    <img src="https://placeimg.com/640/480/any?3">
                 </div>
                 <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any4">
+                    <img src="https://placeimg.com/640/480/any?4">
                 </div>
                 <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any5">
+                    <img src="https://placeimg.com/640/480/any?5">
                 </div>
             </div>
         </div>

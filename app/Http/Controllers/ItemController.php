@@ -10,30 +10,30 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth')->only(['store', 'destroy']);
     }
-    
+
     public function index(ItemFilters $filters)
     {
         $items = $this->getItems($filters);
-        
+
         if (request()->wantsJson()){
             return $items;
         }
-        
+
         return view('items.index', compact('items'));
     }
-    
+
     public function create()
     {
         return view('items.create', [
             'items' => Item::latest()->get()
         ]);
     }
-    
+
     public function update($sellerName, Box $box)
     {
         if (request()->has('locked')){
@@ -44,13 +44,13 @@ class ItemController extends Controller
         }
         $box->update(request(['amount', 'paid','locked']));
     }
-    
+
     public function store($sellerSlug, Box $box)
     {
         if ($box->locked){
             return response('This Box is locked', 422);
         }
-        
+
         $this->validate(request(), [
             'product_name' => 'required',
             'description' => 'required',
@@ -58,9 +58,9 @@ class ItemController extends Controller
             'sell_price' => 'required',
             'barcode' => 'required',
         ]);
-        
+
         $sellerId = request('seller_id');
-        
+
         $item = Item::forceCreate([
             'seller_id'    => $sellerId ? : $sellerId,
             'box_id'       => request('box_id') ? : null,
@@ -74,32 +74,32 @@ class ItemController extends Controller
             'buy_price'    => request('buy_price')? : 0,
             'sell_price'   => request('sell_price') ? : 0,
         ]);
-        
+
         if ($item->barcodeExist($item)){
             $item->updateInventoryQuantity($item);
         }
-        
+
         else {
             $item->addInventory($item);
         }
-        
+
         if (request()->expectsJson()){
             return $item;
         }
-        
+
         //return redirect($item->path(), [ 'message' => 'Item Created']);
         return ['message' => 'Item Created'];
-        
+
     }
-    
+
     public function show(Item $item)
     {
         //$seller = $item->seller;
         //return view('items.show', compact('item', 'seller'));
-        
+
         return view('items.show', compact('item'));
     }
-    
+
     public function destroy(Item $item)
     {
         //$this->authorize('update', $item);
@@ -109,15 +109,15 @@ class ItemController extends Controller
         $item->delete();
         return back();
     }
-    
+
     function getItems(ItemFilters $filters)
     {
         $items = Item::filter($filters)->latest()->get();
-        
+
         //dd($items->toSql());
         return $items;
     }
-    
+
     //public function updateInventory($barcode, $quantity)
     //{
     //    $item = Item::where('barcode',$barcode)->first();
@@ -134,6 +134,6 @@ class ItemController extends Controller
     //
     //
     //}
-    
-    
+
+
 }
