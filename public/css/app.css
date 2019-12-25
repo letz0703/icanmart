@@ -10649,10 +10649,45 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.flickity-slider {
+.ais-Hits-item,
+.ais-InfiniteHits-item,
+.ais-InfiniteResults-item,
+.ais-Results-item {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  padding: 1rem;
+  width: calc(100% - 1rem);
+  border: 1px solid #c4c8d8;
+  box-shadow: 0 2px 5px 0 #e3e5ec;
+}
+
+/* carousel height, as percentage of width */
+
+/* viewport inherit size from carousel */
+
+.carousel .flickity-viewport {
   position: absolute;
   width: 100%;
+}
+
+.carousel-cell {
+  width: 100%;
+  /* full width */
   height: 100%;
-  margin-top: 20px;
+  /* height of carousel */
+  margin-right: 10px;
+}
+
+.flickity-page-dots {
+  bottom: -22px;
+}
+
+/* dots are lines  안되는데?*/
+
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
 }
 

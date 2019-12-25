@@ -1,6 +1,18 @@
 <template>
-    <div>
-        <div class="container">
+    <div align="center">
+        <carousel style="height:300px;">
+            <div class="carousel-cell" height="300px">
+                <img src="https://placeimg.com/640/480/any">
+            </div>
+            <div class="carousel-cell" height="300px">
+                <img src="https://placeimg.com/640/480/any2">
+            </div>
+            <div class="carousel-cell" height="300px">
+                <img src="https://placeimg.com/640/480/any3">
+            </div>
+        </carousel>
+
+        <div class="content" style="padding-top:3em">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
             >
@@ -10,17 +22,20 @@
                         <ais-search-box class="searchbox" :autofocus="true"/>
 
 
-<!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
-<!--                        <ais-refinement-list attribute="sell_price">-->
-<!--                        </ais-refinement-list>-->
+                        <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
+                        <!--                        <ais-refinement-list attribute="sell_price">-->
+                        <!--                        </ais-refinement-list>-->
 
                         <ais-hits>
                             <div slot="item" slot-scope="{ item }">
+<!--                                <li v-for="item in items" :key="item.objectID">-->
+<!--                                   {{ item.product_name}}-->
+<!--                                </li>-->
                                 <a :href="'/items/'+item.id">
-                                    <ais-highlight :hit="item" attribute="product_name"/>
+                                    <ais-highlight :hit="item" attribute="description"/>
                                 </a>
-                                <p v-text="item.sell_price+'원'"></p>
-                                <p v-text="item.description"></p>
+                                <div v-text="item.sell_price+'원'"></div>
+                                <div v-text="item.product_name"></div>
                             </div>
                         </ais-hits>
 
@@ -37,15 +52,15 @@
 <script>
     import algoliasearch from 'algoliasearch/lite';
     import 'instantsearch.css/themes/algolia-min.css';
-    import { history as historyRouter } from "instantsearch.js/es/lib/routers";
-    import { simple as simpleMapping } from "instantsearch.js/es/lib/stateMappings";
+    import {history as historyRouter} from "instantsearch.js/es/lib/routers";
+    import {simple as simpleMapping} from "instantsearch.js/es/lib/stateMappings";
 
     export default {
         data(){
             return {
                 searchClient: algoliasearch(
                     'CZTU4RVSA8',
-                    'c9905bef620ad999d54c71f4d95c0e04'
+                    'c9905bef620ad999d54c71f4d95c0e04',
                     // env('ALGOLIA_APP_ID'),
                     // env('ALGOLIA_KEY')
 
