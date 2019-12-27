@@ -18,51 +18,54 @@
                     <a class="nav-link" href="/items/search">아이템 검색</a>
                 </li>
                 @can('update')
-                <li>
-                    <a class="nav-link" href="/items/create" >아이템 등록</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        입고리스트
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="nav-link" href="/boxes">전체</a>
+                    <li>
+                        <a class="nav-link" href="/items/create">아이템 등록</a>
+                    </li>
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            구매처별
+                            입고리스트
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach($sellers as $seller)
-                                <a class="dropdown-item" href="/boxes/{{ $seller->slug }}">{{ $seller->description }}</a>
-                            @endforeach
-                            {{--<div class="dropdown-divider"></div>--}}
-                            {{--<a class="dropdown-item" href="#">Something else here</a>--}}
+                            <a class="nav-link" href="/boxes">전체</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                구매처별
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($sellers as $seller)
+                                    <a class="dropdown-item"
+                                       href="/boxes/{{ $seller->slug }}">{{ $seller->description }}</a>
+                                @endforeach
+                                {{--<div class="dropdown-divider"></div>--}}
+                                {{--<a class="dropdown-item" href="#">Something else here</a>--}}
+                            </div>
                         </div>
-                    </div>
 
-                </li>
-                </li>
-                <li>
-                    <a href="/boxes/create" class="nav-link">입고등록</a>
-                </li>
-                    @endcan
+                    <li>
+                        <a href="/boxes/create" class="nav-link">입고등록</a>
+                    </li>
+                    <li>
+                        <menu-dropdown></menu-dropdown>
+                    </li>
+
+                @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
                 @else
-{{--                    <user-notifications></user-notifications>--}}
+                    {{--                    <user-notifications></user-notifications>--}}
                     @if (auth()->user()->isAdmin)
                         <li><a href="{{route('admin.sellers.index')}}"><sup>admin board</sup></a></li>
                     @endif
@@ -86,8 +89,10 @@
                             </form>
                         </div>
                     </li>
-                    @endguest
+                @endguest
             </ul>
         </div>
+
     </div>
 </nav>
+
