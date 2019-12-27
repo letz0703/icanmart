@@ -3,8 +3,8 @@
         <a href="/nova"
            class="block md:px-3 md:flex-1 uppercase font-bold
            hover:text-white-50% pb-0 py-2"
-           @mouseover="active=true">
-<!--           @mouseout="active=false"-->
+           @mouseover="active=true"
+           @mouseout="active=false">
           Nova</a>
         <portal to="nav-after"><div v-show="active"
                  class="absolute w-full z-10 bg-red-500"

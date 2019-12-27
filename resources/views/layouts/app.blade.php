@@ -24,6 +24,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ic.css') }}" rel="stylesheet">
     <style>
         body {
             padding-bottom: 100px;
