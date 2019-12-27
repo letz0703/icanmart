@@ -12,8 +12,10 @@ require('./bootstrap');
 
 import Search from './components/Search.vue';
 import InstantSearch from 'vue-instantsearch';
-
 Vue.use(InstantSearch);
+
+import PortalVue from 'portal-vue';
+Vue.use(PortalVue);
 
 Vue.directive('focus', {
     inserted: function(el){
