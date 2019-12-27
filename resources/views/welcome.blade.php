@@ -87,6 +87,7 @@
         <div class="title">
             {{ env('APP_NAME') }}
         </div>
+        <div class="bg-blue-500 text-white">hello</div>
         <div class="links">
             <a href="items/search">제품검색</a>
             @can('update')
