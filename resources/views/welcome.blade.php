@@ -48,8 +48,8 @@
         }
 
         .title {
-            font-size: 84px;
-            font-weight: 400;
+            font-size: 4em;
+            font-weight: 200;
         }
 
         .links > a {
@@ -83,12 +83,11 @@
         </div>
     @endif
 
-    <div class="content">
+    <div class="content" style="width:640px">
         <div class="title">
             {{ env('APP_NAME') }}
         </div>
-        <div class="bg-blue-500 text-white">hello</div>
-        <div class="links">
+        <div class="links mb-3">
             <a href="items/search">제품검색</a>
             @can('update')
                 <a href="boxes/create">입고등록</a>
