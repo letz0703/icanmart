@@ -10257,11 +10257,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
@@ -95766,7 +95761,7 @@ var render = function() {
         "a",
         {
           staticClass:
-            "block md:px-3 md:flex-1 uppercase font-bold\n       hover:text-white-50% pb-0 py-2",
+            "block md:px-3 md:flex-1 uppercase font-bold\n           hover:text-white-50% pb-0 py-2",
           attrs: { href: "/nova" },
           on: {
             mouseover: function($event) {
@@ -95774,7 +95769,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        Nova")]
+        [_vm._v("\n          Nova")]
       ),
       _vm._v(" "),
       _c("portal", { attrs: { to: "nav-after" } }, [
@@ -95801,7 +95796,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "container mx-auto py-8" }, [
-              _vm._v("\n                hello\n            ")
+              _vm._v("hello")
             ])
           ]
         )

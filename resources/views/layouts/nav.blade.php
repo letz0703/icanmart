@@ -92,7 +92,6 @@
                 @endguest
             </ul>
         </div>
-
     </div>
 </nav>
 <portal-target name="nav-after"></portal-target>
