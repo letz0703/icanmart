@@ -16,7 +16,7 @@ App::setLocale('kr');
 Route::get('/', function (){
     return view('welcome');
 });
-
+Route::get('/api/sellers','SellerController@index');
 Route::get('/icanmart', function (){
     return view('icanmart');
 });

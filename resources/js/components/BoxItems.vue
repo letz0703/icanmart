@@ -2,8 +2,13 @@
     <div>
         <ul>
         <div v-for="item in items">
-            <li>
-            <span v-text="item.description+' '"></span><span v-text="item.quantity+'개'"></span>
+            <li style="margin:0.4em 0.2em 0.2em 1em;">
+            <span v-text="item.description+' '"></span>
+                <span v-text="item.quantity+'개'"></span>
+                <span  v-text="'x '+item.buy_price+'='"></span>
+            <span v-text="itemAmount(item)"
+            style="color: #3391e1;"
+            ></span>
             </li>
         </div>
         </ul>
@@ -15,7 +20,14 @@
         props: ['items'],
 
         data() {
-            return {}
+            return {
+                // item: {},
+            }
+        },
+        methods:{
+            itemAmount(item){
+                return item.buy_price*item.quantity;
+            }
         }
     }
 </script>

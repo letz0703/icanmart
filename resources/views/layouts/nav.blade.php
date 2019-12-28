@@ -42,11 +42,15 @@
                             </div>
                         </div>
 
-                    <li>
-                        <a href="/boxes/create" class="nav-link">입고등록</a>
-                    </li>
+
                     <li>
                         <menu-dropdown></menu-dropdown>
+                    </li>
+                    <li>
+                        <menu-boxdropdown></menu-boxdropdown>
+                    </li>
+                    <li>
+                        <a href="/boxes/create" class="nav-link">입고등록</a>
                     </li>
 
                 @endcan
@@ -95,4 +99,5 @@
     </div>
 </nav>
 <portal-target name="nav-after"></portal-target>
+<portal-target name="nova"></portal-target>
 
