@@ -59,7 +59,7 @@
                             {{--@endforeach--}}
                             {{--<hr>--}}
                             {{--<div class="level">--}}
-                            <h4 class="flex">합계금액: <span v-text="boxAmount"></span></h4>
+                            <h4 class="flex pt-4">합계금액: <span v-text="boxAmount"></span>원</h4>
                             {{--<h4 class="flex">합계금액: {{ $box->amount  }}원</h4>--}}
                             {{--<box-amount  inline-template :attributes="{{ $box }}">--}}
                             {{--<button class="btn btn-info" @click="update">post</button>--}}
