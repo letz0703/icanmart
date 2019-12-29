@@ -2,14 +2,14 @@
     <div align="center">
         <carousel style="height:300px;">
             <div class="carousel-cell" height="300px">
-                <img src="https://placeimg.com/640/480/any">
+                <img src="/images/carousel-img-blendy.jpg" height="300" width="640"/>
             </div>
-            <div class="carousel-cell" height="300px">
-                <img src="https://placeimg.com/640/480/any2">
-            </div>
-            <div class="carousel-cell" height="300px">
-                <img src="https://placeimg.com/640/480/any3">
-            </div>
+<!--            <div class="carousel-cell" height="300px">-->
+<!--                <img src="https://placeimg.com/640/480/any2">-->
+<!--            </div>-->
+<!--            <div class="carousel-cell" height="300px">-->
+<!--                <img src="https://placeimg.com/640/480/any3">-->
+<!--            </div>-->
         </carousel>
 
         <div class="content" style="padding-top:3em">

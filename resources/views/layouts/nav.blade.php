@@ -98,6 +98,6 @@
         </div>
     </div>
 </nav>
-<portal-target name="nav-after"></portal-target>
-<portal-target name="nova"></portal-target>
+<portal-target name="nav-after" slim></portal-target>
+<portal-target name="nova" slim></portal-target>
 
