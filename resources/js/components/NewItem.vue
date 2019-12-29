@@ -41,7 +41,7 @@
             <label for="sell_price">판매가:</label>
             <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
         </div>
-        <div v-if="signedIn">
+        <div v-if="signedIn" class="pb-2">
             <button type="submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
         </div>
     </div>

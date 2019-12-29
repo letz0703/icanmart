@@ -96248,7 +96248,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _vm.signedIn
-      ? _c("div", [
+      ? _c("div", { staticClass: "pb-2" }, [
           _c(
             "button",
             {

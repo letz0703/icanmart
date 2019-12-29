@@ -87,12 +87,12 @@
         <div class="flex-1 text-2xl mb-22">
             {{ env('APP_NAME') }}
         </div>
-        <div class="container">
+        <div class="container" style="width:640px;height:300px;">
             <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
                 <div class="carousel-cell" style="width:640px; height:300px">
                     <img src="/images/carousel.jpg">
                 </div>
-                <div class="carousel-cell" style="width:640px; height:400px">
+                <div class="carousel-cell" style="width:640px; height:300px">
                     <img src="/images/carousel-img-blendy.jpg">
                 </div>
 {{--                <div class="carousel-cell" style="width:640px; height:400px">--}}

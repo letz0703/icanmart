@@ -1,3 +1,11 @@
-/*.navbar {*/
-/*    padding: 0.5rem 1rem 0 1rem;*/
-/*}*/
+.navbar {
+    padding: 0.5rem 1rem 0 1rem;
+}
+
+.form-group>input {
+    border: 1px solid lightgray;
+}
+h2 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
