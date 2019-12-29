@@ -84,35 +84,34 @@
     @endif
 
     <div class="content" style="width:640px">
-        <div class="title">
+        <div class="flex-1 text-2xl mb-22">
             {{ env('APP_NAME') }}
         </div>
-        <div class="links mb-3">
+        <div class="container">
+            <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
+                <div class="carousel-cell" style="width:640px; height:300px">
+                    <img src="/images/carousel.jpg">
+                </div>
+                <div class="carousel-cell" style="width:640px; height:400px">
+                    <img src="/images/carousel-img-blendy.jpg">
+                </div>
+{{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
+{{--                    <img src="https://placeimg.com/640/480/any?4">--}}
+{{--                </div>--}}
+{{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
+{{--                    <img src="https://placeimg.com/640/480/any?5">--}}
+{{--                </div>--}}
+            </div>
+        </div>
+
+        <div class="links mb-3 pt-8 text-sm">
             <a href="items/search">제품검색</a>
             @can('update')
                 <a href="boxes/create">입고등록</a>
                 <a href="items/create">아이템등록</a>
             @endcan
         </div>
-        <div class="container">
-            <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
-                <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any">
-                </div>
-                <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any?2">
-                </div>
-                <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any?3">
-                </div>
-                <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any?4">
-                </div>
-                <div class="carousel-cell" style="width:640px; height:400px">
-                    <img src="https://placeimg.com/640/480/any?5">
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
