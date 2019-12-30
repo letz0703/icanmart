@@ -33,7 +33,7 @@
             display: flex;
             align-items: center;
         }
-        .flex { flex: 1 }
+        /*.flex { flex: 1 }*/
         [v-cloak] { display: none;}
     </style>
 </head>
@@ -43,6 +43,7 @@
     <main class="py-4">
         @yield('content')
     </main>
+    @include('layouts.footer-links')
     <flash message="{{ session('flash') }}"></flash>
 </div>
 </body>

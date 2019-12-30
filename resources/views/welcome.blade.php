@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    {{--    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">--}}
+{{--    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">--}}
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <style>
@@ -95,12 +95,12 @@
                 <div class="carousel-cell" style="width:640px; height:300px">
                     <img src="/images/carousel-img-blendy.jpg">
                 </div>
-{{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
-{{--                    <img src="https://placeimg.com/640/480/any?4">--}}
-{{--                </div>--}}
-{{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
-{{--                    <img src="https://placeimg.com/640/480/any?5">--}}
-{{--                </div>--}}
+                {{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
+                {{--                    <img src="https://placeimg.com/640/480/any?4">--}}
+                {{--                </div>--}}
+                {{--                <div class="carousel-cell" style="width:640px; height:400px">--}}
+                {{--                    <img src="https://placeimg.com/640/480/any?5">--}}
+                {{--                </div>--}}
             </div>
         </div>
 
@@ -113,6 +113,7 @@
         </div>
 
     </div>
+
 </div>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>

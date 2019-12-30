@@ -1,3 +1,9 @@
+body, th, td, input, select, textarea, button {
+    font-size: 15px;
+    line-height: 1.5;
+    font-family: 'NotoSans Light', 'Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
+    color: #666;
+}
 .navbar {
     padding: 0.5rem 1rem 0 1rem;
 }
@@ -9,3 +15,4 @@ h2 {
     margin: 0.5rem 0;
     font-size: 1.5rem;
 }
+

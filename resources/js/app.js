@@ -17,6 +17,9 @@ Vue.use(InstantSearch);
 import PortalVue from 'portal-vue';
 Vue.use(PortalVue);
 
+import VModal from 'vue-js-modal';
+Vue.use(VModal);
+
 Vue.directive('focus', {
     inserted: function(el){
         el.focus()
@@ -50,6 +53,7 @@ Vue.component('carousel', require('./components/Carousel.vue').default);
 Vue.component('seller-form', require('./components/SellerForm.vue').default);
 Vue.component('menu-dropdown', require('./components/MenuDropdown').default);
 Vue.component('menu-boxdropdown', require('./components/menus/BoxFromSellerDropdown').default);
+Vue.component('support-button', require('./components/menus/SupportButton').default);
 // Vue.component('item', require('./components/Item.vue').default);
 Vue.component('box-view', require('./pages/Box.vue').default);
 Vue.component('item-in', require('./pages/ItemIn.vue').default);
