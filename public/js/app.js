@@ -11053,10 +11053,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
-    return {};
+    return {
+      message: {}
+    };
   }
 });
 
@@ -96959,9 +96989,100 @@ var render = function() {
         [_vm._v("Support")]
       ),
       _vm._v(" "),
-      _c("modal", { attrs: { name: "support-modal" } }, [
-        _c("div", [_vm._v("\n            Modal Content\n        ")])
-      ])
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "support-modal",
+            width: "100%",
+            height: "auto",
+            pivotY: 1,
+            classes: "bg-white rounded-none shadow-inner"
+          }
+        },
+        [
+          _c("div", { staticClass: "container py-6 mx-auto" }, [
+            _c("h1", { staticClass: "text-center text-2xl" }, [
+              _vm._v("Have a Question?")
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "p-8  lg:w-1/2 md:mx-auto",
+                attrs: { autocomplete: "off" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.contactSupport($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "control" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message.name,
+                        expression: "message.name"
+                      }
+                    ],
+                    staticClass: "input is-minimal",
+                    attrs: {
+                      type: "text",
+                      name: "name",
+                      id: "name",
+                      placeholder: "What's your name?",
+                      required: ""
+                    },
+                    domProps: { value: _vm.message.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.message, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message.email,
+                        expression: "message.email"
+                      }
+                    ],
+                    staticClass: "input is-minimal",
+                    attrs: {
+                      type: "text",
+                      name: "email",
+                      id: "email",
+                      placeholder: "Your email?",
+                      required: ""
+                    },
+                    domProps: { value: _vm.message.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.message, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]
+            )
+          ])
+        ]
+      )
     ],
     1
   )

@@ -1,6 +1,5 @@
-<div class="flex row-flex p-3 bg-blue-500 h-50" style="align-self:center">
-    <div class="col-2"></div>
-    <div class="col-4 is-hidden-mobile">
+<div class="mx-auto flex bg-blue-500 lg:w-auto">
+    <div class="is-hidden-mobile md:mx-auto py-6 container w-1/2">
         <h5 class="text-white font-semibold uppercase">Shop</h5>
         <ul class="leading-loose">
             <li><a href="#" class="text-transparent-50 hover:text-white">JAPAN TO KOREA</a></li>
@@ -19,7 +18,7 @@
         </ul>
     </div>
 
-    <div class="col-4 is-hidden-mobile">
+    <div class="is-hidden-mobile py-6 container w-1/2" >
         <h5 class="text-white font-semibold uppercase">Contact Us</h5>
         <ul class="leading-loose">
             <li><a href="#" class="text-transparent-50 hover:text-white">Email</a></li>
@@ -29,5 +28,4 @@
             </li>
         </ul>
     </div>
-    <div class="col-2"></div>
 </div>
