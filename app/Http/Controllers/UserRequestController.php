@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UserRequest;
+use http\Exception;
 use Illuminate\Http\Request;
 
 class UserRequestController extends Controller
@@ -17,15 +18,17 @@ class UserRequestController extends Controller
             'verification' =>'required'
         ]);
 
-        $request = UserRequest::create([
+        $userRequest = UserRequest::create([
             'name' => request('name'),
             'email' => request('email'),
             'question' => request('question'),
-            'verification' => request('verification')=== 5?true: false
+            'verification' => request('verification'),
         ]);
 
 
-        return redirect()->back();
+
+
+        //return redirect()->back();
 
     }
 

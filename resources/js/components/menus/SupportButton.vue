@@ -15,6 +15,7 @@
                 <form
                     autocomplete="off"
                     @submit.prevent="contactSupport"
+                    @keydown="submitted = false"
                     class="p-8 lg:w-1/2 md:mx-auto"
                 >
                     <div class="control">
@@ -25,7 +26,13 @@
                             class="input is-minimal"
                             placeholder="What's your name?"
                             v-model="message.name"
+                            @keydown="delete errors.name"
                             required>
+                        <span
+                            class="text-xs text-red pt-2"
+                            v-text="errors.name[0]"
+                            v-if="errors.name"
+                        ></span>
                     </div>
                     <div class="control">
                         <input type="text"
@@ -34,7 +41,14 @@
                                class="input is-minimal"
                                placeholder="Your email?"
                                v-model="message.email"
+                               @keydown="delete errors.email"
                                required>
+                        <span
+                            class="text-xs text-red pt-2"
+                            v-text="errors.email[0]"
+                            v-if="errors.email"
+                        ></span>
+
                     </div>
                     <div class="control">
                         <textarea
@@ -43,8 +57,15 @@
                             class="textarea is-minimal"
                             placeholder="What is your question?"
                             v-model="message.question"
+                            @keydown="delete errors.question"
                             required>
                         </textarea>
+                        <span
+                            class="text-xs text-red pt-2"
+                            v-text="errors.question[0]"
+                            v-if="errors.question"
+                        ></span>
+
                     </div>
                     <!--                    Dummy Verification-->
                     <div class="control">
@@ -54,7 +75,14 @@
                             class="input is-minimal"
                             placeholder="What is 1+4?"
                             v-model="message.verification"
+                            @keydown="delete errors.verification"
                             required>
+                        <span
+                            class="text-xs text-red pt-2"
+                            v-text="errors.verification[0]"
+                            v-if="errors.verification"
+                        ></span>
+
                     </div>
                     <div>
                         <a
@@ -62,7 +90,8 @@
                             @click="$modal.hide('support-modal')">Cancel</a>
                         <button class="button is-blue py-1 px-3" type="submit"
                                 :disabled="submitted"
-                        >Send</button>
+                        >Send
+                        </button>
                     </div>
                 </form>
             </div>
@@ -77,21 +106,28 @@
         data(){
             return {
                 message: {},
-                submitted: false,
                 errors: {},
+                submitted: false,
+                verified: false,
             }
         },
 
         methods: {
-            contactSupport() {
+            contactSupport(){
                 this.submitted = true;
                 axios
-                    .post('/contact', {})
+                    .post('/contact', this.message)
+                    .then(() => {
+                        this.$modal.hide('support-modal');
+                        swal({
+                            // title: 'Thanks!',
+                            text: "We'll be in touch soon"
+                        })
+                    })
                     .catch(errors => {
-                         this.errors = errors.response.data.errors;
-                        // console.log(errors.response.data.errors);
+                        this.errors = errors.response.data.errors;
                     });
-            }
-        }
+            },
+        },
     }
 </script>

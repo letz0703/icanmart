@@ -20,6 +20,9 @@ Vue.use(PortalVue);
 import VModal from 'vue-js-modal';
 Vue.use(VModal);
 
+import swal from 'sweetalert';
+Vue.use('swal');
+
 Vue.directive('focus', {
     inserted: function(el){
         el.focus()
