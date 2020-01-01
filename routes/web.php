@@ -86,5 +86,6 @@ Route::group([
          ->name('admin.sellers.update');
 });
 
+Route::post('/contact','UserRequestController@store');
 
 

@@ -60,7 +60,9 @@
                         <a
                             class="button mr-3 py-1"
                             @click="$modal.hide('support-modal')">Cancel</a>
-                        <button class="button is-blue py-1 px-3" type="submit">Send</button>
+                        <button class="button is-blue py-1 px-3" type="submit"
+                                :disabled="submitted"
+                        >Send</button>
                     </div>
                 </form>
             </div>
@@ -75,7 +77,21 @@
         data(){
             return {
                 message: {},
+                submitted: false,
+                errors: {},
             }
         },
+
+        methods: {
+            contactSupport() {
+                this.submitted = true;
+                axios
+                    .post('/contact', {})
+                    .catch(errors => {
+                         this.errors = errors.response.data.errors;
+                        // console.log(errors.response.data.errors);
+                    });
+            }
+        }
     }
 </script>

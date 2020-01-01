@@ -11108,12 +11108,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
     return {
-      message: {}
+      message: {},
+      submitted: false,
+      errors: {}
     };
+  },
+  methods: {
+    contactSupport: function contactSupport() {
+      var _this = this;
+
+      this.submitted = true;
+      axios.post('/contact', {})["catch"](function (errors) {
+        _this.errors = errors.response.data.errors; // console.log(errors.response.data.errors);
+      });
+    }
   }
 });
 
@@ -97186,7 +97200,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "button is-blue py-1 px-3",
-                      attrs: { type: "submit" }
+                      attrs: { type: "submit", disabled: _vm.submitted }
                     },
                     [_vm._v("Send")]
                   )
