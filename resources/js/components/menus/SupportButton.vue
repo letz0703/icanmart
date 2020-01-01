@@ -5,8 +5,8 @@
         >Support</a>
         <modal
             name="support-modal"
-            width=100%
             height="auto"
+            width=100%
             :pivotY=1
             classes="bg-white rounded-none shadow-inner"
         >
@@ -15,16 +15,17 @@
                 <form
                     autocomplete="off"
                     @submit.prevent="contactSupport"
-                    class="p-8  lg:w-1/2 md:mx-auto"
+                    class="p-8 lg:w-1/2 md:mx-auto"
                 >
                     <div class="control">
-                        <input type="text"
-                               name="name"
-                               id="name"
-                               class="input is-minimal"
-                               placeholder="What's your name?"
-                               v-model="message.name"
-                               required>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="input is-minimal"
+                            placeholder="What's your name?"
+                            v-model="message.name"
+                            required>
                     </div>
                     <div class="control">
                         <input type="text"
@@ -34,6 +35,32 @@
                                placeholder="Your email?"
                                v-model="message.email"
                                required>
+                    </div>
+                    <div class="control">
+                        <textarea
+                            name="question"
+                            id="body"
+                            class="textarea is-minimal"
+                            placeholder="What is your question?"
+                            v-model="message.question"
+                            required>
+                        </textarea>
+                    </div>
+                    <!--                    Dummy Verification-->
+                    <div class="control">
+                        <input
+                            name="verification"
+                            id="verification"
+                            class="input is-minimal"
+                            placeholder="What is 1+4?"
+                            v-model="message.verification"
+                            required>
+                    </div>
+                    <div>
+                        <a
+                            class="button mr-3 py-1"
+                            @click="$modal.hide('support-modal')">Cancel</a>
+                        <button class="button is-blue py-1 px-3" type="submit">Send</button>
                     </div>
                 </form>
             </div>

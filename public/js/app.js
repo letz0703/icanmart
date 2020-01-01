@@ -11081,6 +11081,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
@@ -96994,8 +97021,8 @@ var render = function() {
         {
           attrs: {
             name: "support-modal",
-            width: "100%",
             height: "auto",
+            width: "100%",
             pivotY: 1,
             classes: "bg-white rounded-none shadow-inner"
           }
@@ -97009,7 +97036,7 @@ var render = function() {
             _c(
               "form",
               {
-                staticClass: "p-8  lg:w-1/2 md:mx-auto",
+                staticClass: "p-8 lg:w-1/2 md:mx-auto",
                 attrs: { autocomplete: "off" },
                 on: {
                   submit: function($event) {
@@ -97077,6 +97104,92 @@ var render = function() {
                       }
                     }
                   })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message.question,
+                        expression: "message.question"
+                      }
+                    ],
+                    staticClass: "textarea is-minimal",
+                    attrs: {
+                      name: "question",
+                      id: "body",
+                      placeholder: "What is your question?",
+                      required: ""
+                    },
+                    domProps: { value: _vm.message.question },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.message, "question", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message.verification,
+                        expression: "message.verification"
+                      }
+                    ],
+                    staticClass: "input is-minimal",
+                    attrs: {
+                      name: "verification",
+                      id: "verification",
+                      placeholder: "What is 1+4?",
+                      required: ""
+                    },
+                    domProps: { value: _vm.message.verification },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.message,
+                          "verification",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button mr-3 py-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.$modal.hide("support-modal")
+                        }
+                      }
+                    },
+                    [_vm._v("Cancel")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-blue py-1 px-3",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Send")]
+                  )
                 ])
               ]
             )
