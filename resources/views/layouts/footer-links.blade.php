@@ -21,7 +21,9 @@
     <div class="is-hidden-mobile py-6 container w-1/2" >
         <h5 class="text-white font-semibold uppercase">Contact Us</h5>
         <ul class="leading-loose">
-            <li><a href="#" class="text-transparent-50 hover:text-white">Email</a></li>
+            <li><a href="mailto:icanmart@gmail.com" class="text-transparent-50 hover:text-white">
+                    Email: icanmart@gmail.com</a>
+            </li>
             <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>
             <li>
                 <support-button></support-button>

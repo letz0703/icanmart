@@ -96582,20 +96582,14 @@ var render = function() {
     "div",
     { attrs: { align: "center" } },
     [
-      _c("carousel", { staticStyle: { height: "300px" } }, [
-        _c(
-          "div",
-          { staticClass: "carousel-cell", attrs: { height: "300px" } },
-          [
-            _c("img", {
-              attrs: {
-                src: "/images/carousel-img-blendy.jpg",
-                height: "300",
-                width: "640"
-              }
-            })
-          ]
-        )
+      _c("carousel", [
+        _c("div", { staticClass: "carousel-cell" }, [
+          _c("img", { attrs: { src: "/images/carousel-img-blendy.jpg" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "carousel-cell" }, [
+          _c("img", { attrs: { src: "https://placeimg.com/640/480/any2" } })
+        ])
       ]),
       _vm._v(" "),
       _c(
