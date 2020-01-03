@@ -29,14 +29,14 @@
                     <div class="box">
                         <h5 class="text-white font-semibold uppercase">Admin</h5>
                         <ul class="leading-loose">
-                            <li><a href="/boxes/create" class="text-transparent-50 hover:text-white">
+                            <li><a href="/boxes/create" class="">
                                     입고등록</a>
                             </li>
                             <li><a href="/nova" class="text-transparent-50 hover:text-white">
-                                    Nova</a>
+                                    NOVA</a>
                             </li>
                             <li><a href="/items/search" class="text-transparent-50 hover:text-white">
-                                    search</a>
+                                    SEARCH</a>
                             </li>
                         </ul>
                     </div>

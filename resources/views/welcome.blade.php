@@ -43,8 +43,8 @@
         <nav>
             <a href="items/search">Search Items</a>
             @can('update')
-                <a href="boxes/create">inbox</a>
                 <a href="/nova">Nova</a>
+                <a href="boxes/create">입고등록</a>
             @endcan
         </nav>
     </div>
