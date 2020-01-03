@@ -44,7 +44,7 @@ class BoxController extends Controller
         return view('boxes.show', compact('box'));
     }
 
-    public function jtore()
+    public function store()
     {
         $this->validate(request(), [
             'title'     => 'required',
