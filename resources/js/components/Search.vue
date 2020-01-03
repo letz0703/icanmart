@@ -1,16 +1,16 @@
 <template>
     <div align="center">
-<!--        <carousel>-->
-<!--            <div class="carousel-cell">-->
-<!--                <img src="/images/carousel-img-blendy.jpg">-->
-<!--            </div>-->
-<!--            <div class="carousel-cell">-->
-<!--                <img src="https://placeimg.com/640/480/any2">-->
-<!--            </div>-->
-<!--            <div class="carousel-cell" height="300px">-->
-<!--                <img src="https://placeimg.com/640/480/any3">-->
-<!--            </div>-->
-<!--        </carousel>-->
+        <!--        <carousel>-->
+        <!--            <div class="carousel-cell">-->
+        <!--                <img src="/images/carousel-img-blendy.jpg">-->
+        <!--            </div>-->
+        <!--            <div class="carousel-cell">-->
+        <!--                <img src="https://placeimg.com/640/480/any2">-->
+        <!--            </div>-->
+        <!--            <div class="carousel-cell" height="300px">-->
+        <!--                <img src="https://placeimg.com/640/480/any3">-->
+        <!--            </div>-->
+        <!--        </carousel>-->
 
         <div class="content" style="padding-top:3em">
             <ais-instant-search :search-client="searchClient" index-name="items"
@@ -26,11 +26,18 @@
                         <!--                        <ais-refinement-list attribute="sell_price">-->
                         <!--                        </ais-refinement-list>-->
 
-                        <ais-hits>
+                        <ais-hits
+                            :escapeHTML="true"
+                            :class-names="{
+                                'ais-Hits':'MyCustomHits',
+                                'ais-Hits-list':'MyCustomHitsList',
+                                'ais-Hits-item':'MyCustomHitsItem',
+                            }"
+                        >
                             <div slot="item" slot-scope="{ item }">
-<!--                                <li v-for="item in items" :key="item.objectID">-->
-<!--                                   {{ item.product_name}}-->
-<!--                                </li>-->
+                                <!--                                <li v-for="item in items" :key="item.objectID">-->
+                                <!--                                   {{ item.product_name}}-->
+                                <!--                                </li>-->
                                 <a :href="'/items/'+item.id">
                                     <ais-highlight :hit="item" attribute="description"/>
                                 </a>

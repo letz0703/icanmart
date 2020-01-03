@@ -151,3 +151,23 @@ textarea {
 /*    bottom: -22px;*/
 /*}*/
 /* dots are lines  안되는데?*/
+
+.MyCustomHits{
+    /*background:lightskyblue;*/
+    /*display:flex;*/
+    /*flex-direction:column;*/
+}
+.MyCustomHitsList{
+    /*flex:1;*/
+    /*flex-direction:column;*/
+}
+.MyCustomHitsItem{
+    /*background:yellow;*/
+    /*display:flex;*/
+    /*justify-content:center;*/
+    /*align-items:center;*/
+    /*width:max-content;*/
+}
+li.ais-Hits-item, .MyCustomHitsItem {
+    width: -webkit-fill-available;
+}
