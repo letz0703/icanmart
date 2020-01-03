@@ -1,16 +1,16 @@
 <template>
     <div align="center">
-        <carousel>
-            <div class="carousel-cell">
-                <img src="/images/carousel-img-blendy.jpg">
-            </div>
-            <div class="carousel-cell">
-                <img src="https://placeimg.com/640/480/any2">
-            </div>
+<!--        <carousel>-->
+<!--            <div class="carousel-cell">-->
+<!--                <img src="/images/carousel-img-blendy.jpg">-->
+<!--            </div>-->
+<!--            <div class="carousel-cell">-->
+<!--                <img src="https://placeimg.com/640/480/any2">-->
+<!--            </div>-->
 <!--            <div class="carousel-cell" height="300px">-->
 <!--                <img src="https://placeimg.com/640/480/any3">-->
 <!--            </div>-->
-        </carousel>
+<!--        </carousel>-->
 
         <div class="content" style="padding-top:3em">
             <ais-instant-search :search-client="searchClient" index-name="items"

@@ -5,6 +5,37 @@ body, th, td, input, select, textarea, button {
     /*color: #666;*/
 }
 
+
+.flex,
+.row {
+    display: flex;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.flex > div {
+    flex: 1;
+}
+
+.col {
+    flex: 1;
+    padding: 10px;
+}
+
+.box {
+    /*background: #e3e3e3;*/
+    /*height: 150px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.section {
+    padding: 2em;
+}
+
 .container {
     /*max-width: 1024px;*/
     margin: 0 auto;

@@ -96578,100 +96578,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { align: "center" } },
-    [
-      _c("carousel", [
-        _c("div", { staticClass: "carousel-cell" }, [
-          _c("img", { attrs: { src: "/images/carousel-img-blendy.jpg" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "carousel-cell" }, [
-          _c("img", { attrs: { src: "https://placeimg.com/640/480/any2" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content", staticStyle: { "padding-top": "3em" } },
-        [
-          _c(
-            "ais-instant-search",
-            {
-              attrs: {
-                "search-client": _vm.searchClient,
-                "index-name": "items",
-                routing: _vm.routing
-              }
-            },
-            [
-              _c("div", { staticClass: "search-panel" }, [
-                _c(
-                  "div",
-                  { staticClass: "search-panel__results" },
-                  [
-                    _c("ais-search-box", {
-                      staticClass: "searchbox",
-                      attrs: { autofocus: true }
-                    }),
-                    _vm._v(" "),
-                    _c("ais-hits", {
-                      scopedSlots: _vm._u([
-                        {
-                          key: "item",
-                          fn: function(ref) {
-                            var item = ref.item
-                            return _c("div", {}, [
-                              _c(
-                                "a",
-                                { attrs: { href: "/items/" + item.id } },
-                                [
-                                  _c("ais-highlight", {
-                                    attrs: {
-                                      hit: item,
-                                      attribute: "description"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("div", {
-                                domProps: {
-                                  textContent: _vm._s(item.sell_price + "원")
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("div", {
-                                domProps: {
-                                  textContent: _vm._s(item.product_name)
-                                }
-                              })
-                            ])
-                          }
+  return _c("div", { attrs: { align: "center" } }, [
+    _c(
+      "div",
+      { staticClass: "content", staticStyle: { "padding-top": "3em" } },
+      [
+        _c(
+          "ais-instant-search",
+          {
+            attrs: {
+              "search-client": _vm.searchClient,
+              "index-name": "items",
+              routing: _vm.routing
+            }
+          },
+          [
+            _c("div", { staticClass: "search-panel" }, [
+              _c(
+                "div",
+                { staticClass: "search-panel__results" },
+                [
+                  _c("ais-search-box", {
+                    staticClass: "searchbox",
+                    attrs: { autofocus: true }
+                  }),
+                  _vm._v(" "),
+                  _c("ais-hits", {
+                    scopedSlots: _vm._u([
+                      {
+                        key: "item",
+                        fn: function(ref) {
+                          var item = ref.item
+                          return _c("div", {}, [
+                            _c(
+                              "a",
+                              { attrs: { href: "/items/" + item.id } },
+                              [
+                                _c("ais-highlight", {
+                                  attrs: { hit: item, attribute: "description" }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", {
+                              domProps: {
+                                textContent: _vm._s(item.sell_price + "원")
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", {
+                              domProps: {
+                                textContent: _vm._s(item.product_name)
+                              }
+                            })
+                          ])
                         }
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "pagination" },
-                      [_c("ais-pagination")],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ])
-            ]
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pagination" },
+                    [_c("ais-pagination")],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
