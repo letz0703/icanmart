@@ -57,12 +57,74 @@
                 <img src="/images/carousel.jpg">
 
             </div>
-{{--            <div class="carousel-cell">--}}
-{{--                <img src="/images/carousel-img-blendy.jpg">--}}
-{{--            </div>--}}
-{{--            <div class="carousel-cell">--}}
-{{--                <img src="https://placeimg.com/640/480/any">--}}
-{{--            </div>--}}
+            {{--            <div class="carousel-cell">--}}
+            {{--                <img src="/images/carousel-img-blendy.jpg">--}}
+            {{--            </div>--}}
+            {{--            <div class="carousel-cell">--}}
+            {{--                <img src="https://placeimg.com/640/480/any">--}}
+            {{--            </div>--}}
+        </div>
+    </div>
+</div>
+<div class="ic-card">
+    <div class="card">
+        <!--    left side-->
+        <div class="card-left">
+
+            <div class="flex">
+                <img
+                    class="flex-1"
+                    src="https://conceptdraw.com/a1975c3/p3/preview/640/pict--japan-fifa-world-cup-2014-team-flags---vector-stencils-library.png--diagram-flowchart-example.png"
+                    alt="">
+                <img
+                    class="flex-1"
+                    src="https://conceptdraw.com/a1975c3/p4/preview/640/pict--south-korea-fifa-world-cup-2014-team-flags---vector-stencils-library.png--diagram-flowchart-example.png"
+                    alt="">
+            </div>
+            <div class="pt-2">
+                <h4 class="card-title">Japan to Korea</h4>
+
+            </div>
+            <p>3 Days Delivery</p>
+        </div>
+        <!--    right side-->
+        <div class="card-right">
+            <h3 class="card-title">
+                <a href="#">
+                    Find Barcode & We oder for you
+                </a>
+            </h3>
+            <p>
+                Let us know the barcode for your item & We make order for you.
+                Our specialist will find the best & cheapest shop for the item.
+                The delivery will take only 2 to 3 working days to you in KOREA.
+            </p>
+            <!--        meta information-->
+            <div class="flex">
+                <a href="/item/search">
+                    <div class="flex-img-container">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20"
+                             aria-labelledby="search" role="presentation"
+                             {{--                 class="fill-current absolute search-icon-center ml-3 text-80">--}}
+                             class="mx-1 flex">
+                            <path fill-rule="nonzero"
+                                  d="M14.32 12.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387a8 8 0 1 1 1.414-1.414zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+                            ></path>
+                        </svg>
+                        search barcode
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex-img-container">
+                        <img src="https://cdn.shopify.com/s/files/1/0066/7670/9461/t/13/assets/index-order.svg?15994"
+                             class="mx-1"
+                             width="25"
+                             height="25"
+                             alt="">order us
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
