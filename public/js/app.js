@@ -10655,6 +10655,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -96587,10 +96589,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { align: "center" } }, [
+  return _c("div", [
     _c(
       "div",
-      { staticClass: "content", staticStyle: { "padding-top": "3em" } },
+      { staticClass: "content" },
       [
         _c(
           "ais-instant-search",
@@ -96627,6 +96629,12 @@ var render = function() {
                         fn: function(ref) {
                           var item = ref.item
                           return _c("div", {}, [
+                            _c("div", {
+                              domProps: {
+                                textContent: _vm._s("BARCODE: " + item.barcode)
+                              }
+                            }),
+                            _vm._v(" "),
                             _c(
                               "a",
                               { attrs: { href: "/items/" + item.id } },

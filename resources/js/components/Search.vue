@@ -1,5 +1,5 @@
 <template>
-    <div align="center">
+    <div>
         <!--        <carousel>-->
         <!--            <div class="carousel-cell">-->
         <!--                <img src="/images/carousel-img-blendy.jpg">-->
@@ -12,7 +12,7 @@
         <!--            </div>-->
         <!--        </carousel>-->
 
-        <div class="content" style="padding-top:3em">
+        <div class="content">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
             >
@@ -38,9 +38,11 @@
                                 <!--                                <li v-for="item in items" :key="item.objectID">-->
                                 <!--                                   {{ item.product_name}}-->
                                 <!--                                </li>-->
+                                <div v-text="'BARCODE: '+item.barcode"></div>
                                 <a :href="'/items/'+item.id">
                                     <ais-highlight :hit="item" attribute="description"/>
                                 </a>
+
                                 <div v-text="item.sell_price+'원'"></div>
                                 <div v-text="item.product_name"></div>
                             </div>

@@ -114,7 +114,7 @@
                                  class="mx-1"
                                  width="25"
                                  height="25"
-                                 alt="">inform us
+                                 alt="">ask us
                     </a>
                 </div>
 
