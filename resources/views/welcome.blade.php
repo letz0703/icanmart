@@ -100,30 +100,24 @@
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
             <!--        meta information-->
-            <div class="flex">
-                <a href="/item/search">
-                    <div class="flex-img-container">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 20 20"
-                             aria-labelledby="search" role="presentation"
-                             {{--                 class="fill-current absolute search-icon-center ml-3 text-80">--}}
-                             class="mx-1 flex">
-                            <path fill-rule="nonzero"
-                                  d="M14.32 12.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387a8 8 0 1 1 1.414-1.414zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
-                            ></path>
-                        </svg>
-                        barcode
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="flex-img-container">
-                        <img src="https://cdn.shopify.com/s/files/1/0066/7670/9461/t/13/assets/index-order.svg?15994"
-                             class="mx-1"
-                             width="25"
-                             height="25"
-                             alt="">inform us
-                    </div>
-                </a>
+            <div class="card-meta">
+
+                <div class="">
+                    <a href="/items/search">
+                        <img src="https://www.pinclipart.com/picdir/middle/91-919100_search-prism-learning-solutions-search-icon-svg-free.png" alt="">
+                            barcode
+                    </a>
+                </div>
+                <div class="">
+                    <a href="#">
+                            <img src="http://simpleicon.com/wp-content/uploads/pen-8.svg"
+                                 class="mx-1"
+                                 width="25"
+                                 height="25"
+                                 alt="">inform us
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>

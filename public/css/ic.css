@@ -90,27 +90,55 @@ body, th, td, input, select, textarea, button {
 .card-left{
     padding-top: 0.7em;
 }
-
-.card img {
-    height: 20px;
-    width: 20px;
+.card-left > div > img {
+    width: 1em;
 }
 
-.card svg {
-    height: 20px;
+.card-meta {
+    display: flex;
+    font-size: 0.8em;
+    justify-content: flex-end;
+    padding-bottom: 1em;
+}
+
+
+
+.card-meta > div:first-child {
+    margin-right: 1em;
+    /*background: red;*/
+}
+
+.card-meta > div > a {
+    display: flex;
+    align-items: center;
+}
+
+.card-meta > div > a > img, .card-meta > div > a > svg {
+    margin-right: 8px;
     width: 20px;
+    /*height: 40px;*/
 }
-img.flex-1{
-    height: 100%;
-}
+
+/*.card img {*/
+/*    height: 20px;*/
+/*    width: 20px;*/
+/*}*/
+
+/*.card svg {*/
+/*    height: 20px;*/
+/*    width: 20px;*/
+/*}*/
+/*img.flex-1{*/
+/*    height: 100%;*/
+/*}*/
 .card-excerpt {
     flex: 1;
 }
 
-.flex-img-container{
-    display: flex;
-    padding: 1em 0.4em;
-}
+/*.flex-img-container{*/
+/*    display: flex;*/
+/*    padding: 1em 0.4em;*/
+/*}*/
 
 .navbar {
     padding: 0.5rem 1rem 0 1rem;

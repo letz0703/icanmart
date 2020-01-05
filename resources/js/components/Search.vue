@@ -66,8 +66,10 @@
         data(){
             return {
                 searchClient: algoliasearch(
-                    'CZTU4RVSA8',
-                    'c9905bef620ad999d54c71f4d95c0e04',
+                    '44JE7GVNKG',
+                    'bbe2b9c376b8933e081386ec3c94827d'
+                    // 'CZTU4RVSA8',
+                    // 'c9905bef620ad999d54c71f4d95c0e04',
                     // env('ALGOLIA_APP_ID'),
                     // env('ALGOLIA_KEY')
 
