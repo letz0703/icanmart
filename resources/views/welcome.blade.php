@@ -91,11 +91,11 @@
         <div class="card-right">
             <h3 class="card-title">
                 <a href="#">
-                    Find Barcode & We oder for you
+                    Oder for you
                 </a>
             </h3>
-            <p>
-                Let us know the barcode for your item & We make order for you.
+            <p class="card-excerpt">
+                Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
@@ -112,7 +112,7 @@
                                   d="M14.32 12.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387a8 8 0 1 1 1.414-1.414zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
                             ></path>
                         </svg>
-                        search barcode
+                        barcode
                     </div>
                 </a>
                 <a href="#">
@@ -121,7 +121,7 @@
                              class="mx-1"
                              width="25"
                              height="25"
-                             alt="">order us
+                             alt="">inform us
                     </div>
                 </a>
             </div>
