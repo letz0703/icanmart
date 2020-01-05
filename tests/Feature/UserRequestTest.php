@@ -25,7 +25,7 @@ class UserRequestTest extends TestCase
         $user_request = factory('App\UserRequest')->make(['verification'=>5]);
         $this->post('/contact', $user_request->toArray());
         $this->assertDatabaseHas('user_requests', [
-            'verification' => 1
+            'verification' => 5
         ]);
     }
 
