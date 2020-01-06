@@ -70,7 +70,7 @@
     <div class="card">
         <!--    left side-->
         <div class="card-left">
-
+                <h4 class="card-title">Japan to Korea</h4>
             <div class="flex">
                 <img
                     class="flex-1"
@@ -81,10 +81,7 @@
                     src="https://conceptdraw.com/a1975c3/p4/preview/640/pict--south-korea-fifa-world-cup-2014-team-flags---vector-stencils-library.png--diagram-flowchart-example.png"
                     alt="">
             </div>
-            <div class="pt-2">
-                <h4 class="card-title">Japan to Korea</h4>
 
-            </div>
             <p>3 Days Delivery</p>
         </div>
         <!--    right side-->
