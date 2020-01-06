@@ -32,6 +32,7 @@
         .level {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
         /*.flex { flex: 1 }*/
         [v-cloak] { display: none;}

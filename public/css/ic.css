@@ -56,6 +56,11 @@ body, th, td, input, select, textarea, button {
     display: flex;
     flex-direction: row;
 }
+.col-md-8 .card {
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+}
 .card-left {
     background: linear-gradient(to bottom, #21c8f6, #637bff);
     width: -webkit-fill-available;
