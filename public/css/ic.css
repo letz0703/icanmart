@@ -54,8 +54,8 @@ body, th, td, input, select, textarea, button {
 .card {
     font-family: 'NotoSans Light','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0,0,0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08) ;
-    /*width: 458px;*/
-    /*height: 258px;*/
+    width: 458px;
+    height: 258px;
     display: flex;
     /*flex-direction: row;*/
     border-radius: 10px;
@@ -79,8 +79,9 @@ body, th, td, input, select, textarea, button {
     color: #222;
     font-size: 1.7em;
     font-weight: 400;
-    margin-top: 0;
-    margin-bottom: 0;
+    line-height: 0.5em;
+    /*margin-top: 0;*/
+    /*margin-bottom: 0;*/
 }
 
 .card-left .card-title{
@@ -103,7 +104,8 @@ body, th, td, input, select, textarea, button {
 }
 
 .card-left > div > img {
-    width: 1em;
+    width: 20px;
+    height: 80px;
 }
 
 .card-meta {
@@ -143,8 +145,7 @@ body, th, td, input, select, textarea, button {
 .card-meta > div > a > img, .card-meta > div > a > svg {
     margin-right: 8px;
     width: 20px;
-
-    /*height: 40px;*/
+    height: 20px;
 }
 
 /*.card img {*/
@@ -161,7 +162,6 @@ body, th, td, input, select, textarea, button {
 /*}*/
 .card-excerpt {
     flex: 1;
-    padding-top: 1em;
 }
 
 /*.flex-img-container{*/
@@ -209,7 +209,7 @@ nav>a {
 
 nav>a:hover, li>a:hover {
     color: white;
-    background: rgba(48, 154, 221, 1.0);
+    background: rgba(48, 154, 221, .4);
     /*padding: 3px;*/
     text-decoration: none;
     /*font-weight: bold;*/

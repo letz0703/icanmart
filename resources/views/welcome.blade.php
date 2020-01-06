@@ -74,15 +74,15 @@
             <div class="flex">
                 <img
                     class="flex-1"
-                    src="https://conceptdraw.com/a1975c3/p3/preview/640/pict--japan-fifa-world-cup-2014-team-flags---vector-stencils-library.png--diagram-flowchart-example.png"
+                    src="images/jap-flag.png"
                     alt="">
                 <img
                     class="flex-1"
-                    src="https://conceptdraw.com/a1975c3/p4/preview/640/pict--south-korea-fifa-world-cup-2014-team-flags---vector-stencils-library.png--diagram-flowchart-example.png"
+                    src="images/kor-flag.png"
                     alt="">
             </div>
 
-            <p class="card-p">3 Days Delivery</p>
+            <p class="card-p">Delivery within 3 days!</p>
         </div>
         <!--    right side-->
         <div class="card-right">
@@ -91,7 +91,6 @@
                     Oder for you
                 </a>
             </h3>
-            <hr>
             <p class="card-excerpt">
                 Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
@@ -102,13 +101,13 @@
 
                 <div class="">
                     <a href="/items/search">
-                        <img src="https://www.pinclipart.com/picdir/middle/91-919100_search-prism-learning-solutions-search-icon-svg-free.png" alt="">
+                        <img src="images/search.png" alt="search barcode">
                             barcode
                     </a>
                 </div>
                 <div class="">
                     <a href="#">
-                            <img src="http://simpleicon.com/wp-content/uploads/pen-8.svg"
+                            <img src="images/write.svg"
                                  class="mx-1"
                                  width="25"
                                  height="25"
