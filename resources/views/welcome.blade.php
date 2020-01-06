@@ -82,15 +82,16 @@
                     alt="">
             </div>
 
-            <p>3 Days Delivery</p>
+            <p class="card-p">3 Days Delivery</p>
         </div>
         <!--    right side-->
         <div class="card-right">
-            <h3 class="card-title">
+            <h3 class="card-title round-button">
                 <a href="#">
                     Oder for you
                 </a>
             </h3>
+            <hr>
             <p class="card-excerpt">
                 Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
