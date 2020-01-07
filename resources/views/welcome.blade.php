@@ -66,12 +66,12 @@
         </div>
     </div>
 </div>
-<div class="ic-card">
-    <div class="card">
+<div class="ic-card tw-flex">
+    <div class="card tw-flex">
         <!--    left side-->
-        <div class="card-left">
+        <div class="card-left tw-flex">
                 <h4 class="card-title">Japan to Korea</h4>
-            <div class="flex">
+            <div class="flex flex-row justify-content-center">
                 <img
                     class="flex-1"
                     src="images/jap-flag.png"
@@ -85,8 +85,8 @@
             <p class="card-p">Delivery within 3 days!</p>
         </div>
         <!--    right side-->
-        <div class="card-right">
-            <h3 class="card-title round-button">
+        <div class="card-right tw-text-gray-600">
+            <h3 class="card-title round-button tw-pt-3">
                 <a href="#">
                     Oder for you
                 </a>
@@ -97,7 +97,7 @@
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
             <!--        meta information-->
-            <div class="card-meta">
+            <div class="card-meta tw-flex">
 
                 <div class="">
                     <a href="/items/search">
