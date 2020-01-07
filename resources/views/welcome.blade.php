@@ -41,9 +41,9 @@
             @endif
         </div>
         <nav>
-            <a href="items/search">Search Items</a>
+            <a href="items/search">SEARCH BARCODE</a>
             @can('update')
-                <a href="/nova">Nova</a>
+                <a href="/nova">NOVA</a>
                 <a href="boxes/create">입고등록</a>
             @endcan
         </nav>

@@ -10269,6 +10269,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
@@ -10952,15 +10954,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -96100,23 +96093,24 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "a",
-        {
-          staticClass:
-            "block md:px-3\n       hover:text-white-50% pb-0 py-2 uppercase",
-          attrs: { href: "/nova" },
-          on: {
-            mouseover: function($event) {
-              _vm.active = true
-            },
-            mouseout: function($event) {
-              _vm.active = false
+      _c("nav", {}, [
+        _c(
+          "a",
+          {
+            staticClass: "tw-p-2 tw-mx-2",
+            attrs: { href: "/nova" },
+            on: {
+              mouseover: function($event) {
+                _vm.active = true
+              },
+              mouseout: function($event) {
+                _vm.active = false
+              }
             }
-          }
-        },
-        [_vm._v("\n      Nova")]
-      ),
+          },
+          [_vm._v("\n      NOVA")]
+        )
+      ]),
       _vm._v(" "),
       _c("portal", { attrs: { to: "nova" } }, [
         _c(
@@ -96931,25 +96925,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "flex letz-drop-menu" },
     [
-      _c(
-        "a",
-        {
-          staticClass:
-            "block md:px-8 md:flex-1 uppercase font-bold\n       hover:text-white-50% pb-0 py-2",
-          class: _vm.active ? "text-black" : "text-transparent-50",
-          attrs: { href: "/boxes" },
-          on: {
-            mouseover: function($event) {
-              _vm.active = true
-            },
-            mouseout: function($event) {
-              _vm.active = false
+      _c("nav", [
+        _c(
+          "a",
+          {
+            staticClass: "tw-p-2 tw-mx-2",
+            class: _vm.active ? "text-black" : "text-transparent-50",
+            attrs: { href: "/boxes" },
+            on: {
+              mouseover: function($event) {
+                _vm.active = true
+              },
+              mouseout: function($event) {
+                _vm.active = false
+              }
             }
-          }
-        },
-        [_vm._v("\n        Boxes In\n    ")]
-      ),
+          },
+          [_vm._v("구매처별")]
+        )
+      ]),
       _vm._v(" "),
       _c("portal", { attrs: { to: "nav-after" } }, [
         _c(
@@ -96963,7 +96959,7 @@ var render = function() {
                 expression: "active"
               }
             ],
-            staticClass: "series-dropdown absolute w-full z-10",
+            staticClass: "series-dropdown absolute w-full tw-z-10",
             on: {
               mouseover: function($event) {
                 _vm.active = true
@@ -96974,67 +96970,62 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "container mx-auto py-8 bg-red-500" }, [
-              _c("div", { staticClass: "container mx-auto" }, [
-                _c("div", { staticClass: "flex" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "border-r border-grey-lighter border-solid pr-10 mr-10"
-                    },
-                    _vm._l(_vm.sellerList, function(seller) {
-                      return _c("a", {
-                        staticClass:
-                          "block font-bold uppercase mb-6 hover:text-blue",
-                        class:
-                          _vm.selected === seller
-                            ? "text-blue"
-                            : "text-grey-darkest",
-                        attrs: { href: "/boxes/" + _vm.selected },
-                        domProps: { textContent: _vm._s(seller.description) },
-                        on: {
-                          mouseover: function($event) {
-                            return _vm.showSeller(seller.slug)
+            _c(
+              "div",
+              {
+                staticClass: "container tw-pt-2",
+                staticStyle: { background: "aliceblue" }
+              },
+              [
+                _vm._l(_vm.sellerList, function(seller) {
+                  return _c("a", {
+                    staticClass: "mr-2",
+                    class:
+                      _vm.selected === seller
+                        ? "text-blue"
+                        : "text-grey-darkest",
+                    attrs: { href: "/boxes/" + _vm.selected },
+                    domProps: { textContent: _vm._s(seller.description) },
+                    on: {
+                      mouseover: function($event) {
+                        return _vm.showSeller(seller.slug)
+                      }
+                    }
+                  })
+                }),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "tw-flex tw-flex-col tw-flex-1 tw-py-2" },
+                  _vm._l(_vm.boxes, function(box) {
+                    return _c("li", { staticClass: "mr-4 tw-p-2" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "font-inherit tw-justify-center",
+                          attrs: {
+                            href: "/boxes/" + _vm.selected + "/" + box.slug
                           }
-                        }
-                      })
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "flex flex-wrap" },
-                    _vm._l(_vm.boxes, function(box) {
-                      return _c("li", { staticClass: "w-full mb-0" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "text-sm text-grey-darker hover:text-blue",
-                            attrs: {
-                              href: "/boxes/" + _vm.selected + "/" + box.slug
-                            }
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(box.title) + " /" + _vm._s(box.arrived_at)
-                            ),
-                            _c("br"),
-                            _vm._v(
-                              _vm._s(box.amount) +
-                                "원\n                                "
-                            )
-                          ]
-                        )
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(box.title) + "\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(_vm._s(box.arrived_at)),
+                        _c("br"),
+                        _vm._v(_vm._s(box.amount) + "원")
                       ])
-                    }),
-                    0
-                  )
-                ])
-              ])
-            ])
+                    ])
+                  }),
+                  0
+                )
+              ],
+              2
+            )
           ]
         )
       ])

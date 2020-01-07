@@ -21,8 +21,16 @@ body, th, td, input, select, textarea, button {
     padding: 10px;
 }
 
+
 .text-inherit {
     color: inherit;
+}
+.padding-inherit {
+    padding: inherit;
+}
+
+.letz {
+    margin: 0;
 }
 
 .box {
@@ -43,7 +51,7 @@ body, th, td, input, select, textarea, button {
 
 
 .container {
-    /*max-width: 1024px;*/
+    max-width: 1024px;
     margin: 0 auto;
 }
 
@@ -78,16 +86,20 @@ nav {
 }
 
 nav>a {
-    padding-left: 2em;
-    padding-right: 2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .7);
-    text-decoration: none;
+    /*padding: 1em 2em 0 2em;*/
+    /*padding-left: 2em;*/
+    /*padding-right: 2em;*/
+    /*text-transform: uppercase;*/
+    /*color: rgba(255, 255, 255, .7);*/
+    /*text-decoration: none;*/
+    padding: 0 1em;
 }
 
 nav>a:hover, li>a:hover {
-    color: white;
+    color: inherit;
     background: rgba(48, 154, 221, .4);
+    /*background: aliceblue;*/
+    /*padding: inherit;*/
     /*padding: 3px;*/
     text-decoration: none;
     /*font-weight: bold;*/

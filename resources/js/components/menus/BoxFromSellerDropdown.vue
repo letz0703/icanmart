@@ -1,46 +1,37 @@
 <template>
-    <div>
+    <div class="flex letz-drop-menu">
         <!--         @mouseout="active=false"-->
-
-        <a href="/boxes"
-           class="block md:px-8 md:flex-1 uppercase font-bold
-           hover:text-white-50% pb-0 py-2"
-           @mouseover="active=true"
-           @mouseout="active=false"
-           :class="active ? 'text-black' : 'text-transparent-50'"
-        >
-            Boxes In
-        </a>
+        <nav>
+            <a href="/boxes"
+               class="tw-p-2 tw-mx-2"
+               @mouseover="active=true"
+               @mouseout="active=false"
+               :class="active ? 'text-black' : 'text-transparent-50'"
+            >구매처별</a>
+        </nav>
         <portal to="nav-after">
             <div v-show="active"
-                 class="series-dropdown absolute w-full z-10"
+                 class="series-dropdown absolute w-full tw-z-10"
                  @mouseover="active=true"
                  @mouseout="active=false"
             >
-                <div class="container mx-auto py-8 bg-red-500">
-                    <!--                    <div class="bg-blue-500 py-8">-->
-                    <div class="container mx-auto">
-                        <div class="flex">
-                            <div class="border-r border-grey-lighter border-solid pr-10 mr-10">
-                                <a :href="'/boxes/'+selected"
-                                   class="block font-bold uppercase mb-6 hover:text-blue"
-                                   :class="selected === seller ? 'text-blue' : 'text-grey-darkest'"
-                                   v-for="seller in sellerList"
-                                   v-text="seller.description"
-                                   @mouseover="showSeller(seller.slug)"
-                                />
-                            </div>
-                            <ul class="flex flex-wrap">
-                                <li class="w-full mb-0" v-for="box in boxes">
-                                    <a :href="'/boxes/'+selected+'/'+box.slug"
-                                       class="text-sm text-grey-darker hover:text-blue"
-                                    >{{ box.title }} /{{box.arrived_at}}<br>{{box.amount }}원
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--                    </div>-->
+                <div class="container tw-pt-2" style="background:aliceblue">
+                    <a :href="'/boxes/'+selected"
+                       class="mr-2"
+                       :class="selected === seller ? 'text-blue' : 'text-grey-darkest'"
+                       v-for="seller in sellerList"
+                       v-text="seller.description"
+                       @mouseover="showSeller(seller.slug)"
+                    />
+                    <ul class="tw-flex tw-flex-col tw-flex-1 tw-py-2">
+                        <li class="mr-4 tw-p-2" v-for="box in boxes">
+                            <a :href="'/boxes/'+selected+'/'+box.slug"
+                               class="font-inherit tw-justify-center"
+                            >{{ box.title }}
+                            </a>
+                            <p>{{box.arrived_at}}<br>{{box.amount }}원</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </portal>

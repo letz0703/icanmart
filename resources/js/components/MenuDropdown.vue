@@ -1,11 +1,13 @@
 <template>
     <div>
+        <nav class="">
         <a href="/nova"
-           class="block md:px-3
-           hover:text-white-50% pb-0 py-2 uppercase"
+           class="tw-p-2 tw-mx-2"
            @mouseover="active=true"
-           @mouseout="active=false">
-          Nova</a>
+           @mouseout="active=false"
+        >
+          NOVA</a>
+        </nav>
         <portal to="nova">
             <div v-show="active"
                  class="relative w-full z-11 bg-red-500"
