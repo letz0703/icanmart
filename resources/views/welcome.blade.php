@@ -70,7 +70,7 @@
     <div class="card tw-flex">
         <!--    left side-->
         <div class="card-left tw-flex">
-                <h4 class="card-title">Japan to Korea</h4>
+            <h4 class="card-title">Japan to Korea</h4>
             <div class="flex flex-row justify-content-center">
                 <img
                     class="flex-1"
@@ -88,10 +88,10 @@
         <div class="card-right tw-text-gray-600">
             <h3 class="card-title round-button tw-pt-3">
                 <a href="#">
-                    Oder for you
+                    <span class="tw-text-2xl">Order For You</span>
                 </a>
             </h3>
-            <p class="card-excerpt">
+            <p class="card-excerpt tw-text-sm">
                 Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
                 The delivery will take only 2 to 3 working days to you in KOREA.
@@ -102,16 +102,16 @@
                 <div class="">
                     <a href="/items/search">
                         <img src="images/search.png" alt="search barcode">
-                            barcode
+                        barcode
                     </a>
                 </div>
                 <div class="">
                     <a href="#">
-                            <img src="images/write.svg"
-                                 class="mx-1"
-                                 width="25"
-                                 height="25"
-                                 alt="">ask us
+                        <img src="images/write.svg"
+                             class="mx-1"
+                             width="25"
+                             height="25"
+                             alt="">ask us
                     </a>
                 </div>
 

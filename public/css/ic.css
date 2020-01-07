@@ -21,6 +21,10 @@ body, th, td, input, select, textarea, button {
     padding: 10px;
 }
 
+.text-inherit {
+    color: inherit;
+}
+
 .box {
     /*background: #e3e3e3;*/
     /*height: 150px;*/
