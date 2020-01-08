@@ -21674,7 +21674,7 @@ h3 {
 }
 
 .card {
-  font-family: "NotoSans Light", "Apple SD Gothic Neo", "Malgun Gothic", "\B9D1\C740   \ACE0\B515", "\B3CB\C6C0", dotum, sans-serif;
+  font-family: "Open Sans", "Apple SD Gothic Neo", "Malgun Gothic", "\B9D1\C740   \ACE0\B515", "\B3CB\C6C0", dotum, sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   width: 458px;
   height: 258px;
@@ -21731,8 +21731,7 @@ h3 {
 
 .card-meta {
   /*justify-content: flex-end;*/
-  padding-bottom: 1em;
-  padding-top: 1em;
+  padding-bottom: 20px;
 }
 
 /*.round-button {*/

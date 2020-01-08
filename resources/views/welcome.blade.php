@@ -68,9 +68,9 @@
 </div>
     <div class="card flex flex-row justify-center content-center container px-0">
         <!--    left side-->
-        <div class="card-left flex w-full flex-col h-full justify-around">
-            <h4 class="text-center">Japan to Korea</h4>
-            <div class="flex flex-row items-center h-1/3 justify-content-center">
+        <div class="card-left flex flex-col h-full items-center justify-around ">
+            <h4 class="text-center w-48">Japan to Korea</h4>
+            <div class="flex flex-row items-center h-1/3 justify-center">
                 <img
                     src="images/jap-flag.png"
                     alt="">
@@ -79,22 +79,18 @@
                     alt="">
             </div>
 
-            <p class="card-p" >Delivery within 3 days!</p>
+            <p class="text-center text-gray-200" >Delivery within 3 days!</p>
         </div>
         <!--    right side-->
-        <div class="">
-            <h3 class="">
-                <a href="#">
-                    <span class="text-2xl">Order For You</span>
-                </a>
-            </h3>
+        <div class="flex flex-col ml-4 mr-2 mt-4 justify-between">
+            <h3 class="">Order For You</h3>
             <p class="">
                 Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
             <!--        meta information-->
-            <div class="card-meta flex">
+            <div class="card-meta flex justify-start pb-6 pl-2">
 
                 <div class="">
                     <a href="/items/search">

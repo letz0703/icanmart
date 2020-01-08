@@ -6,7 +6,7 @@
                     <h5 class="text-white font-semibold uppercase">Shop</h5>
                     <ul class="leading-loose">
                         <li><a href="#" class="text-transparent-50 hover:text-white">JAPAN TO KOREA</a></li>
-                        <li><a href="#" class="text-transparent-50 hover:text-white">VIP ONLINE(Under Construction)</a>
+                        <li><a href="#" class="text-transparent-50 hover:text-white">VIP ONLINE</a>
                         </li>
                         {{--            <li><a href="#" class="text-transparent-50 hover:text-white">Apparel</a></li>--}}
                         @unless(Route::has('login'))
@@ -24,12 +24,28 @@
                     </ul>
                 </div>
             </div>
+
+
+            <div class="col">
+                <div class="box">
+                    <h5 class="text-white font-semibold uppercase">Contact Us</h5>
+                    <ul class="leading-loose">
+                        <li><a href="mailto:icanmart@gmail.com" class="text-transparent-50 hover:text-white">
+                                Email: icanmart@gmail.com</a>
+                        </li>
+                        <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>
+                        <li>
+                            <support-button class="text-transparent-50 hover:text-white"></support-button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             @can('update')
                 <div class="col">
                     <div class="box">
                         <h5 class="text-white font-semibold uppercase">Admin</h5>
                         <ul class="leading-loose">
-                            <li><a href="/boxes/create" class="">
+                            <li><a href="/boxes/create" class="text-transparent-50 hover:text-white">
                                     입고등록</a>
                             </li>
                             <li><a href="/nova" class="text-transparent-50 hover:text-white">
@@ -42,21 +58,6 @@
                     </div>
                 </div>
             @endcan
-
-            <div class="col">
-                <div class="box">
-                    <h5 class="text-white font-semibold uppercase">Contact Us</h5>
-                    <ul class="leading-loose">
-                        <li><a href="mailto:icanmart@gmail.com" class="text-transparent-50 hover:text-white">
-                                Email: icanmart@gmail.com</a>
-                        </li>
-                        <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>
-                        <li>
-                            <support-button></support-button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </div>
