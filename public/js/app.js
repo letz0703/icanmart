@@ -10673,6 +10673,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -96694,6 +96697,15 @@ var render = function() {
                                 textContent: _vm._s(item.sell_price + "원")
                               }
                             }),
+                            _vm._v(" "),
+                            _vm.authorize("isAdmin")
+                              ? _c("div", {
+                                  staticStyle: { background: "yellowgreen" },
+                                  domProps: {
+                                    textContent: _vm._s(item.buy_price + "원")
+                                  }
+                                })
+                              : _vm._e(),
                             _vm._v(" "),
                             _c("div", {
                               domProps: {

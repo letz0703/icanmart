@@ -44,6 +44,9 @@
                                 </a>
 
                                 <div v-text="item.sell_price+'원'"></div>
+                                <div v-if="authorize('isAdmin')" v-text="item.buy_price+'원'"
+                                     style="background:yellowgreen;"
+                                ></div>
                                 <div v-text="item.product_name"></div>
                             </div>
                         </ais-hits>
