@@ -66,38 +66,35 @@
         </div>
     </div>
 </div>
-<div class="ic-card tw-flex">
-    <div class="card tw-flex">
+    <div class="card flex flex-row justify-center content-center container px-0">
         <!--    left side-->
-        <div class="card-left tw-flex">
-            <h4 class="card-title">Japan to Korea</h4>
-            <div class="flex flex-row justify-content-center">
+        <div class="card-left flex w-full flex-col h-full justify-around">
+            <h4 class="text-center">Japan to Korea</h4>
+            <div class="flex flex-row items-center h-1/3 justify-content-center">
                 <img
-                    class="flex-1"
                     src="images/jap-flag.png"
                     alt="">
                 <img
-                    class="flex-1"
                     src="images/kor-flag.png"
                     alt="">
             </div>
 
-            <p class="card-p">Delivery within 3 days!</p>
+            <p class="card-p" >Delivery within 3 days!</p>
         </div>
         <!--    right side-->
-        <div class="card-right tw-text-gray-600">
-            <h3 class="card-title round-button tw-pt-3">
+        <div class="">
+            <h3 class="">
                 <a href="#">
-                    <span class="tw-text-2xl">Order For You</span>
+                    <span class="text-2xl">Order For You</span>
                 </a>
             </h3>
-            <p class="card-excerpt tw-text-sm">
+            <p class="">
                 Find the barcode and just let us know. We make the order for you.<br>
                 Our specialist will find the best & cheapest shop for the item.
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
             <!--        meta information-->
-            <div class="card-meta tw-flex">
+            <div class="card-meta flex">
 
                 <div class="">
                     <a href="/items/search">
@@ -114,11 +111,9 @@
                              alt="">ask us
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
 <div>
 
     @include('layouts.footer-links')

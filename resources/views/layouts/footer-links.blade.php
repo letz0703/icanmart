@@ -1,4 +1,4 @@
-<div class="section tw-flex tw-bg-blue-500">
+<div class="section flex bg-blue-500">
     <div class="container">
         <div class="row">
             <div class="col">

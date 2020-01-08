@@ -96097,7 +96097,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "tw-p-2 tw-mx-2",
+            staticClass: "p-2 mx-2",
             attrs: { href: "/nova" },
             on: {
               mouseover: function($event) {
@@ -96931,7 +96931,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "tw-p-2 tw-mx-2",
+            staticClass: "p-2 mx-2",
             class: _vm.active ? "text-black" : "text-transparent-50",
             attrs: { href: "/boxes" },
             on: {
@@ -96959,7 +96959,7 @@ var render = function() {
                 expression: "active"
               }
             ],
-            staticClass: "series-dropdown absolute w-full tw-z-10",
+            staticClass: "series-dropdown absolute w-full z-10",
             on: {
               mouseover: function($event) {
                 _vm.active = true
@@ -96973,7 +96973,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "container tw-pt-2",
+                staticClass: "container pt-2",
                 staticStyle: { background: "aliceblue" }
               },
               [
@@ -96996,13 +96996,13 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "ul",
-                  { staticClass: "tw-flex tw-flex-col tw-flex-1 tw-py-2" },
+                  { staticClass: "flex flex-col flex-1 py-2" },
                   _vm._l(_vm.boxes, function(box) {
-                    return _c("li", { staticClass: "mr-4 tw-p-2" }, [
+                    return _c("li", { staticClass: "mr-4 p-2" }, [
                       _c(
                         "a",
                         {
-                          staticClass: "font-inherit tw-justify-center",
+                          staticClass: "font-inherit justify-center",
                           attrs: {
                             href: "/boxes/" + _vm.selected + "/" + box.slug
                           }

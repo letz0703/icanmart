@@ -12,10 +12,6 @@ body, th, td, input, select, textarea, button {
     margin-right: -10px;
 }
 
-.flex > div {
-    flex: 1;
-}
-
 .col {
     flex: 1;
     padding: 10px;

@@ -2,7 +2,7 @@
     <div>
         <nav class="">
         <a href="/nova"
-           class="tw-p-2 tw-mx-2"
+           class="p-2 mx-2"
            @mouseover="active=true"
            @mouseout="active=false"
         >

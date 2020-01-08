@@ -3,7 +3,7 @@
         <!--         @mouseout="active=false"-->
         <nav>
             <a href="/boxes"
-               class="tw-p-2 tw-mx-2"
+               class="p-2 mx-2"
                @mouseover="active=true"
                @mouseout="active=false"
                :class="active ? 'text-black' : 'text-transparent-50'"
@@ -11,11 +11,11 @@
         </nav>
         <portal to="nav-after">
             <div v-show="active"
-                 class="series-dropdown absolute w-full tw-z-10"
+                 class="series-dropdown absolute w-full z-10"
                  @mouseover="active=true"
                  @mouseout="active=false"
             >
-                <div class="container tw-pt-2" style="background:aliceblue">
+                <div class="container pt-2" style="background:aliceblue">
                     <a :href="'/boxes/'+selected"
                        class="mr-2"
                        :class="selected === seller ? 'text-blue' : 'text-grey-darkest'"
@@ -23,10 +23,10 @@
                        v-text="seller.description"
                        @mouseover="showSeller(seller.slug)"
                     />
-                    <ul class="tw-flex tw-flex-col tw-flex-1 tw-py-2">
-                        <li class="mr-4 tw-p-2" v-for="box in boxes">
+                    <ul class="flex flex-col flex-1 py-2">
+                        <li class="mr-4 p-2" v-for="box in boxes">
                             <a :href="'/boxes/'+selected+'/'+box.slug"
-                               class="font-inherit tw-justify-center"
+                               class="font-inherit justify-center"
                             >{{ box.title }}
                             </a>
                             <p>{{box.arrived_at}}<br>{{box.amount }}원</p>
