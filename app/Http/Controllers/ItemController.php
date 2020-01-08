@@ -20,7 +20,7 @@ class ItemController extends Controller
     {
         $items = $this->getItems($filters);
 
-        if (request()->wantsJson()){
+        if (request()->wantsJson()) {
             return $items;
         }
 
@@ -30,33 +30,33 @@ class ItemController extends Controller
     public function create()
     {
         return view('items.create', [
-            'items' => Item::latest()->get()
+            'items' => Item::latest()->get(),
         ]);
     }
 
     public function update($sellerName, Box $box)
     {
-        if (request()->has('locked')){
-            if ( ! auth()->user()->isAdmin){
+        if (request()->has('locked')) {
+            if ( ! auth()->user()->isAdmin) {
                 return response('', 403);
             }
             $box->lock();
         }
-        $box->update(request(['amount', 'paid','locked']));
+        $box->update(request(['amount', 'paid', 'locked']));
     }
 
     public function store($sellerSlug, Box $box)
     {
-        if ($box->locked){
+        if ($box->locked) {
             return response('This Box is locked', 422);
         }
 
         $this->validate(request(), [
             'product_name' => 'required',
-            'description' => 'required',
-            'buy_price' => 'required',
-            'sell_price' => 'required',
-            'barcode' => 'required',
+            'description'  => 'required',
+            'buy_price'    => 'required',
+            'sell_price'   => 'required',
+            'barcode'      => 'required',
         ]);
 
         $sellerId = request('seller_id');
@@ -64,26 +64,25 @@ class ItemController extends Controller
         $item = Item::forceCreate([
             'seller_id'    => $sellerId ? : $sellerId,
             'box_id'       => request('box_id') ? : null,
-            'barcode'      => request('barcode')? : '9999' ,
+            'barcode'      => request('barcode') ? : '9999',
             'user_id'      => auth()->id(),
             'product_name' => request('product_name'),
-            'description' => request('description'),
+            'description'  => request('description'),
             'quantity'     => request('quantity'),
             //'category_id'  => request('category_id'),
             'expire_date'  => request('expire_date'),
-            'buy_price'    => request('buy_price')? : 0,
+            'buy_price'    => request('buy_price') ? : 0,
             'sell_price'   => request('sell_price') ? : 0,
+            'memo'         => request('memo'),
         ]);
 
-        if ($item->barcodeExist($item)){
+        if ($item->barcodeExist($item)) {
             $item->updateInventoryQuantity($item);
-        }
-
-        else {
+        } else {
             $item->addInventory($item);
         }
 
-        if (request()->expectsJson()){
+        if (request()->expectsJson()) {
             return $item;
         }
 
@@ -103,7 +102,7 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //$this->authorize('update', $item);
-        if ($item->user_id != auth()->id()){
+        if ($item->user_id != auth()->id()) {
             return response([], 403);
         }
         $item->delete();

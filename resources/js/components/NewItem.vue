@@ -10,7 +10,9 @@
         <div class="form-group">
             <label for="barcode">Barcode:</label>
             <input ref="barcode"
-                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus>
+                   type="text" id="barcode" name="barcode" v-model="barcode" v-focus
+                   :disabled="locked"
+            >
         </div>
         <div class="form-group">
             <label><span v-text="dateRemain"></span>: </label>
@@ -41,6 +43,12 @@
             <label for="sell_price">판매가:</label>
             <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
         </div>
+        <div class="form-group">
+            <span>Memo: </span>
+            <textarea v-model="memo" placeholder="Add Memo"
+                      class="form-textarea"
+            ></textarea>
+        </div>
         <div v-if="signedIn" class="pb-2">
             <button type="submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
         </div>
@@ -56,7 +64,7 @@
     // });
 
     export default {
-        props: ['seller', 'boxId'],
+        props: ['seller', 'boxId','locked'],
 
         data(){
             return {
@@ -72,6 +80,8 @@
                 expireDate: new Date().toISOString().slice(0,10),
                 createdAt: '',
                 signedIn: window.App.signedIn,
+                memo: '',
+                locked: this.locked
                 // oldItems:{},
 
             }
@@ -136,6 +146,7 @@
                     buy_price: this.buy_price,
                     sell_price: this.sell_price,
                     expire_date: this.expireDate,
+                    memo: this.memo,
                 }).then(this.broadcast);
                 // this.reset();
                 this.$refs.barcode.focus();
@@ -159,6 +170,7 @@
                         this.sell_price = latestOne.sell_price;
                         this.expireDate = moment(latestOne.expire_date).format('YYYY-MM-DD');
                         this.createdAt = latestOne.created_at;
+                        this.memo = lastestOne.memo;
                         console.log(data);
                     }
                 });

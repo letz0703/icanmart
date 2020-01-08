@@ -39,7 +39,7 @@
     </style>
 </head>
 <body style="padding-bottom: 100px">
-<div id="app">
+<div id="app" style="width:100%">
     @include('layouts.nav')
     <main class="py-4">
         @yield('content')

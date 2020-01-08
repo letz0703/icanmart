@@ -1,6 +1,6 @@
 body, th, td, input, select, textarea, button {
-    /*font-size: 15px;*/
-    /*line-height: 1.5;*/
+    font-size: 0.9em;
+    line-height: 1.5;
     font-family: 'Nunito','Open Sans', 'NotoSans Light','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
     /*color: #666;*/
 }
@@ -47,12 +47,17 @@ body, th, td, input, select, textarea, button {
 
 
 .container {
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     margin: 0 auto;
 }
 
 .navbar {
     padding: 0.5rem 1rem 0 1rem;
+}
+
+.form-textarea {
+    border: 1px solid lightgray;
+    padding: 0.5em;
 }
 
 header {

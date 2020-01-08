@@ -9892,6 +9892,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['items'],
   data: function data() {
@@ -10346,6 +10348,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
  // Vue.filter('formatDate', function(value){
 //     if (value) {
 //         return moment(String(value)).format('yyyy-mm-dd')
@@ -10353,7 +10363,7 @@ __webpack_require__.r(__webpack_exports__);
 // });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['seller', 'boxId'],
+  props: ['seller', 'boxId', 'locked'],
   data: function data() {
     return {
       box_id: this.boxId,
@@ -10367,7 +10377,9 @@ __webpack_require__.r(__webpack_exports__);
       sell_price: '',
       expireDate: new Date().toISOString().slice(0, 10),
       createdAt: '',
-      signedIn: window.App.signedIn // oldItems:{},
+      signedIn: window.App.signedIn,
+      memo: '',
+      locked: this.locked // oldItems:{},
 
     };
   },
@@ -10424,7 +10436,8 @@ __webpack_require__.r(__webpack_exports__);
         quantity: this.quantity,
         buy_price: this.buy_price,
         sell_price: this.sell_price,
-        expire_date: this.expireDate
+        expire_date: this.expireDate,
+        memo: this.memo
       }).then(this.broadcast); // this.reset();
 
       this.$refs.barcode.focus();
@@ -10451,6 +10464,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.sell_price = latestOne.sell_price;
           _this.expireDate = moment__WEBPACK_IMPORTED_MODULE_0___default()(latestOne.expire_date).format('YYYY-MM-DD');
           _this.createdAt = latestOne.created_at;
+          _this.memo = lastestOne.memo;
           console.log(data);
         }
       });
@@ -95817,15 +95831,15 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("span", {
-              domProps: { textContent: _vm._s(item.quantity + "개") }
-            }),
-            _vm._v(" "),
-            _c("span", {
-              domProps: { textContent: _vm._s("x " + item.buy_price + "=") }
+              domProps: { textContent: _vm._s(item.quantity + "개 x ") }
             }),
             _vm._v(" "),
             _c("span", {
               staticStyle: { color: "#3391e1" },
+              domProps: { textContent: _vm._s(item.buy_price + "원=") }
+            }),
+            _vm._v(" "),
+            _c("span", {
               domProps: { textContent: _vm._s(_vm.itemAmount(item)) }
             })
           ])
@@ -96021,7 +96035,11 @@ var render = function() {
                     _c("hr"),
                     _vm._v(" "),
                     _c("new-item", {
-                      attrs: { seller: _vm.sellerp, "box-id": _vm.boxidp },
+                      attrs: {
+                        seller: _vm.sellerp,
+                        "box-id": _vm.boxidp,
+                        locked: _vm.locked
+                      },
                       on: { created: _vm.updateAmount }
                     }),
                     _vm._v(" "),
@@ -96228,7 +96246,12 @@ var render = function() {
           { name: "focus", rawName: "v-focus" }
         ],
         ref: "barcode",
-        attrs: { type: "text", id: "barcode", name: "barcode" },
+        attrs: {
+          type: "text",
+          id: "barcode",
+          name: "barcode",
+          disabled: _vm.locked
+        },
         domProps: { value: _vm.barcode },
         on: {
           input: function($event) {
@@ -96414,6 +96437,32 @@ var render = function() {
         }
       }),
       _vm._v(" 원\n    ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("Memo: ")]),
+      _vm._v(" "),
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.memo,
+            expression: "memo"
+          }
+        ],
+        staticClass: "form-textarea",
+        attrs: { placeholder: "Add Memo" },
+        domProps: { value: _vm.memo },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.memo = $event.target.value
+          }
+        }
+      })
     ]),
     _vm._v(" "),
     _vm.signedIn

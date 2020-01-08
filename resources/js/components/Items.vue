@@ -7,8 +7,8 @@
                 <new-item
                     :seller="sellerp"
                     :box-id="boxidp"
+                    :locked="locked"
                     @created="updateAmount"
-
                 ></new-item>
                 <hr>
             </div>
