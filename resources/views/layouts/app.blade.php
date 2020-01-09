@@ -29,22 +29,31 @@
         body {
             padding-bottom: 100px;
         }
+
         .level {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         /*.flex { flex: 1 }*/
-        [v-cloak] { display: none;}
+        [v-cloak] {
+            display: none;
+        }
     </style>
 </head>
-<body style="padding-bottom: 100px">
-<div id="app" style="width:100%">
-    @include('layouts.nav')
+<body style="">
+<div id="app" style="min-width:screen">
+    <div class="">
+        @include('layouts.nav')
+    </div>
     <main class="py-4">
         @yield('content')
     </main>
-    @include('layouts.footer-links')
+    <div>
+        @include('layouts.footer-links')
+    </div>
+
     <flash message="{{ session('flash') }}"></flash>
 </div>
 </body>
