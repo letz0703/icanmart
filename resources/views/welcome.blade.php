@@ -57,63 +57,18 @@
                 <img src="/images/carousel.jpg">
 
             </div>
-            {{--            <div class="carousel-cell">--}}
-            {{--                <img src="/images/carousel-img-blendy.jpg">--}}
-            {{--            </div>--}}
-            {{--            <div class="carousel-cell">--}}
-            {{--                <img src="https://placeimg.com/640/480/any">--}}
-            {{--            </div>--}}
         </div>
     </div>
-    <div class="card flex flex-row justify-center content-center container px-0" style="width:458px">
-        <!--    left side-->
-        <div class="card-left flex flex-col h-full items-center justify-around ">
-            <h4 class="text-center w-48">Japan to Korea</h4>
-            <div class="flex flex-row items-center h-1/3 justify-center">
-                <img
-                    src="images/jap-flag.png"
-                    alt="">
-                <img
-                    src="images/kor-flag.png"
-                    alt="">
-            </div>
-
-            <p class="text-center text-gray-200">Delivery within 3 days!</p>
-        </div>
-        <!--    right side-->
-        <div class="flex flex-col ml-4 mr-2 mt-4 justify-between">
-            <h3 class="">Order For You</h3>
-            <p class="text-gray-600">
-                Find the barcode and just let us know. We make the order for you.<br>
-                Our specialist will find the best & cheapest shop for the item.
-                The delivery will take only 2 to 3 working days to you in KOREA.
-            </p>
-            <!--        meta information-->
-            <div class="card-meta flex justify-start pb-6 pl-2">
-
-                <div class="">
-                    <a href="/items/search">
-                        <img src="images/search.png" alt="search barcode">
-                        barcode
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="images/write.svg"
-                             class="mx-1"
-                             width="25"
-                             height="25"
-                             alt="">ask us
-                    </a>
-                </div>
-            </div>
+    {{--    <div class="card flex flex-row justify-around content-center container px-0" style="width:458px">--}}
+    <div class="container">
+        <div class="flex flex-row px-2 justify-around">
+        @include('banner.card-banner',['title'=>'Japan to Korea'])
+{{--        @include('banner.card-banner',['title'=>'Korea to Japan'])--}}
         </div>
     </div>
 </div>
 <div>
-
-    @include('layouts.footer-links')
-
+    @include('layouts.footer-links',[])
 </div>
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

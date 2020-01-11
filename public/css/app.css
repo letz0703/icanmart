@@ -21674,17 +21674,9 @@ h3 {
 }
 
 .card {
-  font-family: "Open Sans", "Apple SD Gothic Neo", "Malgun Gothic", "\B9D1\C740   \ACE0\B515", "\B3CB\C6C0", dotum, sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-  height: 258px;
   /*flex-direction: row;*/
   border-radius: 10px;
-}
-
-.col-md-8 .card {
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: auto;
 }
 
 .card-left {

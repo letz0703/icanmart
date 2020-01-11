@@ -1,17 +1,16 @@
 
 .card {
-    font-family: 'Open Sans','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0,0,0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08) ;
     //min-width: 458px;
-    height: 258px;
+    //height: 400px;
     /*flex-direction: row;*/
     border-radius: 10px;
 }
-.col-md-8 .card {
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: auto;
-}
+//.col-md-8 .card {
+//    flex-direction: column;
+//    justify-content: space-evenly;
+//    height: auto;
+//}
 .card-left {
     background: linear-gradient(to bottom, #21c8f6, #637bff);
     border-radius: 10px;

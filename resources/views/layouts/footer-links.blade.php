@@ -47,6 +47,7 @@
                         <ul class="leading-loose">
                             <li><a href="/boxes/create" class="text-transparent-50 hover:text-white">
                                     입고등록</a>
+
                             </li>
                             <li><a href="/nova" class="text-transparent-50 hover:text-white">
                                     NOVA</a>
