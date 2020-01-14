@@ -8,8 +8,8 @@ body, th, td, input, select, textarea, button {
 .flex,
 .row {
     display: flex;
-    margin-left: -10px;
-    margin-right: -10px;
+    /*margin-left: -10px;*/
+    /*margin-right: -10px;*/
 }
 
 .col {
