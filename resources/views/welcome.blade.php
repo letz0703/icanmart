@@ -22,9 +22,11 @@
     <div class="container">
         <div class="header-top">
             <div>
-                <h1>
-                    {{ env('APP_NAME') }}
-                </h1>
+                <a href="icanmart.co.kr" class="cursor-pointer hover:no-underline">
+                    <h1>
+                        {{ env('APP_NAME') }}
+                    </h1>
+                </a>
             </div>
             @if (Route::has('login'))
                 <div class="links">
@@ -62,8 +64,8 @@
     {{--    <div class="card flex flex-row justify-around content-center container px-0" style="width:458px">--}}
     <div class="container">
         <div class="flex flex-row px-2 justify-around">
-        @include('banner.card-banner',['title'=>'Japan to Korea'])
-{{--        @include('banner.card-banner',['title'=>'Korea to Japan'])--}}
+            @include('banner.card-banner',['title'=>'Japan to Korea'])
+            {{--        @include('banner.card-banner',['title'=>'Korea to Japan'])--}}
         </div>
     </div>
 </div>
