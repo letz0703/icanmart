@@ -16,6 +16,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.content > * {
+    margin-bottom: 1em;
+}
+
 
 //Alogolia Search
 .ais-Hits-item, .ais-InfiniteHits-item, .ais-InfiniteResults-item, .ais-Results-item {

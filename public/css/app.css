@@ -21796,6 +21796,10 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.content > * {
+  margin-bottom: 1em;
+}
+
 .ais-Hits-item, .ais-InfiniteHits-item, .ais-InfiniteResults-item, .ais-Results-item {
   margin-top: 1rem;
   margin-left: 1rem;
