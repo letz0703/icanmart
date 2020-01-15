@@ -1,6 +1,6 @@
 let user = window.App.user;
 
-module.exports = {
+let authorizations = {
     owns (model, prop = 'user_id') {
         return model[prop] === user.id;
     },
@@ -8,3 +8,5 @@ module.exports = {
         return user.isAdmin;
     },
 };
+
+module.exports = authorizations;

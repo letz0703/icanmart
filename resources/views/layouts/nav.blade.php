@@ -81,13 +81,14 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('profile',Auth()->user())}}">My Profile</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+{{--                            <a class="dropdown-item" href="{{ route('logout') }}"--}}
+                            <a class="dropdown-item" href="{{ url('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('logout') }}
                             </a>
 
-                            <form id="logout-form" action="route('logout')" method="POST"
+                            <form id="logout-form" action="{{ url('logout') }}" method="GET"
                                   style="display: none;">
                                 @csrf
                             </form>

@@ -17,6 +17,7 @@
 
 </head>
 <body>
+<div id="app">
 <header>
     <div class="container">
         <div class="header-top sticky top-0">
@@ -71,7 +72,8 @@
 <div>
     @include('layouts.footer-links',[])
 </div>
-
+</div> <!--end body container -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
