@@ -3,7 +3,7 @@
         <!--    left side-->
         {{--            <div class="card-left flex flex-col h-full items-center justify-around ">--}}
         <div class="card-left flex flex-col md:pt-3 w-1/3 justify-around p-2 ml-n2">
-            <h3 class="text-center leading-none">{{ $title }}</h3>
+            <h3 class="text-center leading-none md:text-2xl">{{ $title }}</h3>
             <div class="flex flex-col   md:flex-row items-center justify-center">
                 <img
                     src="images/jap-flag.png"
@@ -25,7 +25,7 @@
                 The delivery will take only 2 to 3 working days to you in KOREA.
             </p>
             <!--        meta information-->
-            <div class="card-meta flex pb-6 md:pl-2">
+            <div class="card-meta flex pb-6 ">
                 <div class="">
                     <a href="/items/search">
                         <img src="images/search.png" alt="search barcode">

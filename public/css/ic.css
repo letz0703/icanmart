@@ -46,7 +46,7 @@ body, th, td, input, select, textarea, button {
 
 
 .container {
-    /*max-width: 1024px;*/
+    max-width: 1024px;
     margin: 0 auto;
 }
 

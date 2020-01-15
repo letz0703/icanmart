@@ -11,7 +11,6 @@
 
     <!-- Styles -->
     {{--    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma">--}}
-    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/ic.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -20,7 +19,7 @@
 <body>
 <header>
     <div class="container">
-        <div class="header-top">
+        <div class="header-top sticky top-0">
             <div>
                 <a href="icanmart.co.kr" class="cursor-pointer hover:no-underline">
                     <h1>
