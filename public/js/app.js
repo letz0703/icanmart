@@ -9890,6 +9890,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
@@ -9898,6 +9908,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      isOpen: false,
       paid: this.data.paid //                endpoint: location.pathname + '/' + this.data.seller.name + '/' + this.data.id,
       // endpoint: location.pathname.indexOf(this.data.seller.slug)?
       //         `${location.pathname}/${this.data.seller.slug}/${this.data.slug}`
@@ -95923,7 +95934,7 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "level" }, [
-        _c("div", { staticClass: "flex" }, [
+        _c("div", { staticClass: "flex items-center justify-center" }, [
           _c("a", { attrs: { href: _vm.endpoint } }, [
             _c("span", {
               domProps: { textContent: _vm._s(_vm.data.arrived_at) }
@@ -95938,8 +95949,28 @@ var render = function() {
             }),
             _vm._v("\n                from\n                "),
             _c("span", {
-              domProps: { textContent: _vm._s(_vm.data.seller.name) }
+              domProps: { textContent: _vm._s(_vm.data.seller.description) }
             })
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "border focus:outline-none w-5 h-5 border-solid border-gray-900 rounded-full flex items-center justify-center mx-1 text-xs text-gray-900 font-bold leading-none cursor-pointer",
+                on: {
+                  click: function($event) {
+                    _vm.isOpen = !_vm.isOpen
+                  }
+                }
+              },
+              [
+                _vm.isOpen ? _c("span", [_vm._v("-")]) : _vm._e(),
+                _vm._v(" "),
+                !_vm.isOpen ? _c("span", [_vm._v("+")]) : _vm._e()
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -95967,7 +95998,17 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("box-items", { attrs: { items: _vm.data.items } })
+      _c("box-items", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isOpen,
+            expression: "isOpen"
+          }
+        ],
+        attrs: { items: _vm.data.items }
+      })
     ],
     1
   )
