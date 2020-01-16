@@ -42,8 +42,8 @@
         }
     </style>
 </head>
-<body style="">
-<div id="app" style="min-width:screen">
+<body>
+<div id="app" style="min-width: fit-content">
     <div class="">
         @include('layouts.nav')
     </div>

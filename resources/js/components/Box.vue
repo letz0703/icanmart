@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="level">
+    <div class="container mx-auto">
+        <div class="flex justify-between">
             <div class="flex items-center justify-center">
 
                 <a :href="endpoint">
@@ -18,7 +18,7 @@
                     </button>
                 </div>
             </div>
-            <div>
+            <div class="text-right">
                 <span v-text="data.amount+'원'"></span>
                 <!--@can('update')-->
                 <span v-if="paid">

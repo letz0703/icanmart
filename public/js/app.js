@@ -95932,8 +95932,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container mx-auto" },
     [
-      _c("div", { staticClass: "level" }, [
+      _c("div", { staticClass: "flex justify-between" }, [
         _c("div", { staticClass: "flex items-center justify-center" }, [
           _c("a", { attrs: { href: _vm.endpoint } }, [
             _c("span", {
@@ -95974,7 +95975,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", [
+        _c("div", { staticClass: "text-right" }, [
           _c("span", {
             domProps: { textContent: _vm._s(_vm.data.amount + "원") }
           }),
