@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card-body">
-                    <search></search>
+                    <search ref="search"></search>
                     {{--                    <form method="get" action="/items/search">--}}
                     {{--                        <div class="form-group">--}}
                     {{--                            <input type="text"--}}

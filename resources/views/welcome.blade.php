@@ -22,7 +22,7 @@
     <div class="container">
         <div class="header-top sticky top-0">
             <div>
-                <a href="icanmart.co.kr" class="cursor-pointer hover:no-underline">
+                <a href="items/search" class="cursor-pointer hover:no-underline">
                     <h1>
                         {{ env('APP_NAME') }}
                     </h1>

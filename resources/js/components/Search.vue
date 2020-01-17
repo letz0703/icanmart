@@ -15,12 +15,13 @@
         <div class="content">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
-                                class="sticky"
             >
                 <div class="search-panel">
                     <div class="search-panel__results">
 
-                        <ais-search-box class="searchbox" :autofocus="true"/>
+                        <ais-search-box class="searchbox"
+                                        ref="searchBox"
+                                        :autofocus="true"/>
 
 
                         <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
@@ -46,7 +47,7 @@
 
                                 <div v-text="item.sell_price+'원'"></div>
                                 <div v-if="authorize('isAdmin')" v-text="item.buy_price+'원'"
-                                     style="background:yellowgreen;"
+                                     style="background:aliceblue;"
                                 ></div>
                                 <div v-text="item.product_name"></div>
                             </div>
@@ -86,6 +87,22 @@
                 },
             };
         },
+        mounted() {
+            // let bar = this.$refs['searchBox'];
+            // let originalOffsetTop = bar.offsetY;
+            // console.log(this.$refs['input']);
+            // window.addEventListener('scroll', ()=>{
+            //     if ( window.scrollY >= originalOffsetTop){
+            //         bar.classList.add(
+            //             'fixed',
+            //             'w-full',
+            //             'pin-t',
+            //             'z-10'
+            //         );
+            //     }
+            //
+            // });
+        }
 
     }
 </script>
@@ -97,7 +114,7 @@
     /*}*/
 
     .ais-Highlight-highlighted {
-        background: yellowgreen;
+        background: aliceblue;
         font-style: normal;
     }
 
