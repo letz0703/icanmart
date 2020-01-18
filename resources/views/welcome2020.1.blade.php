@@ -20,7 +20,39 @@
 <div>
     @extends('layouts.app')
     @section('content')
-        @include('banner-meta')
+{{--    <header>--}}
+{{--        <div class="container">--}}
+{{--            <div class="header-top sticky top-0">--}}
+{{--                <div>--}}
+{{--                    <a href="items/search" class="cursor-pointer hover:no-underline">--}}
+{{--                        <h1>--}}
+{{--                            {{ env('APP_NAME') }}--}}
+{{--                        </h1>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                @if (Route::has('login'))--}}
+{{--                    <div class="links">--}}
+{{--                        @auth--}}
+{{--                            <a href="{{ url('/home') }}">Home</a>--}}
+{{--                        @else--}}
+{{--                            <a href="{{ route('login') }}">Login</a>--}}
+
+{{--                            @if (Route::has('register'))--}}
+{{--                                <a href="{{ route('register') }}">Register</a>--}}
+{{--                            @endif--}}
+{{--                        @endauth--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--            <nav>--}}
+{{--                <a href="items/search">SEARCH BARCODE</a>--}}
+{{--                @can('update')--}}
+{{--                    <a href="/nova">NOVA</a>--}}
+{{--                    <a href="boxes/create">입고등록</a>--}}
+{{--                @endcan--}}
+{{--            </nav>--}}
+{{--        </div>--}}
+{{--    </header>--}}
         <div class="content">
             <div class="container">
                 <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
@@ -39,8 +71,12 @@
             </div>
         </div>
     @endsection
+    @include('banner-meta')
+
+
+{{--    @include('layouts.footer-links',[])--}}
 </div>
-{{--<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>--}}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 {{--<script src="{{asset('js/app.js')}}" defer></script>--}}
 </body>
 </html>
