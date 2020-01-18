@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+    <div class="md:container mx-auto">
+        <div class="row flex justify-center">
+            <div class="md:col-md-8">
                 <div class="card-body">
                     <search ref="search"></search>
                     {{--                    <form method="get" action="/items/search">--}}

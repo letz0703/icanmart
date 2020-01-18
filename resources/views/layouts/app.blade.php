@@ -47,9 +47,12 @@
     <div class="">
         @include('layouts.nav')
     </div>
-    <main class="py-4">
+{{--    <div class="container">--}}
+{{--        @include('banner-meta')--}}
+{{--    </div>--}}
+    <div class="container w-screen">
         @yield('content')
-    </main>
+    </div>
     <div>
         @include('layouts.footer-links')
     </div>

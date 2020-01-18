@@ -29,7 +29,7 @@
                         <!--                        </ais-refinement-list>-->
 
                         <ais-hits
-                            :escapeHTML="true"
+                            :escapeHTML="false"
                             :class-names="{
                                 'ais-Hits':'MyCustomHits',
                                 'ais-Hits-list':'MyCustomHitsList',
@@ -49,7 +49,7 @@
                                 <div v-if="authorize('isAdmin')" v-text="item.buy_price+'원'"
                                      style="background:aliceblue;"
                                 ></div>
-                                <div v-text="item.product_name"></div>
+                                <div v-text="item.seller_id"></div>
                             </div>
                         </ais-hits>
 

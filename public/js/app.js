@@ -10712,21 +10712,31 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [''],
-  data: function data() {
-    return {
-      test: 'good'
-    };
-  },
   mounted: function mounted() {
-    console.log('Pinned mounted');
+    // let topBar = this.$refs['main-top'];
+    var el = this.$el; // console.log('Pinned mounted');
+
+    var originalOffsetTop = this.$el.offsetTop; // console.log(this.$refs['main-top'].offsetTop);
+    // window.addEventListener('scroll',() => {
+
+    window.addEventListener('scroll', Object(lodash__WEBPACK_IMPORTED_MODULE_0__["throttle"])(function () {
+      if (window.scrollY >= originalOffsetTop) {
+        // console.log(el.classList);
+        el.classList.add('fixed', 'top-0', 'z-10', 'w-full');
+      } else {
+        el.classList.remove('fixed', 'top-0', 'z-10', 'w-full');
+      }
+    }, 300));
   }
 });
 
@@ -96893,7 +96903,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { ref: "main-top", staticClass: "bg-gray-300 block" },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -96945,7 +96960,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("ais-hits", {
                     attrs: {
-                      escapeHTML: true,
+                      escapeHTML: false,
                       "class-names": {
                         "ais-Hits": "MyCustomHits",
                         "ais-Hits-list": "MyCustomHitsList",
@@ -96991,9 +97006,7 @@ var render = function() {
                               : _vm._e(),
                             _vm._v(" "),
                             _c("div", {
-                              domProps: {
-                                textContent: _vm._s(item.product_name)
-                              }
+                              domProps: { textContent: _vm._s(item.seller_id) }
                             })
                           ])
                         }

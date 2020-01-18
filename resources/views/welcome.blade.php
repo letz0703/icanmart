@@ -17,10 +17,8 @@
 
 </head>
 <body>
-<div>
     @extends('layouts.app')
     @section('content')
-        @include('banner-meta')
         <div class="content">
             <div class="container">
                 <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround":true }'>
@@ -39,7 +37,6 @@
             </div>
         </div>
     @endsection
-</div>
 {{--<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>--}}
 {{--<script src="{{asset('js/app.js')}}" defer></script>--}}
 </body>
