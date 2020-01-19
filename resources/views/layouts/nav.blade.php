@@ -16,6 +16,7 @@
 
                 <li>
                     <a class="nav-link" href="/items/search">아이템 검색</a>
+
                 </li>
                 @can('update')
                     <li>
@@ -55,6 +56,7 @@
 
                 @endcan
             </ul>
+
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

@@ -1,4 +1,4 @@
-<div class="section flex bg-blue-500 h-screen md:h-full">
+<div class="section flex bg-blue-500 md:h-full">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -30,7 +30,9 @@
                 <div class="box">
                     <h5 class="text-white font-semibold uppercase">Contact Us</h5>
                     <ul class="leading-loose">
-                        <li><a href="mailto:icanmart@gmail.com" class="text-transparent-50 hover:text-white">
+                        <li><a href="mailto:icanmart@gmail.com"
+                               data-tooltip="letz0703@gmail.com"
+                               class="text-transparent-50 hover:text-white">
                                 Email: icanmart@gmail.com</a>
                         </li>
                         <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>

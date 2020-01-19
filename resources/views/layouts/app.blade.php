@@ -43,10 +43,11 @@
     </style>
 </head>
 <body>
-<div id="app" style="min-width: fit-content">
+<div id="app">
     <div class="">
         @include('layouts.nav')
     </div>
+
 {{--    <div class="container">--}}
 {{--        @include('banner-meta')--}}
 {{--    </div>--}}

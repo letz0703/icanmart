@@ -8,6 +8,10 @@ import Vue from 'vue';
 
 // window.Vue = require('vue');
 window.Vue = Vue;
+
+// import { createPopper } from '@popperjs/core';
+import Tooltip from 'tooltip.js';
+
 require('./bootstrap');
 
 import Search from './components/Search.vue';
@@ -69,5 +73,14 @@ Vue.component('item-in', require('./pages/ItemIn.vue').default);
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    mounted(){
+        document.querySelectorAll('[data-tooltip]').forEach(elem => {
+           new Tooltip(elem, {
+               placement:'right',
+               title: 'Hardcoded tool tip'
+           });
+        });
+    }
 });

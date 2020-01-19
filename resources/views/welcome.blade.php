@@ -36,6 +36,7 @@
                     {{--        @include('banner.card-banner',['title'=>'Korea to Japan'])--}}
                 </div>
             </div>
+
         </div>
     @endsection
 </div>

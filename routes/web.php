@@ -18,6 +18,9 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/', function (){
     return view('welcome');
 });
+Route::get('/test',function() {
+    return view('test');
+});
 Route::get('/api/sellers','SellerController@index');
 Route::get('/icanmart', function (){
     return view('icanmart');
