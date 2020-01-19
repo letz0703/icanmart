@@ -98438,7 +98438,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("ais-hits", {
                     attrs: {
-                      escapeHTML: false,
+                      escapeHTML: true,
                       "class-names": {
                         "ais-Hits": "MyCustomHits",
                         "ais-Hits-list": "MyCustomHitsList",

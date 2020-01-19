@@ -29,7 +29,7 @@
                         <!--                        </ais-refinement-list>-->
 
                         <ais-hits
-                            :escapeHTML="false"
+                            :escapeHTML="true"
                             :class-names="{
                                 'ais-Hits':'MyCustomHits',
                                 'ais-Hits-list':'MyCustomHitsList',
