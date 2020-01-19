@@ -22021,6 +22021,10 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+html, body {
+  height: 100vh;
+}
+
 .content > * {
   margin-bottom: 1em;
 }

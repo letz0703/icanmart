@@ -12,7 +12,7 @@
         <!--            </div>-->
         <!--        </carousel>-->
 
-        <div class="content">
+        <div class="content md:w-2/3 mx-auto">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
             >

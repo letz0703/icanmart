@@ -25,6 +25,10 @@
 //    }
 //}
 
+html, body {
+    height: 100vh;
+}
+
 .content > * {
     margin-bottom: 1em;
 }

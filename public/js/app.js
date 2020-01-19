@@ -96935,7 +96935,7 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "content" },
+      { staticClass: "content md:w-2/3 mx-auto" },
       [
         _c(
           "ais-instant-search",
