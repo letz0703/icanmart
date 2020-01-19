@@ -79,7 +79,7 @@ const app = new Vue({
         document.querySelectorAll('[data-tooltip]').forEach(elem => {
            new Tooltip(elem, {
                placement:'right',
-               title: 'Hardcoded tool tip'
+               title: elem.dataset.tooltip
            });
         });
     }

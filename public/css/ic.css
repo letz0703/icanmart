@@ -30,6 +30,10 @@ body, th, td, input, select, textarea, button {
 
 .tooltip {
     padding-left: 0.5em;
+    /*background: aliceblue;*/
+    color: white;
+    border-radius: 5px;
+
 }
 .tooltip[aria-hidden="false"]{
     opacity:1;

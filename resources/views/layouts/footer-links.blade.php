@@ -31,9 +31,9 @@
                     <h5 class="text-white font-semibold uppercase">Contact Us</h5>
                     <ul class="leading-loose">
                         <li><a href="mailto:icanmart@gmail.com"
-                               data-tooltip="letz0703@gmail.com"
+                               data-tooltip="icanmart@gmail.com"
                                class="text-transparent-50 hover:text-white">
-                                Email: icanmart@gmail.com</a>
+                                Email Us</a>
                         </li>
                         <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>
                         <li>

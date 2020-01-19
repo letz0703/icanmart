@@ -111389,7 +111389,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     document.querySelectorAll('[data-tooltip]').forEach(function (elem) {
       new tooltip_js__WEBPACK_IMPORTED_MODULE_1__["default"](elem, {
         placement: 'right',
-        title: 'Hardcoded tool tip'
+        title: elem.dataset.tooltip
       });
     });
   }
