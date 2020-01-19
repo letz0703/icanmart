@@ -28,6 +28,9 @@ body, th, td, input, select, textarea, button {
     margin: 0;
 }
 
+.tooltip {
+    padding-left: 0.5em;
+}
 .tooltip[aria-hidden="false"]{
     opacity:1;
 }
