@@ -11539,7 +11539,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['name', 'placement'],
+  props: ['name', 'placement', 'offset'],
   // props: {
   //     name: {},
   //     placement: { default: top }
@@ -11551,6 +11551,7 @@ __webpack_require__.r(__webpack_exports__);
       new tooltip_js__WEBPACK_IMPORTED_MODULE_0__["default"](elem, {
         placement: _this.placement || top,
         title: _this.$refs.body.innerHTML,
+        offset: _this.offset || '0,0',
         html: true
       });
     });

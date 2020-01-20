@@ -10,6 +10,7 @@
                             >JAPAN TO KOREA</a></li>
                         <tooltip name="jap-to-kor-tooltip"
                                  placement="right"
+                                 offset="0,5"
                         >
                             <h2>Japan to Korea</h2>
                             <p>Delivery in 3 days</p>
