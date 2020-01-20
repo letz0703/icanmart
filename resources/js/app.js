@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -10,31 +9,49 @@ import Vue from 'vue';
 window.Vue = Vue;
 
 // import { createPopper } from '@popperjs/core';
-import Tooltip from 'tooltip.js';
+import PopperTooltip from 'tooltip.js';
 
 require('./bootstrap');
 
 import Search from './components/Search.vue';
+Vue.component('search', Search);
+
 import InstantSearch from 'vue-instantsearch';
+
 Vue.use(InstantSearch);
 
 import PortalVue from 'portal-vue';
+
 Vue.use(PortalVue);
 
 import VModal from 'vue-js-modal';
+
 Vue.use(VModal);
 
 import swal from 'sweetalert';
+
 Vue.use('swal');
 
 Vue.directive('focus', {
     inserted: function(el){
         el.focus()
-    }
+    },
+});
+
+import Tooltip from './components/Tooltip';
+
+Vue.component('tooltip', Tooltip);
+
+Vue.directive('tooltip', {
+    bind(elem, bindings){
+        new PopperTooltip(elem, {
+            placement: bindings.arg,
+            title: bindings.value,
+        });
+    },
 });
 
 window.Event = new Vue();
-
 
 
 /**
@@ -77,10 +94,10 @@ const app = new Vue({
 
     mounted(){
         document.querySelectorAll('[data-tooltip]').forEach(elem => {
-           new Tooltip(elem, {
-               placement:'right',
-               title: elem.dataset.tooltip
-           });
+            new PopperTooltip(elem, {
+                placement: elem.dataset.tooltipPlacement,
+                title: elem.dataset.tooltip || 'right',
+            });
         });
-    }
+    },
 });

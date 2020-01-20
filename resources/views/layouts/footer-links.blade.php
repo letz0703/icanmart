@@ -5,7 +5,15 @@
                 <div class="box">
                     <h5 class="text-white font-semibold uppercase">Shop</h5>
                     <ul class="leading-loose">
-                        <li><a href="#" class="text-transparent-50 hover:text-white">JAPAN TO KOREA</a></li>
+                        <li><a href="#" class="text-transparent-50 hover:text-white"
+                               data-tooltip-name="jap-to-kor-tooltip"
+                            >JAPAN TO KOREA</a></li>
+                        <tooltip name="jap-to-kor-tooltip"
+                                 placement="right"
+                        >
+                            <h2>Japan to Korea</h2>
+                            <p>Delivery in 3 days</p>
+                        </tooltip>
                         <li><a href="#" class="text-transparent-50 hover:text-white">VIP ONLINE</a>
                         </li>
                         {{--            <li><a href="#" class="text-transparent-50 hover:text-white">Apparel</a></li>--}}
@@ -32,12 +40,15 @@
                     <ul class="leading-loose">
                         <li><a href="mailto:icanmart@gmail.com"
                                data-tooltip="icanmart@gmail.com"
+                               data-tooltip-placement="right"
                                class="text-transparent-50 hover:text-white">
                                 Email Us</a>
                         </li>
-                        <li><a href="#" class="text-transparent-50 hover:text-white">Board</a></li>
+                        <li><a href="#" class="text-transparent-50 hover:text-white"
+                               v-tooltip:right="'Under construction'"
+                            >Board</a></li>
                         <li>
-                            <support-button class="text-transparent-50 hover:text-white"></support-button>
+                            <support-button class="text-transparent-50 hover:text-white cursor-pointer"></support-button>
                         </li>
                     </ul>
                 </div>

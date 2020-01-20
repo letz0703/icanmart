@@ -19,7 +19,7 @@
                     {{--                    </form>--}}
                 </div>
                 {{--                <div class="card">--}}
-               <div class="container md:w-75">
+               <div class="container">
                    <div class="card-header">
                        Newly Arrived Items
                    </div>

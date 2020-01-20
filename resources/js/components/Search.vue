@@ -48,11 +48,10 @@
                                 <div v-text="item.sell_price+'원'"></div>
                                 <div v-if="authorize('isAdmin')" v-text="item.buy_price+'원'"
                                      style="background:aliceblue;"
+                                     v-tooltip:left="item.seller_id"
                                 ></div>
-                                <div v-text="item.seller_id"></div>
                             </div>
                         </ais-hits>
-
                         <div class="pagination">
                             <ais-pagination/>
                         </div>
