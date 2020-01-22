@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import inView from 'in-viewport';
     export default {
         props: ['to'],
 
@@ -23,7 +24,11 @@
         },
 
         mounted() {
-            this.interval = setInterval(this.tick, 40);
+            inView(this.$el, ()=>{
+                // console.log('I am visible');
+                this.interval = setInterval(this.tick, 30);
+            });
+
         },
 
         methods: {

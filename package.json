@@ -36,6 +36,7 @@
     "dependencies": {
         "@popperjs/core": "^2.0.0-rc.3",
         "flickity": "^2.2.1",
+        "in-viewport": "^3.6.0",
         "instantsearch.css": "^7.3.1",
         "instantsearch.js": "^3.7.0",
         "moment": "^2.24.0",
