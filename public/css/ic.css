@@ -1,7 +1,7 @@
 body, th, td, input, select, textarea, button {
     font-size: 0.9em;
     line-height: 1.5;
-    font-family: 'Nunito','Open Sans', 'NotoSans Light','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
+    font-family:'Nunito','Open Sans', 'NotoSans Light','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
     /*color: #666;*/
 }
 

@@ -66,6 +66,7 @@ window.Event = new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('flash', require('./components/Flash.vue').default);
+Vue.component('auto-counter', require('./components/AutoCounter').default);
 Vue.component('box', require('./components/Box.vue').default);
 Vue.component('boxes-view', require('./components/Boxes.vue').default);
 Vue.component('box-amount', require('./components/BoxAmount.vue').default);

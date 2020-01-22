@@ -74,5 +74,8 @@
                 </div>
             @endcan
         </div>
+        <div class="mx-auto text-center">ⓒiCANMART
+            <auto-counter :to="2020"></auto-counter>
+            All right reserved. </div>
     </div>
 </div>
