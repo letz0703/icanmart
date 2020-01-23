@@ -28,9 +28,17 @@ body, th, td, input, select, textarea, button {
     margin: 0;
 }
 
+.expand-clickable {
+    z-index: 1;
+    display: inline-block;
+    position: relative;
+    padding: 3em 10rem 3em 2em;
+    margin: -2em 0 ;
+    /*background: aliceblue;*/
+}
+
 .tooltip {
     padding-left: 0.5em;
-    /*background: aliceblue;*/
     color: white;
     border-radius: 5px;
 

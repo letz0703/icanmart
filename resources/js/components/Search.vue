@@ -41,7 +41,7 @@
                                 <!--                                   {{ item.product_name}}-->
                                 <!--                                </li>-->
                                 <div v-text="'BARCODE: '+item.barcode"></div>
-                                <a :href="'/items/'+item.id">
+                                <a :href="'/items/'+item.id" class="expand-clickable">
                                     <ais-highlight :hit="item" attribute="description"/>
                                 </a>
 

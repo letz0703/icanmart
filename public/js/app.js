@@ -98872,7 +98872,10 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "a",
-                              { attrs: { href: "/items/" + item.id } },
+                              {
+                                staticClass: "expand-clickable",
+                                attrs: { href: "/items/" + item.id }
+                              },
                               [
                                 _c("ais-highlight", {
                                   attrs: { hit: item, attribute: "description" }
