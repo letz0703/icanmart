@@ -16,7 +16,7 @@ App::setLocale('kr');
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/', function (){
-    return view('welcome');
+    return view('welcoe');
 });
 Route::get('/test',function() {
     return view('test');
