@@ -9,7 +9,7 @@ import Vue from 'vue';
 window.Vue = Vue;
 
 // import { createPopper } from '@popperjs/core';
-import PopperTooltip from 'tooltip.js';
+// import PopperTooltip from 'tooltip.js';
 
 require('./bootstrap');
 
@@ -38,18 +38,18 @@ Vue.directive('focus', {
     },
 });
 
-import Tooltip from './components/Tooltip';
+// import Tooltip from './components/Tooltip';
 
-Vue.component('tooltip', Tooltip);
+// Vue.component('tooltip', Tooltip);
 
-Vue.directive('tooltip', {
-    bind(elem, bindings){
-        new PopperTooltip(elem, {
-            placement: bindings.arg,
-            title: bindings.value,
-        });
-    },
-});
+// Vue.directive('tooltip', {
+//     bind(elem, bindings){
+//         new PopperTooltip(elem, {
+//             placement: bindings.arg,
+//             title: bindings.value,
+//         });
+//     },
+// });
 
 window.Event = new Vue();
 
@@ -80,6 +80,7 @@ Vue.component('seller-form', require('./components/SellerForm.vue').default);
 Vue.component('menu-dropdown', require('./components/MenuDropdown').default);
 Vue.component('menu-boxdropdown', require('./components/menus/BoxFromSellerDropdown').default);
 Vue.component('support-button', require('./components/menus/SupportButton').default);
+// Vue.component('tooltip', require('./components/Tooltip.vue').default);
 // Vue.component('item', require('./components/Item.vue').default);
 Vue.component('box-view', require('./pages/Box.vue').default);
 Vue.component('item-in', require('./pages/ItemIn.vue').default);
@@ -93,12 +94,12 @@ Vue.component('item-in', require('./pages/ItemIn.vue').default);
 const app = new Vue({
     el: '#app',
 
-    mounted(){
-        document.querySelectorAll('[data-tooltip]').forEach(elem => {
-            new PopperTooltip(elem, {
-                placement: elem.dataset.tooltipPlacement,
-                title: elem.dataset.tooltip || 'right',
-            });
-        });
-    },
+    // mounted(){
+    //     document.querySelectorAll('[data-tooltip]').forEach(elem => {
+    //         new PopperTooltip(elem, {
+    //             placement: elem.dataset.tooltipPlacement,
+    //             title: elem.dataset.tooltip || 'right',
+    //         });
+    //     });
+    // },
 });
