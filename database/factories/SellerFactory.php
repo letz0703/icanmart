@@ -7,12 +7,12 @@ use Faker\Generator as Faker;
 $factory->define(Seller::class, function (Faker $faker){
     $name = $faker->colorName;
     //dd($name);
-    
+
     return [
         'name'  => $name,
-        'slug'  => str_slug($name),
+        'slug'  => $faker->colorName,
         'description' => $faker->sentence,
         'phone' => $faker->phoneNumber,
     ];
-    
+
 });

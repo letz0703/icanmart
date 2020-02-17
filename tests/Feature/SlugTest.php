@@ -10,7 +10,7 @@ use Tests\TestCase;
 class SlugTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     /** @test */
     public function user_can_make_korean_slug()
     {
@@ -24,12 +24,12 @@ class SlugTest extends TestCase
         $this->post(route('admin.sellers.store'), $seller->toArray());
         $this->assertDatabaseHas('sellers', ['slug' => '김창만']);
     }
-    
+
     public function make_slug($string)
     {
         //$string = iconv('UTF-8', 'UTF-8', $string);
-        
-        $slug = preg_replace('/\s+/u','_', trim($string));
+
+        return $slug = preg_replace('/\s+/u','_', trim($string));
         //$name = iconv('UTF-8', 'ASCII', $name);
         //dd($name);
         //$slug = Str::slug( $name, '-');
@@ -37,8 +37,8 @@ class SlugTest extends TestCase
         //$slug = Str::slug($string, '-');
         //$name = iconv('ascii', 'UTF-8', $slug);
         //dd($slug);
-        return $slug;
+        //return Str::slug($slug);
     }
-    
-    
+
+
 }
