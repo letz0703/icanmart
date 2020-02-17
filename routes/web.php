@@ -12,24 +12,27 @@
 */
 
 App::setLocale('kr');
+Auth::routes(['confirm' => true]);
+
+Route::get('setting/card/edit', 'Settings\CreditCardController@edit')->middleware(['auth','password.confirm']);
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('/', function (){
-    return view('welcoe');
+Route::get('/', function () {
+    return view('welcome');
 });
-Route::get('/test',function() {
+Route::get('/test', function () {
     return view('test');
 });
-Route::get('/api/sellers','SellerController@index');
-Route::get('/icanmart', function (){
+Route::get('/api/sellers', 'SellerController@index');
+Route::get('/icanmart', function () {
     return view('icanmart');
 });
 
 Route::get('/tasks', 'TaskController@index');
 Route::post('/tasks', 'TaskController@store');
 
-Route::get('/icanmart-inline', function(){
+Route::get('/icanmart-inline', function () {
     return view('icanmart-inline');
 });
 
@@ -80,7 +83,7 @@ Route::group([
     'prefix'     => 'admin',
     'middleware' => 'admin',
     'namespace'  => 'Admin',
-], function (){
+], function () {
     Route::get('', 'DashboardController@index')->name('admin.dashboard.index');
     Route::post('sellers', 'SellerController@store')->name('admin.sellers.store');
     Route::get('sellers', 'SellerController@index')->name('admin.sellers.index');
@@ -91,6 +94,4 @@ Route::group([
          ->name('admin.sellers.update');
 });
 
-Route::post('/contact','UserRequestController@store');
-
-
+Route::post('/contact', 'UserRequestController@store');
