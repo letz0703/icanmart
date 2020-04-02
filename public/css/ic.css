@@ -1,7 +1,11 @@
+body {
+    font-family: 'Nunito', 'Open Sans', 'NotoSans Light', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', '돋움', dotum, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+}
+
 body, th, td, input, select, textarea, button {
-    font-size: 0.9em;
-    line-height: 1.5;
-    font-family:'Nunito','Open Sans', 'NotoSans Light','Apple SD Gothic Neo','Malgun Gothic', '맑은 고딕',  '돋움', dotum, sans-serif;
     /*color: #666;*/
 }
 
@@ -20,6 +24,7 @@ body, th, td, input, select, textarea, button {
 .text-inherit {
     color: inherit;
 }
+
 .padding-inherit {
     padding: inherit;
 }
@@ -33,7 +38,7 @@ body, th, td, input, select, textarea, button {
     display: inline-block;
     position: relative;
     padding: 3em 10rem 3em 2em;
-    margin: -2em 0 ;
+    margin: -2em 0;
     /*background: aliceblue;*/
 }
 
@@ -43,8 +48,9 @@ body, th, td, input, select, textarea, button {
     border-radius: 5px;
 
 }
-.tooltip[aria-hidden="false"]{
-    opacity:1;
+
+.tooltip[aria-hidden="false"] {
+    opacity: 1;
 }
 
 .box {
@@ -86,7 +92,7 @@ body, th, td, input, select, textarea, button {
 }
 
 header {
-    background-image: linear-gradient( to bottom, rgba(48, 154, 221, 1.0),  rgba(60, 125, 194, 1.0));
+    background-image: linear-gradient(to bottom, rgba(48, 154, 221, 1.0), rgba(60, 125, 194, 1.0));
     padding: 1.5em 2em;
 }
 
@@ -102,6 +108,7 @@ header h1 {
     color: white;
     padding-bottom: 1.4em;
 }
+
 .header-top a {
     color: inherit;
 }
@@ -111,7 +118,7 @@ nav {
     justify-content: center;
 }
 
-nav>a {
+nav > a {
     /*padding: 1em 2em 0 2em;*/
     /*padding-left: 2em;*/
     /*padding-right: 2em;*/
@@ -121,7 +128,7 @@ nav>a {
     padding: 0 1em;
 }
 
-nav>a:hover, li>a:hover {
+nav > a:hover, li > a:hover {
     color: inherit;
     background: rgba(48, 154, 221, .4);
     /*background: aliceblue;*/
@@ -136,9 +143,10 @@ a {
     color: #222222;
 }
 
-.form-group>input {
+.form-group > input {
     border: 1px solid lightgray;
 }
+
 h2 {
     margin: 0.5rem 0;
     font-size: 1.5rem;
@@ -152,6 +160,7 @@ textarea {
     width: 100%;
     height: 5em;
 }
+
 .is-blue {
     background-color: deepskyblue;
     color: white;
@@ -170,6 +179,7 @@ textarea {
     position: relative;
     height: 400px;
 }
+
 .main-carousel {
     /*position: absolute;*/
     width: 100%;
@@ -192,6 +202,7 @@ textarea {
     margin: 0;
     border-radius: 0;
 }
+
 /*/!* position dots up a bit *!*/
 /*.flickity-page-dots {*/
 /*    bottom: -22px;*/
@@ -206,22 +217,25 @@ textarea {
     width: -webkit-fill-available;
 }
 
-.MyCustomHits{
+.MyCustomHits {
     /*background:lightskyblue;*/
     /*display:flex;*/
     /*flex-direction:column;*/
 }
-.MyCustomHitsList{
+
+.MyCustomHitsList {
     /*flex:1;*/
     /*flex-direction:column;*/
 }
-.MyCustomHitsItem{
+
+.MyCustomHitsItem {
     /*background:yellow;*/
     /*display:flex;*/
     /*justify-content:center;*/
     /*align-items:center;*/
     /*width:max-content;*/
 }
+
 li.ais-Hits-item, .MyCustomHitsItem {
     width: -webkit-fill-available;
 }
