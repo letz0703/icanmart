@@ -6,7 +6,7 @@
 @import 'tailwind';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
 
 //Card
 @import 'card';
@@ -20,16 +20,26 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before{
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
+}
+
+body {
     box-sizing: border-box;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.card {
+    @apply .bg-white .p-5 .rounded-lg .shadow;
 }
+
+//.navbar-laravel {
+//  background-color: #fff;
+//  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+//}
 
 //html {
 //    font-size: 12px;
