@@ -48,8 +48,8 @@
         <div class="container mx-auto">
             <!-- Left Side Of Navbar -->
             <div class="flex justify-between items-center py-2">
-                <h1>
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                <h1 class="text-xl font-semibold">
+                    <a class="navbar-brand text-black" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </h1>
