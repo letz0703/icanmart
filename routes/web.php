@@ -14,6 +14,14 @@
 App::setLocale('kr');
 Auth::routes(['confirm' => true]);
 
+Route::group(['middleware'=>'auth'], function(){
+
+
+});
+
+Route::get('/projects','ProjectController@index');
+Route::post('/projects','ProjectController@store');
+
 Route::get('setting/card/edit', 'Settings\CreditCardController@edit')->middleware(['auth','password.confirm']);
 
 Route::get('logout', 'Auth\LoginController@logout');
@@ -28,15 +36,12 @@ Route::get('/api/sellers', 'SellerController@index');
 Route::get('/icanmart', function () {
     return view('icanmart');
 });
-
 Route::get('/tasks', 'TaskController@index');
 Route::post('/tasks', 'TaskController@store');
 
 Route::get('/icanmart-inline', function () {
     return view('icanmart-inline');
 });
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

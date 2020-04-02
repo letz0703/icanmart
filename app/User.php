@@ -37,22 +37,28 @@ class User extends Authenticatable
         //'isAdmin' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function getRouteKeyName()
     {
         return 'name';
     }
-    
+
     public function boxes()
     {
         return $this->hasMany(Box::class)->latest();
     }
-    
+
     public function isAdmin()
     {
         //return in_array($this->name,['rainskiss']);
         return in_array(auth()->user()->email, [env('ADMIN_EMAIL')]);
          //return ['rainskiss', 'letz0703'].includes(user.name);
     }
-    
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class,'owner_id');
+    }
+
+
 }
