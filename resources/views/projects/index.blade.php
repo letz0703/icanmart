@@ -4,7 +4,7 @@
     <header class="mb-6">
         <div class="flex justify-between items-baseline">
             <h2 class="">My Projects</h2>
-            <a href="" class="bg-blue rounded-lg px-3 py-1 text-white">New Project</a>
+            <a href="" class="button">New Project</a>
         </div>
     </header>
     <div class="flex flex-wrap -mx-3">
