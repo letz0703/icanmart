@@ -10,12 +10,14 @@
     <div class="flex -mx-3">
         <div class="w-3/4 px-3">
             <div class="mb-3">
+                <h3 class="text-grey mb-3">Tasks</h3>
                 @foreach ( $project->tasks as $task)
-                    <h3 class="text-grey mb-3">{{ $task->body }}</h3>
+                    <div class="card mb-3">{{ $task->body }}</div>
                 @endforeach
-                <input type="text" class="card mb-3 w-full" placeholder="add new task">
-
-                <div class="card mb-3">go to store</div>
+                <form action="">
+                    @csrf
+                    <input class="card mb-3 w-full" placeholder="add new task">
+                </form>
                 {{--                @foreach ($project->tasks as $task)--}}
                 {{--                    {{ $task->body }}--}}
                 {{--                @endforeach--}}
