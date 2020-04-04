@@ -1,9 +1,9 @@
-body {
-    font-family: 'Nunito', 'Open Sans', 'NotoSans Light', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', '돋움', dotum, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #777;
-}
+/*body {*/
+/*    font-family: 'Nunito', 'Open Sans', 'NotoSans Light', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', '돋움', dotum, sans-serif;*/
+/*    font-size: 16px;*/
+/*    line-height: 1.7;*/
+/*    color: #777;*/
+/*}*/
 
 .col {
     flex: 1;
@@ -56,23 +56,6 @@ body {
     padding: 1em;
     /*height: 100vh;*/
     margin-top: 1.5em;
-}
-
-
-.container {
-    max-width: 1024px;
-    margin: 0 auto;
-}
-
-.navbar {
-    /*padding: 0.5rem 1rem 0 1rem;*/
-    padding: 0.5rem;
-}
-
-.navbar a {
-    display: inline-block;
-    z-index: 1;
-    margin-bottom: -0.5rem;
 }
 
 .form-textarea {

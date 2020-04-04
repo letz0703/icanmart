@@ -36,7 +36,6 @@
             justify-content: space-between;
         }
 
-        /*.flex { flex: 1 }*/
         [v-cloak] {
             display: none;
         }
@@ -44,58 +43,61 @@
 </head>
 <body class="bg-grey-light px-2">
 <div id="app">
-    <nav class="bg-white">
-        <div class="container mx-auto">
-            <!-- Left Side Of Navbar -->
-            <div class="flex justify-between items-center py-2">
-                <h1 class="text-xl font-semibold">
-                    <a class="navbar-brand text-black" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </h1>
+    <header class="header">
+        <div class="bg-white">
+            <div class="container mx-auto">
+                <!-- Left Side Of Navbar -->
+                <div class="flex justify-between items-center py-2">
+                    <h1 class="">
+                        <a class="navbar-brand text-black" href="{{ url('/') }}">
+                            {{ config('app.name', 'Laravel') }}
+                        </a>
+                    </h1>
 
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <main class="py-4 container mx-auto">
         @yield('content')
     </main>
+{{--    @include('layouts.footer-links')--}}
 </div>
 </body>
 </html>

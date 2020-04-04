@@ -12,6 +12,14 @@ class ProjectTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function it_has_path()
+    {
+        $project = create(Project::class);
+        $this->assertEquals('/projects/'.$project->id, $project->path());
+    }
+
+
+    /** @test */
     public function it_has_title()
     {
         $project = create(Project::class,['title'=>'title', 'description'=>'description']);

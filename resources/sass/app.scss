@@ -4,9 +4,6 @@
 //tailwindcss
 @import 'tailwind';
 
-// Bootstrap
-//@import '~bootstrap/scss/bootstrap';
-
 //Card
 @import 'card';
 
@@ -18,10 +15,17 @@
     box-sizing: inherit;
 }
 
+html, body {
+    height: 100vh;
+}
+
 body {
     box-sizing: border-box;
 }
 
+.header {
+
+}
 .button {
     @apply .bg-blue .no-underline .text-white .rounded-lg .py-2 .px-5;
     box-shadow: 0 2px 2px 0 #b0eaff;
@@ -49,9 +53,6 @@ body {
 //    }
 //}
 
-html, body {
-    height: 100vh;
-}
 
 .content > * {
     margin-bottom: 1em;
