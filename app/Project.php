@@ -12,4 +12,17 @@ class Project extends Model
     {
         return "/projects/{$this->id}";
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+
+    public function addTask($body)
+    {
+        $this->tasks()->create(['body'=>$body]);
+
+    }
+
 }

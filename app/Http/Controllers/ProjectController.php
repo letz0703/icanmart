@@ -20,5 +20,10 @@ class ProjectController extends Controller
         create(Project::class, $attributes);
     }
 
+    public function show(Project $project)
+    {
+        return view('projects.show', compact('project'));
+    }
+
 
 }
