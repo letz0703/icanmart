@@ -7,6 +7,13 @@
 //Card
 @import 'card';
 
+$color-primary: red;
+$color-secondary: green;
+$color-tertiary: blue;
+$color-text: darkgrey;
+$color-text-dark: grey;
+$color-text-light: silver;
+
 *,
 *::after,
 *::before {
@@ -23,6 +30,33 @@ body {
     box-sizing: border-box;
 }
 
+nav {
+    //margin: 30px;
+    //background-color: $color-primary;
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+.navigation {
+    list-style: none;
+    float: left;
+
+    li {
+        display: inline-block;
+        margin-left: 30px;
+        &:first-child {
+            margin: 0;
+        }
+        a:link {
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
+}
+
 .header {
 
 }
@@ -35,6 +69,9 @@ body {
     @apply .bg-white .p-5 .rounded-lg .shadow;
 }
 
+.main__menu-card {
+    @apply .card .text-grey .mb-3;
+}
 //.button {
 //    @apply
 //}
