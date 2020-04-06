@@ -15,6 +15,8 @@ class ManageProjectTest extends TestCase
     /** @test */
     public function a_user_can_create_project()
     {
+        $this->signIn();
+
         $attributes = [
             'title'       => 'project title',
             'description' => 'project description',
@@ -30,10 +32,21 @@ class ManageProjectTest extends TestCase
     /** @test */
     public function user_can_view_a_project()
     {
+        $this->signIn();
+
         $project = create(Project::class);
         $this->get($project->path())
              ->assertSee($project->title);
     }
+
+    /** @test */
+    public function guest_cannot_view_projects()
+    {
+        $project = raw(Project::class);
+        $this->post('/projects', $project)->assertRedirect('/login');
+        //$this->get('/projects')->assertRedirect('login');
+    }
+
 
     /** @test */
     public function a_project_can_have_a_task()
@@ -43,6 +56,8 @@ class ManageProjectTest extends TestCase
         $this->post($project->path() . '/tasks', raw(Task::class));
         $this->assertCount(1, $project->tasks);
     }
+
+
 
     /** @test */
     public function user_can_add_a_task()

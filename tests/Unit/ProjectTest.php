@@ -45,6 +45,13 @@ class ProjectTest extends TestCase
         $this->assertCount(1, $project->tasks);
     }
 
+    /** @test */
+    public function project_belongs_to_an_owner()
+    {
+        $project = create(Project::class);
+        $this->assertInstanceOf('App\User', $project->owner);
+    }
+
 
 
 

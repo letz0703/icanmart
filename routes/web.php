@@ -12,17 +12,15 @@
 */
 
 App::setLocale('kr');
-Auth::routes(['confirm' => true]);
+//Auth::routes(['confirm' => true]);
+Auth::routes();
 
 Route::group(['middleware'=>'auth'], function(){
-
-
+    Route::get('/projects','ProjectController@index');
+    Route::post('/projects','ProjectController@store');
+    Route::get('/projects/{project}','ProjectController@show');
+    Route::post('/projects/{project}/tasks','ProjectTaskController@store');
 });
-
-Route::get('/projects','ProjectController@index');
-Route::get('/projects/{project}','ProjectController@show');
-Route::post('/projects','ProjectController@store');
-Route::post('/projects/{project}/tasks','ProjectTaskController@store');
 
 Route::get('setting/card/edit', 'Settings\CreditCardController@edit')->middleware(['auth','password.confirm']);
 
