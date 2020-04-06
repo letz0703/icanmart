@@ -5422,6 +5422,11 @@ nav::after {
   text-transform: uppercase;
 }
 
+.button__group {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .button {
   background-color: rgba(0, 198, 245, 1.0);
   text-decoration: none;

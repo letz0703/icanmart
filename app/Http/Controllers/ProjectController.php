@@ -17,9 +17,16 @@ class ProjectController extends Controller
 
     public function store()
     {
-        $attributes = request(['title','body']);
-        create(Project::class, $attributes);
+        $attributes = request(['title','description']);
+        $project = create(Project::class, $attributes);
+        return redirect($project->path());
     }
+
+    public function create()
+    {
+        return view('projects.create');
+    }
+
 
     public function show(Project $project)
     {
