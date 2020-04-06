@@ -14,7 +14,16 @@
             <div class="mb-3">
                 <h3 class="text-grey mb-3">Tasks</h3>
                 @foreach ( $project->tasks as $task)
-                    <div class="card mb-3">{{ $task->body }}</div>
+                    <div class="card mb-3">
+                        <form action="{{ $project->path().'/tasks/'.$task->id }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <div class="flex items-center">
+                                <input value=" {{ $task->body }}" name="body" class="w-full">
+                                <input type="checkbox" name="completed" onChange="this.form.submit()">
+                            </div>
+                        </form>
+                    </div>
                 @endforeach
                 <form action="">
                     @csrf
@@ -28,10 +37,10 @@
         </div>
         <div class="lg:w-1/4 px-3 pb-6 py-8">
             @include('projects._card')
-{{--            <div class="card" style="height:200px">--}}
-{{--                <h2 class="font-normal"><a href="{{ $project->path() }}">{{ $project->title }}</a></h2>--}}
-{{--                <div class="text-grey">{{ Str::limit($project->description,100 )}}</div>--}}
-{{--            </div>--}}
+            {{--            <div class="card" style="height:200px">--}}
+            {{--                <h2 class="font-normal"><a href="{{ $project->path() }}">{{ $project->title }}</a></h2>--}}
+            {{--                <div class="text-grey">{{ Str::limit($project->description,100 )}}</div>--}}
+            {{--            </div>--}}
         </div>
     </div>
 @endsection
