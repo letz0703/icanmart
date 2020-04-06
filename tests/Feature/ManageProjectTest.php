@@ -22,11 +22,10 @@ class ManageProjectTest extends TestCase
             'description' => 'project description',
         ];
 
-        $endpoint = '/projects';
+        $this->post('/projects', $attributes);
+        $this->assertDatabaseHas('projects', $attributes);
 
-        $this->post($endpoint, $attributes);
-
-        $this->get($endpoint)->assertSee($attributes['title']);
+        //$this->get('/projects')->assertSee($attributes['title']);
     }
 
     /** @test */
@@ -52,11 +51,10 @@ class ManageProjectTest extends TestCase
     public function a_project_can_have_a_task()
     {
         $this->signIn();
-        $project = create(Project::class);
+        $project = auth()->user()->projects()->create(raw(Project::class));
         $this->post($project->path() . '/tasks', raw(Task::class));
         $this->assertCount(1, $project->tasks);
     }
-
 
 
     /** @test */
@@ -82,14 +80,30 @@ class ManageProjectTest extends TestCase
         $task = $project->addTask('new project');
 
 
-        $this->patch($project->path().'/tasks/'.$task->id,[
-            'body' => 'changed',
-            'completed' => true
+        $this->patch($project->path() . '/tasks/' . $task->id, [
+            'body'      => 'changed',
+            'completed' => true,
         ]);
 
         $this->assertDatabaseHas('tasks', [
-            'body' => 'changed',
-            'completed' => true
+            'body'      => 'changed',
+            'completed' => true,
         ]);
     }
+
+    /** @test */
+    public function only_the_project_owner_may_update_tasks()
+    {
+
+        $this->signIn();
+
+        $project = create(Project::class);
+
+        $task = $project->addTask('task by other uer');
+
+        $this->patch($project->path() . '/tasks/'.$task->id, raw(Task::class))
+             ->assertStatus(403);
+
+    }
+
 }
