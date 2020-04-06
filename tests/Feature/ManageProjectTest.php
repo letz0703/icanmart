@@ -70,5 +70,26 @@ class ManageProjectTest extends TestCase
         //$this->assertDatabaseMissing('tasks', ['body' => 'test tasks']);
     }
 
+    /** @test */
+    public function a_task_can_be_updated()
+    {
+        $this->withoutExceptionHandling();
 
+        $this->signIn();
+
+        $project = auth()->user()->projects()->create(raw(Project::class));
+
+        $task = $project->addTask('new project');
+
+
+        $this->patch($project->path().'/tasks/'.$task->id,[
+            'body' => 'changed',
+            'completed' => true
+        ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'body' => 'changed',
+            'completed' => true
+        ]);
+    }
 }

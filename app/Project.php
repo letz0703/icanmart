@@ -26,8 +26,7 @@ class Project extends Model
 
     public function addTask($body)
     {
-        $this->tasks()->create(['body'=>$body]);
-
+        return $this->tasks()->create(['body'=>$body]);
     }
 
 }
