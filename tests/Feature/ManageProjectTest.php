@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ProjectManageTest extends TestCase
+class ManageProjectTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -16,8 +16,8 @@ class ProjectManageTest extends TestCase
     public function a_user_can_create_project()
     {
         $attributes = [
-            'title' => 'project title',
-            'description' => 'project description'
+            'title'       => 'project title',
+            'description' => 'project description',
         ];
 
         $endpoint = '/projects';
@@ -40,8 +40,19 @@ class ProjectManageTest extends TestCase
     {
         $this->signIn();
         $project = create(Project::class);
-        $this->post($project->path().'/tasks',raw(Task::class));
+        $this->post($project->path() . '/tasks', raw(Task::class));
         $this->assertCount(1, $project->tasks);
+    }
+
+    /** @test */
+    public function user_can_add_a_task()
+    {
+        $this->signIn();
+        $project = create(Project::class, ['owner_id' => auth()->id()]);
+        $this->post($project->path() . '/tasks', ['body' => 'test tasks']);
+        $this->assertCount(1, $project->tasks);
+        //->assertStatus(403);
+        //$this->assertDatabaseMissing('tasks', ['body' => 'test tasks']);
     }
 
 
