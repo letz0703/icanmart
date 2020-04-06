@@ -20,7 +20,9 @@
                             @csrf
                             <div class="flex items-center">
                                 <input value=" {{ $task->body }}" name="body" class="w-full">
-                                <input type="checkbox" name="completed" onChange="this.form.submit()">
+                                <input type="checkbox" name="completed" onChange="this.form.submit()"
+                                    {{ $task->completed ? "checked":'' }}
+                                >
                             </div>
                         </form>
                     </div>
