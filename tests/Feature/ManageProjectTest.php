@@ -22,7 +22,8 @@ class ManageProjectTest extends TestCase
             'description' => 'project description',
         ];
 
-        $this->post('/projects', $attributes);
+        $this->post('/projects', $attributes)
+             ->assertRedirect(Project::where($attributes)->first()->path());
         $this->assertDatabaseHas('projects', $attributes);
 
         //$this->get('/projects')->assertSee($attributes['title']);
@@ -101,7 +102,7 @@ class ManageProjectTest extends TestCase
 
         $task = $project->addTask('task by other uer');
 
-        $this->patch($project->path() . '/tasks/'.$task->id, raw(Task::class))
+        $this->patch($project->path() . '/tasks/' . $task->id, raw(Task::class))
              ->assertStatus(403);
 
     }
