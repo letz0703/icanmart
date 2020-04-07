@@ -5403,10 +5403,6 @@ nav::after {
   display: table;
 }
 
-input {
-  background-color: #78C5ef;
-}
-
 .navigation {
   list-style: none;
   float: left;

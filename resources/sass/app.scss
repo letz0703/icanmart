@@ -21,6 +21,7 @@ $color-tertiary: blue;
 $color-text: darkgrey;
 $color-text-dark: grey;
 $color-text-light: silver;
+$color-bg-blue-light: rgba(168, 234, 253, 1.0);
 
 @mixin clearfix {
     &::after {
@@ -49,7 +50,7 @@ nav {
 }
 
 input {
-    @apply .bg-blue-light;
+    //background-color:rgba(168, 234, 253, .2)
 }
 
 .navigation {
