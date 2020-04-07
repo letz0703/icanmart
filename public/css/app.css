@@ -5403,6 +5403,10 @@ nav::after {
   display: table;
 }
 
+input {
+  background-color: #78C5ef;
+}
+
 .navigation {
   list-style: none;
   float: left;
@@ -5436,6 +5440,8 @@ nav::after {
   padding-bottom: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  margin-right: 0.75rem;
+  margin-top: 0.75rem;
   box-shadow: 0 2px 2px 0 #b0eaff;
 }
 

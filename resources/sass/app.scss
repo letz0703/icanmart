@@ -7,6 +7,14 @@
 //Card
 @import 'card';
 
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
 $color-primary: red;
 $color-secondary: green;
 $color-tertiary: blue;
@@ -14,12 +22,12 @@ $color-text: darkgrey;
 $color-text-dark: grey;
 $color-text-light: silver;
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+@mixin clearfix {
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
 }
 
 html, body {
@@ -40,6 +48,10 @@ nav {
     }
 }
 
+input {
+    @apply .bg-blue-light;
+}
+
 .navigation {
     list-style: none;
     float: left;
@@ -47,9 +59,11 @@ nav {
     li {
         display: inline-block;
         margin-left: 30px;
+
         &:first-child {
             margin: 0;
         }
+
         a:link {
             text-decoration: none;
             text-transform: uppercase;
@@ -60,11 +74,13 @@ nav {
 .header {
 
 }
+
 .button__group {
     @apply py-3;
 }
+
 .button {
-    @apply .bg-blue .no-underline .text-white .rounded-lg .py-2 .px-5;
+    @apply .bg-blue .no-underline .text-white .rounded-lg .py-2 .px-5 .mr-3 .mt-3;
     box-shadow: 0 2px 2px 0 #b0eaff;
 }
 
@@ -75,6 +91,7 @@ nav {
 .main__menu-card {
     @apply .card .text-grey .mb-3;
 }
+
 //.button {
 //    @apply
 //}
