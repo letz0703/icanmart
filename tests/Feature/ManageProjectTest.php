@@ -13,20 +13,22 @@ class ManageProjectTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /** @test */
-    public function a_user_can_create_project()
+    public function a_user_can_create_a_project()
     {
         $this->signIn();
+
+        $this->get('/projects/create')->assertStatus(200);
 
         $attributes = [
             'title'       => 'project title',
             'description' => 'project description',
         ];
 
-        $this->post('/projects', $attributes)
-             ->assertRedirect(Project::where($attributes)->first()->path());
+        $response = $this->post('/projects', $attributes);
+        $response->assertRedirect(Project::where($attributes)->first()->path());
         $this->assertDatabaseHas('projects', $attributes);
 
-        //$this->get('/projects')->assertSee($attributes['title']);
+        $this->get('/projects')->assertSee($attributes['title']);
     }
 
     /** @test */

@@ -36,12 +36,12 @@
             </div>
             <div class="section__general-notes">
                 <h3 class="text-grey mb-3">General Notes</h3>
-                <textarea name="textarea" class="w-full"></textarea>
+                <textarea name="textarea" class="w-full"> ipsum </textarea>
             </div>
         </div>
         <div class="lg:w-1/4 px-3 pb-6 py-8">
             <div class="section__project">
-                @include('projects._card')
+                @include('projects.card')
                 {{--            <div class="card" style="height:200px">--}}
                 {{--                <h2 class="font-normal"><a href="{{ $project->path() }}">{{ $project->title }}</a></h2>--}}
                 {{--                <div class="text-grey">{{ Str::limit($project->description,100 )}}</div>--}}
