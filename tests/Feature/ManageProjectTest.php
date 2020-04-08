@@ -15,7 +15,7 @@ class ManageProjectTest extends TestCase
     /** @test */
     public function a_user_can_create_a_project()
     {
-        $this->withoutExceptionHandling();
+
         $this->signIn();
 
         $this->get('/projects/create')->assertStatus(200);
@@ -27,10 +27,17 @@ class ManageProjectTest extends TestCase
         ];
 
         $response = $this->post('/projects', $attributes);
-        $response->assertRedirect(Project::where($attributes)->first()->path());
+
+        $project = Project::where($attributes)->first();
+
+        $response->assertRedirect($project->path());
+
         $this->assertDatabaseHas('projects', $attributes);
 
-        $this->get('/projects')->assertSee($attributes['title']);
+        $this->get($project->path())
+             ->assertSee($attributes['title'])
+             ->assertSee($attributes['description'])
+             ->assertSee($attributes['notes']);
     }
 
     /** @test */

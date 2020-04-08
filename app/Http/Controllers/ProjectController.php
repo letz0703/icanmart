@@ -39,7 +39,7 @@ class ProjectController extends Controller
         }
 
         request()->validate([
-            'notes'       => '',
+            'notes'       => 'min:3',
         ]);
 
         $project->update([
