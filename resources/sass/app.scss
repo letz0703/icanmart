@@ -15,13 +15,13 @@
     box-sizing: inherit;
 }
 
-$color-primary: red;
-$color-secondary: green;
-$color-tertiary: blue;
+$color-primary: #E31D2E; // coka cola red
+$color-secondary: #73AD21;
+$color-tertiary: #0d5dc1; // denim
 $color-text: darkgrey;
 $color-text-dark: grey;
 $color-text-light: silver;
-$color-bg-blue-light: rgba(168, 234, 253, 1.0);
+$color-blue-light: rgba(168, 234, 253, 1.0);
 
 @mixin clearfix {
     &::after {
