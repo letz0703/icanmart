@@ -12,20 +12,43 @@ class ProjectController extends Controller
     {
         $projects = auth()->user()->projects;
 
-        return view('projects.index',compact('projects'));
+        return view('projects.index', compact('projects'));
     }
 
-    public function store()
+    public function store(Project $project)
     {
+        //if ( auth()->user()->isNot($project->owner)){
+        //    abort (403);
+        //}
+
         $attributes = request()->validate([
-            'title' => 'required',
-            'description' => 'required'
+            'title'       => 'required',
+            'description' => 'required',
+            'notes'       => 'min:3',
         ]);
 
         $project = auth()->user()->projects()->create($attributes);
 
         return redirect($project->path());
     }
+
+    public function update(Project $project)
+    {
+        if (auth()->user()->isNot($project->owner)) {
+            abort(403);
+        }
+
+        request()->validate([
+            'notes'       => '',
+        ]);
+
+        $project->update([
+            'notes' => request('notes'),
+        ]);
+
+        return redirect($project->path());
+    }
+
 
     public function create()
     {

@@ -36,7 +36,12 @@
             </div>
             <div class="section__general-notes">
                 <h3 class="text-grey mb-3">General Notes</h3>
-                <textarea name="textarea" class="w-full"> ipsum </textarea>
+                <form action="{{ $project->path() }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <textarea name="textarea" class="card w-full" style="height:9em"> {{ $project->notes }} </textarea>
+                    <button class="button" type="submit">save</button>
+                </form>
             </div>
         </div>
         <div class="lg:w-1/4 px-3 pb-6 py-8">

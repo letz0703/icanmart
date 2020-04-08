@@ -15,6 +15,7 @@ class ManageProjectTest extends TestCase
     /** @test */
     public function a_user_can_create_a_project()
     {
+        $this->withoutExceptionHandling();
         $this->signIn();
 
         $this->get('/projects/create')->assertStatus(200);
@@ -22,6 +23,7 @@ class ManageProjectTest extends TestCase
         $attributes = [
             'title'       => 'project title',
             'description' => 'project description',
+            'notes' => 'General Notes'
         ];
 
         $response = $this->post('/projects', $attributes);
@@ -29,6 +31,17 @@ class ManageProjectTest extends TestCase
         $this->assertDatabaseHas('projects', $attributes);
 
         $this->get('/projects')->assertSee($attributes['title']);
+    }
+
+    /** @test */
+    public function a_user_can_update_a_project()
+    {
+        $this->signIn();
+        $this->withoutExceptionHandling();
+
+        $project = create(Project::class,['owner_id' => auth()->id()]);
+        $this->patch($project->path(), ['notes' => 'changed']);
+        $this->assertDatabaseHas('projects', ['notes' => 'changed']);
     }
 
     /** @test */
@@ -49,7 +62,6 @@ class ManageProjectTest extends TestCase
         //$this->get('/projects')->assertRedirect('login');
     }
 
-
     /** @test */
     public function a_project_can_have_a_task()
     {
@@ -58,7 +70,6 @@ class ManageProjectTest extends TestCase
         $this->post($project->path() . '/tasks', raw(Task::class));
         $this->assertCount(1, $project->tasks);
     }
-
 
     /** @test */
     public function user_can_add_a_task()
