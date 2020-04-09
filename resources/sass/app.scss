@@ -89,6 +89,10 @@ input {
     @apply .bg-white .p-5 .rounded-lg .shadow;
 }
 
+.bg-card {
+    background-color: white;
+}
+
 .main__menu-card {
     @apply .card .text-grey .mb-3;
 }

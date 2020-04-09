@@ -5524,6 +5524,10 @@ nav::after {
   box-shadow: 0 1px 3px 0 rgba(0,0,0, .08);
 }
 
+.bg-card {
+  background-color: white;
+}
+
 .main__menu-card {
   background-color: #ffffff;
   padding: 1.25rem;
