@@ -44,7 +44,7 @@
                         class="card w-full "
                         style="height:9em">{{ $project->notes }}</textarea>
                     <button class="button" type="submit">save</button>
-                    
+
                 </form>
             </div>
         </div>
