@@ -6,6 +6,7 @@ use App\Project;
 use App\Task;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\Setup\ProjectFactory;
 use Tests\TestCase;
 
 class ManageProjectTest extends TestCase
@@ -106,14 +107,12 @@ class ManageProjectTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->signIn();
+        $project = app(ProjectFactory::class)
+            ->ownedBy($this->signIn())
+            ->withTasks(1)
+            ->create();
 
-        $project = auth()->user()->projects()->create(raw(Project::class));
-
-        $task = $project->addTask('new project');
-
-
-        $this->patch($project->path() . '/tasks/' . $task->id, [
+        $this->patch($project->path() . '/tasks/' . $project->tasks[0]->id, [
             'body'      => 'changed',
             'completed' => true,
         ]);
