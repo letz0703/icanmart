@@ -52,6 +52,15 @@ class ManageProjectTest extends TestCase
     }
 
     /** @test */
+    public function an_auth_user_cannot_update_others_project()
+    {
+        $this->signIn();
+        $project = create(Project::class);
+        $this->patch($project->path())
+             ->assertStatus(403);
+    }
+
+    /** @test */
     public function user_can_view_a_project()
     {
         $this->signIn();

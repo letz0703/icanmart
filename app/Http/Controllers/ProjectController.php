@@ -34,16 +34,13 @@ class ProjectController extends Controller
 
     public function update(Project $project)
     {
-        if (auth()->user()->isNot($project->owner)) {
-            abort(403);
-        }
+        $this->authorize('update');
 
         request()->validate([
             'notes'       => 'min:3',
         ]);
 
-        $project->update([
-            'notes' => request('notes'),
+        $project->update(['notes' => request('notes'),
         ]);
 
         return redirect($project->path());
