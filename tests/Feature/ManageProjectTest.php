@@ -61,13 +61,16 @@ class ManageProjectTest extends TestCase
     }
 
     /** @test */
-    public function user_can_view_a_project()
+    public function user_can_only_view_their_project()
     {
         $this->signIn();
 
-        $project = create(Project::class);
+        $project = create(Project::class, ['owner_id'=>auth()->id()]);
+        $projectByOthers = create(Project::class);
         $this->get($project->path())
              ->assertSee($project->title);
+        $this->get($projectByOthers->path())
+            ->assertStatus(403);
     }
 
     /** @test */

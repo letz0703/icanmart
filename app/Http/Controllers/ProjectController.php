@@ -15,6 +15,12 @@ class ProjectController extends Controller
         return view('projects.index', compact('projects'));
     }
 
+    public function show(Project $project)
+    {
+        $this->authorize('update',$project);
+        return view('projects.show', compact('project'));
+    }
+
     public function store(Project $project)
     {
         //if ( auth()->user()->isNot($project->owner)){
@@ -34,7 +40,7 @@ class ProjectController extends Controller
 
     public function update(Project $project)
     {
-        $this->authorize('update');
+        $this->authorize('update', $project);
 
         request()->validate([
             'notes'       => 'min:3',
@@ -51,11 +57,5 @@ class ProjectController extends Controller
     {
         return view('projects.create');
     }
-
-    public function show(Project $project)
-    {
-        return view('projects.show', compact('project'));
-    }
-
 
 }
