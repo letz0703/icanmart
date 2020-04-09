@@ -23,7 +23,7 @@
                                        class="w-full {{ $task->completed ? 'text-grey line-through':'' }}">
                                 <input type="checkbox" name="completed"
                                        onChange="this.form.submit()"
-                                       {{ $task->completed ? 'checked':'' }}
+                                    {{ $task->completed ? 'checked':'' }}
                                 >
                             </div>
                         </form>
@@ -39,7 +39,10 @@
                 <form action="{{ $project->path() }}" method="POST">
                     @csrf
                     @method('PATCH')
-                    <textarea name="textarea" class="card w-full" style="height:9em"> {{ $project->notes }} </textarea>
+                    <textarea
+                        name="notes"
+                        class="card w-full mb-4"
+                        style="height:9em">{{ $project->notes }}</textarea>
                     <button class="button" type="submit">save</button>
                 </form>
             </div>
