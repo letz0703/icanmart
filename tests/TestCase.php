@@ -3,8 +3,10 @@
 namespace Tests;
 
 use App\Exceptions\Handler;
+use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use function factory;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -19,10 +21,10 @@ abstract class TestCase extends BaseTestCase
 
     public function signIn($user = null)
     {
-        $user = $user ? : create('App\User');
+        $user = $user ? : create(User::class);
         $this->actingAs($user);
 
-        return $this;
+        return $user;
     }
 
     public function signInAdmin()
