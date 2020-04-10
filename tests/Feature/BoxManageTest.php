@@ -91,11 +91,10 @@ class BoxManageTest extends TestCase
     /** @test */
     public function unauth_user_cannot_update_boxes()
     {
-        $this->withExceptionHandling();
         $box = create('App\Box');
         $this->patch("/boxes/{$box->id}/")
              ->assertRedirect('/login');
-       $this->signIn()->patch("/boxes/{$box->id}/payment")
+       $this->patch("/boxes/{$box->id}/payment", ['paid'=>true])
              ->assertStatus(404);
         //$this->assertDatabaseHas('boxes',['id' => $box->id, 'paid' => true]);
     }

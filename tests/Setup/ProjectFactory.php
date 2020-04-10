@@ -7,25 +7,12 @@ namespace Tests\Setup;
 use App\Project;
 use App\Task;
 use App\User;
+use function factory;
 
 class ProjectFactory
 {
     protected $tasksCount = 0;
     protected $user;
-
-    public function create()
-    {
-        $project = factory(Project::class)->create([
-            'owner_id' => $this->user
-        ]);
-
-        factory(Task::class, $this->tasksCount)->create([
-            'project_id' => $project->id
-        ]);
-
-        return $project;
-
-    }
 
     public function ownedBy($user)
     {
@@ -38,4 +25,19 @@ class ProjectFactory
         $this->tasksCount = $count;
         return $this;
     }
+
+    public function create()
+    {
+        $project = factory(Project::class)->create([
+            'owner_id' => $this->user ?? factory(User::class)
+        ]);
+
+        factory(Task::class, $this->tasksCount)->create([
+            'project_id' => $project->id
+        ]);
+
+        return $project;
+
+    }
+
 }
