@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker){
     static $password;
-    
+
     return [
         'name'              => $faker->name,
         'email'             => $faker->unique()->safeEmail,
@@ -39,7 +39,9 @@ $factory->state('App\User', 'unconfirmed', function (){
 
 $factory->state('App\User', 'administrator', function (){
     return [
+
         'email' => "env('ADMIN_EMAIL')",
         'isAdmin' => true,
+
     ];
 });

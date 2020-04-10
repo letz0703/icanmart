@@ -11,8 +11,16 @@ use function factory;
 
 class ProjectFactory
 {
+    protected $states= null;
     protected $tasksCount = 0;
     protected $user;
+
+    public function states($states)
+    {
+        $this->states = $states;
+
+        return $this;
+    }
 
     public function ownedBy($user)
     {
@@ -28,6 +36,8 @@ class ProjectFactory
 
     public function create()
     {
+        \Facades\ProjectFactory::clearResolveInstance('ProjectFactory');
+
         $project = factory(Project::class)->create([
             'owner_id' => $this->user ?? factory(User::class)
         ]);

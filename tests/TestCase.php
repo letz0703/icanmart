@@ -30,6 +30,7 @@ abstract class TestCase extends BaseTestCase
     public function signInAdmin()
     {
         $admin = factory('App\User')->state('administrator')->create();
+
         config(['icanmart.administrators'=>[$admin->email]]);
 
         return $this->signIn($admin);
