@@ -16,6 +16,12 @@ mix
     .setPublicPath('public')
     .js('resources/js/app.js', 'js')
     .sass('resources/sass/app.scss', 'css')
+    .browserSync({
+        proxy: 'icanmart.test',
+        files: [
+            'resources/**/*'
+        ]
+    })
     .options({
         processCssUrls: false,
         postCss: [

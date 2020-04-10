@@ -19,6 +19,8 @@
         "algoliasearch": "^3.35.1",
         "axios": "^0.19.1",
         "bootstrap": "^4.4.1",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.2.1",
         "jquery": "^3.4.1",
         "laravel-mix": "^4.1.4",
