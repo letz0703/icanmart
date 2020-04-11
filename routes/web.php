@@ -11,6 +11,8 @@
 |
 */
 
+
+
 App::setLocale('kr');
 //Auth::routes(['confirm' => true]);
 Auth::routes();
@@ -32,6 +34,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/test', function () {
     return view('test');
 });

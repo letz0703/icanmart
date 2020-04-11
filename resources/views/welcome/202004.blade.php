@@ -26,7 +26,7 @@
             </a>
         </div>
         <div class="main__menu-card">오늘의 상품</div>
-        @if (auth()->user() && auth()->user()->isAdmin())
+        @if (auth()->user() && auth()->user()->isAdmin)
             <div class="main__menu-card">
                 <h2>관리</h2>
                 <nav class="py-2">
@@ -36,7 +36,6 @@
                         <li>재고실사 wip</li>
                         <li>판매관리 wip</li>
                         <li><a href="/projects">프로젝트</a></li>
-
                     </ul>
                 </nav>
             </div>
