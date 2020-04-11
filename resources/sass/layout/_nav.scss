@@ -8,6 +8,20 @@ nav {
         clear: both;
         display: table;
     }
+    ul {
+        display: flex;
+        li {
+            display: inline-block;
+            margin-right: 1em;
+            &:first-child {
+                //margin: 0;
+            }
+            span {
+                background-color:$color-blue-light;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+    }
 }
 
 .navigation {

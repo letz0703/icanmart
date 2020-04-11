@@ -5422,6 +5422,22 @@ body {
   box-shadow: 0 2px 2px 0 #b0eaff;
 }
 
+.btn {
+  border-width: 2px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: 0.5rem;
+  border-color: silver;
+  font-size: 0.9rem;
+  color: silver;
+}
+
+.btn-danger {
+  border-color: #E31D2E;
+  font-size: 0.9rem;
+  color: #E31D2E;
+}
+
 .is-minimal {
   border-bottom: 1px solid lightgray;
 }
@@ -5648,6 +5664,11 @@ li.ais-Hits-item, .MyCustomHitsItem {
 
 /* dots are lines  안되는데?*/
 
+.header {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -5669,6 +5690,20 @@ nav::after {
   content: "";
   clear: both;
   display: table;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+nav ul li span {
+  background-color: #a8eafd;
+  padding: 0.3rem 0.6rem;
 }
 
 .navigation {

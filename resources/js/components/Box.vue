@@ -22,10 +22,12 @@
                 <span v-text="data.amount+'원'"></span>
                 <!--@can('update')-->
                 <span v-if="paid">
-                    <button :class="classes" @click="unpay">paid</button>
+                    <button :class="classes"
+                            class="btn"
+                            @click="unpay">paid</button>
                 </span>
                 <span v-else>
-                <button class="btn btn-danger btn-sm" @click="pay">unpaid</button>
+                <button class="btn btn-danger" @click="pay">unpaid</button>
                 </span>
             </div>
         </div>

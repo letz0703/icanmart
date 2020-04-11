@@ -9954,6 +9954,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
@@ -96409,17 +96411,20 @@ var render = function() {
           _vm._v(" "),
           _vm.paid
             ? _c("span", [
-                _c("button", { class: _vm.classes, on: { click: _vm.unpay } }, [
-                  _vm._v("paid")
-                ])
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    class: _vm.classes,
+                    on: { click: _vm.unpay }
+                  },
+                  [_vm._v("paid")]
+                )
               ])
             : _c("span", [
                 _c(
                   "button",
-                  {
-                    staticClass: "btn btn-danger btn-sm",
-                    on: { click: _vm.pay }
-                  },
+                  { staticClass: "btn btn-danger", on: { click: _vm.pay } },
                   [_vm._v("unpaid")]
                 )
               ])
