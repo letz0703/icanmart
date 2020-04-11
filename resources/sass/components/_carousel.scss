@@ -1,0 +1,42 @@
+
+/* carousel height, as percentage of width */
+.carousel {
+    /*position: relative;*/
+    width: 640px;
+    /*height: 400px;*/
+}
+
+/* viewport inherit size from carousel */
+.carousel .flickity-viewport {
+    position: relative;
+    height: 400px;
+}
+
+.main-carousel {
+    /*position: absolute;*/
+    width: 100%;
+    /*min-height: 500px;*/
+
+    margin-top: 0.3em;
+    margin-bottom: 2.5em;
+}
+
+.carousel-cell {
+    width: 100%; /* full width */
+    /*height: 480px; !* height of carousel *!*/
+    position: fixed;
+}
+
+
+.flickity-page-dots .dot {
+    height: 4px;
+    width: 40px;
+    margin: 0;
+    border-radius: 0;
+}
+
+/*/!* position dots up a bit *!*/
+/*.flickity-page-dots {*/
+/*    bottom: -22px;*/
+/*}*/
+/* dots are lines  안되는데?*/

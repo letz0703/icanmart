@@ -14,6 +14,15 @@
 //    justify-content: space-evenly;
 //    height: auto;
 //}
+.card {
+    @apply .bg-white .p-5 .rounded-lg .shadow;
+    background: #fff;
+}
+
+.main__menu-card {
+    @apply .card .text-grey .mb-3;
+}
+
 .card-left {
     background: linear-gradient(to bottom, #21c8f6, #637bff);
     border-radius: 10px;

@@ -1,0 +1,27 @@
+@mixin clearfix {
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+}
+
+.expand-clickable {
+    z-index: 1;
+    display: inline-block;
+    position: relative;
+    padding: 3em 10rem 3em 2em;
+    margin: -2em 0;
+    /*background: aliceblue;*/
+}
+
+.tooltip {
+    padding-left: 0.5em;
+    color: white;
+    border-radius: 5px;
+    &[aria-hidden="false"]{
+        opacity: 1;
+    }
+}
+
+

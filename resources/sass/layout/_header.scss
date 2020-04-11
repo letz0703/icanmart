@@ -1,0 +1,16 @@
+.header {
+
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 1.4em;
+
+    a {
+        color: inherit;
+    }
+}
+

@@ -1,0 +1,35 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html, body {
+    height: 100vh;
+    //font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.content > * {
+    margin-bottom: 1em;
+}
+
+
+.col {
+    flex: 1;
+    padding: 10px;
+}
+
+.text-inherit {
+    color: inherit;
+}
+
+.padding-inherit {
+    padding: inherit;
+}
+
