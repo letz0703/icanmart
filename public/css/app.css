@@ -5680,7 +5680,7 @@ li.ais-Hits-item, .MyCustomHitsItem {
 }
 
 .row [class^="col-"] {
-  background-color: orangered;
+  background-color: darkgrey;
   float: left;
 }
 

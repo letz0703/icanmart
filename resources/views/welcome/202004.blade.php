@@ -19,54 +19,28 @@
             <a href="" class='button'>구매요청</a>
         </div>
     </div>
-    <section>
-        <div class="grid-test">
-            <div class="row">
-                <div class="col-1-of-2">col-1-of-2</div>
-                <div class="col-1-of-2">col-1-of-2</div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-3">col-1-of-3</div>
-                <div class="col-2-of-3">col-2-of-3</div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-4">Col 1 of 4</div>
-                <div class="col-1-of-4">Col 1 of 4</div>
-                <div class="col-1-of-4">Col 1 of 4</div>
-                <div class="col-1-of-4">Col 1 of 4</div>
-            </div>
-            <div class="row">
-                <div class="col-1-of-4">Col 1 of 4</div>
-                <div class="col-2-of-4">Col 2 of 4</div>
-                <div class="col-1-of-4">Col 1 of 4</div>
-            </div>
-            <div class="row">
-                <div class="col-3-of-4">Col 3 of 4</div>
-                <div class="col-1-of-4">Col 1 of 4</div>
-            </div>
+    {{--    @include('layouts.grid')--}}
+    <div class="main__menu">
+        <div class="main__menu-card">
+            <a href="/items/search">
+                아이템 검색
+            </a>
         </div>
-    </section>
-    {{--    <div class="main__menu">--}}
-    {{--        <div class="main__menu-card">--}}
-    {{--            <a href="/items/search">--}}
-    {{--                아이템 검색--}}
-    {{--            </a>--}}
-    {{--        </div>--}}
-    {{--        <div class="main__menu-card">오늘의 상품</div>--}}
-    {{--        @if (auth()->user() && auth()->user()->isAdmin)--}}
-    {{--            <div class="main__menu-card">--}}
-    {{--                <h2>관리</h2>--}}
-    {{--                <nav class="py-2">--}}
-    {{--                    <ul class="navigation">--}}
-    {{--                        <li><a href="/boxes/create">입고등록</a></li>--}}
-    {{--                        <li><a href="/boxes">입고목록</a></li>--}}
-    {{--                        <li>재고실사 wip</li>--}}
-    {{--                        <li>판매관리 wip</li>--}}
-    {{--                        <li><a href="/projects">프로젝트</a></li>--}}
-    {{--                    </ul>--}}
-    {{--                </nav>--}}
-    {{--            </div>--}}
-    {{--        @endif--}}
+        <div class="main__menu-card">오늘의 상품</div>
+        @if (auth()->user() && auth()->user()->isAdmin)
+            <div class="main__menu-card">
+                <h2>관리</h2>
+                <nav class="py-2">
+                    <ul class="navigation">
+                        <li><a href="/boxes/create">입고등록</a></li>
+                        <li><a href="/boxes">입고목록</a></li>
+                        <li>재고실사 wip</li>
+                        <li>판매관리 wip</li>
+                        <li><a href="/projects">프로젝트</a></li>
+                    </ul>
+                </nav>
+            </div>
+        @endif
 
-    {{--    </div>--}}
+    </div>
 </div>

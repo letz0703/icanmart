@@ -12,7 +12,7 @@
     @include clearfix;
 
     [class^="col-"] {
-        background-color: orangered;
+        background-color: darkgrey;
         float: left;
 
         &:not(:last-child) {
