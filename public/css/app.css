@@ -5664,6 +5664,54 @@ li.ais-Hits-item, .MyCustomHitsItem {
 
 /* dots are lines  안되는데?*/
 
+.row {
+  background-color: lightgrey;
+  margin: 0 auto;
+}
+
+.row :not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.row::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.row [class^="col-"] {
+  background-color: orangered;
+  float: left;
+}
+
+.row [class^="col-"]:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.row .col-1-of-2 {
+  width: calc((100% - 1.5rem) / 2);
+}
+
+.row .col-1-of-3 {
+  width: calc((100% - 2 * 1.5rem) / 3);
+}
+
+.row .col-2-of-3 {
+  width: calc( 2 * ((100% - 2 * 1.5rem) / 3) + 1.5rem);
+}
+
+.row .col-1-of-4 {
+  width: calc((100% - 3 * 1.5rem) / 4);
+}
+
+.row .col-2-of-4 {
+  width: calc( 2 * ((100% - 3 * 1.5rem) / 4) + 1.5rem);
+}
+
+.row .col-3-of-4 {
+  width: calc( 3 * ((100% - 3 * 1.5rem) / 4) + 2 * 1.5rem);
+}
+
 .header {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
