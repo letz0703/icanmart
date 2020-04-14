@@ -8,6 +8,8 @@ use App\Project;
 use App\Task;
 use App\User;
 
+
+
 class ProjectFactory
 {
     protected $tasksCount = 0;
@@ -27,10 +29,10 @@ class ProjectFactory
 
     public function create()
     {
-        \Facades\ProjectFactory::clearResolvedInstance('ProjectFactory');
+        //\Facades\ProjectFactory::clearResolvedInstance('ProjectFactory');
 
         $project = factory(Project::class)->create([
-            'owner_id' => $this->user ?? factory(User::class)
+            'owner_id' => $this->user ?? factory(User::class),
         ]);
 
         factory(Task::class, $this->tasksCount)->create([

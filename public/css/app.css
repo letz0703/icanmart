@@ -14326,9 +14326,10 @@ body {
 }
 
 .button {
-  background-color: #4299e1;
+  background-color: #78C5ef;
   text-decoration: none;
   color: #fff;
+  font-size: 0.875rem;
   border-radius: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;

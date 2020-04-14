@@ -17,7 +17,7 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        $this->authorize('update',$project);
+        $this->authorize('update', $project);
         return view('projects.show', compact('project'));
     }
 
@@ -38,16 +38,26 @@ class ProjectController extends Controller
         return redirect($project->path());
     }
 
+    public function edit(Project $project)
+    {
+        //$this->authorize('update', $project);
+
+        return view('projects.edit', compact('project'));
+    }
+
+
     public function update(Project $project)
     {
         $this->authorize('update', $project);
 
-        request()->validate([
+        $attributes = request()->validate([
+            'title'       => 'required',
+            'description' => 'required',
             'notes'       => 'min:3',
         ]);
 
-        $project->update(['notes' => request('notes'),
-        ]);
+        $project->update($attributes);
+
 
         return redirect($project->path());
     }
