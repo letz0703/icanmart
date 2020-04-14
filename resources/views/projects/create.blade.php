@@ -1,18 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Create Project</h2>
-    <form action="/projects" method="POST" class="py-3">
-        @csrf
-        <div class="flex mb-3">
-            <h3 class="mr-2">Title</h3>
-            <input type="text" name="title" autofocus>
-        </div>
-        <h3>Description</h3>
-        <textarea name="description" id="description" class="w-full"></textarea>
-        <div class="button__group">
-            <button class="button mr-3">Create a Project</button>
-            <a href="/projects">Cancel</a>
-        </div>
-    </form>
+    <div class="lg:w-1/2 lg:mx-auto bg-white p-6 md:py-12 md:px-16 rounded shadow">
+        <h1 class="text-2xl font-normal mb-10 text-center">Create Project</h1>
+        <form
+            action="/projects"
+            method="POST"
+        >
+            @csrf
+            <div class="field mb-6">
+                <label class="label text-sm block mb-1">Title</label>
+                <div class="control">
+                    <input
+                        type="text"
+                        class="input bg-transparent border border-gray-400 rounded p-2 text-xs w-full"
+                        id="title"
+                        name="title"
+                        autofocus>
+                </div>
+            </div>
+            <div class="field mb-6">
+                <label for="description" class="label text-sm block mb-1">Description:</label>
+                <div class="control">
+                <textarea
+                    name="description"
+                    id="description"
+                    rows="10"
+                    class="textarea border bg-transparent border-gray-400 rounded p-2 w-full text-sm"
+                ></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button  mr-2 ">Create Project</button>
+                    <a href="/projects" class="text-default">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection

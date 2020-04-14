@@ -11,7 +11,7 @@
                 <label for="title" class="label text-sm block mb-1">Title:</label>
                 <div class="control">
                     <input
-                        type="tex
+                        type="text"
                         class="input bg-transparent border border-gray-400 rounded p-2 text-xs w-full"
                         id="title"
                         name="title"
@@ -30,7 +30,7 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <button type="submit" class="button  mr-2 ">Update</button>
+                    <button type="submit" class="button  mr-2 ">Update Project</button>
                     <a href="{{ $project->path() }}" class="text-default">Cancel</a>
                 </div>
             </div>
