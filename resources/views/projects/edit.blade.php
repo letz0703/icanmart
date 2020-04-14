@@ -4,7 +4,7 @@
         <h1 class="text-2xl font-normal mb-10 text-center">Edit a Project</h1>
         <form
             method="POST"
-            action="/projects"
+            action="{{$project->path()}}"
         >
             @method('PATCH')
             @include('projects._form', [

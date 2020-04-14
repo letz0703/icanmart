@@ -28,3 +28,12 @@
         <a href="{{ $project->path() }}" class="text-default">Cancel</a>
     </div>
 </div>
+@if ($errors->any())
+    <div class="mt-4">
+        <ul class="alert alert-danger">
+            @foreach( $errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
