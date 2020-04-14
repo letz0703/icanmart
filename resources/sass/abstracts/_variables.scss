@@ -1,6 +1,6 @@
-$theme-color:rgba(168, 234, 253, 1.0); // 2020.4 icanmart
+$theme-color: rgba(168, 234, 253, 1.0); // 2020.4 icanmart
 
-$color-primary:#E31D2E;
+$color-primary: #E31D2E;
 $color-secondary: #73AD21;
 $color-tertiary: #0d5dc1; // denim
 $color-text: darkgrey;
@@ -19,9 +19,38 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
-$cola:#E31D2E; // coka cola red
-$deepsky:deepskyblue;
+$coke: #E31D2E; // coka cola red
 $aliceblue: aliceblue;
+$grey: dimgray;
+$sony: rgba(0, 112, 199, 1.0);
+$denim: #0d5dc1;
 
-// Body
 $body-bg: #f8fafc;
+
+.tred {
+    color: $color-primary;
+}
+
+.tgrey {
+    color: dimgray;
+}
+
+.tsony {
+    color: $sony;
+}
+
+.bg- {
+    &red {
+        background-color: $color-primary;
+    }
+
+
+    &sony {
+        background-color: rgba(0, 112, 199, 1.0);
+    }
+
+    &denim {
+        background-color: #0d5dc1;
+    }
+
+}

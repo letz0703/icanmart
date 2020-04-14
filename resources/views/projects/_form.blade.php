@@ -24,15 +24,15 @@
 </div>
 <div class="field">
     <div class="control">
-        <button type="submit" class="button  mr-2 ">{{ $buttonText }}</button>
+        <button type="submit" class="button  mr-2">{{ $buttonText }}</button>
         <a href="{{ $project->path() }}" class="text-default">Cancel</a>
     </div>
 </div>
 @if ($errors->any())
     <div class="mt-4">
-        <ul class="alert alert-danger">
+        <ul>
             @foreach( $errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="tred" >{{ $error }}</li>
             @endforeach
         </ul>
     </div>

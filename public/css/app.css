@@ -14268,6 +14268,30 @@ h3 {
   transition-duration: 1000ms;
 }
 
+.tred {
+  color: #E31D2E;
+}
+
+.tgrey {
+  color: dimgray;
+}
+
+.tsony {
+  color: #0070c7;
+}
+
+.bg-red {
+  background-color: #E31D2E;
+}
+
+.bg-sony {
+  background-color: #0070c7;
+}
+
+.bg-denim {
+  background-color: #0d5dc1;
+}
+
 *,
 *::after,
 *::before {
