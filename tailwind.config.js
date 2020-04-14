@@ -701,6 +701,7 @@ module.exports = {
         transitionDuration: ['responsive'],
     },
     corePlugins: {
+        // maxWidth: false,
     },
     plugins: [],
 }

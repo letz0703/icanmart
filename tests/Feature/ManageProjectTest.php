@@ -45,7 +45,6 @@ class ManageProjectTest extends TestCase
     public function a_user_can_update_a_project()
     {
         $this->signIn();
-        $this->withoutExceptionHandling();
 
         $project = create(Project::class,['owner_id' => auth()->id()]);
         $this->patch($project->path(), ['notes' => 'changed']);
@@ -57,6 +56,7 @@ class ManageProjectTest extends TestCase
     {
         $this->signIn();
         $project = create(Project::class);
+        //dd($project->path());
         $this->patch($project->path())
              ->assertStatus(403);
     }

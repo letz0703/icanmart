@@ -7,18 +7,15 @@ namespace Tests\Setup;
 use App\Project;
 use App\Task;
 use App\User;
-use function factory;
 
 class ProjectFactory
 {
-    protected $states= null;
     protected $tasksCount = 0;
     protected $user;
 
-    public function states($states)
+    public function withTasks($count)
     {
-        $this->states = $states;
-
+        $this->tasksCount = $count;
         return $this;
     }
 
@@ -28,15 +25,9 @@ class ProjectFactory
         return $this;
     }
 
-    public function withTasks($count)
-    {
-        $this->tasksCount = $count;
-        return $this;
-    }
-
     public function create()
     {
-        \Facades\ProjectFactory::clearResolveInstance('ProjectFactory');
+        \Facades\ProjectFactory::clearResolvedInstance('ProjectFactory');
 
         $project = factory(Project::class)->create([
             'owner_id' => $this->user ?? factory(User::class)
@@ -47,7 +38,5 @@ class ProjectFactory
         ]);
 
         return $project;
-
     }
-
 }

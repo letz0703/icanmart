@@ -37,6 +37,8 @@ class ProjectTasksTest extends TestCase
     public function a_task_can_be_updated()
     {
         //$project = app(ProjectFactory::class)->ownedBy($this->signIn())->withTasks(1)->create();
+        //$project = ProjectFactory::withTasks(1)->create();
+
         $project = ProjectFactory::withTasks(1)->create();
 
         $this->actingAs($project->owner)
