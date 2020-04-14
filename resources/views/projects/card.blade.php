@@ -6,4 +6,3 @@
     </h2>
     <div class="text-grey">{{ Str::limit($project->description,100) }}</div>
 </div>
- d
