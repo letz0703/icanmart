@@ -19,19 +19,20 @@
                             @method('PATCH')
                             @csrf
                             <div class="flex items-center">
-                                <input value="{{ $task->body }}" name="body"
-                                       class="w-full {{ $task->completed ? 'text-grey line-through':'' }}">
                                 <input type="checkbox" name="completed"
                                        onChange="this.form.submit()"
                                     {{ $task->completed ? 'checked':'' }}
                                 >
+                                <input value="{{ $task->body }}" name="body"
+                                       class=" w-full border-0  {{ $task->completed ? 'text-grey line-through':'' }}">
+
                             </div>
                         </form>
                     </div>
                 @endforeach
                 <form action="{{ $project->path().'/tasks' }}" method="POST">
                     @csrf
-                    <input class="card mb-3 w-full" name="body" placeholder="add new task">
+                    <input class="card mb-3 w-full" name="body" placeholder="add new task" autofocus>
                 </form>
             </div>
             <div class="section__general-notes">
