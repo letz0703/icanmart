@@ -5,6 +5,9 @@
 .button {
     background-color: $theme-blue--light;
     @apply .no-underline .text-white .text-sm .rounded-lg .py-2 .px-5 .mr-3 .mt-3;
+    &:last-child {
+        margin-right: 0;
+    }
     box-shadow: 0 2px 2px 0 $theme-color;
 }
 

@@ -14325,6 +14325,10 @@ body {
   padding: inherit;
 }
 
+.mr-0 {
+  padding-right: 0;
+}
+
 .expand-clickable {
   z-index: 1;
   display: inline-block;
@@ -14362,6 +14366,10 @@ body {
   margin-right: 0.75rem;
   margin-top: 0.75rem;
   box-shadow: 0 2px 2px 0 #a8eafd;
+}
+
+.button:last-child {
+  margin-right: 0;
 }
 
 .btn {
