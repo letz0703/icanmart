@@ -14715,6 +14715,39 @@ nav ul li span {
   text-transform: uppercase;
 }
 
+form .field {
+  margin-bottom: 1.5rem;
+}
+
+form input {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: #cbd5e0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form textarea {
+  border-width: 1px;
+  background-color: transparent;
+  border-color: #cbd5e0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form .label {
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+form .alert {
+  color: red;
+}
+
 .box {
   /*background: #e3e3e3;*/
   /*height: 150px;*/
