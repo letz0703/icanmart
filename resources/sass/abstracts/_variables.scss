@@ -38,8 +38,16 @@ $body-bg: #f8fafc;
 .tsony {
     color: $sony;
 }
+bggrey {
+    background-color: rgba(245, 246, 249, 1.0);
+}
 
 .bg- {
+
+    &grey {
+        background-color: rgba(245, 246, 249, 1.0);
+    }
+
     &red {
         background-color: $color-primary;
     }

@@ -14280,6 +14280,14 @@ h3 {
   color: #0070c7;
 }
 
+bggrey {
+  background-color: #f5f6f9;
+}
+
+.bg-grey {
+  background-color: #f5f6f9;
+}
+
 .bg-red {
   background-color: #E31D2E;
 }
