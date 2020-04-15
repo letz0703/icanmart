@@ -92,6 +92,7 @@ class ManageProjectTest extends TestCase
     /** @test */
     public function auth_user_can_edit_projects()
     {
+        $this->withoutExceptionHandling();
         $this->signIn();
         $project = ProjectFactory::create();
 

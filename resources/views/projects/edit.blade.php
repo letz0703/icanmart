@@ -8,6 +8,7 @@
         >
             @method('PATCH')
             @include('projects._form', [
+
                  'buttonText' => 'Confirm'
             ])
         </form>
