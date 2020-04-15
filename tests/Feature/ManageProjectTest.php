@@ -78,6 +78,7 @@ class ManageProjectTest extends TestCase
     public function auth_user_can_update_the_general_notes_of_a_project()
     {
         $this->withoutExceptionHandling();
+
         $project = ProjectFactory::create();
 
         $this->be($project->owner)
