@@ -21,9 +21,9 @@ class ManageProjectTest extends TestCase
         $this->get('/projects')->assertRedirect('login');
         $this->get('/projects/create')->assertRedirect('login');
         $this->get('/projects/edit')->assertRedirect('login');
-        $this->get($project->path().'/edit')->assertRedirect('login');
+        $this->get($project->path() . '/edit')->assertRedirect('login');
         $this->get($project->path())->assertRedirect('login');
-        $this->post('/projects', raw(Project::class) )->assertRedirect('login');
+        $this->post('/projects', raw(Project::class))->assertRedirect('login');
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class ManageProjectTest extends TestCase
         $attributes = [
             'title'       => 'project title',
             'description' => 'project description',
-            'notes' => 'General Notes'
+            'notes'       => 'General Notes',
         ];
 
         $response = $this->post('/projects', $attributes);
@@ -61,15 +61,29 @@ class ManageProjectTest extends TestCase
 
         $project = ProjectFactory::create();
 
-        $project = create(Project::class,['owner_id' => auth()->id()]);
+        $project = create(Project::class, ['owner_id' => auth()->id()]);
         $this->patch($project->path(), [
-            'title' => 'changed',
+            'title'       => 'changed',
             'description' => 'changed',
-            'notes' => 'changed',
+            'notes'       => 'changed',
         ]);
         $this->assertDatabaseHas('projects', [
-            'title' => 'changed',
+            'title'       => 'changed',
             'description' => 'changed',
+            'notes'       => 'changed',
+        ]);
+    }
+
+    /** @test */
+    public function auth_user_can_update_the_general_notes_of_a_project()
+    {
+        $this->withoutExceptionHandling();
+        $project = ProjectFactory::create();
+
+        $this->be($project->owner)
+             ->patch($project->path(), ['notes' => 'changed']);
+
+        $this->assertDatabaseHas('projects', [
             'notes' => 'changed',
         ]);
     }
@@ -80,8 +94,8 @@ class ManageProjectTest extends TestCase
         $this->signIn();
         $project = ProjectFactory::create();
 
-        $this->get($project->path().'/edit')
-            ->assertOk();
+        $this->get($project->path() . '/edit')
+             ->assertOk();
     }
 
 
@@ -100,12 +114,12 @@ class ManageProjectTest extends TestCase
     {
         $this->signIn();
 
-        $project = create(Project::class, ['owner_id'=>auth()->id()]);
+        $project = create(Project::class, ['owner_id' => auth()->id()]);
         $projectByOthers = create(Project::class);
         $this->get($project->path())
              ->assertSee($project->title);
         $this->get($projectByOthers->path())
-            ->assertStatus(403);
+             ->assertStatus(403);
     }
 
     /** @test */

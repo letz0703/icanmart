@@ -47,6 +47,15 @@
 
                 </form>
             </div>
+            @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach( $errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </div>
         <div class="lg:w-1/4 px-3 pb-6 py-8">
             <div class="section__project">
