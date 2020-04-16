@@ -39,12 +39,12 @@ class ProjectController extends Controller
         return view('projects.edit', compact('project'));
     }
 
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request)
     {
         //$project->update($request->validated());
-        $request->persist();
+        //$request->save();
 
-        return redirect($project->path());
+        return redirect($request->save()->path());
     }
 
     /**

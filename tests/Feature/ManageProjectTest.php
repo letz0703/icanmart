@@ -62,16 +62,12 @@ class ManageProjectTest extends TestCase
         $project = ProjectFactory::create();
 
         $project = create(Project::class, ['owner_id' => auth()->id()]);
-        $this->patch($project->path(), [
+        $this->patch($project->path(), $attributes = [
             'title'       => 'changed',
             'description' => 'changed',
             'notes'       => 'changed',
         ]);
-        $this->assertDatabaseHas('projects', [
-            'title'       => 'changed',
-            'description' => 'changed',
-            'notes'       => 'changed',
-        ]);
+        $this->assertDatabaseHas('projects', $attributes);
     }
 
     /** @test */

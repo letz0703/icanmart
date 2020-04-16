@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Project;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,7 +15,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows('update', $this->route('project'));
+        return Gate::allows('update', $this->project());
     }
 
     /**
@@ -31,9 +32,16 @@ class UpdateProjectRequest extends FormRequest
         ];
     }
 
-    public function persist()
+    public function project()
     {
-        $this->route('project')->update($this->validated());
+        return Project::findOrFail($this->route('project'));
+        //return $this->route('project');
+    }
+
+
+    public function save()
+    {
+        return tap($this->project())->update($this->validated());
     }
 
 }
