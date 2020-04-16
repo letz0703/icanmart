@@ -30,4 +30,10 @@ class UpdateProjectRequest extends FormRequest
             'notes'       => 'nullable',
         ];
     }
+
+    public function persist()
+    {
+        $this->route('project')->update($this->validated());
+    }
+
 }
