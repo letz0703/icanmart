@@ -14396,6 +14396,30 @@ body {
   color: #E31D2E;
 }
 
+.btn-text:link, .btn-text:visited {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.12rem;
+  border-bottom: 2px solid #a8eafd;
+  color: black;
+  padding: 0.25rem;
+  display: inline-block;
+  transition: all .1s;
+}
+
+.btn-text:hover {
+  background-color: #a8eafd;
+  color: black;
+  box-shadow: 0 0.3rem 0.6rem -0.1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.1rem);
+}
+
+.btn-text:active {
+  box-shadow: 0 0.3rem 0.6rem -0.1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+}
+
 .is-minimal {
   border-bottom: 1px solid lightgray;
 }
@@ -14719,11 +14743,10 @@ nav ul li span {
 
 .navigation li {
   display: inline-block;
-  margin-left: 30px;
 }
 
-.navigation li:first-child {
-  margin: 0;
+.navigation li:not(:last-child) {
+  margin-right: 1.5rem;
 }
 
 .navigation li a:link {

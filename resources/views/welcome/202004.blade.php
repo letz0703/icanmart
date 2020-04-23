@@ -8,9 +8,9 @@
             <div class="card__menu-menu">
                 <nav class="py-2">
                     <ul class="navigation">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" class="btn-text">About Us</a></li>
+                        <li><a href="#" class="btn-text">OnlineShop</a></li>
+                        <li><a href="#" class="btn-text">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -32,11 +32,11 @@
                 <h2>관리</h2>
                 <nav class="py-2">
                     <ul class="navigation">
-                        <li><a href="/boxes/create">입고등록</a></li>
-                        <li><a href="/boxes">입고목록</a></li>
+                        <li><a href="/boxes/create" class="btn-text">입고등록</a></li>
+                        <li><a href="/boxes" class="btn-text">입고목록</a></li>
                         <li>재고실사 wip</li>
                         <li>판매관리 wip</li>
-                        <li><a href="/projects">프로젝트</a></li>
+                        <li><a href="/projects" class="btn-text">프로젝트</a></li>
                     </ul>
                 </nav>
             </div>

@@ -8,20 +8,48 @@
     &:last-child {
         margin-right: 0;
     }
+
     box-shadow: 0 2px 2px 0 $theme-color;
 }
 
 .btn {
-    @apply  .border-2 .px-2 .ml-2 ;
+    @apply .border-2 .px-2 .ml-2 ;
     border-color: $color-text-light;
     font-size: 0.9rem;
     color: $color-text-light;
+
     &-danger {
         border-color: $color-primary;
         font-size: 0.9rem;
         color: $color-primary;
     }
+}
 
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        letter-spacing: 0.12rem;
+        border-bottom: 2px solid $theme-color;
+        color: black;
+        padding: 0.25rem;
+        display: inline-block;
+        transition: all .1s;
+    }
+
+    &:hover {
+        background-color: $theme-color;
+        color: black;
+        box-shadow: 0 0.3rem 0.6rem -0.1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-0.1rem);
+    }
+
+    &:active {
+        box-shadow: 0 0.3rem 0.6rem -0.1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(0);
+    }
 }
 
 .is-minimal {

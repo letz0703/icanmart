@@ -30,10 +30,8 @@ nav {
 
     li {
         display: inline-block;
-        margin-left: 30px;
-
-        &:first-child {
-            margin: 0;
+        &:not(:last-child){
+            margin-right: 1.5rem;
         }
 
         a:link {
