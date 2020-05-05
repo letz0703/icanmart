@@ -11,7 +11,11 @@
 |
 */
 
-
+\App\Project::created( function($project){
+    \App\ProjectActivity::create([
+        'project_id' => $project->id
+    ]);
+});
 
 App::setLocale('kr');
 //Auth::routes(['confirm' => true]);
