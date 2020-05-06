@@ -19,7 +19,21 @@ class ActivityTest extends TestCase
     {
         $project = ProjectFactory::create();
         $this->assertCount(1, $project->activities);
+        $this->assertEquals('created_project', $project->activities->last()->description);
     }
+
+    /** @test */
+    public function updating_a_project_records_activity()
+    {
+        $project = ProjectFactory::create();
+        $project->update(['title' => 'changed']);
+
+        $this->assertCount(2, $project->activities);
+        $this->assertEquals('updated_project', $project->activities->last()->description);
+    }
+
+
+
 
 
     ///** @test */

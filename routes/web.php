@@ -13,7 +13,15 @@
 
 \App\Project::created( function($project){
     \App\ProjectActivity::create([
-        'project_id' => $project->id
+        'project_id' => $project->id,
+        'description' => 'created_project'
+    ]);
+});
+
+\App\Project::updated( function($project){
+    \App\ProjectActivity::create([
+        'project_id' => $project->id,
+        'description' => 'updated_project'
     ]);
 });
 
