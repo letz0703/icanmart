@@ -1,30 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-\App\Project::created( function($project){
-    \App\ProjectActivity::create([
-        'project_id' => $project->id,
-        'description' => 'created_project'
-    ]);
-});
-
-\App\Project::updated( function($project){
-    \App\ProjectActivity::create([
-        'project_id' => $project->id,
-        'description' => 'updated_project'
-    ]);
-});
-
 App::setLocale('kr');
 //Auth::routes(['confirm' => true]);
 Auth::routes();

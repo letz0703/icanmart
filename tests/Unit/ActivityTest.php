@@ -32,6 +32,17 @@ class ActivityTest extends TestCase
         $this->assertEquals('updated_project', $project->activities->last()->description);
     }
 
+    /** @test */
+    public function creating_task_records_activity()
+    {
+        $project = ProjectFactory::create();
+        $project->addTask('go sleep');
+        $this->assertCount(2, $project->activities);
+
+        $this->assertEquals('created_task', $project->activities->last()->description);
+    }
+
+
 
 
 
