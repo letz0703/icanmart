@@ -42,8 +42,8 @@ class AppServiceProvider extends ServiceProvider
 
         Carbon::setLocale(config('app.locale'));
 
-        Project::observe(ProjectObserver::class);
-        Task::observe(TaskObserver::class);
+        //Project::observe(ProjectObserver::class);
+        //Task::observe(TaskObserver::class);
 
     }
 }

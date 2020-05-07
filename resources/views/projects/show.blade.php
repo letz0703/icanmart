@@ -49,22 +49,35 @@
                 </form>
             </div>
             @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach( $errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div>
+                    <ul>
+                        @foreach( $errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
         </div>
         <div class="lg:w-1/4 px-3 pb-6 py-8">
             <div class="section__project">
                 @include('projects.card')
-                {{--            <div class="card" style="height:200px">--}}
-                {{--                <h2 class="font-normal"><a href="{{ $project->path() }}">{{ $project->title }}</a></h2>--}}
-                {{--                <div class="text-grey">{{ Str::limit($project->description,100 )}}</div>--}}
-                {{--            </div>--}}
+            </div>
+            <div class="section__activity card mt-2">
+                <ul>
+                    @foreach ($project->activities as $activity)
+                        <li class="text-sm">
+                            @if($activity->description == 'created_project')
+                                @include('projects.activity.created_project')
+                            @elseif($activity->description == 'updated_project')
+                                @include('projects.activity.updated_project')
+                            @elseif($activity->description == 'created_task')
+                                @include('projects.activity.created_task')
+                            @else($activity->description == 'updated_task')
+                                @include('projects.activity.updated_task')
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>

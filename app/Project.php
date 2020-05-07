@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use function class_basename;
 
 class Project extends Model
 {
+    use RecordsActivity;
+
     protected $guarded = [];
+
 
     public function path()
     {

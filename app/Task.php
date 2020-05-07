@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    use RecordsActivity;
+
     protected $guarded = [];
     protected $touches = ['project'];
 
+    public static $eventsToRecord = ['created','updated'];
 
     public function project()
     {
@@ -20,5 +23,16 @@ class Task extends Model
     {
         return $this->project->path().'/tasks/'.$this->id;
     }
+
+    public function complete()
+    {
+        $this->completed  = true;
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
 
 }

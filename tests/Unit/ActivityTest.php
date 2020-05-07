@@ -33,7 +33,7 @@ class ActivityTest extends TestCase
     }
 
     /** @test */
-    public function creating_task_records_activity()
+    public function creating_a_task_records_activity()
     {
         $project = ProjectFactory::create();
         $project->addTask('go sleep');
