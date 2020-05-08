@@ -19,12 +19,13 @@
                             @method('PATCH')
                             @csrf
                             <div class="flex items-center">
+
+                                <input value="{{ $task->body }}" name="body"
+                                       class=" w-full border-0  {{ $task->completed ? 'text-grey line-through':'' }}">
                                 <input type="checkbox" name="completed"
                                        onChange="this.form.submit()"
                                     {{ $task->completed ? 'checked':'' }}
                                 >
-                                <input value="{{ $task->body }}" name="body"
-                                       class=" w-full border-0  {{ $task->completed ? 'text-grey line-through':'' }}">
 
                             </div>
                         </form>
@@ -63,21 +64,7 @@
                 @include('projects.card')
             </div>
             <div class="section__activity card mt-2">
-                <ul>
-                    @foreach ($project->activities as $activity)
-                        <li class="text-sm">
-                            @if($activity->description == 'created_project')
-                                @include('projects.activity.created_project')
-                            @elseif($activity->description == 'updated_project')
-                                @include('projects.activity.updated_project')
-                            @elseif($activity->description == 'created_task')
-                                @include('projects.activity.created_task')
-                            @else($activity->description == 'updated_task')
-                                @include('projects.activity.updated_task')
-                            @endif
-                        </li>
-                    @endforeach
-                </ul>
+                @include('projects.activity.card')
             </div>
         </div>
     </div>

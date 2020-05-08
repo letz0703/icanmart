@@ -14758,15 +14758,6 @@ form .field {
   margin-bottom: 1.5rem;
 }
 
-form input {
-  background-color: transparent;
-  border-width: 1px;
-  border-color: #cbd5e0;
-  border-radius: 0.25rem;
-  width: 100%;
-  padding: 0.25rem;
-}
-
 form textarea {
   border-width: 1px;
   background-color: transparent;
