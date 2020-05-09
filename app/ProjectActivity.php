@@ -8,4 +8,5 @@ class ProjectActivity extends Model
 {
     //
     protected $guarded = [];
+
 }

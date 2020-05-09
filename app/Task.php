@@ -11,7 +11,7 @@ class Task extends Model
     protected $guarded = [];
     protected $touches = ['project'];
 
-    public static $eventsToRecord = ['created','updated'];
+    protected static $recordableEvents = ['created','deleted'];
 
     public function project()
     {

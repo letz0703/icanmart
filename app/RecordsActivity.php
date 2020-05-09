@@ -16,35 +16,53 @@ trait RecordsActivity
 {
     protected static function bootRecordsActivity()
     {
-        foreach (static::recordableEvents() as $event){
+        foreach (self::recordableEvents() as $event){
             static::$event(function ($model) use ($event){
-                self::recordsActivity($model, $event);
+                $model->recordsActivity($event);
             });
         }
     }
 
     public static function recordableEvents()
     {
-        if (isset(static::$eventToRecord)) {
-            return static::$eventToRecord;
+        if (isset(static::$recordableEvents)) {
+            return static::$recordableEvents;
         }
 
-        return ['created', 'updated', 'deleted'];
+        return ['created', 'updated'];
     }
 
-    protected static function recordsActivity($model, $event)
+    public function recordsActivity($event)
     {
-        if (class_basename($model) == 'Project') {
-            $model->activities()->create([
-                'project_id'  => class_basename($model) === 'Project' ? $model->id : $model['project_id'],
-                'description' => strtolower("{$event}_" . class_basename($model)),
-            ]);
-        } else {
-            $model->project->activities()->create([
-                'project_id'  => class_basename($model) === 'Project' ? $model->id : $model['project_id'],
-                'description' => strtolower("{$event}_" . class_basename($model)),
-            ]);
+        $this->activities()->create([
+            'project_id'  => $this->projectId(),
+            'description' => $this->activityDescription($event),
+        ]);
+    }
+
+    public function activities()
+    {
+        if (get_class($this) === Project::class) {
+            return $this->hasMany(ProjectActivity::class)->latest();
         }
+
+        return $this->morphMany(ProjectActivity::class, 'subject')->latest();
+    }
+    /**
+     * @return mixed
+     */
+    protected function projectId()
+    {
+        return class_basename($this) === 'Project' ? $this->id : $this['project_id'];
+    }
+    /**
+     * @param $event
+     *
+     * @return string
+     */
+    protected function activityDescription($event): string
+    {
+        return strtolower("{$event}_" . class_basename($this));
     }
 
 }

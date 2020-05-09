@@ -46,11 +46,6 @@ class ActivityTest extends TestCase
         });
     }
 
-
-
-
-
-
     ///** @test */
     //public function it_records_activity_when_a_box_created()
     //{
