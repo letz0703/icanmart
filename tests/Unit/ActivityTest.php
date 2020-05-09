@@ -8,6 +8,7 @@ use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
+use function tap;
 
 class ActivityTest extends TestCase
 {
@@ -39,7 +40,10 @@ class ActivityTest extends TestCase
         $project->addTask('go sleep');
         $this->assertCount(2, $project->activities);
 
-        $this->assertEquals('created_task', $project->activities->last()->description);
+        tap($project->activities->last(), function($activity){
+            $this->assertEquals('created_task', $activity->description);
+
+        });
     }
 
 
