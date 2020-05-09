@@ -44,8 +44,34 @@ class ActivityTest extends TestCase
         tap($project->activities->last(), function($activity){
             $this->assertEquals('created_task', $activity->description);
             $this->assertInstanceOf(Task::class, $activity->subject);
+            $this->assertEquals('go sleep', $activity->subject->body);
         });
     }
+
+    /** @test */
+    public function completing_a_task_records_activity()
+    {
+        $project = ProjectFactory::withTasks(1)->create();
+
+        $this->assertFalse($project->tasks->last()->completed);
+
+        tap($project->tasks->last(), function($task) use ($project){
+            $this->be($project->owner)
+                 ->patch($task->path(), [
+                     'body' => 'foo bar',
+                     'completed' => true
+                 ]);
+
+            $this->assertDatabaseHas('project_activities',['description'=>'completed_task']);
+        });
+
+        //$this->assertTrue($project->tasks->last()->toArray());
+
+        //$this->assertEquals('completed_task', $project->activities->last()->description);
+    }
+
+
+
 
     ///** @test */
     //public function it_records_activity_when_a_box_created()

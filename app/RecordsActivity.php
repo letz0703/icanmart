@@ -18,10 +18,16 @@ trait RecordsActivity
     {
         foreach (self::recordableEvents() as $event){
             static::$event(function ($model) use ($event){
-                $model->recordsActivity($event);
+                $model->recordsActivity($model->activityDescription($event));
             });
         }
     }
+
+    public function activityDescription($description)
+    {
+        return $description = strtolower("{$description}_" . class_basename($this));
+    }
+
 
     public static function recordableEvents()
     {
@@ -32,13 +38,15 @@ trait RecordsActivity
         return ['created', 'updated'];
     }
 
-    public function recordsActivity($event)
+    public function recordsActivity($description)
     {
         $this->activities()->create([
             'project_id'  => $this->projectId(),
-            'description' => $this->activityDescription($event),
+            'description' => $description,
         ]);
     }
+
+
 
     public function activities()
     {
@@ -54,15 +62,6 @@ trait RecordsActivity
     protected function projectId()
     {
         return class_basename($this) === 'Project' ? $this->id : $this['project_id'];
-    }
-    /**
-     * @param $event
-     *
-     * @return string
-     */
-    protected function activityDescription($event): string
-    {
-        return strtolower("{$event}_" . class_basename($this));
     }
 
 }
