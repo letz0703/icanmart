@@ -29,10 +29,10 @@ class Task extends Model
         $this->completed  = true;
     }
 
-    public function activities()
-    {
-        return $this->hasMany(Activity::class);
-    }
+    //public function activities()
+    //{
+    //    return $this->hasMany(ProjectActivity::class);
+    //}
 
 
 }

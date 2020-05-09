@@ -17,7 +17,9 @@ trait RecordsActivity
     protected static function bootRecordsActivity()
     {
         foreach (static::recordableEvents() as $event){
-            self::recordsActivity($event);
+            static::$event(function ($model) use ($event){
+                self::recordsActivity($model, $event);
+            });
         }
     }
 
@@ -30,25 +32,19 @@ trait RecordsActivity
         return ['created', 'updated', 'deleted'];
     }
 
-    protected static function recordsActivity($event)
+    protected static function recordsActivity($model, $event)
     {
-        static::$event(function ($model) use ($event){
-            $modelOld = $model;
-            //
-            if (class_basename($model) !== 'Project'){
-                $model = $model->project;
-            }
-
+        if (class_basename($model) == 'Project') {
             $model->activities()->create([
-                'project_id'  => class_basename($model) == 'Project' ?? $model->project->id,
-                'description' => self::formatActivityDescription($event, $modelOld)
+                'project_id'  => class_basename($model) === 'Project' ? $model->id : $model['project_id'],
+                'description' => strtolower("{$event}_" . class_basename($model)),
             ]);
-        });
-    }
-
-    protected static function formatActivityDescription($event, $model)
-    {
-        return strtolower("{$event}_" . class_basename($model));
+        } else {
+            $model->project->activities()->create([
+                'project_id'  => class_basename($model) === 'Project' ? $model->id : $model['project_id'],
+                'description' => strtolower("{$event}_" . class_basename($model)),
+            ]);
+        }
     }
 
 }
