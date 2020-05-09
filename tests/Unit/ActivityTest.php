@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Activity;
 use App\Item;
+use App\Task;
 use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -42,7 +43,7 @@ class ActivityTest extends TestCase
 
         tap($project->activities->last(), function($activity){
             $this->assertEquals('created_task', $activity->description);
-
+            $this->assertInstanceOf(Task::class, $activity->subject);
         });
     }
 
