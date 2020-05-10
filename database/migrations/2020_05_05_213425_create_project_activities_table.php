@@ -15,10 +15,17 @@ class CreateProjectActivitiesTable extends Migration
     {
         Schema::create('project_activities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            //$table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('project_id');
             $table->nullableUuidMorphs('subject');
             $table->string('description');
+            $table->text('changes')->nullable();
             $table->timestamps();
+
+            //$table->foreign('user_id')
+            //      ->references('id')
+            //      ->on('users')
+            //      ->onDelete('cascade');
 
             $table->foreign('project_id')
                 ->references('id')

@@ -9,25 +9,37 @@
 namespace App;
 
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use function class_basename;
 
 trait RecordsActivity
 {
+    public $old = [];
+
     protected static function bootRecordsActivity()
     {
         foreach (self::recordableEvents() as $event){
             static::$event(function ($model) use ($event){
                 $model->recordsActivity($model->activityDescription($event));
             });
+
+            static::updating(function($model) use ($event){
+               $model->old = $model->getOriginal();
+            });
         }
     }
+
+    public function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format("Y-m-d H:i:s");
+    }
+
 
     public function activityDescription($description)
     {
         return $description = strtolower("{$description}_" . class_basename($this));
     }
-
 
     public static function recordableEvents()
     {
@@ -43,6 +55,11 @@ trait RecordsActivity
         $this->activities()->create([
             'project_id'  => $this->projectId(),
             'description' => $description,
+            'changes' => [
+                'before' => array_diff($this->old, $this->getAttributes()),
+                'after' => array_diff($this->getAttributes(), $this->old )
+            ]
+
         ]);
     }
 
