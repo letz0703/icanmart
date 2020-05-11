@@ -7,9 +7,9 @@
             action="/projects"
             method="POST"
         >
-           @include('projects._form',[
-                 'project' => new App\Project(),
-                 'buttonText' => 'Create Project'
+            @include('projects._form',[
+                  'project' => new App\Project(),
+                  'buttonText' => 'Create Project'
             ])
         </form>
     </div>

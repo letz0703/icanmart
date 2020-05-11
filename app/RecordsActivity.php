@@ -57,13 +57,10 @@ trait RecordsActivity
             'description' => $description,
             'changes' => [
                 'before' => array_diff($this->old, $this->getAttributes()),
-                'after' => array_diff($this->getAttributes(), $this->old )
+                'after' => $this->getChanges()
             ]
-
         ]);
     }
-
-
 
     public function activities()
     {

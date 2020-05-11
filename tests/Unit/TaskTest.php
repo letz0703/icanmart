@@ -33,7 +33,6 @@ class TaskTest extends TestCase
         $this->assertEquals($task->path(), $task->project->path().'/tasks/'.$task->id);
     }
 
-
     /** @test */
     public function it_has_body()
     {
