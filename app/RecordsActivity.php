@@ -24,8 +24,8 @@ trait RecordsActivity
                 $model->recordsActivity($model->activityDescription($event));
             });
 
-            static::updating(function($model) use ($event){
-               $model->old = $model->getOriginal();
+            static::updating(function ($model) use ($event){
+                $model->old = $model->getOriginal();
             });
         }
     }
@@ -54,13 +54,23 @@ trait RecordsActivity
     {
         $this->activities()->create([
             'project_id'  => $this->projectId(),
+            'user_id'  => $this->activityOwner()->id,
             'description' => $description,
-            'changes' => [
-                'before' => array_diff($this->old, $this->getAttributes()),
-                'after' => $this->getChanges()
-            ]
+            'changes'     => $this->wasChanged() ?
+                [
+                    'before' => array_diff($this->old, $this->getAttributes()),
+                    'after'  => $this->getChanges(),
+                ]
+                : null,
         ]);
     }
+
+    public function activityOwner()
+    {
+        $project = $this->project ?? $this;
+        return $project->owner;
+    }
+
 
     public function activities()
     {

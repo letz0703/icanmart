@@ -4,7 +4,9 @@ namespace Tests\Unit;
 
 use App\Activity;
 use App\Item;
+use App\Project;
 use App\Task;
+use App\User;
 use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,11 +19,25 @@ class ActivityTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function it_has_a_user()
+    {
+        $project = factory(Project::class)->create();
+
+        $activity = $project->activities->first();
+
+        $this->assertInstanceOf(User::class, $activity->user);
+    }
+
+
+    /** @test */
     public function creating_a_project_records_activity()
     {
         $project = ProjectFactory::create();
         $this->assertCount(1, $project->activities);
-        $this->assertEquals('created_project', $project->activities->last()->description);
+        tap($project->activities->last(), function($activity){
+            $this->assertEquals('created_project', $activity->description);
+            $this->assertNull($activity->changes);
+        });
     }
 
     /** @test */
