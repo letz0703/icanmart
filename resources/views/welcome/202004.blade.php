@@ -25,24 +25,29 @@
         <div class="row">
             <div class="col-1-of-4">
                 <div class="feature-box">
-                    <i class="feature-box__icon far fa-heart"></i>
-                    <h3 class="heading-tertiary u-margin-bottom-small">인기 상품</h3>
-                    <p class="feature-box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-                        esse.</p>
+                    <a href="/items/search">
+                        <i class="feature-box__icon icon-basic-magnifier"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">
+                            아이템 검색
+                        </h3>
+                        <p class="feature-box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
+                            esse.</p>
+                    </a>
                 </div>
             </div>
             <div class="col-1-of-4">
                 <div class="feature-box">
-                    <i class="feature-box__icon icon-basic-magnifier"></i>
-                    <h3 class="heading-tertiary u-margin-bottom-small">아이템 검색</h3>
+                    <i class="feature-box__icon icon-basic-heart"></i>
+                    <h3 class="heading-tertiary u-margin-bottom-small">구매 요청</h3>
                     <p class="feature-box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
                         esse.</p>
                 </div>
             </div>
+
             <div class="col-1-of-4">
                 <div class="feature-box">
                     <i class="feature-box__icon icon-basic-star"></i>
-                    <h3 class="heading-tertiary u-margin-bottom-small">추천 상품</h3>
+                    <h3 class="heading-tertiary u-margin-bottom-small">배송 확인</h3>
                     <p class="feature-box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
                         esse.</p>
                 </div>
@@ -73,7 +78,7 @@
                         <li><a href="/boxes" class="btn-text">입고목록</a></li>
                         <li>재고실사 wip</li>
                         <li>판매관리 wip</li>
-                        <li><a href="/projects" class="btn-text">Project</a></li>
+                        <li><a href="/projects" class="btn-text">프로젝트</a></li>
                     </ul>
                 </nav>
             </div>
