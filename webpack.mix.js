@@ -18,6 +18,7 @@ mix
     .setPublicPath('public')
     .js('resources/js/app.js', 'js')
     .sass('resources/sass/app.scss', 'css')
+    .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .browserSync({
         // proxy: 'https://'+ domain,
         proxy: domain,

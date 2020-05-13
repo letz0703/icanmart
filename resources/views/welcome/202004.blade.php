@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-1-of-4">
                 <div class="feature-box">
-                    <i class="feature-box__icon icon-basic-heart"></i>
+                    <i class="feature-box__icon far fa-heart"></i>
                     <h3 class="heading-tertiary u-margin-bottom-small">인기 상품</h3>
                     <p class="feature-box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
                         esse.</p>
@@ -73,7 +73,7 @@
                         <li><a href="/boxes" class="btn-text">입고목록</a></li>
                         <li>재고실사 wip</li>
                         <li>판매관리 wip</li>
-                        <li><a href="/projects" class="btn-text">프로젝트</a></li>
+                        <li><a href="/projects" class="btn-text">Project</a></li>
                     </ul>
                 </nav>
             </div>
