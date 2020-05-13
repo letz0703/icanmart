@@ -1,7 +1,8 @@
 .row {
     //max-width: 1140px;
-    background-color: lightgrey;
+    //background-color: lightgrey;
     margin: 0 auto;
+    text-align: center;
     $gutter-right: 1.5rem;
     $gutter-bottom: 1.5rem;
 
@@ -12,7 +13,8 @@
     @include clearfix;
 
     [class^="col-"] {
-        background-color: darkgrey;
+        background-color: transparent;
+        display: inline-block;
         float: left;
 
         &:not(:last-child) {

@@ -14647,8 +14647,8 @@ li.ais-Hits-item, .MyCustomHitsItem {
 /* dots are lines  안되는데?*/
 
 .row {
-  background-color: lightgrey;
   margin: 0 auto;
+  text-align: center;
 }
 
 .row :not(:last-child) {
@@ -14662,7 +14662,8 @@ li.ais-Hits-item, .MyCustomHitsItem {
 }
 
 .row [class^="col-"] {
-  background-color: darkgrey;
+  background-color: transparent;
+  display: inline-block;
   float: left;
 }
 
@@ -14786,6 +14787,39 @@ form .alert {
   align-items: center;
   flex-direction: column;
   text-align: left;
+}
+
+.section-features {
+  padding: 2rem 0;
+}
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.3s;
+  outline-offset: 0.3rem;
+}
+
+.feature-box__icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background-image: linear-gradient(to bottom, #00c6f5, #78C5ef);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.feature-box__text {
+  font-size: 1rem;
+  color: dimgray;
+}
+
+.feature-box:hover {
+  transform: translateY(-0.6em) scale(1.1);
+  outline: 0.4rem dashed #a8eafd;
 }
 
 @media (min-width: 640px){
