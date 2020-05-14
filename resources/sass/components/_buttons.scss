@@ -9,7 +9,7 @@
         margin-right: 0;
     }
 
-    box-shadow: 0 2px 2px 0 $theme-color;
+    box-shadow: 0 2px 2px 0 $theme-blue;
 }
 
 .btn {
@@ -26,22 +26,23 @@
 }
 
 .btn-text {
+
     &:link,
     &:visited {
         font-size: 0.9rem;
         font-weight: 500;
         text-align: center;
         letter-spacing: 0.12rem;
-        border-bottom: 2px solid $theme-color;
-        color: black;
-        padding: 0.25rem;
+        border-bottom: 2px solid $theme-blue;
+        color: $theme-blue;
+        padding: 0.2rem 0.4rem;
         display: inline-block;
-        transition: all .1s;
+        transition: all .3s;
     }
 
     &:hover {
-        background-color: $theme-color;
-        color: black;
+        background-color: $theme-blue;
+        color: white;
         box-shadow: 0 0.3rem 0.6rem -0.1rem rgba(0, 0, 0, 0.15);
         transform: translateY(-0.1rem);
     }

@@ -2,3 +2,31 @@
 $font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+.heading-secondary {
+    font-size: 30px;
+    text-transform: uppercase;
+    //font-weight: 700;
+    display: inline-block;
+    /*mani*/
+    margin-bottom: 2rem;
+    background-image: linear-gradient(
+            to bottom,
+            $theme-blue,
+            $theme-blue--lighter
+    );
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    letter-spacing: 0.2rem;
+    transition: all 0.2s;
+
+    &:hover {
+        // transform: skewY(-0deg) skewX(-10deg) scale(1.1);
+        // transform: skewY(-7deg) skewX(-2deg) scale(1.1);
+        //transform: skewY(2deg) skewX(15deg) scale(1.1);
+        transform: translateY(-0.2rem);
+        text-shadow: 0rem .2rem .2rem rgba(black, 0.2);
+    }
+}

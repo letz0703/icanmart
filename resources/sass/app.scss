@@ -1,13 +1,14 @@
+$theme-color:rgba(0, 198, 245, 1.0);
 $theme-blue: rgba(0, 198, 245, 1.0);
 $theme-blue--light: #78C5ef ;
 $theme-blue--lighter: #bcdefa ;
 $theme-blue--lightest:#eff8ff;
 
 
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+//@import '~@fortawesome/fontawesome-free/scss/brands';
+//@import '~@fortawesome/fontawesome-free/scss/regular';
+//@import '~@fortawesome/fontawesome-free/scss/solid';
+//@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 //tailwindcss
 @import 'tailwind';
@@ -16,9 +17,9 @@ $theme-blue--lightest:#eff8ff;
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
+@import "base/typo";
 @import "base/animations";
 @import "base/base";
-@import "base/typo";
 @import "base/utilities";
 
 @import 'components/buttons';
@@ -34,9 +35,6 @@ $theme-blue--lightest:#eff8ff;
 @import "layout/box";
 
 @import "pages/home";
-
-
-
 
 //.navbar-laravel {
 //  background-color: #fff;
