@@ -14303,7 +14303,7 @@ bggrey {
 
 .heading-secondary:hover {
   transform: translateY(-0.2rem);
-  text-shadow: 0rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0.3rem 0.2rem rgba(192, 192, 192, 0.3);
 }
 
 *,
@@ -14806,7 +14806,7 @@ form .alert {
   text-align: center;
   border-radius: 4px;
   transition: transform 0.3s;
-  outline-offset: 0.3rem;
+  outline-offset: 0.4rem;
 }
 
 .feature-box__icon {
@@ -14825,16 +14825,16 @@ form .alert {
 
 .feature-box:hover {
   transform: translateY(-0.6em) scale(1.1);
-  outline: 0.4rem dashed #00c6f5;
+  outline: 0.2rem dashed #00c6f5;
 }
 
-.item-card {
+.rotate-card {
   perspective: 150rem;
   position: relative;
   height: 20rem;
 }
 
-.item-card__side {
+.rotate-card__side {
   background-color: #00c6f5;
   height: 20rem;
   color: white;
@@ -14848,20 +14848,23 @@ form .alert {
           backface-visibility: hidden;
 }
 
-.item-card__side--front {
+.rotate-card__side--front {
   background-color: white;
 }
 
-.item-card__side--back {
-  background-color: orangered;
+.rotate-card__side--back {
   transform: rotateY(180deg);
 }
 
-.item-card:hover .item-card__side--front {
+.rotate-card__side--back-1 {
+  background-image: linear-gradient(to right bottom, yellowgreen, #88B04b);
+}
+
+.rotate-card:hover .rotate-card__side--front {
   transform: rotateY(180deg);
 }
 
-.item-card:hover .item-card__side--back {
+.rotate-card:hover .rotate-card__side--back {
   transform: rotateY(0);
 }
 

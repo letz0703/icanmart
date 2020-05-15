@@ -28,10 +28,11 @@
         font-size: 1rem;
         color: $grey;
     }
-    outline-offset: 0.3rem;
+    outline-offset: 0.4rem;
     &:hover {
         transform: translateY(-.6em) scale(1.1);
-        outline: 0.4rem dashed $theme-color;
+        //border: 0.2rem dashed $theme-color;
+        outline: 0.2rem dashed $theme-color;
     }
 }
 
@@ -39,7 +40,7 @@
 
 }
 
-.item-card {
+.rotate-card {
     perspective: 150rem;
     position: relative;
     height: 20rem;
@@ -63,8 +64,13 @@
         }
 
         &--back {
-            background-color: orangered;
+            //background-color: orangered;
             transform: rotateY(180deg);
+
+            &-1 {
+                //background-image: linear-gradient(to right bottom, $color-green, $color-green);
+                background-image: linear-gradient(to right bottom, yellowgreen, $panton-green);
+            }
         }
     }
 
