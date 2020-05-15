@@ -68,9 +68,13 @@
             <div class="row">
                 <div class="col-1-of-3">
                     <div class="item-card">
-                        <div class="item-card__side">
+                        <div class="item-card__side item-card__side--front">
                             동전파스
                         </div>
+                        <div class="item-card__side item-card__side--back">
+                            동전파스
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-1-of-3">
