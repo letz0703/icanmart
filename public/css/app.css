@@ -14857,7 +14857,7 @@ form .alert {
 }
 
 .rotate-card__side--back-1 {
-  background-image: linear-gradient(to right bottom, yellowgreen, #88B04b);
+  background-image: linear-gradient(to right bottom, rgba(177, 204, 137, 0.5), #88B04b);
 }
 
 .rotate-card:hover .rotate-card__side--front {
