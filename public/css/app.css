@@ -14657,10 +14657,6 @@ li.ais-Hits-item, .MyCustomHitsItem {
   text-align: center;
 }
 
-.row :not(:last-child) {
-  margin-bottom: 1.5rem;
-}
-
 .row::after {
   content: '';
   clear: both;

@@ -7,7 +7,7 @@
     $gutter-bottom: 1.5rem;
 
     :not(:last-child) {
-        margin-bottom: $gutter-bottom;
+        //margin-bottom: $gutter-bottom;
     }
 
     @include clearfix;

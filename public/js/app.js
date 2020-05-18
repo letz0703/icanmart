@@ -16108,7 +16108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*body {*/\n\n/*    font-family: sans-serif;*/\n\n/*    padding: 1em;*/\n\n/*}*/\n.ais-Highlight-highlighted {\n  background: aliceblue;\n  font-style: normal;\n}\n\n/*.header {*/\n\n/*    display: flex;*/\n\n/*    align-items: center;*/\n\n/*    min-height: 50px;*/\n\n/*    padding: 0.5rem 1rem;*/\n\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n\n/*    color: #fff;*/\n\n/*    margin-bottom: 1rem;*/\n\n/*}*/\n\n/*.header a {*/\n\n/*    color: #fff;*/\n\n/*    text-decoration: none;*/\n\n/*}*/\n\n/*.header-title {*/\n\n/*    font-size: 1.2rem;*/\n\n/*    font-weight: normal;*/\n\n/*}*/\n\n/*.header-title::after {*/\n\n/*    content: ' ▸ ';*/\n\n/*    padding: 0 0.5rem;*/\n\n/*}*/\n\n/*.header-subtitle {*/\n\n/*    font-size: 1.2rem;*/\n\n/*}*/\n\n/*.container {*/\n\n/*    max-width: 1200px;*/\n\n/*    margin: 0 auto;*/\n\n/*    padding: 1rem;*/\n\n/*}*/\n.search-panel {\n  display: flex;\n}\n.search-panel__filters {\n  flex: 1;\n  margin-right: 1em;\n}\n.search-panel__results {\n  flex: 3;\n}\n.searchbox {\n  margin-bottom: 2rem;\n}\n.pagination {\n  margin: 2rem auto;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "/*body {*/\n\n/*    font-family: sans-serif;*/\n\n/*    padding: 1em;*/\n\n/*}*/\n.ais-Highlight-highlighted {\n  background: aliceblue;\n  font-style: normal;\n}\n.expand-clickable {\n  padding: 0;\n}\n\n/*.header {*/\n\n/*    display: flex;*/\n\n/*    align-items: center;*/\n\n/*    min-height: 50px;*/\n\n/*    padding: 0.5rem 1rem;*/\n\n/*    background-image: linear-gradient(to right, #4dba87, #2f9088);*/\n\n/*    color: #fff;*/\n\n/*    margin-bottom: 1rem;*/\n\n/*}*/\n\n/*.header a {*/\n\n/*    color: #fff;*/\n\n/*    text-decoration: none;*/\n\n/*}*/\n\n/*.header-title {*/\n\n/*    font-size: 1.2rem;*/\n\n/*    font-weight: normal;*/\n\n/*}*/\n\n/*.header-title::after {*/\n\n/*    content: ' ▸ ';*/\n\n/*    padding: 0 0.5rem;*/\n\n/*}*/\n\n/*.header-subtitle {*/\n\n/*    font-size: 1.2rem;*/\n\n/*}*/\n\n/*.container {*/\n\n/*    max-width: 1200px;*/\n\n/*    margin: 0 auto;*/\n\n/*    padding: 1rem;*/\n\n/*}*/\n.search-panel {\n  display: flex;\n}\n.search-panel__filters {\n  flex: 1;\n  margin-right: 1em;\n}\n.search-panel__results {\n  flex: 3;\n}\n.searchbox {\n  margin-bottom: 2rem;\n}\n.pagination {\n  margin: 2rem auto;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -102754,7 +102754,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticStyle: { width: "70rem" } }, [
     _c(
       "div",
       { staticClass: "content md:w-2/3 mx-auto" },
@@ -102795,12 +102795,6 @@ var render = function() {
                         fn: function(ref) {
                           var item = ref.item
                           return _c("div", {}, [
-                            _c("div", {
-                              domProps: {
-                                textContent: _vm._s("BARCODE: " + item.barcode)
-                              }
-                            }),
-                            _vm._v(" "),
                             _c(
                               "a",
                               {
@@ -102815,14 +102809,14 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _c("div", {
+                            _c("span", {
                               domProps: {
                                 textContent: _vm._s(item.sell_price + "원")
                               }
                             }),
                             _vm._v(" "),
                             _vm.authorize("isAdmin")
-                              ? _c("div", {
+                              ? _c("span", {
                                   directives: [
                                     {
                                       name: "tooltip",
@@ -102834,7 +102828,9 @@ var render = function() {
                                   ],
                                   staticStyle: { background: "aliceblue" },
                                   domProps: {
-                                    textContent: _vm._s(item.buy_price + "원")
+                                    textContent: _vm._s(
+                                      "(" + item.buy_price + "원)"
+                                    )
                                   }
                                 })
                               : _vm._e()
