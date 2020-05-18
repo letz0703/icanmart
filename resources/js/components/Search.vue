@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width:70rem">
         <!--        <carousel>-->
         <!--            <div class="carousel-cell">-->
         <!--                <img src="/images/carousel-img-blendy.jpg">-->
@@ -37,19 +37,19 @@
                             }"
                         >
                             <div slot="item" slot-scope="{ item }">
-                                <!--                                <li v-for="item in items" :key="item.objectID">-->
-                                <!--                                   {{ item.product_name}}-->
-                                <!--                                </li>-->
-                                <div v-text="'BARCODE: '+item.barcode"></div>
                                 <a :href="'/items/'+item.id" class="expand-clickable">
                                     <ais-highlight :hit="item" attribute="description"/>
                                 </a>
 
-                                <div v-text="item.sell_price+'원'"></div>
-                                <div v-if="authorize('isAdmin')" v-text="item.buy_price+'원'"
+                                <!--                                <li v-for="item in items" :key="item.objectID">-->
+                                <!--                                   {{ item.product_name}}-->
+                                <!--                                </li>-->
+<!--                                <span v-text="'BARCODE: '+item.barcode"></span>-->
+                                <span v-text="item.sell_price+'원'"></span>
+                                <span v-if="authorize('isAdmin')" v-text="'('+item.buy_price+'원)'"
                                      style="background:aliceblue;"
                                      v-tooltip:left="item.seller_id"
-                                ></div>
+                                ></span>
                             </div>
                         </ais-hits>
                         <div class="pagination">
@@ -115,6 +115,10 @@
     .ais-Highlight-highlighted {
         background: aliceblue;
         font-style: normal;
+    }
+
+    .expand-clickable {
+        padding: 0;
     }
 
     /*.header {*/
