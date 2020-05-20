@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Project;
 use App\Task;
+use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -52,7 +53,14 @@ class ProjectTest extends TestCase
         $this->assertInstanceOf('App\User', $project->owner);
     }
 
+    /**test */
+    public function it_can_invite_users()
+    {
+        $project = ProjectFactory::create();
+        $project->invite($user = factory('App\User')->create());
 
+        $this->assertTrue($project->members->contains($user));
+    }
 
 
 }

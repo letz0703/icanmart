@@ -61,5 +61,15 @@ class User extends Authenticatable
                     ->latest('updated_at');
     }
 
+    public function accessibleProjects()
+    {
+        $projectCreated = $this->projects;
+        $ids = \DB::table('project_members')->where('user_id',$this->id)->pluck('project_id');
+
+        $projectInvited = Project::find($ids);
+
+        return $projectCreated->merge($projectInvited);
+    }
+
 
 }

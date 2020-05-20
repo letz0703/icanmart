@@ -147,12 +147,13 @@ class ManageProjectTest extends TestCase
              ->assertStatus(403);
     }
 
+
     /** @test */
     public function guest_cannot_view_projects()
     {
         $project = raw(Project::class);
         $this->post('/projects', $project)->assertRedirect('/login');
-        //$this->get('/projects')->assertRedirect('login');
+        $this->get('/projects')->assertRedirect('login');
     }
 
 }

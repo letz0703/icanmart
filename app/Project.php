@@ -28,6 +28,17 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'project_members');
+    }
+
+    public function invite(User $user)
+    {
+        $this->members()->attach($user);
+    }
+
+
     public function addTask($body)
     {
         return $this->tasks()->create(['body'=>$body]);
