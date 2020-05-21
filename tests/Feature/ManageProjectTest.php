@@ -156,4 +156,17 @@ class ManageProjectTest extends TestCase
         $this->get('/projects')->assertRedirect('login');
     }
 
+    /** @test */
+    public function user_can_view_invited_to_projects()
+    {
+        $user = $this->signIn();
+
+        $project = ProjectFactory::create();
+
+        $project->invite($user);
+
+        $this->assertCount(1, $user->accessibleProjects());
+    }
+
+
 }

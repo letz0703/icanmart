@@ -63,12 +63,16 @@ class User extends Authenticatable
 
     public function accessibleProjects()
     {
-        $projectCreated = $this->projects;
-        $ids = \DB::table('project_members')->where('user_id',$this->id)->pluck('project_id');
-
-        $projectInvited = Project::find($ids);
-
-        return $projectCreated->merge($projectInvited);
+        return Project::where('owner_id',$this->id)
+            ->orWhereHas('members', function($query){
+                $query->where('user_id', $this->id);
+            })->get();
+        //$projectCreated = $this->projects;
+        //$ids = \DB::table('project_members')->where('user_id',$this->id)->pluck('project_id');
+        //
+        //$projectInvited = Project::find($ids);
+        //
+        //return $projectCreated->merge($projectInvited);
     }
 
 
