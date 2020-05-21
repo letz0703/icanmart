@@ -6,7 +6,15 @@
             <p class="text-sm font-normal text-grey">
                 <a href="/projects">My Projects</a> / {{ $project->title }}
             </p>
-            <a href="{{ $project->path().'/edit' }}" class="button">Edit Project</a>
+            <div class="flex items-center">
+                @foreach ($project->members as $member)
+                    <img src="https://gravatar.com/avatar/{{md5($member->email)}}?s=60"
+                         alt="{{ $member->name }}'s avatar"
+                         class="rounded-full w-8 mr-2"
+                    >
+                @endforeach
+                <a href="{{ $project->path().'/edit' }}" class="button">Edit Project</a>
+            </div>
         </div>
     </header>
     <div class="flex -mx-3">
@@ -21,7 +29,8 @@
                             <div class="flex items-center">
 
                                 <input value="{{ $task->body }}" name="body"
-                                       class=" w-full border-0  {{ $task->completed ? 'text-grey line-through':'' }}">
+                                       class=" w-full border-0  {{ $task->completed ? 'text-grey line-through':'' }}"
+                                >
                                 <input type="checkbox" name="completed"
                                        onChange="this.form.submit()"
                                     {{ $task->completed ? 'checked':'' }}

@@ -66,7 +66,7 @@ class User extends Authenticatable
         return Project::where('owner_id',$this->id)
             ->orWhereHas('members', function($query){
                 $query->where('user_id', $this->id);
-            })->get();
+            })->latest()->get();
         //$projectCreated = $this->projects;
         //$ids = \DB::table('project_members')->where('user_id',$this->id)->pluck('project_id');
         //
