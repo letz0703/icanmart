@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <header class="mb-6 items-baseline">
+    <header class="mb-6 ">
         <div class="flex justify-between items-center">
             <p class="text-sm font-normal text-grey">
                 <a href="/projects">My Projects</a> / {{ $project->title }}
@@ -13,7 +13,11 @@
                          class="rounded-full w-8 mr-2"
                     >
                 @endforeach
-                <a href="{{ $project->path().'/edit' }}" class="button">Edit Project</a>
+                    <img src="https://gravatar.com/avatar/{{md5($project->owner->email)}}?s=60"
+                         alt="{{ $project->owner->name }}'s avatar"
+                         class="rounded-full w-8 mr-2"
+                    >
+                <a href="{{ $project->path().'/edit' }}" class="button lg:ml-4" style="margin-top:0;">Edit Project</a>
             </div>
         </div>
     </header>
@@ -68,13 +72,16 @@
                 </div>
             @endif
         </div>
+
         <div class="lg:w-1/4 px-3 pb-6 py-8">
             <div class="section__project">
                 @include('projects.card')
             </div>
-            <div class="section__activity card mt-2">
-                @include('projects.activity.card')
-            </div>
+            @if(count($project->activities))
+                <div class="section__activity card mt-2">
+                    @include('projects.activity.card')
+                </div>
+            @endif
         </div>
     </div>
 @endsection
