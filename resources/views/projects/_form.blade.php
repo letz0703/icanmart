@@ -5,7 +5,7 @@
     <div class="control">
         <input
             type="text"
-            class="input bg-transparent border border-gray-400 rounded p-2 text-xs lg:w-full"
+            class="input bg-transparent border border-gray-400 rounded p-2 text-xs w-full"
             id="title"
             name="title"
             value="{{ $project->title }}">

@@ -95,7 +95,7 @@
         </div>
     </header>
 
-    <main class="py-4 container mx-auto">
+    <main class="container mx-auto">
         @yield('content')
     </main>
 {{--    @include('layouts.footer-links')--}}

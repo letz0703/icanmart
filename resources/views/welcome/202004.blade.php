@@ -94,7 +94,7 @@
             </div>
         </div>
     </section>
-    <div class="main__menu">
+    <div class="main__menu mt-6">
         @if (auth()->user() && auth()->user()->isAdmin)
             <div class="main__menu-card">
                 <h2>관리</h2>
