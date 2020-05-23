@@ -14565,40 +14565,23 @@ body {
 
 /*}*/
 
-.ais-Hits-item, .ais-InfiniteHits-item, .ais-InfiniteResults-item, .ais-Results-item {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  padding: 1rem;
-  width: calc(100% - 1rem);
-  border: 1px solid #c4c8d8;
-  box-shadow: 0 2px 5px 0 #e3e5ec;
-}
-
 .search-panel {
-  flex-direction: column;
-}
-
-.ais-Pagination {
-  width: -webkit-fill-available;
+  width: 90vw;
 }
 
 .MyCustomHits {
-  /*background:lightskyblue;*/
-  /*display:flex;*/
-  /*flex-direction:column;*/
+  display: flex;
+  flex-direction: row;
 }
 
 .MyCustomHitsList {
-  /*flex:1;*/
-  /*flex-direction:column;*/
+  flex: 1;
+  flex-direction: column;
 }
 
 .MyCustomHitsItem {
-  /*background:yellow;*/
-  /*display:flex;*/
   /*justify-content:center;*/
   /*align-items:center;*/
-  /*width:max-content;*/
 }
 
 li.ais-Hits-item, .MyCustomHitsItem {

@@ -1,67 +1,51 @@
 <template>
-    <div class="flex">
-        <!--        <carousel>-->
-        <!--            <div class="carousel-cell">-->
-        <!--                <img src="/images/carousel-img-blendy.jpg">-->
-        <!--            </div>-->
-        <!--            <div class="carousel-cell">-->
-        <!--                <img src="https://placeimg.com/640/480/any2">-->
-        <!--            </div>-->
-        <!--            <div class="carousel-cell" height="300px">-->
-        <!--                <img src="https://placeimg.com/640/480/any3">-->
-        <!--            </div>-->
-        <!--        </carousel>-->
+    <ais-instant-search :search-client="searchClient" index-name="items"
+                        :routing="routing"
 
-        <div class="">
-            <ais-instant-search :search-client="searchClient" index-name="items"
-                                :routing="routing"
+    >
+        <div class="search-panel">
+            <div class="search-panel__results">
 
-            >
-                <div class="search-panel">
-                    <div class="search-panel__results">
-
-                        <ais-search-box class="searchbox mb-4"
-                                        ref="searchBox"
-                                        :autofocus="true"
-                        />
+                <ais-search-box class="searchbox mb-4"
+                                ref="searchBox"
+                                :autofocus="true"
+                />
 
 
-                        <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
-                        <!--                        <ais-refinement-list attribute="sell_price">-->
-                        <!--                        </ais-refinement-list>-->
+                <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
+                <!--                        <ais-refinement-list attribute="sell_price">-->
+                <!--                        </ais-refinement-list>-->
 
-                        <ais-hits
-                            :escapeHTML="true"
-                            :class-names="{
+                <ais-hits
+                    :escapeHTML="true"
+                    :class-names="{
                                 'ais-Hits':'MyCustomHits',
                                 'ais-Hits-list':'MyCustomHitsList',
                                 'ais-Hits-item':'MyCustomHitsItem',
                             }"
-                        >
-                            <div slot="item" slot-scope="{ item }">
-                                <a :href="'/items/'+item.id" class="expand-clickable">
-                                    <ais-highlight :hit="item" attribute="description"/>
-                                </a>
+                >
+                    <div slot="item" slot-scope="{ item }">
+                        <a :href="'/items/'+item.id" class="expand-clickable">
+                            <ais-highlight :hit="item" attribute="description"/>
+                        </a>
 
-                                <!--                                <li v-for="item in items" :key="item.objectID">-->
-                                <!--                                   {{ item.product_name}}-->
-                                <!--                                </li>-->
-                                <!--                                <span v-text="'BARCODE: '+item.barcode"></span>-->
-                                <span v-text="item.sell_price+'원'"></span>
-                                <span v-if="authorize('isAdmin')" v-text="'('+item.buy_price+'원)'"
-                                      style="background:aliceblue;"
-                                      v-tooltip:left="item.seller_id"
-                                ></span>
-                            </div>
-                        </ais-hits>
-                        <div class="pagination mt-2 w-full">
-                            <ais-pagination/>
-                        </div>
+                        <!--                                <li v-for="item in items" :key="item.objectID">-->
+                        <!--                                   {{ item.product_name}}-->
+                        <!--                                </li>-->
+                        <!--                                <span v-text="'BARCODE: '+item.barcode"></span>-->
+                        <span v-text="item.sell_price+'원'"></span>
+                        <span v-if="authorize('isAdmin')" v-text="'('+item.buy_price+'원)'"
+                              style="background:aliceblue;"
+                              v-tooltip:left="item.seller_id"
+                        ></span>
                     </div>
+                </ais-hits>
+                <div class="pagination mt-2 w-full">
+                    <ais-pagination/>
                 </div>
-            </ais-instant-search>
+            </div>
         </div>
-    </div>
+    </ais-instant-search>
 </template>
 
 <script>
