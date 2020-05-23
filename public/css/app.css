@@ -14588,6 +14588,10 @@ li.ais-Hits-item, .MyCustomHitsItem {
   width: -webkit-fill-available;
 }
 
+input.ais-SearchBox-input {
+  color: black;
+}
+
 /* carousel height, as percentage of width */
 
 .carousel {
