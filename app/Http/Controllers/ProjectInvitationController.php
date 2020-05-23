@@ -22,6 +22,8 @@ class ProjectInvitationController extends Controller
         $user = User::whereEmail(request('email'))->first();
 
         $project->invite($user);
+
+        return redirect($project->path());
     }
 
 }
