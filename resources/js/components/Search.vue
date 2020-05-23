@@ -1,5 +1,5 @@
 <template>
-    <div style="width:70rem">
+    <div class="">
         <!--        <carousel>-->
         <!--            <div class="carousel-cell">-->
         <!--                <img src="/images/carousel-img-blendy.jpg">-->
@@ -12,7 +12,7 @@
         <!--            </div>-->
         <!--        </carousel>-->
 
-        <div class="content md:w-2/3 mx-auto">
+        <div class="content md:w-2/3 mx-auto w-5/6">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
             >
@@ -44,11 +44,11 @@
                                 <!--                                <li v-for="item in items" :key="item.objectID">-->
                                 <!--                                   {{ item.product_name}}-->
                                 <!--                                </li>-->
-<!--                                <span v-text="'BARCODE: '+item.barcode"></span>-->
+                                <!--                                <span v-text="'BARCODE: '+item.barcode"></span>-->
                                 <span v-text="item.sell_price+'원'"></span>
                                 <span v-if="authorize('isAdmin')" v-text="'('+item.buy_price+'원)'"
-                                     style="background:aliceblue;"
-                                     v-tooltip:left="item.seller_id"
+                                      style="background:aliceblue;"
+                                      v-tooltip:left="item.seller_id"
                                 ></span>
                             </div>
                         </ais-hits>
@@ -69,7 +69,7 @@
     import {simple as simpleMapping} from "instantsearch.js/es/lib/stateMappings";
 
     export default {
-        data(){
+        data() {
             return {
                 searchClient: algoliasearch(
                     '44JE7GVNKG',
@@ -101,7 +101,7 @@
             //     }
             //
             // });
-        }
+        },
 
     }
 </script>

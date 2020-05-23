@@ -49,7 +49,7 @@
             <div class="container mx-auto">
                 <!-- Left Side Of Navbar -->
                 <div class="flex justify-between items-center py-2">
-                    <h1 class="">
+                    <h1 class="px-2">
                         <a class="navbar-brand text-black" href="{{ url('/') }}">
                             {{ config('app.name', 'Laravel') }}
                         </a>
@@ -57,7 +57,7 @@
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto pr-2">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
