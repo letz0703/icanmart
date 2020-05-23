@@ -33,6 +33,15 @@ class InvitationTest extends TestCase
     }
 
     /** @test */
+    function non_owner_may_not_invite_users()
+    {
+        $project = ProjectFactory::create();
+        $this->be(factory(User::class)->create())
+            ->post($project->path().'/invitations')
+            ->assertStatus(403);
+    }
+
+    /** @test */
     function the_email_address_must_be_associated_with_valid_birdboard_account()
     {
         //$this->withoutExceptionHandling();

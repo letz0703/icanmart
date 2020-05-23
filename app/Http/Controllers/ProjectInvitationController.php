@@ -11,7 +11,8 @@ class ProjectInvitationController extends Controller
     //
     public function store(Project $project)
     {
-        //$this->authorize('update', $project);
+        $this->authorize('update', $project);
+
         request()->validate([
             'email' => ['required','exists:users,email']
         ],[
