@@ -156,25 +156,25 @@
     /*    padding: 1rem;*/
     /*}*/
 
-    .search-panel {
-        display: flex;
-    }
+    /*.search-panel {*/
+    /*    display: flex;*/
+    /*}*/
 
-    .search-panel__filters {
-        flex: 1;
-        margin-right: 1em;
-    }
+    /*.search-panel__filters {*/
+    /*    flex: 1;*/
+    /*    margin-right: 1em;*/
+    /*}*/
 
-    .search-panel__results {
-        flex: 3;
-    }
+    /*.search-panel__results {*/
+    /*    flex: 3;*/
+    /*}*/
 
-    .searchbox {
-        margin-bottom: 2rem;
-    }
+    /*.searchbox {*/
+    /*    margin-bottom: 2rem;*/
+    /*}*/
 
-    .pagination {
-        margin: 2rem auto;
-        text-align: center;
-    }
+    /*.pagination {*/
+    /*    margin: 2rem auto;*/
+    /*    text-align: center;*/
+    /*}*/
 </style>
