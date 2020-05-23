@@ -13,6 +13,7 @@ Route::group(['middleware'=>'auth'], function(){
     //Route::get('/projects/{project}','ProjectController@show');
     //Route::patch('/projects/{project}','ProjectController@update');
     //Route::delete('/projects/{project}','ProjectController@destroy');
+    Route::post('/projects/{project}/invitations','ProjectInvitationController@store');
     Route::post('/projects/{project}/tasks','ProjectTaskController@store');
     Route::patch('/projects/{project}/tasks/{task}','ProjectTaskController@update');
 });

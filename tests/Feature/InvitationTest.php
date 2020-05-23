@@ -9,6 +9,7 @@ use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use function factory;
 
 class InvitationTest extends TestCase
 {
@@ -21,14 +22,28 @@ class InvitationTest extends TestCase
 
         $project = factory(Project::class)->create();
 
-        $project->invite($newUser = factory(User::class)->create());
+        $userToInvite = factory(User::class)->create();
 
-        $this->be($newUser)
-            ->post(action('ProjectTaskController@store', $project), $task = [
-                'body'=>'Foo Task'
+        $this->be($project->owner)
+            ->post($project->path().'/invitations', [
+                'email'=> $userToInvite->email
             ]);
 
-        $this->assertDatabaseHas('tasks', $task);
+        $this->assertTrue($project->members->contains($userToInvite));
+    }
+
+    /** @test */
+    function the_email_address_must_be_associated_with_valid_birdboard_account()
+    {
+        //$this->withoutExceptionHandling();
+        $project = ProjectFactory::create();
+        $this->be($project->owner)
+            ->post($project->path().'/invitations', [
+                'email' => 'notauser@a.com'
+            ])
+            ->assertSessionHasErrors([
+                'email' => 'The user you are inviting must have birdboard account'
+            ]);
     }
 
     /** @test */
