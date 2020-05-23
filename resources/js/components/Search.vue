@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="flex">
         <!--        <carousel>-->
         <!--            <div class="carousel-cell">-->
         <!--                <img src="/images/carousel-img-blendy.jpg">-->
@@ -12,16 +12,18 @@
         <!--            </div>-->
         <!--        </carousel>-->
 
-        <div class="content md:w-2/3 mx-auto w-5/6">
+        <div class="">
             <ais-instant-search :search-client="searchClient" index-name="items"
                                 :routing="routing"
+
             >
                 <div class="search-panel">
                     <div class="search-panel__results">
 
-                        <ais-search-box class="searchbox"
+                        <ais-search-box class="searchbox mb-4"
                                         ref="searchBox"
-                                        :autofocus="true"/>
+                                        :autofocus="true"
+                        />
 
 
                         <!--                        <img src="../../../storage/app/public/images/logo-algolia-nebula-blue-full.png" height="10">-->
@@ -52,7 +54,7 @@
                                 ></span>
                             </div>
                         </ais-hits>
-                        <div class="pagination">
+                        <div class="pagination mt-2 w-full">
                             <ais-pagination/>
                         </div>
                     </div>

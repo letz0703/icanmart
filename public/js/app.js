@@ -10853,6 +10853,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -102754,10 +102756,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
+  return _c("div", { staticClass: "flex" }, [
     _c(
       "div",
-      { staticClass: "content md:w-2/3 mx-auto w-5/6" },
+      {},
       [
         _c(
           "ais-instant-search",
@@ -102776,7 +102778,7 @@ var render = function() {
                 [
                   _c("ais-search-box", {
                     ref: "searchBox",
-                    staticClass: "searchbox",
+                    staticClass: "searchbox mb-4",
                     attrs: { autofocus: true }
                   }),
                   _vm._v(" "),
@@ -102842,7 +102844,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "pagination" },
+                    { staticClass: "pagination mt-2 w-full" },
                     [_c("ais-pagination")],
                     1
                   )
