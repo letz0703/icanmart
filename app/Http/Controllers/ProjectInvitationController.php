@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectInvitationRequest;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
@@ -9,15 +10,15 @@ use Illuminate\Http\Request;
 class ProjectInvitationController extends Controller
 {
     //
-    public function store(Project $project)
+    public function store(Project $project, ProjectInvitationRequest $request)
     {
-        $this->authorize('update', $project);
-
-        request()->validate([
-            'email' => ['required','exists:users,email']
-        ],[
-            'email.exists' => 'The user you are inviting must have birdboard account'
-        ]);
+        //$this->authorize('update', $project);
+        //
+        //request()->validate([
+        //    'email' => ['required','exists:users,email']
+        //],[
+        //    'email.exists' => 'The user you are inviting must have birdboard account'
+        //]);
 
         $user = User::whereEmail(request('email'))->first();
 
