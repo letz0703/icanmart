@@ -37,9 +37,16 @@ class InvitationTest extends TestCase
     function non_owner_may_not_invite_users()
     {
         $project = ProjectFactory::create();
-        $this->be(factory(User::class)->create())
-            ->post($project->path().'/invitations')
-            ->assertStatus(403);
+        $user = factory(User::class)->create();
+        $this->be($user)
+             ->post($project->path().'/invitations')
+             ->assertStatus(403);
+
+        $project->invite($user);
+        $this->be($user)
+             ->post($project->path().'/invitations')
+             ->assertStatus(403);
+
     }
 
     /** @test */
