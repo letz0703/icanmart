@@ -45,7 +45,6 @@ class InvitationTest extends TestCase
     /** @test */
     function the_email_address_must_be_associated_with_valid_birdboard_account()
     {
-        //$this->withoutExceptionHandling();
         $project = ProjectFactory::create();
         $this->be($project->owner)
             ->post($project->path().'/invitations', [

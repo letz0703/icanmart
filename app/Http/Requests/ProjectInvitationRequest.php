@@ -8,6 +8,8 @@ use Illuminate\Validation\Rule;
 
 class ProjectInvitationRequest extends FormRequest
 {
+    protected $errorBag = 'invitations';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -34,7 +36,7 @@ class ProjectInvitationRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.exists' => 'The user you are inviting must have birdboard account'
+            'email.*' => 'The user you are inviting must have birdboard account'
         ];
     }
 
