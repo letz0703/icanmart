@@ -6,11 +6,15 @@ use App\Project;
 use App\User;
 use Faker\Generator as Faker;
 
-$factory->define(Project::class, function (Faker $faker) {
+$factory->define(Project::class, function (Faker $faker){
     return [
-        'title' => $faker->sentence,
-        'description' => $faker->paragraph,
-        'owner_id' => factory(User::class),
-        'notes' => 'foo bar note',
+        'title'       => $faker->sentence,
+        'description' => $faker->sentence,
+        'notes'       => 'foo bar note',
+        'owner_id'    => factory(User::class),
     ];
 });
+
+
+
+
