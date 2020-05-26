@@ -32,12 +32,12 @@ class ManageProjectTest extends TestCase
         $project = ProjectFactory::create();
 
         $this->delete($project->path())
-            ->assertRedirect('login');
+             ->assertRedirect('login');
 
         $user = $this->signIn();
 
         $this->delete($project->path())
-            ->assertStatus(403);
+             ->assertStatus(403);
 
         $project->invite($user);
 
@@ -67,21 +67,8 @@ class ManageProjectTest extends TestCase
 
         $this->get('/projects/create')->assertStatus(200);
 
-        $attributes = [
-            'title'       => 'project title',
-            'description' => 'project description',
-            'notes'       => 'General Notes',
-        ];
-
-        $response = $this->post('/projects', $attributes);
-
-        $project = Project::where($attributes)->first();
-
-        $response->assertRedirect($project->path());
-
-        $this->assertDatabaseHas('projects', $attributes);
-
-        $this->get($project->path())
+        $this->followingRedirects()
+             ->post('/projects', $attributes = factory(Project::class)->raw())
              ->assertSee($attributes['title'])
              ->assertSee($attributes['description'])
              ->assertSee($attributes['notes']);
