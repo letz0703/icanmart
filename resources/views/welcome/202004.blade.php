@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <section class="section-items">
+    <section class="section-items mb-10">
         <div class="text-center u-margin-bottom-big">
             <h2 class="heading-secondary uppercase">Popular Items</h2>
             <div class="row">
