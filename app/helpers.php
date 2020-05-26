@@ -6,6 +6,6 @@ function avatar_url($email){
 
     return  "https://avatar.com/{$email}?".http_build_query([
             's' => 60,
-            'd' => 'https://s3.amazonaws.com/laracasts/images/default-square-avatar.jpg'
+            'd' => 'https://example.com/images/avatar.jpg'
         ]);
 }
