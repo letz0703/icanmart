@@ -39,6 +39,7 @@
                 <div class="box">
                     <h5 class="text-white font-semibold uppercase">Contact Us</h5>
                     <ul class="leading-loose">
+                        <li><support-button>support</support-button></li>
                         <li><a href="mailto:icanmart@gmail.com"
                                data-tooltip="icanmart@gmail.com"
                                data-tooltip-placement="right"
