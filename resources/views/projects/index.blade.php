@@ -16,4 +16,6 @@
             <div>No Projects Yet</div>
         @endforelse
     </main>
+    <modal name="hell-world" height="auto">hello world</modal>
+    <a href="" @click.prevent="$modal.show('hello-world')">show modal</a>
 @endsection

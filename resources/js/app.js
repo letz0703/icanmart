@@ -5,13 +5,16 @@ import Vue from 'vue';
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./bootstrap');
+
 // window.Vue = require('vue');
 window.Vue = Vue;
 
+import VModal from 'vue-js-modal';
+Vue.use(VModal);
+
 // import { createPopper } from '@popperjs/core';
 // import PopperTooltip from 'tooltip.js';
-
-require('./bootstrap');
 
 import Search from './components/Search.vue';
 Vue.component('search', Search);
@@ -23,10 +26,6 @@ Vue.use(InstantSearch);
 import PortalVue from 'portal-vue';
 
 Vue.use(PortalVue);
-
-import VModal from 'vue-js-modal';
-
-Vue.use(VModal);
 
 import swal from 'sweetalert';
 
