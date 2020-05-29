@@ -4,10 +4,6 @@ App::setLocale('kr');
 //Auth::routes(['confirm' => true]);
 Auth::routes();
 
-Route::get('/projects/test',function(){
-    return view('projects.test');
-});
-
 Route::group(['middleware'=>'auth'], function(){
     Route::resource('projects', 'ProjectController');
     //Route::get('/projects','ProjectController@index');

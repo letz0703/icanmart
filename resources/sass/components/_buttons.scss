@@ -8,8 +8,17 @@
     &:last-child {
         margin-right: 0;
     }
+    &.is-outlined {
+        background-color: white;
+        @apply .border .text-blue-500;
+        border-color: grey;
+        //&:hover {
+        //    background-color: black;
+        //    color: white;
+        //}
+    }
 
-    box-shadow: 0 2px 2px 0 $theme-blue;
+    box-shadow: 0 2px 2px 0 $theme-blue--lightest;
 }
 
 .btn {

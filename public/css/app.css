@@ -19493,11 +19493,20 @@ body {
   padding-right: 1.25rem;
   margin-right: 0.75rem;
   margin-top: 0.75rem;
-  box-shadow: 0 2px 2px 0 #00c6f5;
+  box-shadow: 0 2px 2px 0 #eff8ff;
 }
 
 .button:last-child {
   margin-right: 0;
+}
+
+.button.is-outlined {
+  background-color: white;
+  border-width: 1px;
+  --text-opacity: 1;
+  color: #4299e1;
+  color: rgba(66, 153, 225, var(--text-opacity));
+  border-color: grey;
 }
 
 .btn {
