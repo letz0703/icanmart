@@ -1,4 +1,4 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,10 +8,10 @@ import Vue from 'vue';
 require('./bootstrap');
 
 // window.Vue = require('vue');
-window.Vue = Vue;
+// window.Vue = Vue;
 
-import VModal from 'vue-js-modal';
-Vue.use(VModal);
+// import VModal from 'vue-js-modal';
+// Vue.use(VModal);
 
 // import { createPopper } from '@popperjs/core';
 // import PopperTooltip from 'tooltip.js';
