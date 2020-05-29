@@ -19,6 +19,13 @@ form {
 
 }
 
+.form-group {
+    margin-bottom: 0.4rem;
+    &>input {
+        @apply .border ;
+    }
+}
+
 
 //.form-textarea {
 //    border: 1px solid lightgray;

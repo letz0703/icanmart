@@ -10493,6 +10493,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
  // Vue.filter('formatDate', function(value){
 //     if (value) {
 //         return moment(String(value)).format('yyyy-mm-dd')
@@ -105449,21 +105450,23 @@ var render = function() {
             !_vm.boxLocked
               ? _c(
                   "div",
+                  { staticClass: "card " },
                   [
-                    _c("h2", [_vm._v("Add Items")]),
-                    _vm._v(" "),
-                    _c("hr"),
+                    _c(
+                      "h2",
+                      { staticClass: "font-normal text-center text-2xl mb-8" },
+                      [_vm._v("Add Items")]
+                    ),
                     _vm._v(" "),
                     _c("new-item", {
+                      staticClass: "mb-4",
                       attrs: {
                         seller: _vm.sellerp,
                         "box-id": _vm.boxidp,
                         locked: _vm.locked
                       },
                       on: { created: _vm.updateAmount }
-                    }),
-                    _vm._v(" "),
-                    _c("hr")
+                    })
                   ],
                   1
                 )
@@ -105860,7 +105863,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("span", [_vm._v("Memo: ")]),
+      _c("h4", [_vm._v("Memo")]),
       _vm._v(" "),
       _c("textarea", {
         directives: [
@@ -105871,8 +105874,8 @@ var render = function() {
             expression: "memo"
           }
         ],
-        staticClass: "form-textarea",
-        attrs: { placeholder: "Add Memo" },
+        staticClass: "w-full md-bg-white bg-red-200 p-2 rounded-b-lg ",
+        attrs: { placeholder: "Add Memo", rows: "3" },
         domProps: { value: _vm.memo },
         on: {
           input: function($event) {
@@ -105886,11 +105889,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _vm.signedIn
-      ? _c("div", { staticClass: "pb-2" }, [
+      ? _c("div", { staticClass: "pb-2 flex justify-end" }, [
           _c(
             "button",
             {
-              staticClass: "btn btn-primary btn-sm",
+              staticClass: "button bg-red",
               attrs: { type: "submit" },
               on: { click: _vm.addItem }
             },

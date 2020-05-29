@@ -21,7 +21,7 @@
             >
         </div>
         <div v-if="barcode">
-            <span  v-text="'지난주문 : '+last_seller_name+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
+            <span v-text="'지난주문 : '+last_seller_name+ ' : ' + createdAt+ ' : '+ buy_price +' 원'"></span>
         </div>
         <div class="form-group">
             <label for="product_name">Item Name:</label>
@@ -44,13 +44,14 @@
             <input type="text" id="sell_price" name="sell_price" v-model="sell_price"> 원
         </div>
         <div class="form-group">
-            <span>Memo: </span>
+            <h4>Memo</h4>
             <textarea v-model="memo" placeholder="Add Memo"
-                      class="form-textarea"
+                      class="w-full md-bg-white bg-red-200 p-2 rounded-b-lg "
+                      rows="3"
             ></textarea>
         </div>
-        <div v-if="signedIn" class="pb-2">
-            <button type="submit" class="btn btn-primary btn-sm" @click="addItem">add</button>
+        <div v-if="signedIn" class="pb-2 flex justify-end">
+            <button type="submit" class="button bg-red" @click="addItem">add</button>
         </div>
     </div>
 </template>
@@ -64,24 +65,24 @@
     // });
 
     export default {
-        props: ['seller', 'boxId','locked'],
+        props: ['seller', 'boxId', 'locked'],
 
-        data(){
+        data() {
             return {
                 box_id: this.boxId,
                 seller_id: this.seller.id,
                 barcode: '',
                 product_name: '',
                 description: '',
-                last_seller_name:'',
+                last_seller_name: '',
                 quantity: '',
                 buy_price: '',
                 sell_price: '',
-                expireDate: new Date().toISOString().slice(0,10),
+                expireDate: new Date().toISOString().slice(0, 10),
                 createdAt: '',
                 signedIn: window.App.signedIn,
                 memo: '',
-                locked: this.locked
+                locked: this.locked,
                 // oldItems:{},
 
             }
@@ -93,7 +94,7 @@
                 let now = moment(new Date());
                 // let diff = now.to(exp);
                 let diff = exp.fromNow();
-                if (exp > now){
+                if (exp > now) {
                     return 'Expired ' + diff;
                 }
                 return '유통기한 지남';
@@ -103,19 +104,19 @@
         watch: {
             barcode: function() {
                 // alert('hi');
-                    this.getData();
+                this.getData();
                 //     .then((oldItems)=>{
                 //     console.log(oldItems);
                 // });
-            }
+            },
         },
 
         directives: {
             focus: {
-                inserted: function(el){
+                inserted: function(el) {
                     el.focus();
-                }
-            }
+                },
+            },
         },
 
         //     expireDate() {
@@ -132,9 +133,8 @@
         // },
 
 
-
         methods: {
-            addItem(){
+            addItem() {
                 axios.post(location.pathname + '/items', {
                     seller_id: this.seller.id,
                     box_id: this.boxId,
@@ -156,10 +156,10 @@
                 // alert('hi');
                 axios.get('/items/', {
                     params: {
-                        barcode: this.barcode
-                    }
-                }).then(({data}) => {
-                    if (data.length){
+                        barcode: this.barcode,
+                    },
+                }).then(({ data }) => {
+                    if (data.length) {
                         let latestOne = data[0];
                         // alert(latestOne.product_name);
                         this.product_name = latestOne.product_name;
@@ -176,14 +176,14 @@
                 });
             },
 
-            broadcast(){
+            broadcast() {
                 let itemAmount = this.quantity * this.buy_price;
                 this.$emit('created', itemAmount);
                 flash('added');
                 this.reset();
 
             },
-            reset(){
+            reset() {
                 this.barcode = '';
                 this.product_name = '';
                 this.description = '';

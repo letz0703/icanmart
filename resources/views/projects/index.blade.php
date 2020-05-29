@@ -31,7 +31,7 @@
                 <div class="mb-4">
                     <label for="description" class="text-xs">Description</label>
                     <textarea type="text" id="description"
-                              class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
+                              class="border border-gray-300 py-1 px-2 text-xs block w-full rounde"
                               rows="7"
                     >
                     </textarea>

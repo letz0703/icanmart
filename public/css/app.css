@@ -19897,6 +19897,14 @@ form .alert {
   color: red;
 }
 
+.form-group {
+  margin-bottom: 0.4rem;
+}
+
+.form-group > input {
+  border-width: 1px;
+}
+
 .box {
   /*background: #e3e3e3;*/
   /*height: 150px;*/
