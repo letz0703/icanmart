@@ -107,6 +107,10 @@
         padding: 0;
     }
 
+    .ais-Hits .MyCustomHits {
+        min-width: 100%;
+    }
+
     /*.header {*/
     /*    display: flex;*/
     /*    align-items: center;*/
