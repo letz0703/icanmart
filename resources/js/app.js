@@ -76,6 +76,7 @@ Vue.component('pinned', require('./components/Pinned.vue').default);
 Vue.component('search', require('./components/Search.vue').default);
 Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
 Vue.component('seller-form', require('./components/SellerForm.vue').default);
+Vue.component('new-project-modal', require('./components/NewProjectModal.vue').default);
 Vue.component('menu-dropdown', require('./components/MenuDropdown').default);
 Vue.component('menu-boxdropdown', require('./components/menus/BoxFromSellerDropdown').default);
 Vue.component('support-button', require('./components/menus/SupportButton').default);
