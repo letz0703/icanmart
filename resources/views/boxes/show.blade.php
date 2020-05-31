@@ -9,7 +9,7 @@
                         <div class="">
                             <div class="level md:my-4">
                                 <paid-button :payment="paid" class="mr-2"></paid-button>
-                                <span class="mr-3 text-xl text-red-700" > {{ $box->title }}</span>
+                                <span class="mr-3 text-xl text-red-700"> {{ $box->title }}</span>
                                 <span class="flex">
                             {{ $box->arrived_at }} {{ $box->seller->name }}
                         </span>
@@ -72,15 +72,20 @@
                         <div class="card">
                             <div class="card-header">{{ $box->title }}</div>
                             <div class="card-body">
-                                <h4>박스금액: <span v-text="boxAmount"></span>원</h4>
-                                <article>구입처 : {{ $box->seller->name }}</article>
-                                <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
-                                <p>아이템수: <span v-text="item_count"></span></p>
+                                <div class="mb-2">
+                                    <h4>박스금액: <span v-text="boxAmount"></span>원</h4>
+                                    <article>구입처 : {{ $box->seller->name }}</article>
+                                    <p>입고일: {{ $box->arrived_at }} ({{ $box->created_at->diffForHumans() }})</p>
+                                    <p>아이템수: <span v-text="item_count"></span></p>
+                                </div>
                                 <button class="btn btn-primary btn-sm ml-1"
                                         :class="{ 'btn-danger':locked }"
                                         {{--                                    v-if="authorize('isAdmin')"--}}
                                         @click="toggleLock" v-text="locked?'locked': 'Lock'">
                                 </button>
+                                <a href="https://icanmart.co.kr/boxes/create"
+                                   class=" btn-sm ml-1 p-2 border border-blue-500 text-blue-700 ">new
+                                    box</a>
                             </div>
                         </div>
                     </div>
