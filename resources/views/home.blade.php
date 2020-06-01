@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(auth()->user() && auth()->user()->isAdmin)
+        @include('manage')
+    @endif
     <div class="card">
         <h2 class="">Dashboard</h2>
 
@@ -9,9 +12,11 @@
                 {{ session('status') }}
             </div>
         @endif
-        <div>
+        <div class="mb-4">
             You are logged in!
         </div>
+        @include('layouts.section-feature')
+
 
     </div>
 @endsection
