@@ -10690,14 +10690,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
-    return {};
+    return {
+      tasks: [{
+        'value': ''
+      }]
+    };
   },
   methods: {
     addTask: function addTask() {
-      alert('called');
+      this.tasks.push({
+        'value': ''
+      });
     }
   }
 });
@@ -106046,17 +106054,41 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex-1 ml-4" }, [
-          _c("div", { staticClass: "mb-4" }, [
-            _c("label", { staticClass: "text-xs", attrs: { for: "title" } }, [
-              _vm._v("Need Some Tasks?")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass:
-                "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
-              attrs: { type: "text", placeholder: "Task 1" }
-            })
-          ]),
+          _c(
+            "div",
+            { staticClass: "mb-4" },
+            [
+              _c("label", { staticClass: "text-xs", attrs: { for: "title" } }, [
+                _vm._v("Need Some Tasks?")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.tasks, function(task) {
+                return _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: task.value,
+                      expression: "task.value"
+                    }
+                  ],
+                  staticClass:
+                    "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
+                  attrs: { type: "text", placeholder: "Task 1" },
+                  domProps: { value: task.value },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(task, "value", $event.target.value)
+                    }
+                  }
+                })
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
           _c(
             "button",

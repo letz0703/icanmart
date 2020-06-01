@@ -26,6 +26,8 @@
                     <input type="text"
                            class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
                            placeholder="Task 1"
+                           v-for="task in tasks"
+                           v-model="task.value"
                     >
                 </div>
                 <button type="button" class="inline-flex items-center text-xs"
@@ -58,12 +60,15 @@
 
         data() {
             return {
+                tasks: [
+                    { 'value': '' },
+                ],
 
             }
         },
         methods: {
             addTask() {
-                alert('called');
+                this.tasks.push({'value':''});
             }
         }
     }
