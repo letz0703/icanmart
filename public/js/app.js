@@ -10692,20 +10692,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
     return {
-      tasks: [{
-        'value': ''
-      }]
+      form: {
+        title: '',
+        description: '',
+        tasks: [{
+          'value': ''
+        }]
+      }
     };
   },
   methods: {
     addTask: function addTask() {
-      this.tasks.push({
+      this.form.tasks.push({
         'value': ''
       });
+    },
+    submit: function submit() {
+      axios.post('/projects', this.form);
     }
   }
 });
@@ -106032,9 +106042,26 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.title,
+                  expression: "form.title"
+                }
+              ],
               staticClass:
                 "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
-              attrs: { type: "text", id: "title" }
+              attrs: { type: "text", id: "title" },
+              domProps: { value: _vm.form.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "title", $event.target.value)
+                }
+              }
             })
           ]),
           _vm._v(" "),
@@ -106046,9 +106073,26 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.description,
+                  expression: "form.description"
+                }
+              ],
               staticClass:
                 "border border-gray-300 py-1 px-2 text-xs block w-full rounde",
-              attrs: { type: "text", id: "description", rows: "7" }
+              attrs: { type: "text", id: "description", rows: "7" },
+              domProps: { value: _vm.form.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "description", $event.target.value)
+                }
+              }
             })
           ])
         ]),
@@ -106062,7 +106106,7 @@ var render = function() {
                 _vm._v("Need Some Tasks?")
               ]),
               _vm._v(" "),
-              _vm._l(_vm.tasks, function(task) {
+              _vm._l(_vm.form.tasks, function(task) {
                 return _c("input", {
                   directives: [
                     {
@@ -106162,11 +106206,10 @@ var render = function() {
               }
             }
           },
-          [_vm._v("cancel")]
+          [_vm._v("cancel\n        ")]
         ),
         _vm._v(" "),
-        _c("button", { staticClass: "button" }, [_vm._v("create")]),
-        _vm._v("`\n    ")
+        _c("button", { staticClass: "button" }, [_vm._v("create")])
       ])
     ]
   )

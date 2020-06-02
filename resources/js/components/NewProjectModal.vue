@@ -9,6 +9,7 @@
                     <label for="title" class="text-xs">Title</label>
                     <input type="text" id="title"
                            class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
+                           v-model="form.title"
                     >
                 </div>
                 <div class="mb-4">
@@ -16,6 +17,7 @@
                     <textarea type="text" id="description"
                               class="border border-gray-300 py-1 px-2 text-xs block w-full rounde"
                               rows="7"
+                              v-model="form.description"
                     >
                     </textarea>
                 </div>
@@ -26,7 +28,7 @@
                     <input type="text"
                            class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
                            placeholder="Task 1"
-                           v-for="task in tasks"
+                           v-for="task in form.tasks"
                            v-model="task.value"
                     >
                 </div>
@@ -47,9 +49,10 @@
         <footer class="flex justify-end">
             <button class="button is-outlined mr-4"
                     style="box-shadow:0 1px 2px 0 #b0eaff;border-color:#b0eaff;"
-                    @click="$.hide('new-task')"
-            >cancel</button>
-            <button class="button">create</button>`
+                    @click.prevent="$.hide('new-task')"
+            >cancel
+            </button>
+            <button class="button">create</button>
         </footer>
     </modal>
 </template>
@@ -60,16 +63,24 @@
 
         data() {
             return {
-                tasks: [
-                    { 'value': '' },
-                ],
-
-            }
+                form: {
+                    title: '',
+                    description: '',
+                    tasks: [
+                        { 'value': '' },
+                    ],
+                },
+            };
         },
+
         methods: {
             addTask() {
-                this.tasks.push({'value':''});
-            }
-        }
+                this.form.tasks.push({ 'value': '' });
+            },
+
+            submit() {
+                axios.post('/projects', this.form);
+            },
+        },
     }
 </script>
