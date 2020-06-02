@@ -9932,6 +9932,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
@@ -105235,6 +105237,11 @@ var render = function() {
         _c("div", { staticClass: "flex items-center justify-center" }, [
           _c("a", { attrs: { href: _vm.endpoint } }, [
             _c("span", {
+              staticClass: "mr-2 text-blue-400",
+              domProps: { textContent: _vm._s(_vm.data.seller.description) }
+            }),
+            _vm._v(" "),
+            _c("span", {
               domProps: { textContent: _vm._s(_vm.data.arrived_at) }
             }),
             _vm._v(" "),
@@ -105244,10 +105251,6 @@ var render = function() {
               domProps: {
                 textContent: _vm._s("[ " + _vm.data.items_count + " 아이템 ]")
               }
-            }),
-            _vm._v("\n                from\n                "),
-            _c("span", {
-              domProps: { textContent: _vm._s(_vm.data.seller.description) }
             })
           ]),
           _vm._v(" "),
@@ -106202,6 +106205,7 @@ var render = function() {
             },
             on: {
               click: function($event) {
+                $event.preventDefault()
                 return _vm.$.hide("new-task")
               }
             }
