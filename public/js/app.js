@@ -10292,6 +10292,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
@@ -10302,7 +10309,8 @@ __webpack_require__.r(__webpack_exports__);
         tasks: [{
           value: ''
         }]
-      }
+      },
+      errors: {}
     };
   },
   methods: {
@@ -10312,8 +10320,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     submit: function submit() {
+      var _this = this;
+
       axios.post('/projects', this.form).then(function (response) {
-        alert('hi');
+        // alert('hi');
+        location.reload();
+      })["catch"](function (error) {
+        // console.log(error.response.data.errors);
+        _this.errors = error.response.data.errors;
       });
     }
   }
@@ -106113,8 +106127,10 @@ var render = function() {
                       expression: "form.title"
                     }
                   ],
-                  staticClass:
-                    "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
+                  staticClass: "border py-1 px-2 text-xs block w-full rounded",
+                  class: _vm.errors.title
+                    ? "border-red-600"
+                    : "border-gray-300",
                   attrs: { type: "text", id: "title" },
                   domProps: { value: _vm.form.title },
                   on: {
@@ -106125,7 +106141,14 @@ var render = function() {
                       _vm.$set(_vm.form, "title", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.title
+                  ? _c("span", {
+                      staticClass: "text-xs italic text-red-600",
+                      domProps: { textContent: _vm._s(_vm.errors.title[0]) }
+                    })
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "mb-4" }, [
@@ -106146,6 +106169,9 @@ var render = function() {
                   ],
                   staticClass:
                     "border border-gray-300 py-1 px-2 text-xs block w-full rounde",
+                  class: _vm.errors.description
+                    ? "border-red-600"
+                    : "border-gray-300",
                   attrs: { type: "text", id: "description", rows: "7" },
                   domProps: { value: _vm.form.description },
                   on: {
@@ -106156,7 +106182,16 @@ var render = function() {
                       _vm.$set(_vm.form, "description", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.description
+                  ? _c("span", {
+                      staticClass: "text-xs italic text-red-600",
+                      domProps: {
+                        textContent: _vm._s(_vm.errors.description[0])
+                      }
+                    })
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),

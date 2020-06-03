@@ -9,18 +9,25 @@
                     <div class="mb-4">
                         <label for="title" class="text-xs">Title</label>
                         <input type="text" id="title"
-                               class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
+                               class="border py-1 px-2 text-xs block w-full rounded"
+                               :class="errors.title ? 'border-red-600': 'border-gray-300'"
                                v-model="form.title"
                         >
+                        <span v-if="errors.title" v-text="errors.title[0]"
+                              class="text-xs italic text-red-600"
+                        ></span>
                     </div>
                     <div class="mb-4">
                         <label for="description" class="text-xs">Description</label>
                         <textarea type="text" id="description"
                                   class="border border-gray-300 py-1 px-2 text-xs block w-full rounde"
                                   rows="7"
-                                  v-model="form.description"
-                        >
+                                  :class="errors.description ? 'border-red-600': 'border-gray-300'"
+                                  v-model="form.description">
                     </textarea>
+                        <span v-if="errors.description" v-text="errors.description[0]"
+                              class="text-xs italic text-red-600"
+                        ></span>
                     </div>
                 </div>
                 <div class="flex-1 ml-4">
@@ -72,6 +79,7 @@
                         { value: '' },
                     ],
                 },
+                errors: {},
             }
         },
 
@@ -82,9 +90,14 @@
 
             submit() {
                 axios.post('/projects', this.form)
-                .then(response => {
-                    alert('hi');
-                });
+                     .then(response => {
+                         // alert('hi');
+                         location.reload();
+                     })
+                     .catch(error => {
+                         // console.log(error.response.data.errors);
+                         this.errors = error.response.data.errors;
+                     });
 
             },
         },
