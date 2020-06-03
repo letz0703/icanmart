@@ -27,17 +27,23 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function store(Project $project)
-    {
-        $project = auth()->user()->projects()->create($this->validateRequest());
-
-        return redirect($project->path());
-    }
-
     public function edit(Project $project)
     {
         return view('projects.edit', compact('project'));
     }
+
+    public function store(Project $project)
+    {
+        $project = auth()->user()->projects()->create($this->validateRequest());
+
+        if(request()->wantsJson()){
+            return ['message' => $project->path()];
+        }
+
+        return redirect($project->path());
+    }
+
+
 
     public function update(UpdateProjectRequest $request)
     {

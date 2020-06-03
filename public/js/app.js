@@ -188,7 +188,7 @@ module.exports = algoliasearchHelper;
 "use strict";
 
 
-var events = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+var events = __webpack_require__(/*! events */ "./node_modules/node-libs-browser/node_modules/events/events.js");
 var inherits = __webpack_require__(/*! ../functions/inherits */ "./node_modules/algoliasearch-helper/src/functions/inherits.js");
 
 /**
@@ -3246,7 +3246,7 @@ var SearchResults = __webpack_require__(/*! ./SearchResults */ "./node_modules/a
 var DerivedHelper = __webpack_require__(/*! ./DerivedHelper */ "./node_modules/algoliasearch-helper/src/DerivedHelper/index.js");
 var requestBuilder = __webpack_require__(/*! ./requestBuilder */ "./node_modules/algoliasearch-helper/src/requestBuilder.js");
 
-var events = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+var events = __webpack_require__(/*! events */ "./node_modules/node-libs-browser/node_modules/events/events.js");
 var inherits = __webpack_require__(/*! ./functions/inherits */ "./node_modules/algoliasearch-helper/src/functions/inherits.js");
 
 var flatten = __webpack_require__(/*! lodash/flatten */ "./node_modules/lodash/flatten.js");
@@ -5281,416 +5281,6 @@ module.exports = '2.28.0';
 
 /***/ }),
 
-/***/ "./node_modules/algoliasearch/node_modules/debug/src/browser.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/algoliasearch/node_modules/debug/src/browser.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(/*! ./debug */ "./node_modules/algoliasearch/node_modules/debug/src/debug.js");
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  var r;
-  try {
-    r = exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = process.env.DEBUG;
-  }
-
-  return r;
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/algoliasearch/node_modules/debug/src/debug.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/algoliasearch/node_modules/debug/src/debug.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = __webpack_require__(/*! ms */ "./node_modules/ms/index.js");
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/algoliasearch/node_modules/isarray/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/algoliasearch/node_modules/isarray/index.js ***!
@@ -5754,7 +5344,7 @@ var RESET_APP_DATA_TIMER =
  *           If you provide them, you will less benefit from our HA implementation
  */
 function AlgoliaSearchCore(applicationID, apiKey, opts) {
-  var debug = __webpack_require__(/*! debug */ "./node_modules/algoliasearch/node_modules/debug/src/browser.js")('algoliasearch');
+  var debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js")('algoliasearch');
 
   var clone = __webpack_require__(/*! ./clone.js */ "./node_modules/algoliasearch/src/clone.js");
   var isArray = __webpack_require__(/*! isarray */ "./node_modules/algoliasearch/node_modules/isarray/index.js");
@@ -5900,7 +5490,7 @@ AlgoliaSearchCore.prototype.addAlgoliaAgent = function(algoliaAgent) {
 AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
   this._checkAppIdData();
 
-  var requestDebug = __webpack_require__(/*! debug */ "./node_modules/algoliasearch/node_modules/debug/src/browser.js")('algoliasearch:' + initialOpts.url);
+  var requestDebug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js")('algoliasearch:' + initialOpts.url);
 
 
   var body;
@@ -7151,7 +6741,7 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
   // we expose into window no matter how we are used, this will allow
   // us to easily debug any website running algolia
   global.__algolia = {
-    debug: __webpack_require__(/*! debug */ "./node_modules/algoliasearch/node_modules/debug/src/browser.js"),
+    debug: __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js"),
     algoliasearch: algoliasearch
   };
 
@@ -7910,7 +7500,7 @@ function createPlacesClient(algoliasearch) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var debug = __webpack_require__(/*! debug */ "./node_modules/algoliasearch/node_modules/debug/src/browser.js")('algoliasearch:src/hostIndexState.js');
+/* WEBPACK VAR INJECTION */(function(global) {var debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js")('algoliasearch:src/hostIndexState.js');
 var localStorageNamespace = 'algoliasearch-client-js';
 
 var store;
@@ -10700,6 +10290,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [''],
   data: function data() {
@@ -10708,7 +10300,7 @@ __webpack_require__.r(__webpack_exports__);
         title: '',
         description: '',
         tasks: [{
-          'value': ''
+          value: ''
         }]
       }
     };
@@ -10716,11 +10308,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addTask: function addTask() {
       this.form.tasks.push({
-        'value': ''
+        value: ''
       });
     },
     submit: function submit() {
-      axios.post('/projects', this.form);
+      axios.post('/projects', this.form).then(function (response) {
+        alert('hi');
+      });
     }
   }
 });
@@ -16209,6 +15803,416 @@ function toComment(sourceMap) {
 
 /***/ }),
 
+/***/ "./node_modules/debug/src/browser.js":
+/*!*******************************************!*\
+  !*** ./node_modules/debug/src/browser.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__(/*! ./debug */ "./node_modules/debug/src/debug.js");
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/debug/src/debug.js":
+/*!*****************************************!*\
+  !*** ./node_modules/debug/src/debug.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__(/*! ms */ "./node_modules/ms/index.js");
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  return debug;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/desandro-matches-selector/matches-selector.js":
 /*!********************************************************************!*\
   !*** ./node_modules/desandro-matches-selector/matches-selector.js ***!
@@ -17573,466 +17577,6 @@ proto.allOff = function() {
 return EvEmitter;
 
 }));
-
-
-/***/ }),
-
-/***/ "./node_modules/events/events.js":
-/*!***************************************!*\
-  !*** ./node_modules/events/events.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-var R = typeof Reflect === 'object' ? Reflect : null
-var ReflectApply = R && typeof R.apply === 'function'
-  ? R.apply
-  : function ReflectApply(target, receiver, args) {
-    return Function.prototype.apply.call(target, receiver, args);
-  }
-
-var ReflectOwnKeys
-if (R && typeof R.ownKeys === 'function') {
-  ReflectOwnKeys = R.ownKeys
-} else if (Object.getOwnPropertySymbols) {
-  ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target)
-      .concat(Object.getOwnPropertySymbols(target));
-  };
-} else {
-  ReflectOwnKeys = function ReflectOwnKeys(target) {
-    return Object.getOwnPropertyNames(target);
-  };
-}
-
-function ProcessEmitWarning(warning) {
-  if (console && console.warn) console.warn(warning);
-}
-
-var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
-  return value !== value;
-}
-
-function EventEmitter() {
-  EventEmitter.init.call(this);
-}
-module.exports = EventEmitter;
-
-// Backwards-compat with node 0.10.x
-EventEmitter.EventEmitter = EventEmitter;
-
-EventEmitter.prototype._events = undefined;
-EventEmitter.prototype._eventsCount = 0;
-EventEmitter.prototype._maxListeners = undefined;
-
-// By default EventEmitters will print a warning if more than 10 listeners are
-// added to it. This is a useful default which helps finding memory leaks.
-var defaultMaxListeners = 10;
-
-Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
-  enumerable: true,
-  get: function() {
-    return defaultMaxListeners;
-  },
-  set: function(arg) {
-    if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
-      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
-    }
-    defaultMaxListeners = arg;
-  }
-});
-
-EventEmitter.init = function() {
-
-  if (this._events === undefined ||
-      this._events === Object.getPrototypeOf(this)._events) {
-    this._events = Object.create(null);
-    this._eventsCount = 0;
-  }
-
-  this._maxListeners = this._maxListeners || undefined;
-};
-
-// Obviously not all Emitters should be limited to 10. This function allows
-// that to be increased. Set to zero for unlimited.
-EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
-  if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
-    throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
-  }
-  this._maxListeners = n;
-  return this;
-};
-
-function $getMaxListeners(that) {
-  if (that._maxListeners === undefined)
-    return EventEmitter.defaultMaxListeners;
-  return that._maxListeners;
-}
-
-EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
-  return $getMaxListeners(this);
-};
-
-EventEmitter.prototype.emit = function emit(type) {
-  var args = [];
-  for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
-  var doError = (type === 'error');
-
-  var events = this._events;
-  if (events !== undefined)
-    doError = (doError && events.error === undefined);
-  else if (!doError)
-    return false;
-
-  // If there is no 'error' event listener then throw.
-  if (doError) {
-    var er;
-    if (args.length > 0)
-      er = args[0];
-    if (er instanceof Error) {
-      // Note: The comments on the `throw` lines are intentional, they show
-      // up in Node's output if this results in an unhandled exception.
-      throw er; // Unhandled 'error' event
-    }
-    // At least give some kind of context to the user
-    var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
-    err.context = er;
-    throw err; // Unhandled 'error' event
-  }
-
-  var handler = events[type];
-
-  if (handler === undefined)
-    return false;
-
-  if (typeof handler === 'function') {
-    ReflectApply(handler, this, args);
-  } else {
-    var len = handler.length;
-    var listeners = arrayClone(handler, len);
-    for (var i = 0; i < len; ++i)
-      ReflectApply(listeners[i], this, args);
-  }
-
-  return true;
-};
-
-function _addListener(target, type, listener, prepend) {
-  var m;
-  var events;
-  var existing;
-
-  if (typeof listener !== 'function') {
-    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-  }
-
-  events = target._events;
-  if (events === undefined) {
-    events = target._events = Object.create(null);
-    target._eventsCount = 0;
-  } else {
-    // To avoid recursion in the case that type === "newListener"! Before
-    // adding it to the listeners, first emit "newListener".
-    if (events.newListener !== undefined) {
-      target.emit('newListener', type,
-                  listener.listener ? listener.listener : listener);
-
-      // Re-assign `events` because a newListener handler could have caused the
-      // this._events to be assigned to a new object
-      events = target._events;
-    }
-    existing = events[type];
-  }
-
-  if (existing === undefined) {
-    // Optimize the case of one listener. Don't need the extra array object.
-    existing = events[type] = listener;
-    ++target._eventsCount;
-  } else {
-    if (typeof existing === 'function') {
-      // Adding the second element, need to change to array.
-      existing = events[type] =
-        prepend ? [listener, existing] : [existing, listener];
-      // If we've already got an array, just append.
-    } else if (prepend) {
-      existing.unshift(listener);
-    } else {
-      existing.push(listener);
-    }
-
-    // Check for listener leak
-    m = $getMaxListeners(target);
-    if (m > 0 && existing.length > m && !existing.warned) {
-      existing.warned = true;
-      // No error code for this since it is a Warning
-      // eslint-disable-next-line no-restricted-syntax
-      var w = new Error('Possible EventEmitter memory leak detected. ' +
-                          existing.length + ' ' + String(type) + ' listeners ' +
-                          'added. Use emitter.setMaxListeners() to ' +
-                          'increase limit');
-      w.name = 'MaxListenersExceededWarning';
-      w.emitter = target;
-      w.type = type;
-      w.count = existing.length;
-      ProcessEmitWarning(w);
-    }
-  }
-
-  return target;
-}
-
-EventEmitter.prototype.addListener = function addListener(type, listener) {
-  return _addListener(this, type, listener, false);
-};
-
-EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-EventEmitter.prototype.prependListener =
-    function prependListener(type, listener) {
-      return _addListener(this, type, listener, true);
-    };
-
-function onceWrapper() {
-  var args = [];
-  for (var i = 0; i < arguments.length; i++) args.push(arguments[i]);
-  if (!this.fired) {
-    this.target.removeListener(this.type, this.wrapFn);
-    this.fired = true;
-    ReflectApply(this.listener, this.target, args);
-  }
-}
-
-function _onceWrap(target, type, listener) {
-  var state = { fired: false, wrapFn: undefined, target: target, type: type, listener: listener };
-  var wrapped = onceWrapper.bind(state);
-  wrapped.listener = listener;
-  state.wrapFn = wrapped;
-  return wrapped;
-}
-
-EventEmitter.prototype.once = function once(type, listener) {
-  if (typeof listener !== 'function') {
-    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-  }
-  this.on(type, _onceWrap(this, type, listener));
-  return this;
-};
-
-EventEmitter.prototype.prependOnceListener =
-    function prependOnceListener(type, listener) {
-      if (typeof listener !== 'function') {
-        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-      }
-      this.prependListener(type, _onceWrap(this, type, listener));
-      return this;
-    };
-
-// Emits a 'removeListener' event if and only if the listener was removed.
-EventEmitter.prototype.removeListener =
-    function removeListener(type, listener) {
-      var list, events, position, i, originalListener;
-
-      if (typeof listener !== 'function') {
-        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
-      }
-
-      events = this._events;
-      if (events === undefined)
-        return this;
-
-      list = events[type];
-      if (list === undefined)
-        return this;
-
-      if (list === listener || list.listener === listener) {
-        if (--this._eventsCount === 0)
-          this._events = Object.create(null);
-        else {
-          delete events[type];
-          if (events.removeListener)
-            this.emit('removeListener', type, list.listener || listener);
-        }
-      } else if (typeof list !== 'function') {
-        position = -1;
-
-        for (i = list.length - 1; i >= 0; i--) {
-          if (list[i] === listener || list[i].listener === listener) {
-            originalListener = list[i].listener;
-            position = i;
-            break;
-          }
-        }
-
-        if (position < 0)
-          return this;
-
-        if (position === 0)
-          list.shift();
-        else {
-          spliceOne(list, position);
-        }
-
-        if (list.length === 1)
-          events[type] = list[0];
-
-        if (events.removeListener !== undefined)
-          this.emit('removeListener', type, originalListener || listener);
-      }
-
-      return this;
-    };
-
-EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
-
-EventEmitter.prototype.removeAllListeners =
-    function removeAllListeners(type) {
-      var listeners, events, i;
-
-      events = this._events;
-      if (events === undefined)
-        return this;
-
-      // not listening for removeListener, no need to emit
-      if (events.removeListener === undefined) {
-        if (arguments.length === 0) {
-          this._events = Object.create(null);
-          this._eventsCount = 0;
-        } else if (events[type] !== undefined) {
-          if (--this._eventsCount === 0)
-            this._events = Object.create(null);
-          else
-            delete events[type];
-        }
-        return this;
-      }
-
-      // emit removeListener for all listeners on all events
-      if (arguments.length === 0) {
-        var keys = Object.keys(events);
-        var key;
-        for (i = 0; i < keys.length; ++i) {
-          key = keys[i];
-          if (key === 'removeListener') continue;
-          this.removeAllListeners(key);
-        }
-        this.removeAllListeners('removeListener');
-        this._events = Object.create(null);
-        this._eventsCount = 0;
-        return this;
-      }
-
-      listeners = events[type];
-
-      if (typeof listeners === 'function') {
-        this.removeListener(type, listeners);
-      } else if (listeners !== undefined) {
-        // LIFO order
-        for (i = listeners.length - 1; i >= 0; i--) {
-          this.removeListener(type, listeners[i]);
-        }
-      }
-
-      return this;
-    };
-
-function _listeners(target, type, unwrap) {
-  var events = target._events;
-
-  if (events === undefined)
-    return [];
-
-  var evlistener = events[type];
-  if (evlistener === undefined)
-    return [];
-
-  if (typeof evlistener === 'function')
-    return unwrap ? [evlistener.listener || evlistener] : [evlistener];
-
-  return unwrap ?
-    unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
-}
-
-EventEmitter.prototype.listeners = function listeners(type) {
-  return _listeners(this, type, true);
-};
-
-EventEmitter.prototype.rawListeners = function rawListeners(type) {
-  return _listeners(this, type, false);
-};
-
-EventEmitter.listenerCount = function(emitter, type) {
-  if (typeof emitter.listenerCount === 'function') {
-    return emitter.listenerCount(type);
-  } else {
-    return listenerCount.call(emitter, type);
-  }
-};
-
-EventEmitter.prototype.listenerCount = listenerCount;
-function listenerCount(type) {
-  var events = this._events;
-
-  if (events !== undefined) {
-    var evlistener = events[type];
-
-    if (typeof evlistener === 'function') {
-      return 1;
-    } else if (evlistener !== undefined) {
-      return evlistener.length;
-    }
-  }
-
-  return 0;
-}
-
-EventEmitter.prototype.eventNames = function eventNames() {
-  return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
-};
-
-function arrayClone(arr, n) {
-  var copy = new Array(n);
-  for (var i = 0; i < n; ++i)
-    copy[i] = arr[i];
-  return copy;
-}
-
-function spliceOne(list, index) {
-  for (; index + 1 < list.length; index++)
-    list[index] = list[index + 1];
-  list.pop();
-}
-
-function unwrapListeners(arr) {
-  var ret = new Array(arr.length);
-  for (var i = 0; i < ret.length; ++i) {
-    ret[i] = arr[i].listener || arr[i];
-  }
-  return ret;
-}
 
 
 /***/ }),
@@ -22308,24 +21852,28 @@ function observeDOM(watches, container, cb) {
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
+    if (superCtor) {
+      ctor.super_ = superCtor
+      ctor.prototype = Object.create(superCtor.prototype, {
+        constructor: {
+          value: ctor,
+          enumerable: false,
+          writable: true,
+          configurable: true
+        }
+      })
+    }
   };
 } else {
   // old school shim for old browsers
   module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
+    if (superCtor) {
+      ctor.super_ = superCtor
+      var TempCtor = function () {}
+      TempCtor.prototype = superCtor.prototype
+      ctor.prototype = new TempCtor()
+      ctor.prototype.constructor = ctor
+    }
   }
 }
 
@@ -27878,7 +27426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enhanceConfiguration", function() { return enhanceConfiguration; });
 /* harmony import */ var algoliasearch_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! algoliasearch-helper */ "./node_modules/algoliasearch-helper/index.js");
 /* harmony import */ var algoliasearch_helper__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(algoliasearch_helper__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! events */ "./node_modules/node-libs-browser/node_modules/events/events.js");
 /* harmony import */ var events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _RoutingManager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RoutingManager */ "./node_modules/instantsearch.js/es/lib/RoutingManager.js");
 /* harmony import */ var _stateMappings_simple__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stateMappings/simple */ "./node_modules/instantsearch.js/es/lib/stateMappings/simple.js");
@@ -91168,6 +90716,466 @@ function plural(ms, n, name) {
 
 /***/ }),
 
+/***/ "./node_modules/node-libs-browser/node_modules/events/events.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/events/events.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+var R = typeof Reflect === 'object' ? Reflect : null
+var ReflectApply = R && typeof R.apply === 'function'
+  ? R.apply
+  : function ReflectApply(target, receiver, args) {
+    return Function.prototype.apply.call(target, receiver, args);
+  }
+
+var ReflectOwnKeys
+if (R && typeof R.ownKeys === 'function') {
+  ReflectOwnKeys = R.ownKeys
+} else if (Object.getOwnPropertySymbols) {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target)
+      .concat(Object.getOwnPropertySymbols(target));
+  };
+} else {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target);
+  };
+}
+
+function ProcessEmitWarning(warning) {
+  if (console && console.warn) console.warn(warning);
+}
+
+var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
+  return value !== value;
+}
+
+function EventEmitter() {
+  EventEmitter.init.call(this);
+}
+module.exports = EventEmitter;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._eventsCount = 0;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+var defaultMaxListeners = 10;
+
+Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
+  enumerable: true,
+  get: function() {
+    return defaultMaxListeners;
+  },
+  set: function(arg) {
+    if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
+      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
+    }
+    defaultMaxListeners = arg;
+  }
+});
+
+EventEmitter.init = function() {
+
+  if (this._events === undefined ||
+      this._events === Object.getPrototypeOf(this)._events) {
+    this._events = Object.create(null);
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+};
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
+  if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
+    throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
+  }
+  this._maxListeners = n;
+  return this;
+};
+
+function $getMaxListeners(that) {
+  if (that._maxListeners === undefined)
+    return EventEmitter.defaultMaxListeners;
+  return that._maxListeners;
+}
+
+EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
+  return $getMaxListeners(this);
+};
+
+EventEmitter.prototype.emit = function emit(type) {
+  var args = [];
+  for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
+  var doError = (type === 'error');
+
+  var events = this._events;
+  if (events !== undefined)
+    doError = (doError && events.error === undefined);
+  else if (!doError)
+    return false;
+
+  // If there is no 'error' event listener then throw.
+  if (doError) {
+    var er;
+    if (args.length > 0)
+      er = args[0];
+    if (er instanceof Error) {
+      // Note: The comments on the `throw` lines are intentional, they show
+      // up in Node's output if this results in an unhandled exception.
+      throw er; // Unhandled 'error' event
+    }
+    // At least give some kind of context to the user
+    var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
+    err.context = er;
+    throw err; // Unhandled 'error' event
+  }
+
+  var handler = events[type];
+
+  if (handler === undefined)
+    return false;
+
+  if (typeof handler === 'function') {
+    ReflectApply(handler, this, args);
+  } else {
+    var len = handler.length;
+    var listeners = arrayClone(handler, len);
+    for (var i = 0; i < len; ++i)
+      ReflectApply(listeners[i], this, args);
+  }
+
+  return true;
+};
+
+function _addListener(target, type, listener, prepend) {
+  var m;
+  var events;
+  var existing;
+
+  if (typeof listener !== 'function') {
+    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+  }
+
+  events = target._events;
+  if (events === undefined) {
+    events = target._events = Object.create(null);
+    target._eventsCount = 0;
+  } else {
+    // To avoid recursion in the case that type === "newListener"! Before
+    // adding it to the listeners, first emit "newListener".
+    if (events.newListener !== undefined) {
+      target.emit('newListener', type,
+                  listener.listener ? listener.listener : listener);
+
+      // Re-assign `events` because a newListener handler could have caused the
+      // this._events to be assigned to a new object
+      events = target._events;
+    }
+    existing = events[type];
+  }
+
+  if (existing === undefined) {
+    // Optimize the case of one listener. Don't need the extra array object.
+    existing = events[type] = listener;
+    ++target._eventsCount;
+  } else {
+    if (typeof existing === 'function') {
+      // Adding the second element, need to change to array.
+      existing = events[type] =
+        prepend ? [listener, existing] : [existing, listener];
+      // If we've already got an array, just append.
+    } else if (prepend) {
+      existing.unshift(listener);
+    } else {
+      existing.push(listener);
+    }
+
+    // Check for listener leak
+    m = $getMaxListeners(target);
+    if (m > 0 && existing.length > m && !existing.warned) {
+      existing.warned = true;
+      // No error code for this since it is a Warning
+      // eslint-disable-next-line no-restricted-syntax
+      var w = new Error('Possible EventEmitter memory leak detected. ' +
+                          existing.length + ' ' + String(type) + ' listeners ' +
+                          'added. Use emitter.setMaxListeners() to ' +
+                          'increase limit');
+      w.name = 'MaxListenersExceededWarning';
+      w.emitter = target;
+      w.type = type;
+      w.count = existing.length;
+      ProcessEmitWarning(w);
+    }
+  }
+
+  return target;
+}
+
+EventEmitter.prototype.addListener = function addListener(type, listener) {
+  return _addListener(this, type, listener, false);
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.prependListener =
+    function prependListener(type, listener) {
+      return _addListener(this, type, listener, true);
+    };
+
+function onceWrapper() {
+  var args = [];
+  for (var i = 0; i < arguments.length; i++) args.push(arguments[i]);
+  if (!this.fired) {
+    this.target.removeListener(this.type, this.wrapFn);
+    this.fired = true;
+    ReflectApply(this.listener, this.target, args);
+  }
+}
+
+function _onceWrap(target, type, listener) {
+  var state = { fired: false, wrapFn: undefined, target: target, type: type, listener: listener };
+  var wrapped = onceWrapper.bind(state);
+  wrapped.listener = listener;
+  state.wrapFn = wrapped;
+  return wrapped;
+}
+
+EventEmitter.prototype.once = function once(type, listener) {
+  if (typeof listener !== 'function') {
+    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+  }
+  this.on(type, _onceWrap(this, type, listener));
+  return this;
+};
+
+EventEmitter.prototype.prependOnceListener =
+    function prependOnceListener(type, listener) {
+      if (typeof listener !== 'function') {
+        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+      }
+      this.prependListener(type, _onceWrap(this, type, listener));
+      return this;
+    };
+
+// Emits a 'removeListener' event if and only if the listener was removed.
+EventEmitter.prototype.removeListener =
+    function removeListener(type, listener) {
+      var list, events, position, i, originalListener;
+
+      if (typeof listener !== 'function') {
+        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+      }
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      list = events[type];
+      if (list === undefined)
+        return this;
+
+      if (list === listener || list.listener === listener) {
+        if (--this._eventsCount === 0)
+          this._events = Object.create(null);
+        else {
+          delete events[type];
+          if (events.removeListener)
+            this.emit('removeListener', type, list.listener || listener);
+        }
+      } else if (typeof list !== 'function') {
+        position = -1;
+
+        for (i = list.length - 1; i >= 0; i--) {
+          if (list[i] === listener || list[i].listener === listener) {
+            originalListener = list[i].listener;
+            position = i;
+            break;
+          }
+        }
+
+        if (position < 0)
+          return this;
+
+        if (position === 0)
+          list.shift();
+        else {
+          spliceOne(list, position);
+        }
+
+        if (list.length === 1)
+          events[type] = list[0];
+
+        if (events.removeListener !== undefined)
+          this.emit('removeListener', type, originalListener || listener);
+      }
+
+      return this;
+    };
+
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+
+EventEmitter.prototype.removeAllListeners =
+    function removeAllListeners(type) {
+      var listeners, events, i;
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      // not listening for removeListener, no need to emit
+      if (events.removeListener === undefined) {
+        if (arguments.length === 0) {
+          this._events = Object.create(null);
+          this._eventsCount = 0;
+        } else if (events[type] !== undefined) {
+          if (--this._eventsCount === 0)
+            this._events = Object.create(null);
+          else
+            delete events[type];
+        }
+        return this;
+      }
+
+      // emit removeListener for all listeners on all events
+      if (arguments.length === 0) {
+        var keys = Object.keys(events);
+        var key;
+        for (i = 0; i < keys.length; ++i) {
+          key = keys[i];
+          if (key === 'removeListener') continue;
+          this.removeAllListeners(key);
+        }
+        this.removeAllListeners('removeListener');
+        this._events = Object.create(null);
+        this._eventsCount = 0;
+        return this;
+      }
+
+      listeners = events[type];
+
+      if (typeof listeners === 'function') {
+        this.removeListener(type, listeners);
+      } else if (listeners !== undefined) {
+        // LIFO order
+        for (i = listeners.length - 1; i >= 0; i--) {
+          this.removeListener(type, listeners[i]);
+        }
+      }
+
+      return this;
+    };
+
+function _listeners(target, type, unwrap) {
+  var events = target._events;
+
+  if (events === undefined)
+    return [];
+
+  var evlistener = events[type];
+  if (evlistener === undefined)
+    return [];
+
+  if (typeof evlistener === 'function')
+    return unwrap ? [evlistener.listener || evlistener] : [evlistener];
+
+  return unwrap ?
+    unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
+}
+
+EventEmitter.prototype.listeners = function listeners(type) {
+  return _listeners(this, type, true);
+};
+
+EventEmitter.prototype.rawListeners = function rawListeners(type) {
+  return _listeners(this, type, false);
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+};
+
+EventEmitter.prototype.listenerCount = listenerCount;
+function listenerCount(type) {
+  var events = this._events;
+
+  if (events !== undefined) {
+    var evlistener = events[type];
+
+    if (typeof evlistener === 'function') {
+      return 1;
+    } else if (evlistener !== undefined) {
+      return evlistener.length;
+    }
+  }
+
+  return 0;
+}
+
+EventEmitter.prototype.eventNames = function eventNames() {
+  return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
+};
+
+function arrayClone(arr, n) {
+  var copy = new Array(n);
+  for (var i = 0; i < n; ++i)
+    copy[i] = arr[i];
+  return copy;
+}
+
+function spliceOne(list, index) {
+  for (; index + 1 < list.length; index++)
+    list[index] = list[index + 1];
+  list.pop();
+}
+
+function unwrapListeners(arr) {
+  var ret = new Array(arr.length);
+  for (var i = 0; i < ret.length; ++i) {
+    ret[i] = arr[i].listener || arr[i];
+  }
+  return ret;
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
@@ -97178,19 +97186,27 @@ module.exports = ReactPropTypesSecret;
 var replace = String.prototype.replace;
 var percentTwenties = /%20/g;
 
-module.exports = {
-    'default': 'RFC3986',
-    formatters: {
-        RFC1738: function (value) {
-            return replace.call(value, percentTwenties, '+');
-        },
-        RFC3986: function (value) {
-            return value;
-        }
-    },
+var util = __webpack_require__(/*! ./utils */ "./node_modules/qs/lib/utils.js");
+
+var Format = {
     RFC1738: 'RFC1738',
     RFC3986: 'RFC3986'
 };
+
+module.exports = util.assign(
+    {
+        'default': Format.RFC3986,
+        formatters: {
+            RFC1738: function (value) {
+                return replace.call(value, percentTwenties, '+');
+            },
+            RFC3986: function (value) {
+                return String(value);
+            }
+        }
+    },
+    Format
+);
 
 
 /***/ }),
@@ -97300,11 +97316,11 @@ var parseValues = function parseQueryStringValues(str, options) {
 
         var key, val;
         if (pos === -1) {
-            key = options.decoder(part, defaults.decoder, charset);
+            key = options.decoder(part, defaults.decoder, charset, 'key');
             val = options.strictNullHandling ? null : '';
         } else {
-            key = options.decoder(part.slice(0, pos), defaults.decoder, charset);
-            val = options.decoder(part.slice(pos + 1), defaults.decoder, charset);
+            key = options.decoder(part.slice(0, pos), defaults.decoder, charset, 'key');
+            val = options.decoder(part.slice(pos + 1), defaults.decoder, charset, 'value');
         }
 
         if (val && options.interpretNumericEntities && charset === 'iso-8859-1') {
@@ -97375,7 +97391,7 @@ var parseKeys = function parseQueryStringKeys(givenKey, val, options) {
 
     // Get the parent
 
-    var segment = brackets.exec(key);
+    var segment = options.depth > 0 && brackets.exec(key);
     var parent = segment ? key.slice(0, segment.index) : key;
 
     // Stash the parent if it exists
@@ -97395,7 +97411,7 @@ var parseKeys = function parseQueryStringKeys(givenKey, val, options) {
     // Loop through children appending to the array until we hit depth
 
     var i = 0;
-    while ((segment = child.exec(key)) !== null && i < options.depth) {
+    while (options.depth > 0 && (segment = child.exec(key)) !== null && i < options.depth) {
         i += 1;
         if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
             if (!options.allowPrototypes) {
@@ -97437,7 +97453,8 @@ var normalizeParseOptions = function normalizeParseOptions(opts) {
         comma: typeof opts.comma === 'boolean' ? opts.comma : defaults.comma,
         decoder: typeof opts.decoder === 'function' ? opts.decoder : defaults.decoder,
         delimiter: typeof opts.delimiter === 'string' || utils.isRegExp(opts.delimiter) ? opts.delimiter : defaults.delimiter,
-        depth: typeof opts.depth === 'number' ? opts.depth : defaults.depth,
+        // eslint-disable-next-line no-implicit-coercion, no-extra-parens
+        depth: (typeof opts.depth === 'number' || opts.depth === false) ? +opts.depth : defaults.depth,
         ignoreQueryPrefix: opts.ignoreQueryPrefix === true,
         interpretNumericEntities: typeof opts.interpretNumericEntities === 'boolean' ? opts.interpretNumericEntities : defaults.interpretNumericEntities,
         parameterLimit: typeof opts.parameterLimit === 'number' ? opts.parameterLimit : defaults.parameterLimit,
@@ -97487,14 +97504,14 @@ var formats = __webpack_require__(/*! ./formats */ "./node_modules/qs/lib/format
 var has = Object.prototype.hasOwnProperty;
 
 var arrayPrefixGenerators = {
-    brackets: function brackets(prefix) { // eslint-disable-line func-name-matching
+    brackets: function brackets(prefix) {
         return prefix + '[]';
     },
     comma: 'comma',
-    indices: function indices(prefix, key) { // eslint-disable-line func-name-matching
+    indices: function indices(prefix, key) {
         return prefix + '[' + key + ']';
     },
-    repeat: function repeat(prefix) { // eslint-disable-line func-name-matching
+    repeat: function repeat(prefix) {
         return prefix;
     }
 };
@@ -97507,6 +97524,7 @@ var pushToArray = function (arr, valueOrArray) {
 
 var toISO = Date.prototype.toISOString;
 
+var defaultFormat = formats['default'];
 var defaults = {
     addQueryPrefix: false,
     allowDots: false,
@@ -97516,17 +97534,26 @@ var defaults = {
     encode: true,
     encoder: utils.encode,
     encodeValuesOnly: false,
-    formatter: formats.formatters[formats['default']],
+    format: defaultFormat,
+    formatter: formats.formatters[defaultFormat],
     // deprecated
     indices: false,
-    serializeDate: function serializeDate(date) { // eslint-disable-line func-name-matching
+    serializeDate: function serializeDate(date) {
         return toISO.call(date);
     },
     skipNulls: false,
     strictNullHandling: false
 };
 
-var stringify = function stringify( // eslint-disable-line func-name-matching
+var isNonNullishPrimitive = function isNonNullishPrimitive(v) {
+    return typeof v === 'string'
+        || typeof v === 'number'
+        || typeof v === 'boolean'
+        || typeof v === 'symbol'
+        || typeof v === 'bigint';
+};
+
+var stringify = function stringify(
     object,
     prefix,
     generateArrayPrefix,
@@ -97552,16 +97579,16 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
 
     if (obj === null) {
         if (strictNullHandling) {
-            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset) : prefix;
+            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset, 'key') : prefix;
         }
 
         obj = '';
     }
 
-    if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || utils.isBuffer(obj)) {
+    if (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) {
         if (encoder) {
-            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset);
-            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset))];
+            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset, 'key');
+            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset, 'value'))];
         }
         return [formatter(prefix) + '=' + formatter(String(obj))];
     }
@@ -97889,7 +97916,12 @@ var encode = function encode(str, defaultEncoder, charset) {
         return str;
     }
 
-    var string = typeof str === 'string' ? str : String(str);
+    var string = str;
+    if (typeof str === 'symbol') {
+        string = Symbol.prototype.toString.call(str);
+    } else if (typeof str !== 'string') {
+        string = String(str);
+    }
 
     if (charset === 'iso-8859-1') {
         return escape(string).replace(/%u[0-9a-f]{4}/gi, function ($0) {
@@ -100089,7 +100121,7 @@ module.exports = algoliasearchHelper;
 "use strict";
 
 
-var events = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+var events = __webpack_require__(/*! events */ "./node_modules/node-libs-browser/node_modules/events/events.js");
 var inherits = __webpack_require__(/*! ../functions/inherits */ "./node_modules/vue-instantsearch/node_modules/algoliasearch-helper/src/functions/inherits.js");
 
 /**
@@ -103147,7 +103179,7 @@ var SearchResults = __webpack_require__(/*! ./SearchResults */ "./node_modules/v
 var DerivedHelper = __webpack_require__(/*! ./DerivedHelper */ "./node_modules/vue-instantsearch/node_modules/algoliasearch-helper/src/DerivedHelper/index.js");
 var requestBuilder = __webpack_require__(/*! ./requestBuilder */ "./node_modules/vue-instantsearch/node_modules/algoliasearch-helper/src/requestBuilder.js");
 
-var events = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+var events = __webpack_require__(/*! events */ "./node_modules/node-libs-browser/node_modules/events/events.js");
 var inherits = __webpack_require__(/*! ./functions/inherits */ "./node_modules/vue-instantsearch/node_modules/algoliasearch-helper/src/functions/inherits.js");
 
 var flatten = __webpack_require__(/*! lodash/flatten */ "./node_modules/lodash/flatten.js");
@@ -106052,184 +106084,201 @@ var render = function() {
         _vm._v("Create Something New")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex" }, [
-        _c("div", { staticClass: "flex-1 mr-4" }, [
-          _c("div", { staticClass: "mb-4" }, [
-            _c("label", { staticClass: "text-xs", attrs: { for: "title" } }, [
-              _vm._v("Title")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.title,
-                  expression: "form.title"
-                }
-              ],
-              staticClass:
-                "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
-              attrs: { type: "text", id: "title" },
-              domProps: { value: _vm.form.title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "title", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-4" }, [
-            _c(
-              "label",
-              { staticClass: "text-xs", attrs: { for: "description" } },
-              [_vm._v("Description")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.description,
-                  expression: "form.description"
-                }
-              ],
-              staticClass:
-                "border border-gray-300 py-1 px-2 text-xs block w-full rounde",
-              attrs: { type: "text", id: "description", rows: "7" },
-              domProps: { value: _vm.form.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "description", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex-1 ml-4" }, [
-          _c(
-            "div",
-            { staticClass: "mb-4" },
-            [
-              _c("label", { staticClass: "text-xs", attrs: { for: "title" } }, [
-                _vm._v("Need Some Tasks?")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.form.tasks, function(task) {
-                return _c("input", {
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "flex" }, [
+            _c("div", { staticClass: "flex-1 mr-4" }, [
+              _c("div", { staticClass: "mb-4" }, [
+                _c(
+                  "label",
+                  { staticClass: "text-xs", attrs: { for: "title" } },
+                  [_vm._v("Title")]
+                ),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: task.value,
-                      expression: "task.value"
+                      value: _vm.form.title,
+                      expression: "form.title"
                     }
                   ],
                   staticClass:
                     "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
-                  attrs: { type: "text", placeholder: "Task 1" },
-                  domProps: { value: task.value },
+                  attrs: { type: "text", id: "title" },
+                  domProps: { value: _vm.form.title },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(task, "value", $event.target.value)
+                      _vm.$set(_vm.form, "title", $event.target.value)
                     }
                   }
                 })
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "inline-flex items-center text-xs",
-              attrs: { type: "button" },
-              on: { click: _vm.addTask }
-            },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "mr-2",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "18",
-                    height: "18",
-                    viewBox: "0 0 18 18"
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mb-4" }, [
+                _c(
+                  "label",
+                  { staticClass: "text-xs", attrs: { for: "description" } },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.description,
+                      expression: "form.description"
+                    }
+                  ],
+                  staticClass:
+                    "border border-gray-300 py-1 px-2 text-xs block w-full rounde",
+                  attrs: { type: "text", id: "description", rows: "7" },
+                  domProps: { value: _vm.form.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "description", $event.target.value)
+                    }
                   }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-1 ml-4" }, [
+              _c(
+                "div",
+                { staticClass: "mb-4" },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "text-xs", attrs: { for: "title" } },
+                    [_vm._v("Need Some Tasks?")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.form.tasks, function(task) {
+                    return _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: task.value,
+                          expression: "task.value"
+                        }
+                      ],
+                      staticClass:
+                        "border border-gray-300 py-1 px-2 text-xs block w-full rounded",
+                      attrs: { type: "text", placeholder: "Task 1" },
+                      domProps: { value: task.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(task, "value", $event.target.value)
+                        }
+                      }
+                    })
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "inline-flex items-center text-xs",
+                  attrs: { type: "button" },
+                  on: { click: _vm.addTask }
                 },
                 [
                   _c(
-                    "g",
+                    "svg",
                     {
+                      staticClass: "mr-2",
                       attrs: {
-                        fill: "none",
-                        "fill-rule": "evenodd",
-                        opacity: ".307"
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "18",
+                        height: "18",
+                        viewBox: "0 0 18 18"
                       }
                     },
                     [
-                      _c("path", {
-                        attrs: {
-                          stroke: "#000",
-                          "stroke-opacity": ".012",
-                          "stroke-width": "0",
-                          d: "M-3-3h24v24H-3z"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          fill: "#000",
-                          d:
-                            "M9 0a9 9 0 0 0-9 9c0 4.97 4.02 9 9 9A9 9 0 0 0 9 0zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11H8v3H5v2h3v3h2v-3h3V8h-3V5z"
-                        }
-                      })
+                      _c(
+                        "g",
+                        {
+                          attrs: {
+                            fill: "none",
+                            "fill-rule": "evenodd",
+                            opacity: ".307"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              stroke: "#000",
+                              "stroke-opacity": ".012",
+                              "stroke-width": "0",
+                              d: "M-3-3h24v24H-3z"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              fill: "#000",
+                              d:
+                                "M9 0a9 9 0 0 0-9 9c0 4.97 4.02 9 9 9A9 9 0 0 0 9 0zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11H8v3H5v2h3v3h2v-3h3V8h-3V5z"
+                            }
+                          })
+                        ]
+                      )
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Add New Task Field")])
                 ]
-              ),
-              _vm._v(" "),
-              _c("span", [_vm._v("Add New Task Field")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "flex justify-end" }, [
-        _c(
-          "button",
-          {
-            staticClass: "button is-outlined mr-4",
-            staticStyle: {
-              "box-shadow": "0 1px 2px 0 #b0eaff",
-              "border-color": "#b0eaff"
-            },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.$modal.hide("new-project")
-              }
-            }
-          },
-          [_vm._v("cancel\n        ")]
-        ),
-        _vm._v(" "),
-        _c("button", { staticClass: "button" }, [_vm._v("create")])
-      ])
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "flex justify-end" }, [
+            _c(
+              "button",
+              {
+                staticClass: "button is-outlined mr-4",
+                staticStyle: {
+                  "box-shadow": "0 1px 2px 0 #b0eaff",
+                  "border-color": "#b0eaff"
+                },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.$modal.hide("new-project")
+                  }
+                }
+              },
+              [_vm._v("cancel\n            ")]
+            ),
+            _vm._v(" "),
+            _c("button", { staticClass: "button" }, [_vm._v("create Project")])
+          ])
+        ]
+      )
     ]
   )
 }

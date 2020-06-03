@@ -2,73 +2,60 @@
 /**
  * Created by rainskiss.
  * User: rainskiss
- * Date: 2020/05/07
- * Time: 7:03 오후
+ * Date: 2020/04/29
+ * Time: 3:05 오전
  */
 
 namespace App;
 
 
-use DateTimeInterface;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use function class_basename;
+use function strtolower;
 
 trait RecordsActivity
 {
-    public $old = [];
+    public $oldAttributes = [];
 
-    protected static function bootRecordsActivity()
+    public static function bootRecordsActivity()
     {
         foreach (self::recordableEvents() as $event){
-            static::$event(function ($model) use ($event){
-                $model->recordsActivity($model->activityDescription($event));
+            static::$event(function($model) use ($event){
+                $model->recordActivity($model->activityDescription($event));
             });
 
-            static::updating(function ($model) use ($event){
-                $model->old = $model->getOriginal();
+            static::updating(function ($model){
+                $model->oldAttributes = $model->getOriginal();
             });
         }
     }
-
-    public function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format("Y-m-d H:i:s");
-    }
-
 
     public function activityDescription($description)
     {
-        return $description = strtolower("{$description}_" . class_basename($this));
+        return $description = "{$description}_".strtolower(class_basename($this));
     }
 
-    public static function recordableEvents()
+    protected static function recordableEvents()
     {
         if (isset(static::$recordableEvents)) {
-            return static::$recordableEvents;
+            return  static::$recordableEvents;
         }
-
         return ['created', 'updated'];
     }
 
-    public function recordsActivity($description)
+    public function recordActivity($description)
     {
         $this->activities()->create([
-            'project_id'  => $this->projectId(),
-            'user_id'  => $this->activityOwner()->id,
+            'user_id' => $this->activityOwner()->id,
+            'project_id'  => class_basename($this) === 'Project' ? $this->id : $this['project_id'],
             'description' => $description,
-            'changes'     => $this->wasChanged() ?
-                [
-                    'before' => array_diff($this->old, $this->getAttributes()),
-                    'after'  => $this->getChanges(),
-                ]
-                : null,
+            'changes'     => $this->getActivityChanges($description),
         ]);
     }
 
     public function activityOwner()
     {
-        $project = $this->project ?? $this;
-        return $project->owner;
+        return $this->owner ?? $this->project->owner;
     }
 
 
@@ -80,12 +67,19 @@ trait RecordsActivity
 
         return $this->morphMany(ProjectActivity::class, 'subject')->latest();
     }
-    /**
-     * @return mixed
-     */
-    protected function projectId()
-    {
-        return class_basename($this) === 'Project' ? $this->id : $this['project_id'];
-    }
 
+    /**
+     * @param $description
+     *
+     * @return array
+     */
+    protected function getActivityChanges($description)
+    {
+        if ($this->wasChanged()) {
+            return [
+                'before' => Arr::except(array_diff($this->oldAttributes, $this->getAttributes()), 'updated_at'),
+                'after'  => Arr::except($this->getChanges(), 'updated_at'),
+            ];
+        }
+    }
 }

@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'email'
+        'password', 'remember_token',
     ];
 
     /**
@@ -57,8 +57,10 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->hasMany(Project::class,'owner_id')
-                    ->latest('updated_at');
+        return $this->hasMany(Project::class, 'owner_id')
+                    ->orderBy('updated_at', 'desc');
+        //return $this->hasMany(Project::class,'owner_id')
+        //            ->latest('updated_at');
     }
 
     public function accessibleProjects()

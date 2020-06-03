@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 App::setLocale('kr');
 //Auth::routes(['confirm' => true]);

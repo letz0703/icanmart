@@ -3,8 +3,10 @@
 @section('content')
     <header class="flex items-center mb-3 py-2">
         <div class="flex justify-between items-center w-full">
-            <h2 class="font-normal">My Projects2</h2>
-            <a href="/projects/create" class="button" @click.prevent="$modal.show('new-project')">New Project</a>
+            <h2 class="font-normal">My Projects</h2>
+            <a href="/projects/create" class="button"
+               @click.prevent="$modal.show('new-project')"
+            >New Project</a>
         </div>
     </header>
     <main class="lg:flex flex-wrap -mx-3">
@@ -17,7 +19,5 @@
         @endforelse
     </main>
     <new-project-modal></new-project-modal>
-{{--    <div class="text-center">--}}
-{{--        <a href="" @click.prevent="$modal.show('new-project')">show</a>--}}
-{{--    </div>--}}
+
 @endsection
