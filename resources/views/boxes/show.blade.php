@@ -74,6 +74,8 @@
                                 <a href="https://icanmart.co.kr/boxes/create"
                                    class=" btn-sm ml-1 p-2 border border-blue-500 text-blue-700 ">new
                                     box</a>
+                                <a href="https://icanmart.co.kr/boxes"
+                                   class=" btn-sm ml-1 p-2 border border-black ">box list</a>
                             </div>
                         </div>
                     </div>
