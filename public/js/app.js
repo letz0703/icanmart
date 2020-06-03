@@ -10255,6 +10255,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
   data: function data() {
@@ -105492,14 +105495,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "level" }, [
-      _c("div", { staticClass: "flex" }, [
+      _c("div", [
         _c("span", { domProps: { textContent: _vm._s(_vm.item.description) } }),
         _vm._v(":\n            "),
+        _c("span", { domProps: { textContent: _vm._s(_vm.item.barcode) } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex" }, [
         _c("span", { domProps: { textContent: _vm._s(_vm.item.quantity) } }),
         _vm._v("개 X\n            "),
-        _c("span", { domProps: { textContent: _vm._s(_vm.item.buy_price) } }),
+        _c("span", {
+          staticClass: "ml-2 text-red-700",
+          domProps: { textContent: _vm._s(_vm.item.buy_price) }
+        }),
         _vm._v("원 =\n            "),
-        _c("span", { domProps: { textContent: _vm._s(_vm.itemAmount) } }),
+        _c("span", {
+          staticClass: "ml-2 italic",
+          domProps: { textContent: _vm._s(_vm.itemAmount) }
+        }),
         _vm._v("원\n        ")
       ]),
       _vm._v(" "),
