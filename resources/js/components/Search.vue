@@ -25,6 +25,7 @@
                             }"
                 >
                     <div slot="item" slot-scope="{ item }">
+
                         <a :href="'/items/'+item.id" class="expand-clickable">
                             <ais-highlight :hit="item" attribute="description"/>
                         </a>
@@ -38,6 +39,7 @@
                               style="background:aliceblue;"
                               v-tooltip:left="item.seller_id"
                         ></span>
+                        <span v-text="'expire:'+item.expire_date"></span>
                     </div>
                 </ais-hits>
                 <div class="pagination mt-2 w-full">

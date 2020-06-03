@@ -10940,6 +10940,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -106484,7 +106486,13 @@ var render = function() {
                               textContent: _vm._s("(" + item.buy_price + "원)")
                             }
                           })
-                        : _vm._e()
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s("expire:" + item.expire_date)
+                        }
+                      })
                     ])
                   }
                 }
