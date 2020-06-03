@@ -10324,7 +10324,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/projects', this.form).then(function (response) {
         // alert('hi');
-        location.reload();
+        location = response.data.message;
       })["catch"](function (error) {
         // console.log(error.response.data.errors);
         _this.errors = error.response.data.errors;

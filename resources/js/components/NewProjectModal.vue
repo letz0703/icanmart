@@ -92,7 +92,7 @@
                 axios.post('/projects', this.form)
                      .then(response => {
                          // alert('hi');
-                         location.reload();
+                         location = response.data.message;
                      })
                      .catch(error => {
                          // console.log(error.response.data.errors);
