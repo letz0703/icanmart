@@ -49,7 +49,7 @@
         <footer class="flex justify-end">
             <button class="button is-outlined mr-4"
                     style="box-shadow:0 1px 2px 0 #b0eaff;border-color:#b0eaff;"
-                    @click.prevent="$.hide('new-task')"
+                    @click.prevent="$modal.hide('new-project')"
             >cancel
             </button>
             <button class="button">create</button>

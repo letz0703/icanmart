@@ -106221,7 +106221,7 @@ var render = function() {
             on: {
               click: function($event) {
                 $event.preventDefault()
-                return _vm.$.hide("new-task")
+                return _vm.$modal.hide("new-project")
               }
             }
           },
