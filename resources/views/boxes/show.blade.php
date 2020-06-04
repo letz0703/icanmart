@@ -4,7 +4,7 @@
     <box-view :data="{{ $box }}" inline-template :seller="{{ $box->seller }}">
         <div class="">
             <div class="">
-                <div class="flex">
+                <div class="md:flex">
                     <div class="card flex-1 mr-4">
                         <div class="">
                             <div class="flex flex-col md:my-4 justify-between">
@@ -58,7 +58,7 @@
                     <div class="flex-1">
 
                         <div class="card">
-{{--                            <div class="card-header">{{ $box->title }}</div>--}}
+                            {{--                            <div class="card-header">{{ $box->title }}</div>--}}
                             <div class="card-body">
                                 <div class="mb-2">
                                     <h2 class="text-xl">박스금액: <span v-text="boxAmount"></span>원</h2>
@@ -71,11 +71,16 @@
                                         {{--                                    v-if="authorize('isAdmin')"--}}
                                         @click="toggleLock" v-text="locked?'locked': 'Lock'">
                                 </button>
-                                <a href="https://icanmart.co.kr/boxes/create"
-                                   class=" btn-sm ml-1 p-2 border border-blue-500 text-blue-700 ">new
-                                    box</a>
+
                                 <a href="https://icanmart.co.kr/boxes"
                                    class=" btn-sm ml-1 p-2 border border-black ">box list</a>
+
+                                <a href="https://icanmart.co.kr/boxes/create"
+                                   class=" btn-sm ml-1 p-2 border border-blue-500 text-blue-700 ">
+                                    new box</a>
+                                <div class="search mt-6">
+                                    <search></search>
+                                </div>
                             </div>
                         </div>
                     </div>
