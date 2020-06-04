@@ -10498,6 +10498,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var instantsearch_css_themes_algolia_min_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(instantsearch_css_themes_algolia_min_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var instantsearch_js_es_lib_routers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! instantsearch.js/es/lib/routers */ "./node_modules/instantsearch.js/es/lib/routers/index.js");
 /* harmony import */ var instantsearch_js_es_lib_stateMappings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! instantsearch.js/es/lib/stateMappings */ "./node_modules/instantsearch.js/es/lib/stateMappings/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -10550,6 +10552,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -10565,8 +10574,26 @@ __webpack_require__.r(__webpack_exports__);
       routing: {
         router: Object(instantsearch_js_es_lib_routers__WEBPACK_IMPORTED_MODULE_2__["history"])(),
         stateMapping: Object(instantsearch_js_es_lib_stateMappings__WEBPACK_IMPORTED_MODULE_3__["simple"])()
-      }
+      },
+      dayLeft: ''
     };
+  },
+  methods: {
+    // transformItems(items){
+    //     return items.map(item => ({
+    //         ...item,
+    //         name: item.name.toUpperCase(),
+    //     }))
+    // },
+    checkExpireDate: function checkExpireDate(edate) {
+      // console.log(expireDate);
+      var today = moment__WEBPACK_IMPORTED_MODULE_4___default()(new Date());
+      var expireDate = moment__WEBPACK_IMPORTED_MODULE_4___default()(edate);
+      var dateLeft = expireDate.diff(today, 'days');
+      this.dayLeft = dateLeft;
+      console.log(this.dateLeft);
+      return dateLeft > 0;
+    }
   },
   mounted: function mounted() {// let bar = this.$refs['searchBox'];
     // let originalOffsetTop = bar.offsetY;
@@ -106508,7 +106535,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "search-panel" }, [
+      _c("div", { staticClass: "search-panel md:w-full" }, [
         _c(
           "div",
           { staticClass: "search-panel__results" },
@@ -106521,7 +106548,7 @@ var render = function() {
             _vm._v(" "),
             _c("ais-hits", {
               attrs: {
-                escapeHTML: true,
+                escapeHTML: false,
                 "class-names": {
                   "ais-Hits": "MyCustomHits",
                   "ais-Hits-list": "MyCustomHitsList",
@@ -106533,7 +106560,7 @@ var render = function() {
                   key: "item",
                   fn: function(ref) {
                     var item = ref.item
-                    return _c("div", {}, [
+                    return _c("ul", {}, [
                       _c(
                         "a",
                         {
@@ -106573,8 +106600,9 @@ var render = function() {
                         : _vm._e(),
                       _vm._v(" "),
                       _c("span", {
+                        staticClass: "text-blue-500",
                         domProps: {
-                          textContent: _vm._s("expire:" + item.expire_date)
+                          textContent: _vm._s("유통기한:" + item.expire_date)
                         }
                       })
                     ])
