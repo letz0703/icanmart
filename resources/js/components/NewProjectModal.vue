@@ -55,12 +55,12 @@
                 </div>
             </div>
             <footer class="flex justify-end">
-                <button class="button is-outlined mr-4"
+                <button type="button" class="button is-outlined mr-4"
                         style="box-shadow:0 1px 2px 0 #b0eaff;border-color:#b0eaff;"
                         @click.prevent="$modal.hide('new-project')"
                 >cancel
                 </button>
-                <button class="button">create Project</button>
+                <button type="submit" class="button">create Project</button>
             </footer>
         </form>
     </modal>
