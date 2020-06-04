@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Facades\Tests\Setup\ProjectFactory;
 use Tests\TestCase;
+use function factory;
 
 class ManageProjectTest extends TestCase
 {
@@ -72,6 +73,21 @@ class ManageProjectTest extends TestCase
              ->assertSee($attributes['title'])
              ->assertSee($attributes['description'])
              ->assertSee($attributes['notes']);
+    }
+
+    /** @test */
+    function tasks_can_be_included_as_part_a_new_project()
+    {
+        $this->signIn();
+        $attributes = factory('App\Project')->raw();
+        $attributes['tasks'] = [
+            ['body' => 'task1 body'],
+            ['body' => 'task2 body'],
+        ];
+
+        $this->post('/projects', $attributes);
+
+        $this->assertCount(2, Project::first()->tasks);
     }
 
     /** @test */

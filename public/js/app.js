@@ -106327,6 +106327,7 @@ var render = function() {
                   "box-shadow": "0 1px 2px 0 #b0eaff",
                   "border-color": "#b0eaff"
                 },
+                attrs: { type: "button" },
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -106337,7 +106338,9 @@ var render = function() {
               [_vm._v("cancel\n            ")]
             ),
             _vm._v(" "),
-            _c("button", { staticClass: "button" }, [_vm._v("create Project")])
+            _c("button", { staticClass: "button", attrs: { type: "submit" } }, [
+              _vm._v("create Project")
+            ])
           ])
         ]
       )

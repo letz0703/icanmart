@@ -45,4 +45,10 @@ class Project extends Model
         return $this->tasks()->create(['body'=>$body]);
     }
 
+    public function addTasks($tasks)
+    {
+        return $this->tasks()->createMany($tasks);
+    }
+
+
 }
