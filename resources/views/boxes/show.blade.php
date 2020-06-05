@@ -72,10 +72,10 @@
                                         @click="toggleLock" v-text="locked?'locked': 'Lock'">
                                 </button>
 
-                                <a href="https://icanmart.co.kr/boxes"
+                                <a href="/boxes"
                                    class=" btn-sm ml-1 p-2 border border-black ">box list</a>
 
-                                <a href="https://icanmart.co.kr/boxes/create"
+                                <a href="/boxes/create"
                                    class=" btn-sm ml-1 p-2 border border-blue-500 text-blue-700 ">
                                     new box</a>
                                 <div class="search mt-6">

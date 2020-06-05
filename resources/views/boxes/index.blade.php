@@ -54,7 +54,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline form-group">
-                                        <input class="form-check-input" type="radio" name="paid" id="paid" value=0 checked>
+                                        <input class="form-check-input" type="radio" name="paid" id="paid" value=0
+                                               checked>
                                         <label class="form-check-label" for="upaid">
                                             미결제
                                         </label>
@@ -84,27 +85,44 @@
                         @foreach($boxes as $box)
                             <box :data="{{ $box }}" class="card py-3 mb-3" v-cloak></box>
                         @endforeach
-                            {{ $boxes->links() }}
+                        {{ $boxes->links() }}
                     </div>
                 </div>
 
                 <div class="flex-col items-center w-1/4 px-3">
                     <div class="card w-full">
                         <h2 class=" text-center w-full" style="background:aliceblue;">
-                            Recent View
+                            Boxes in Today
                         </h2>
                         <div class="">
                             <ul>
-                                @foreach($viewed_boxes as $viewed)
+                                @php
+                                    $boxesToday = \App\Box::whereDate('created_at',\Carbon\Carbon::today())->get();
+                                    $sum = 0;
+                                @endphp
+                                @foreach($boxesToday as $todayBox)
                                     <li>
-                                        <a href="{{ url($viewed->path) }}">
-                                            {{ $viewed->title }}
+                                        <a href="{{ url($todayBox->path()) }}">
+                                            {{ $todayBox->seller->description }}/ {{ $todayBox->title }}
+                                            / {{ $todayBox->amount }} 원
+                                            @php
+                                                $sum += $todayBox->amount
+                                            @endphp
                                         </a>
                                     </li>
                                 @endforeach
+                                {{--                                @foreach($viewed_boxes as $viewed)--}}
+                                {{--                                    <li>--}}
+                                {{--                                        <a href="{{ url($viewed->path) }}">--}}
+                                {{--                                            {{ $viewed->title }}--}}
+                                {{--                                        </a>--}}
+                                {{--                                    </li>--}}
+                                {{--                                @endforeach--}}
                             </ul>
+                            <div> 합계:{{ $sum }}</div>
                         </div>
                     </div>
+                </div>
             </main>
         </div>
     </boxes-view>
