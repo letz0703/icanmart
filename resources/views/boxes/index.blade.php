@@ -119,7 +119,7 @@
                                 {{--                                    </li>--}}
                                 {{--                                @endforeach--}}
                             </ul>
-                            <div> 합계:{{ $sum }}</div>
+                            <div> 합계:{{ number_format($sum, 0) }}</div>
                         </div>
                     </div>
                 </div>
