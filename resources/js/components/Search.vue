@@ -38,7 +38,7 @@
                         <span v-text="item.sell_price+'원'"></span>
                         <span v-if="authorize('isAdmin')" v-text="'('+item.buy_price+'원)'"
                               style="background:aliceblue;"
-                              v-tooltip:left="item.seller_id"
+<!--                              v-tooltip:left="item.seller_id"-->
                         ></span>
                         <span v-text="'유통기한:'+item.expire_date"
                               class="text-blue-500"

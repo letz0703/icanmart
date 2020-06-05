@@ -19871,6 +19871,10 @@ form .field {
   margin-bottom: 1.5rem;
 }
 
+form input {
+  border: 3px;
+}
+
 form textarea {
   border-width: 1px;
   background-color: transparent;

@@ -106584,23 +106584,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm.authorize("isAdmin")
-                        ? _c("span", {
-                            directives: [
-                              {
-                                name: "tooltip",
-                                rawName: "v-tooltip:left",
-                                value: item.seller_id,
-                                expression: "item.seller_id",
-                                arg: "left"
-                              }
-                            ],
-                            staticStyle: { background: "aliceblue" },
-                            domProps: {
-                              textContent: _vm._s("(" + item.buy_price + "원)")
-                            }
-                          })
-                        : _vm._e(),
+                      _vm._v("\n                        >"),
                       _vm._v(" "),
                       _c("span", {
                         staticClass: "text-blue-500",

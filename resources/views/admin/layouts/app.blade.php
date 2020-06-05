@@ -10,7 +10,7 @@
                 </ul>
             </div>
             <div class="col-md-10">
-                <div class="card card-default">
+                <div class="card card-default container mx-32">
                     <div class="card-body">
                         @yield('administration-content')
                     </div>
