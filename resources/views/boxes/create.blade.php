@@ -36,13 +36,13 @@
                         </textarea>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="paid" id="paid" value=1 checked>
+                        <input class="form-check-input" type="radio" name="paid" id="paid" value=1>
                         <label class="form-check-label" for="paid">
                             결제완료
                         </label>
                     </div>
                     <div class="form-check form-check-inline form-group">
-                        <input class="form-check-input" type="radio" name="paid" id="paid" value=0>
+                        <input class="form-check-input" type="radio" name="paid" id="paid" value=0 checked>
                         <label class="form-check-label" for="upaid">
                             미결제
                         </label>
