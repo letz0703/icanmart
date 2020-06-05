@@ -9,9 +9,13 @@ use App\Seller;
 use App\Task;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
+
 
     /**
      * Register any application services.
@@ -32,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('money', function($amount){
+            return "<?php echo number_format($amount).' 원' ?>";
+        });
+
         \View::composer('*', function ($view){
             $sellers = \Cache::rememberForever('sellers', function (){
                 return Seller::all();

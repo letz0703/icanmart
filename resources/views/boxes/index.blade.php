@@ -119,7 +119,11 @@
                                 {{--                                    </li>--}}
                                 {{--                                @endforeach--}}
                             </ul>
-                            <div> 합계:{{ number_format($sum, 0) }}</div>
+{{--                            <div> 합계:{{ number_format($sum, 0) }}</div>--}}
+                            <div class="flex">
+                                <span class="mr-3">Total Amount:</span>
+                                <span class=" bold text-xl ">@money($sum)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
