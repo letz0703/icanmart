@@ -9,6 +9,7 @@
                    class="btn-text text-sm px-3"
                    @click.prevent="$modal.show('add-box')"
                 >New Box</a>
+
                 <modal name="add-box"
                        class="p-4 rounded-lg"
                        height="auto"
@@ -78,9 +79,47 @@
                     </div>
                 </modal>
             </header>
-            <main class="flex justify-between  -mx-3">
+            <main class="justify-between  -mx-3">
+                 <div class="flex-col items-center px-3">
+                                    <div class="card w-full">
+                                        <h2 class=" text-center w-full" style="background:aliceblue;">
+                                            Boxes in Today
+                                        </h2>
+                                        <div class="">
+                                            <ul>
+                                                @php
+                                                    $boxesToday = \App\Box::whereDate('created_at',\Carbon\Carbon::today())->get();
+                                                    $sum = 0;
+                                                @endphp
+                                                @foreach($boxesToday as $todayBox)
+                                                    <li>
+                                                        <a href="{{ url($todayBox->path()) }}">
+                                                            {{ $todayBox->seller->description }}/ {{ $todayBox->title }}
+                                                            / {{ $todayBox->amount }} 원
+                                                            @php
+                                                                $sum += $todayBox->amount
+                                                            @endphp
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                                {{--                                @foreach($viewed_boxes as $viewed)--}}
+                                                {{--                                    <li>--}}
+                                                {{--                                        <a href="{{ url($viewed->path) }}">--}}
+                                                {{--                                            {{ $viewed->title }}--}}
+                                                {{--                                        </a>--}}
+                                                {{--                                    </li>--}}
+                                                {{--                                @endforeach--}}
+                                            </ul>
+                {{--                            <div> 합계:{{ number_format($sum, 0) }}</div>--}}
+                                            <div class="flex text-right">
+                                                <span class="mr-3">Total Amount:</span>
+                                                <span class="flex-1 bold text-xl ">@money($sum)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <div class="w-3/4 px-3">
+                <div class=" px-3">
                     <div class="py-2">
                         @foreach($boxes as $box)
                             <box :data="{{ $box }}" class="card py-3 mb-3" v-cloak></box>
@@ -89,44 +128,7 @@
                     </div>
                 </div>
 
-                <div class="flex-col items-center w-1/4 px-3">
-                    <div class="card w-full">
-                        <h2 class=" text-center w-full" style="background:aliceblue;">
-                            Boxes in Today
-                        </h2>
-                        <div class="">
-                            <ul>
-                                @php
-                                    $boxesToday = \App\Box::whereDate('created_at',\Carbon\Carbon::today())->get();
-                                    $sum = 0;
-                                @endphp
-                                @foreach($boxesToday as $todayBox)
-                                    <li>
-                                        <a href="{{ url($todayBox->path()) }}">
-                                            {{ $todayBox->seller->description }}/ {{ $todayBox->title }}
-                                            / {{ $todayBox->amount }} 원
-                                            @php
-                                                $sum += $todayBox->amount
-                                            @endphp
-                                        </a>
-                                    </li>
-                                @endforeach
-                                {{--                                @foreach($viewed_boxes as $viewed)--}}
-                                {{--                                    <li>--}}
-                                {{--                                        <a href="{{ url($viewed->path) }}">--}}
-                                {{--                                            {{ $viewed->title }}--}}
-                                {{--                                        </a>--}}
-                                {{--                                    </li>--}}
-                                {{--                                @endforeach--}}
-                            </ul>
-{{--                            <div> 합계:{{ number_format($sum, 0) }}</div>--}}
-                            <div class="flex text-right">
-                                <span class="mr-3">Total Amount:</span>
-                                <span class="flex-1 bold text-xl ">@money($sum)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </main>
         </div>
     </boxes-view>
