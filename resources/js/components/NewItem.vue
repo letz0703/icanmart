@@ -170,7 +170,7 @@
                         this.sell_price = latestOne.sell_price;
                         this.expireDate = moment(latestOne.expire_date).format('YYYY-MM-DD');
                         this.createdAt = latestOne.created_at;
-                        this.memo = lastestOne.memo;
+                        this.memo = latestOne.memo;
                         console.log(data);
                     }
                 });
@@ -191,6 +191,7 @@
                 this.buy_price = '';
                 this.sell_price = '';
                 this.itemAmount = '';
+                this.memo = '';
                 // this.expireDate = this.expireDate;
             },
 

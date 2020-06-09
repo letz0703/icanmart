@@ -10,6 +10,7 @@
                 <span v-text="item.buy_price" class="ml-2 text-red-700"></span>원 =
                 <span v-text="itemAmount" class="ml-2 italic"></span>원
             </div>
+<!--            <div class="" v-text="item.memo"></div>-->
             <div v-if="authorize('isAdmin')">
                 <button class="btn btn-danger btn-sm" @click="destroy">x</button>
             </div>
