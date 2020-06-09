@@ -94,7 +94,9 @@ class BoxController extends Controller
             }
         }
 
+
         $box->update([
+            'title' => 'changed',
             'amount' => request('amount'),
             'paid'   => $box->paid,
         ]);

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Box;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -9,6 +10,7 @@ class BoxManageTest extends TestCase
 {
 
     use RefreshDatabase;
+
 
     /** @test */
     public function guest_may_not_create_box()
@@ -118,6 +120,18 @@ class BoxManageTest extends TestCase
         //dd($box);
         $this->patch($box->path(),['amount' => 2000]);
         $this->assertDatabaseHas('boxes',['id'=>$box->id, 'amount' => 2000]);
+    }
+
+    /** @test */
+    public function user_can_update_box_title()
+    {
+        $this->withoutExceptionHandling();
+        $box = create('App\Box');
+        //dd($box->creator);
+
+        $this->be($box->creator)->patch($box->path(),['title' => 'changed']);
+        //dd($box);
+        $this->assertDatabaseHas('boxes',['id'=>$box->id, 'title' => 'changed']);
     }
 
     ///** @test */

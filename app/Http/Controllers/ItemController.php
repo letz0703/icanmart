@@ -42,7 +42,7 @@ class ItemController extends Controller
             }
             $box->lock();
         }
-        $box->update(request(['amount', 'paid', 'locked']));
+        $box->update(request(['title','amount', 'paid', 'locked']));
     }
 
     public function store($sellerSlug, Box $box)

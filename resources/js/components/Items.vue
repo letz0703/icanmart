@@ -1,9 +1,9 @@
 <template>
     <div>
         <div v-if="user">
-            <div v-if="! boxLocked" class="card ">
+            <div v-if="! boxLocked" class="card">
 
-                <h2 class="font-normal text-center text-2xl mb-8">Add Items</h2>
+                <h2 class="font-normal text-left text-2xl mb-8">Add Items</h2>
                 <new-item
                     :seller="sellerp"
                     :box-id="boxidp"

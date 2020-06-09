@@ -15,7 +15,8 @@
                 item_count: this.data.items_count,
                 paid: this.data.paid,
                 locked: this.data.locked,
-                url: '/locked-boxes/'+this.data.slug
+                url: '/locked-boxes/'+this.data.slug,
+                title: this.data.title,
             }
         },
 
@@ -43,7 +44,10 @@
                 this.item_count --;
             },
 
-
+            editTitle() {
+                this.title = this.title
+                axios.patch(this.endpoint, {title: this.title})
+            }
         },
     }
 </script>

@@ -11163,7 +11163,8 @@ __webpack_require__.r(__webpack_exports__);
       item_count: this.data.items_count,
       paid: this.data.paid,
       locked: this.data.locked,
-      url: '/locked-boxes/' + this.data.slug
+      url: '/locked-boxes/' + this.data.slug,
+      title: this.data.title
     };
   },
   methods: {
@@ -11185,6 +11186,12 @@ __webpack_require__.r(__webpack_exports__);
         amount: this.boxAmount
       });
       this.item_count--;
+    },
+    editTitle: function editTitle() {
+      this.title = this.title;
+      axios.patch(this.endpoint, {
+        title: this.title
+      });
     }
   }
 });
@@ -105636,11 +105643,11 @@ var render = function() {
             !_vm.boxLocked
               ? _c(
                   "div",
-                  { staticClass: "card " },
+                  { staticClass: "card" },
                   [
                     _c(
                       "h2",
-                      { staticClass: "font-normal text-center text-2xl mb-8" },
+                      { staticClass: "font-normal text-left text-2xl mb-8" },
                       [_vm._v("Add Items")]
                     ),
                     _vm._v(" "),
