@@ -26,13 +26,13 @@
     }
     &__text {
         font-size: 1rem;
-        color: $grey;
+        color: grey;
     }
     outline-offset: 0.4rem;
     &:hover {
         transform: translateY(-.6em) scale(1.1);
         //border: 0.2rem dashed $theme-color;
-        outline: 0.2rem dashed $theme-color;
+        outline: 0.2rem dashed $theme-blue;
     }
 }
 
@@ -46,20 +46,24 @@
     height: 20rem;
 
     &__side {
-        background-color: $theme-color;
-        height: 20rem;
-
+        //background-color: deepskyblue;
         color: white;
-        font-size: 1.4rem;
-        transition: all .7s;
+        font-size: 2rem;
+
+        height: 20rem;
+        transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+
 
         &--front {
             background-color: white;
+            color: #0d5dc1;
 
         }
 
@@ -69,16 +73,36 @@
 
             &-1 {
                 //background-image: linear-gradient(to right bottom, $color-green, $color-green);
-                background-image: linear-gradient(to right bottom, $panton-green--light, $panton-green);
+                background-image: linear-gradient(
+                        to right bottom,
+                        $color-tertiary,
+                        $color-blue--light
+                );
             }
         }
     }
 
     &:hover &__side--front{
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
     &:hover &__side--back{
         transform: rotateY(0);
+    }
+
+    &__picture {
+        background-size: contain ;
+        height: 14rem;
+        &--1 {
+            background-image: url(../images/dongjun.jpg);
+        }
+    }
+
+    &__heading {
+        color: black;
+    }
+
+    &__detail {
+        color: gray;
     }
 }
 

@@ -95,7 +95,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto">
+    <main class="container mx-auto md:mb-40">
         @yield('content')
     </main>
 {{--    @include('layouts.footer-links')--}}

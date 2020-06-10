@@ -23,9 +23,9 @@
 
 .btn {
     @apply .border-2 .px-2 .ml-2 ;
-    border-color: $color-text-light;
+    border-color: $color-text--light;
     font-size: 0.9rem;
-    color: $color-text-light;
+    color: $color-text--light;
 
     &-danger {
         border-color: $color-primary;

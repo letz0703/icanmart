@@ -19396,6 +19396,98 @@ bggrey {
   background-color: #0d5dc1;
 }
 
+.section-features {
+  padding: 1.5rem 0;
+}
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.3s;
+  outline-offset: 0.4rem;
+}
+
+.feature-box__icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background-image: linear-gradient(to bottom, #00c6f5, #78C5ef);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.feature-box__text {
+  font-size: 1rem;
+  color: grey;
+}
+
+.feature-box:hover {
+  transform: translateY(-0.6em) scale(1.1);
+  outline: 0.2rem dashed #00c6f5;
+}
+
+.rotate-card {
+  perspective: 150rem;
+  position: relative;
+  height: 20rem;
+}
+
+.rotate-card__side {
+  color: white;
+  font-size: 2rem;
+  height: 20rem;
+  transition: all .8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+.rotate-card__side--front {
+  background-color: white;
+  color: #0d5dc1;
+}
+
+.rotate-card__side--back {
+  transform: rotateY(180deg);
+}
+
+.rotate-card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #0d5dc1, #a8eafd);
+}
+
+.rotate-card:hover .rotate-card__side--front {
+  transform: rotateY(-180deg);
+}
+
+.rotate-card:hover .rotate-card__side--back {
+  transform: rotateY(0);
+}
+
+.rotate-card__picture {
+  background-size: contain;
+  height: 14rem;
+}
+
+.rotate-card__picture--1 {
+  background-image: url(../images/dongjun.jpg);
+}
+
+.rotate-card__heading {
+  color: black;
+}
+
+.rotate-card__detail {
+  color: gray;
+}
+
 .heading-secondary {
   font-size: 30px;
   text-transform: uppercase;
@@ -19912,79 +20004,6 @@ form .alert {
   align-items: center;
   flex-direction: column;
   text-align: left;
-}
-
-.section-features {
-  padding: 1.5rem 0;
-}
-
-.feature-box {
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 1.5rem;
-  padding: 2.5rem;
-  text-align: center;
-  border-radius: 4px;
-  transition: transform 0.3s;
-  outline-offset: 0.4rem;
-}
-
-.feature-box__icon {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-  background-image: linear-gradient(to bottom, #00c6f5, #78C5ef);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.feature-box__text {
-  font-size: 1rem;
-  color: dimgray;
-}
-
-.feature-box:hover {
-  transform: translateY(-0.6em) scale(1.1);
-  outline: 0.2rem dashed #00c6f5;
-}
-
-.rotate-card {
-  perspective: 150rem;
-  position: relative;
-  height: 20rem;
-}
-
-.rotate-card__side {
-  background-color: #00c6f5;
-  height: 20rem;
-  color: white;
-  font-size: 1.4rem;
-  transition: all .7s;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-
-.rotate-card__side--front {
-  background-color: white;
-}
-
-.rotate-card__side--back {
-  transform: rotateY(180deg);
-}
-
-.rotate-card__side--back-1 {
-  background-image: linear-gradient(to right bottom, rgba(177, 204, 137, 0.5), #88B04b);
-}
-
-.rotate-card:hover .rotate-card__side--front {
-  transform: rotateY(180deg);
-}
-
-.rotate-card:hover .rotate-card__side--back {
-  transform: rotateY(0);
 }
 
 @media (min-width: 640px){

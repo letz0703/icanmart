@@ -26,32 +26,70 @@
 
     @include('layouts.section-feature')
 
-    <section class="section-items mb-10">
+    <section class="section-items">
         <div class="text-center u-margin-bottom-big">
             <h2 class="heading-secondary uppercase">Popular Items</h2>
-            <div class="row">
+            <div class="row mb-10">
                 <div class="col-1-of-3">
                     <div class="rotate-card">
                         <div class="rotate-card__side rotate-card__side--front">
-                            동전파스
+                            <div class="rotate-card__heading p-2">STEADY SELLER</div>
+                            <div class="rotate-card__heading pt-2 mb-2">동전파스</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                                156매(100원 크기), 78매(500원 크기)
+                            </div>
+                            <p class="font-normal md:text-base">일본 여행 필수 구매 아이템</p>
                         </div>
                         <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
-                            동전파스
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-1-of-3">
-                    <div class="item-card">
-                        <div class="item-card__side">
-                            곤약젤리
+                            <div class="rotate-card__picture rotate-card__picture--1">
+                                &nbsp;
+                            </div>
+                            <div class="rotate-card__heading pt-2">동전파스 9800원</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                               <a href="https://www.roihi.com/en/tubokou.html" target="_blank">homepage</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-1-of-3">
-                    <div class="item-card">
-                        <div class="item-card__side">
-                            맥심커피
+                    <div class="rotate-card">
+                        <div class="rotate-card__side rotate-card__side--front">
+                            <div class="rotate-card__heading p-2">추천 아이템</div>
+                            <div class="rotate-card__heading pt-2 mb-2">용각산 사탕</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                                목이 따갑거나 아플 때
+                            </div>
+                            <p class="font-normal md:text-base">한알이면 끝</p>
+                        </div>
+                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
+{{--                            <div class="rotate-card__picture rotate-card__picture--1">--}}
+{{--                                &nbsp;--}}
+{{--                            </div>--}}
+                            <div class="rotate-card__heading pt-2">용각산사탕 5000원</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                                <a href="https://www.ryukakusan.co.jp/productcategory/en" target="_blank">homepage</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-of-3">
+                    <div class="rotate-card">
+                        <div class="rotate-card__side rotate-card__side--front">
+                            <div class="rotate-card__heading p-2">여름 아이템</div>
+                            <div class="rotate-card__heading pt-2 mb-2">블랜디 액상커피</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                                아이스 커피용 커피 원액
+                            </div>
+                            <p class="font-normal md:text-base">간편하고 맛있게 즐기세요</p>
+                        </div>
+                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
+                            {{--                            <div class="rotate-card__picture rotate-card__picture--1">--}}
+                            {{--                                &nbsp;--}}
+                            {{--                            </div>--}}
+                            <div class="rotate-card__heading pt-2">블랜디 액상커피 8개입 2700원</div>
+                            <div class="rotate-card__detail text-xl -mt-1">
+                                <a href="https://blendy.agf.jp/portion/" target="_blank">homepage</a>
+                            </div>
                         </div>
                     </div>
                 </div>

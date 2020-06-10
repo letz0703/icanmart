@@ -12,10 +12,10 @@ $theme-blue--lightest:#eff8ff;
 
 //tailwindcss
 @import 'tailwind';
-
+@import "abstracts/variables";
+@import "pages/home";
 @import "abstracts/fucntions";
 @import "abstracts/mixins";
-@import "abstracts/variables";
 
 @import "base/typo";
 @import "base/animations";
@@ -34,7 +34,7 @@ $theme-blue--lightest:#eff8ff;
 
 @import "layout/box";
 
-@import "pages/home";
+
 
 //@import "nova/resources/css/app.css";
 
