@@ -20,15 +20,18 @@
         font-size: 3rem;
         margin-bottom: 0.5rem;
         display: inline-block;
-        background-image: linear-gradient( to bottom, $theme-blue, $theme-blue--light);
+        background-image: linear-gradient(to bottom, $theme-blue, $theme-blue--light);
         -webkit-background-clip: text;
         color: transparent;
     }
+
     &__text {
         font-size: 1rem;
         color: grey;
     }
+
     outline-offset: 0.4rem;
+
     &:hover {
         transform: translateY(-.6em) scale(1.1);
         //border: 0.2rem dashed $theme-color;
@@ -43,20 +46,21 @@
 .rotate-card {
     perspective: 150rem;
     position: relative;
-    height: 20rem;
+    height: 30rem;
 
     &__side {
         //background-color: deepskyblue;
         color: white;
         font-size: 2rem;
 
-        height: 20rem;
+        height: 30rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
+        overflow: hidden;
         border-radius: 3px;
         box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
 
@@ -71,7 +75,7 @@
             //background-color: orangered;
             transform: rotateY(180deg);
 
-            &-1 {
+            &--1 {
                 //background-image: linear-gradient(to right bottom, $color-green, $color-green);
                 background-image: linear-gradient(
                         to right bottom,
@@ -82,27 +86,76 @@
         }
     }
 
-    &:hover &__side--front{
+    &:hover &__side--front {
         transform: rotateY(-180deg);
     }
-    &:hover &__side--back{
+
+    &:hover &__side--back {
         transform: rotateY(0);
     }
 
     &__picture {
-        background-size: contain ;
-        height: 14rem;
+        //background-size: cover ;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 17rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+
         &--1 {
-            background-image: url(../images/dongjun.jpg);
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-tertiary,
+                    $color-blue--light
+            ), url(../images/dongjun.png);
         }
     }
 
     &__heading {
-        color: black;
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: white;
+        position: absolute;
+        top: 8rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem, 1.5rem;
+
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(
+                    to right,
+                    rgba($color-blue--light, .85),
+                    rgba($color-tertiary--light, .85)
+            );
+        }
     }
 
     &__detail {
-        color: gray;
+        padding: 1rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size:1.2rem;
+                padding: 0.8rem;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
+
     }
 }
 

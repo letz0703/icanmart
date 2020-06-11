@@ -19432,13 +19432,13 @@ bggrey {
 .rotate-card {
   perspective: 150rem;
   position: relative;
-  height: 20rem;
+  height: 30rem;
 }
 
 .rotate-card__side {
   color: white;
   font-size: 2rem;
-  height: 20rem;
+  height: 30rem;
   transition: all .8s ease;
   position: absolute;
   top: 0;
@@ -19446,6 +19446,7 @@ bggrey {
   width: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  overflow: hidden;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
@@ -19459,7 +19460,7 @@ bggrey {
   transform: rotateY(180deg);
 }
 
-.rotate-card__side--back-1 {
+.rotate-card__side--back--1 {
   background-image: linear-gradient(to right bottom, #0d5dc1, #a8eafd);
 }
 
@@ -19473,19 +19474,57 @@ bggrey {
 
 .rotate-card__picture {
   background-size: contain;
-  height: 14rem;
+  background-repeat: no-repeat;
+  height: 17rem;
+  background-blend-mode: screen;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
 .rotate-card__picture--1 {
-  background-image: url(../images/dongjun.jpg);
+  background-image: linear-gradient(to right bottom, #0d5dc1, #a8eafd), url(../images/dongjun.png);
 }
 
 .rotate-card__heading {
-  color: black;
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: right;
+  color: white;
+  position: absolute;
+  top: 8rem;
+  right: 2rem;
+  width: 75%;
+}
+
+.rotate-card__heading-span {
+  padding: 1rem, 1.5rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.rotate-card__heading-span--1 {
+  background-image: linear-gradient(to right, rgba(168, 234, 253, 0.85), rgba(41, 152, 255, 0.85));
 }
 
 .rotate-card__detail {
-  color: gray;
+  padding: 1rem;
+}
+
+.rotate-card__detail ul {
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.rotate-card__detail ul li {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+}
+
+.rotate-card__detail ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
 }
 
 .heading-secondary {

@@ -32,23 +32,32 @@
             <div class="row mb-10">
                 <div class="col-1-of-3">
                     <div class="rotate-card">
-                        <div class="rotate-card__side rotate-card__side--front">
-                            <div class="rotate-card__heading p-2">STEADY SELLER</div>
-                            <div class="rotate-card__heading pt-2 mb-2">동전파스</div>
-                            <div class="rotate-card__detail text-xl -mt-1">
-                                156매(100원 크기), 78매(500원 크기)
-                            </div>
-                            <p class="font-normal md:text-base">일본 여행 필수 구매 아이템</p>
-                        </div>
-                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
+                        <div class="rotate-card__side rotate-card__side--front rotate-card__side--front-1">
                             <div class="rotate-card__picture rotate-card__picture--1">
                                 &nbsp;
                             </div>
+                            <h4 class="rotate-card__heading">
+                                <span class="rotate-card__heading-span rotate-card__heading-span--1 px-2 py-1">Pain Relief Patches
+                                </span>
+                            </h4>
+                            <div class="rotate-card__detail">
+                                <ul>
+                                    <li>여행 필수구매 아이템</li>
+                                    <li>100원 크기-156매</li>
+                                    <li>500원 크기-78매</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back--1">
+
                             <div class="rotate-card__heading pt-2">동전파스 9800원</div>
                             <div class="rotate-card__detail text-xl -mt-1">
-                               <a href="https://www.roihi.com/en/tubokou.html" target="_blank">homepage</a>
+                                <a href="https://www.roihi.com/en/tubokou.html" target="_blank">homepage</a>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-1-of-3">
@@ -61,7 +70,7 @@
                             </div>
                             <p class="font-normal md:text-base">한알이면 끝</p>
                         </div>
-                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
+                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back--1">
 {{--                            <div class="rotate-card__picture rotate-card__picture--1">--}}
 {{--                                &nbsp;--}}
 {{--                            </div>--}}
@@ -82,7 +91,7 @@
                             </div>
                             <p class="font-normal md:text-base">간편하고 맛있게 즐기세요</p>
                         </div>
-                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back-1">
+                        <div class="rotate-card__side rotate-card__side--back rotate-card__side--back--1">
                             {{--                            <div class="rotate-card__picture rotate-card__picture--1">--}}
                             {{--                                &nbsp;--}}
                             {{--                            </div>--}}
