@@ -19365,7 +19365,7 @@ video {
 }
 
 .tred {
-  color: #E31D2E;
+  color: #55c57a;
 }
 
 .tgrey {
@@ -19385,7 +19385,7 @@ bggrey {
 }
 
 .bg-red {
-  background-color: #E31D2E;
+  background-color: #55c57a;
 }
 
 .bg-sony {
@@ -19432,13 +19432,12 @@ bggrey {
 .rotate-card {
   perspective: 150rem;
   position: relative;
-  height: 30rem;
+  height: 33rem;
 }
 
 .rotate-card__side {
-  color: white;
-  font-size: 2rem;
-  height: 30rem;
+  font-size: 1rem;
+  height: 33rem;
   transition: all .8s ease;
   position: absolute;
   top: 0;
@@ -19447,11 +19446,11 @@ bggrey {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 1px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
 
-.rotate-card__side--front {
+.rotate-card__side--front--1 {
   background-color: white;
   color: #0d5dc1;
 }
@@ -19464,6 +19463,10 @@ bggrey {
   background-image: linear-gradient(to right bottom, #0d5dc1, #a8eafd);
 }
 
+.rotate-card__side--back--2 {
+  background-image: linear-gradient(to right bottom, #55c57a, #7ed56f);
+}
+
 .rotate-card:hover .rotate-card__side--front {
   transform: rotateY(-180deg);
 }
@@ -19473,7 +19476,7 @@ bggrey {
 }
 
 .rotate-card__picture {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 17rem;
   background-blend-mode: screen;
@@ -19483,6 +19486,10 @@ bggrey {
 
 .rotate-card__picture--1 {
   background-image: linear-gradient(to right bottom, #0d5dc1, #a8eafd), url(../images/dongjun.png);
+}
+
+.rotate-card__picture--2 {
+  background-image: url(../images/cabaccin.png);
 }
 
 .rotate-card__heading {
@@ -19504,7 +19511,11 @@ bggrey {
 }
 
 .rotate-card__heading-span--1 {
-  background-image: linear-gradient(to right, rgba(168, 234, 253, 0.85), rgba(41, 152, 255, 0.85));
+  background-image: linear-gradient(to right, rgba(13, 93, 193, 0.85), rgba(168, 234, 253, 0.85));
+}
+
+.rotate-card__heading-span--2 {
+  background-image: linear-gradient(to right, rgba(85, 197, 122, 0.85), rgba(126, 213, 111, 0.85));
 }
 
 .rotate-card__detail {
@@ -19525,6 +19536,30 @@ bggrey {
 
 .rotate-card__detail ul li:not(:last-child) {
   border-bottom: 1px solid #eee;
+}
+
+.rotate-card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+.rotate-card__item-name {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.rotate-card__price-box {
+  text-align: center;
+  margin-bottom: 6rem;
+  color: white;
+}
+
+.rotate-card__price-value {
+  font-size: 4rem;
+  font-weight: 100;
 }
 
 .heading-secondary {
@@ -19641,14 +19676,37 @@ body {
   padding-right: 0.5rem;
   margin-left: 0.5rem;
   border-color: silver;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: silver;
 }
 
+.btn:link, .btn:visited {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.2rem 0.6rem;
+  position: relative;
+  border-color: white;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.btn--white {
+  color: white;
+}
+
+.btn--blue {
+  background-color: #00c6f5;
+  color: white;
+}
+
 .btn-danger {
-  border-color: #E31D2E;
+  border-color: #55c57a;
   font-size: 0.9rem;
-  color: #E31D2E;
+  color: #55c57a;
 }
 
 .btn-text:link, .btn-text:visited {
@@ -19910,31 +19968,31 @@ input.ais-SearchBox-input {
 }
 
 .row [class^="col-"]:not(:last-child) {
-  margin-right: 1.5rem;
+  margin-right: 5.5rem;
 }
 
 .row .col-1-of-2 {
-  width: calc((100% - 1.5rem) / 2);
+  width: calc((100% - 5.5rem) / 2);
 }
 
 .row .col-1-of-3 {
-  width: calc((100% - 2 * 1.5rem) / 3);
+  width: calc((100% - 2 * 5.5rem) / 3);
 }
 
 .row .col-2-of-3 {
-  width: calc( 2 * ((100% - 2 * 1.5rem) / 3) + 1.5rem);
+  width: calc( 2 * ((100% - 2 * 5.5rem) / 3) + 5.5rem);
 }
 
 .row .col-1-of-4 {
-  width: calc((100% - 3 * 1.5rem) / 4);
+  width: calc((100% - 3 * 5.5rem) / 4);
 }
 
 .row .col-2-of-4 {
-  width: calc( 2 * ((100% - 3 * 1.5rem) / 4) + 1.5rem);
+  width: calc( 2 * ((100% - 3 * 5.5rem) / 4) + 5.5rem);
 }
 
 .row .col-3-of-4 {
-  width: calc( 3 * ((100% - 3 * 1.5rem) / 4) + 2 * 1.5rem);
+  width: calc( 3 * ((100% - 3 * 5.5rem) / 4) + 2 * 5.5rem);
 }
 
 .header {

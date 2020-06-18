@@ -23,9 +23,37 @@
 
 .btn {
     @apply .border-2 .px-2 .ml-2 ;
-    border-color: $color-text--light;
-    font-size: 0.9rem;
-    color: $color-text--light;
+    border-color: $color-grey--light;
+    font-size: 1rem;
+    color: $color-grey--light;
+
+    &:link,
+    &:visited {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.2rem 0.6rem;
+        position: relative;
+        border-color: white;
+    }
+
+    &:active {
+
+    }
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+
+    &--white {
+        color: white;
+    }
+
+    &--blue {
+        background-color: $theme-blue;
+        color: white;
+    }
 
     &-danger {
         border-color: $color-primary;

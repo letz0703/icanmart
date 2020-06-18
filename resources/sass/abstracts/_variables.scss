@@ -4,27 +4,40 @@ $theme-blue--lighter: #bcdefa ;
 $theme-blue--lightest:#eff8ff;
 
 $color-black: #0a0a0a;
-$color-primary: #E31D2E;
+
+$color-primary: #55c57a;
+$color-primary--light: #7ed56f;
+$color-primary-dark: #28b485;
+
 $color-secondary: #73AD21;
 $color-secondary--light: #ffb900;
 $color-secondary--dark: #ff7730;
+
+$color-tertiary: #0d5dc1; // denim
+$color-tertiary--light: #78C5ef;
+$color-tertiary--dark: #5643fa;
 
 $panton-green: #88B04b;
 $panton-green--light:rgba(#b1cc89, 0.5);
 $panton-green--dark: #557524;
 
+$color-blue: #0d5dc1; // denim
+$color-blue--light: #78C5ef;
+$color-blue--dark: #5643fa;
 
+$color-green: #55c57a;
+$color-green--light: #7ed56f;
+$color-green-dark: #28b485;
 
-$color-tertiary: #0d5dc1; // denim
-$color-tertiary--light: #2998ff;
-$color-tertiary--dark: #5643fa;
-
-$color-text: darkgrey;
-$color-text-dark: grey;
-$color-text--light: silver;
+$color-grey: darkgrey;
+$color-grey-dark: grey;
+$color-grey--light: silver;
 $color-blue--light: rgba(168, 234, 253, 1.0);
 
+$color-white: #fff;
+
 // Colors
+
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
