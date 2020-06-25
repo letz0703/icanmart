@@ -19642,6 +19642,7 @@ body {
 }
 
 .button {
+  background-color: #78C5ef;
   text-decoration: none;
   --text-opacity: 1;
   color: #fff;
@@ -20057,21 +20058,6 @@ nav ul li span {
 
 form .field {
   margin-bottom: 1.5rem;
-}
-
-form input {
-  border: 3px;
-}
-
-form textarea {
-  border-width: 1px;
-  background-color: transparent;
-  --border-opacity: 1;
-  border-color: #cbd5e0;
-  border-color: rgba(203, 213, 224, var(--border-opacity));
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  width: 100%;
 }
 
 form .label {

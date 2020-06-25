@@ -37,7 +37,7 @@
                                class="border border-gray-300 py-1 px-2 text-xs block w-full rounded"
                                placeholder="Task 1"
                                v-for="task in form.tasks"
-                               v-model="task.value"
+                               v-model="task.body"
                         >
                     </div>
                     <button type="button" class="inline-flex items-center text-xs"
@@ -67,39 +67,43 @@
 </template>
 
 <script>
-    export default {
-        props: [''],
+export default {
+    props: [''],
 
-        data() {
-            return {
-                form: {
-                    title: '',
-                    description: '',
-                    tasks: [
-                        { value: '' },
-                    ],
-                },
-                errors: {},
-            }
+    data() {
+        return {
+            form: {
+                title: '',
+                description: '',
+                tasks: [
+                    { body: '' },
+                ],
+            },
+            errors: {},
+        }
+    },
+
+    methods: {
+        addTask() {
+            this.form.tasks.push({ body: '' });
         },
 
-        methods: {
-            addTask() {
-                this.form.tasks.push({ value: '' });
-            },
+        submit() {
+            // if (! this.form.tasks[0].body){
+            //     delete this.form.originalData.tasks;
+            // }
 
-            submit() {
-                axios.post('/projects', this.form)
-                     .then(response => {
-                         // alert('hi');
-                         location = response.data.message;
-                     })
-                     .catch(error => {
-                         // console.log(error.response.data.errors);
-                         this.errors = error.response.data.errors;
-                     });
+            axios.post('/projects', this.form)
+                 .then(response => {
+                     // alert('hi');
+                     location = response.data.message;
+                 })
+                 .catch(error => {
+                     // console.log(error.response.data.errors);
+                     this.errors = error.response.data.errors;
+                 });
 
-            },
         },
-    }
+    },
+}
 </script>
