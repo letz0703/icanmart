@@ -159,5 +159,5 @@
             </div>
         </div>
     </section>
-
+        <script data-ad-client="ca-pub-7149901751594661" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </div>
