@@ -10,10 +10,10 @@
                         <label for="title" class="text-xs">Title</label>
                         <input type="text" id="title"
                                class="border py-1 px-2 text-xs block w-full rounded"
-                               :class="errors.title ? 'border-red-600': 'border-gray-300'"
+                               :class="form.errors.title ? 'border-red-600': 'border-gray-300'"
                                v-model="form.title"
                         >
-                        <span v-if="errors.title" v-text="errors.title[0]"
+                        <span v-if="form.errors.title" v-text="form.errors.title[0]"
                               class="text-xs italic text-red-600"
                         ></span>
                     </div>
@@ -22,10 +22,10 @@
                         <textarea type="text" id="description"
                                   class="border border-gray-300 py-1 px-2 text-xs block w-full rounde"
                                   rows="7"
-                                  :class="errors.description ? 'border-red-600': 'border-gray-300'"
+                                  :class="form.errors.description ? 'border-red-600': 'border-gray-300'"
                                   v-model="form.description">
                     </textarea>
-                        <span v-if="errors.description" v-text="errors.description[0]"
+                        <span v-if="form.errors.description" v-text="form.errors.description[0]"
                               class="text-xs italic text-red-600"
                         ></span>
                     </div>
@@ -67,20 +67,19 @@
 </template>
 
 <script>
-export default {
-    props: [''],
+import BirdboardForm from './BirdboardForm';
 
+export default {
     data() {
         return {
-            form: {
+            form: new BirdboardForm({
                 title: '',
                 description: '',
                 tasks: [
                     { body: '' },
                 ],
-            },
-            errors: {},
-        }
+            }),
+        };
     },
 
     methods: {
@@ -88,22 +87,34 @@ export default {
             this.form.tasks.push({ body: '' });
         },
 
-        submit() {
-            // if (! this.form.tasks[0].body){
-            //     delete this.form.originalData.tasks;
+        async submit() {
+            if (!this.form.tasks[0].body) {
+                delete this.form.originalData.tasks;
+            }
+
+            this.form.submit('/projects')
+                .then(response => location = response.data.message);
+                // .catch(error => alert('error'));
+
+            // try{
+            //     location = (await axios.post('/projects', this.form).data.message);
+            // } catch (error){
+            //     this.errors = error.response.data.errors;
             // }
-
-            axios.post('/projects', this.form)
-                 .then(response => {
-                     // alert('hi');
-                     location = response.data.message;
-                 })
-                 .catch(error => {
-                     // console.log(error.response.data.errors);
-                     this.errors = error.response.data.errors;
-                 });
-
         },
+
+        // submit(){
+        //     axios.post('/projects', this.form)
+        //          .then(response => {
+        //              // alert('hi');
+        //              location = response.data.message;
+        //          })
+        //          .catch(error => {
+        //              // console.log(error.response.data.errors);
+        //              this.errors = error.response.data.errors;
+        //          });
+        //
+        // },
     },
 }
 </script>
