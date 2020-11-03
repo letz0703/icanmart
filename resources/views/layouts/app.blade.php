@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script data-ad-client="ca-pub-7149901751594661" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         window.App = {!! json_encode([
         'signedIn' => Auth::check(),
@@ -18,7 +19,6 @@
         ]) !!} ;
     </script>
 
-    <script data-ad-client="ca-pub-7149901751594661" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
