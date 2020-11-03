@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script data-ad-client="ca-pub-7149901751594661" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         window.App = {!! json_encode([
         'signedIn' => Auth::check(),
@@ -27,6 +26,7 @@
     <link href="{{ asset('css/icon-font.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ic.css') }}" rel="stylesheet">
+    <script data-ad-client="ca-pub-7149901751594661" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style>
         body {
             padding-bottom: 100px;
