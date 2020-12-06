@@ -8,8 +8,7 @@
                 <h2>인터넷 깡통시장</h2>
                 <p class="text-grey">부산 깡통시장 아이템 정보</p>
             </div>
-            <!--
-        <div class="card__menu-menu">
+            <div class="card__menu-menu">
                 <nav class="py-2">
                     <ul class="navigation">
                         <li><a href="#" class="btn-text">About Us</a></li>
@@ -22,7 +21,7 @@
         <div>
             <a href="" class='button'>구매요청</a>
         </div>
-    </div>-->
+    </div>
     {{--        @include('layouts.grid')--}}
 
     @include('layouts.section-feature')
