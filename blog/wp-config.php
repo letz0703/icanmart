@@ -27,7 +27,7 @@ define('DB_NAME','icanmart');
 define( 'DB_USER', 'rainskiss' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', 'ckdaks72' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
