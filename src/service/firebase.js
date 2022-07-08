@@ -2,13 +2,13 @@ import {initializeApp} from 'firebase/app';
 import {getAuth} from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAOTnTs6t0Sen0YsRV2FwGWZh1-9HAbEYQ',
-  authDomain: 'icanmart-c24b8.firebaseapp.com',
-  databaseURL: 'https://icanmart-c24b8-default-rtdb.firebaseio.com',
-  projectId: 'icanmart-c24b8',
-  storageBucket: 'icanmart-c24b8.appspot.com',
-  messagingSenderId: '587773080603',
-  appId: '1:587773080603:web:2059f44a7a30ab2b3c34be'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSENGER_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 //Initialize Firebase
