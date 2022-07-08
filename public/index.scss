@@ -1,0 +1,261 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+  border: 0;
+}
+
+:root {
+  --ti-cursor-margin-left: 0.1em;
+  --ti-cursor-color: dodgerblue;
+  /* --ti-cursor-color: #c10002; */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.content > p {
+  font-size: 2rem;
+  padding-top: 2rem;
+  line-height: 2rem;
+}
+
+.intro-section {
+  text-align: center;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .intro-heading {
+    font-size: 7rem;
+    font-weight: 700;
+    color: #c10002;
+    transform: translateY(-10rem);
+  }
+  p {
+    font-size: 4rem;
+    transform: translateY(-10rem);
+    letter-spacing: 3rem;
+  }
+}
+
+.content-section {
+  --scroll-length: 1.5;
+  height: calc(var(--scroll-length) * 100vh);
+  width: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+.content-section .content .subheading,
+.content-section .content .paragraph {
+  opacity: 1;
+  opacity: calc(1 + var(--viewport-y));
+}
+.content-section .content > p {
+  line-height: 3.2rem;
+}
+
+section:nth-of-type(2) {
+  background-color: #c10002;
+}
+section:nth-of-type(3) {
+  background-color: #f9f871;
+}
+section:nth-of-type(3) .subheading {
+  color: #b4e97d;
+}
+
+section:nth-of-type(4) p {
+  color: #f5e9e0;
+}
+section:nth-of-type(4) a.btn {
+  background-color: #c10002;
+  color: white;
+  padding: 0.2rem;
+}
+
+.figure {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.figure > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center center;
+  object-position: center center;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 35em;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  color: white;
+  padding: 2em;
+  font-size: 2.5vmin;
+}
+.content > .header {
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.content > .paragraph {
+  grid-row: 2/3;
+  line-height: 1.5;
+}
+
+.heading {
+  font-size: 2.75em;
+  margin: 0;
+}
+
+.subheading {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.figure {
+  --scale: calc(0.8 + (0.2 * var(--scroll-length) * var(--visible-y)));
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+  transform: scale(var(--scale));
+}
+.figure:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: calc(var(--visible-y));
+}
+.figure > img {
+  display: block;
+  will-change: transform;
+  transform: scale(calc(1 / var(--scale)));
+}
+
+.char {
+  display: inline-block;
+  opacity: calc(1 + var(--viewport-y) * 1.5 - var(--char-percent));
+} /*# sourceMappingURL=index.css.map */
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c10002;
+  color: #efefef;
+  padding: 8px 12px;
+  &__logo {
+    font-size: 2.4rem;
+    a {
+      color: #efefef;
+    }
+  }
+  &__logo i {
+    color: #b4e97d;
+  }
+  &__menu {
+    display: flex;
+    li {
+      padding: 0.8em 1.2em;
+      font-size: 1.8em;
+    }
+    li:hover {
+      background-color: #f6e8e7;
+      color: #2f4858;
+      border-radius: 4px; //둥근 배경
+    }
+  }
+
+  &__icons {
+    display: flex;
+    li {
+      padding: 1em 1.2em;
+      font-size: 1.8em;
+    }
+  }
+  &__toggleBtn {
+    position: absolute;
+    top: 0.4em;
+    right: 0.4em;
+    font-size: 3rem;
+    color: white;
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    // transform: translateX(10em);
+    padding: 0.8em 2.4em;
+    &__logo {
+      margin-bottom: 0.9em;
+      top: 0.3em;
+    }
+    &__menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      li {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    &__icons {
+      justify-content: center;
+      display: none;
+      li {
+        cursor: pointer;
+      }
+      width: 100%;
+    }
+    &__toggleBtn {
+      display: block;
+    }
+
+    &__menu.active,
+    &__icons.active {
+      display: flex;
+    }
+  }
+}
