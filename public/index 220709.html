@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  <html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="iCANMART BUSAN - Homepage" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://kit.fontawesome.com/94a42b81c6.js" crossorigin="anonymous"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/index.js" defer></script>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+  <title>canmart</title>
+</head>
+
+<body>
+  <nav class='navbar'>
+    <div class='navbar__logo'>
+      <i></i>
+      <a href="https://malleable-hygienic-675.notion.site/iCANMART-c880ecec331a48babbef49269288fa5d">i.CANMART</a>
+    </div>
+    <ul class="navbar__menu">
+      <li><a href="#japan">해외주문대행</a></li>
+      <li>공동구매</li>
+      <li>깡통시장 구매대행</li>
+      <li>시장 안내</li>
+      <li>배송조회</li>
+    </ul>
+    <ul class="navbar__icons">
+      <li><i class="fa-brands fa-twitter-square"></i> twitter</li>
+      <li><i class="fa-brands fa-slack"></i> slack</li>
+      <li><i class="fa-brands fa-slack"></i> slack</li>
+      <li><i class="fa-solid fa-arrow-right-to-bracket"> Login</i></li>
+    </ul>
+    <a href="#" class="navbar__toggleBtn">
+      <i class="fa-solid fa-bars" onclick=""></i>
+    </a>
+  </nav>
+  <div id="root"></div>
+  <section class="intro-section">
+    <h1 class="intro-heading" id="logo">i.CANMART</h1>
+    <p class="intro-sub dark-gray">Shop JAPAN</p>
+  </section>
+  <div id="root"></div>
+  <!-- Photos via Unsplash Source https://source.unsplash.com/ -->
+  <section class="content-section" data-scroll id="japan">
+    <figure class="figure"><img src="./images/shop.jpg" /></figure>
+    <div class="content">
+      <header class="header">
+        <div class="subheading orderforyou washed-red">One Day Delivery</div>
+        <h2 class="heading washed-yellow">해외주문,<br>이제 다음날 받으세요</h2>
+      </header>
+      <p class="washed-green pv5">
+        아무리 해외배송이라지만 너무 오래 걸리는데... <br />물건은 잘 오고는 있는 걸까...
+        <br />하나만 필요한데 배송비는 또 왜이리 비싼지...
+        <br />한 두개라면 먼저 보내드리고, 저희가 주문하고 기다리겠습니다.
+        <br />
+        <button data-tf-popup="cSUpvKFk" data-tf-iframe-props="title=해외 주문대행 상세안내" data-tf-medium="snippet" style="all:unset;font-family:Helvetica,Arial,sans-serif;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#C10002;color:#FFFFFF;font-size:20px;border-radius:7px;padding:0 33px;font-weight:bold;height:50px;cursor:pointer;line-height:50px;text-align:center;margin-top:2rem;text-decoration:none;">해외 주문대행 상세안내</button>
+        <!-- https://ct8a17jz60e.typeform.com/to/cSUpvKFk -->
+      </p>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+    </div>
+  </section>
+
+  <section class="content-section" data-scroll>
+    <figure class="figure"><img src="./images/price.jpg" /></figure>
+    <div class="content">
+      <header class="header">
+        <div class="subheading">Save Money</div>
+        <h2 class="heading">깡통시장보다 왜 싼가요?</h2>
+      </header>
+      <p class="paragraph">
+        고객님의 개인통관번호로 공동구매를 합니다.
+        <br /> 그대신 다른 분들은 배송비를 분담하게 됩니다.
+        <br /> 주문 금액은 개인통관 한도(현재 150$)를 넘지 않으므로 추가 경비는 일체 없습니다.
+        <br /> 고객님께는 배송비 부담이 전혀 없으므로 저렴 할수 밖에 없습니다.
+      </p>
+    </div>
+  </section>
+  <section class="content-section" data-scroll>
+    <figure class="figure"><img src="./images/promise.jpg" /></figure>
+    <div class="content">
+      <header class="header">
+        <div class="subheading black">A Promise</div>
+        <h2 class="heading">반드시 지켜야할 약속,<br />일주일간 해외주문금지!</h2>
+      </header>
+      <p class="paragraph ">
+        고객님께서 또 다른 해외 주문을 하실 경우. 저희쪽 주문과 같은날 통관이 될 경우 통관 한도 초과로
+        관세가 발생 할 수 있습니다. 이렇게 발생되는 관세는 저희가 책임지지 않습니다.
+        일인당 개인통관 한도에 맞추어 저희쪽 해외 주문이 이루어 지므로 절대 일주일 간은 해외 주문을 하셔서는 안됩니다.
+        주문 대행 상품에 대해서는 이것만 지켜 주시면 됩니다.
+        <br /><a href="https://ct8a17jz60e.typeform.com/to/yQuR3cTY" class="btn">주문조건 상세보기</a>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    ScrollOut({
+      targets: "#logo"
+      // , offset: 200
+    })
+  </script>
+</body>
+
+</html>

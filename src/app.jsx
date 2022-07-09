@@ -1,10 +1,11 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import Home from './components/home';
 import Japan from './components/japan';
+import {auth} from './service/firebase';
 
-function App({auth}) {
+function App() {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
