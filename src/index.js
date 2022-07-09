@@ -4,20 +4,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app';
 import {auth} from './service/firebase';
+
 console.clear();
 
-ScrollOut({
-  cssProps: {
-    visibleY: true,
-    viewportY: true
-  }
-});
+// ScrollOut({
+//   cssProps: {
+//     visibleY: true,
+//     viewportY: true
+//   }
+// });
 
-Splitting({target: '.heading'});
+// Splitting({target: '.heading'});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  // <React.StrictMode>
-  <App auth={auth} />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <App auth={auth} />
+  </React.StrictMode>
 );

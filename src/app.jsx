@@ -1,16 +1,23 @@
-import React, {useState} from 'react';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
+import React, {useState, useEffect} from 'react';
+import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import Home from './components/home';
 import Japan from './components/japan';
-import {auth} from './service/firebase';
 
-function App() {
+function App({auth}) {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
 
   // useRoutes([{path: '/', element: <Home />}]);
   const register = async () => {
@@ -66,7 +73,7 @@ function App() {
         <button>Login</button>
       </div>
       <h3>Loged in User:</h3>
-      {auth.currentUser.email}
+      {user?.email}
 
       <button>logout</button>
     </section>
