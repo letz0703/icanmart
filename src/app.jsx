@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import Home from './components/home';
 import Japan from './components/japan';
@@ -29,8 +29,21 @@ function App({auth}) {
     }
   };
 
-  const login = async () => {};
-  const logout = async () => {};
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, registerEmail, registerPassword);
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <section>
@@ -70,12 +83,11 @@ function App({auth}) {
             setLoginPassword(event.target.value);
           }}
         />
-        <button>Login</button>
+        <button onClick={login}>Login</button>
       </div>
       <h3>Loged in User:</h3>
       {user?.email}
-
-      <button>logout</button>
+      <button onClick={logout}>logout</button>
     </section>
   );
 }
