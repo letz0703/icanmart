@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:700');
-@use 'base';
-@use 'componets';
-@use 'layout';
-@use 'utilities';
-
 *,
 *::after,
 *::before {
@@ -21,12 +15,30 @@
   --color-primary__lighter: #ff8396;
   --color-lightest: #ffbcda;
 }
+.app {
+  text-align: center;
+  // background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  min-height: 100vh;
+  .intro_input {
+    display: fixed;
+    text-align: center;
+    font-size: 3rem;
+    border: silver 0.2em solid;
+    margin: 20rem;
+    left: 0;
+    padding: 2rem;
+  }
+}
 body {
   font-family: 'Lato', sans-serif;
   overflow-x: hidden;
 }
 .wow {
   color: red;
+}
+.introInput {
+  color: red;
+  padding: 2rem;
 }
 
 .page {
@@ -39,6 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 .container {
   height: 100vh;
