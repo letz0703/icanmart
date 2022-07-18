@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:700');
+@use 'base';
+@use 'componets';
+@use 'layout';
+@use 'utilities';
+
 *,
 *::after,
 *::before {
@@ -18,9 +23,12 @@
 }
 body {
   font-family: 'Lato', sans-serif;
-  // min-height: 50vh;
   overflow-x: hidden;
 }
+.wow {
+  color: red;
+}
+
 .page {
   height: 100vh;
   width: 100vw;
@@ -61,19 +69,15 @@ body {
   background: #f21e56;
 }
 
+.menu > .navbar {
+  display: flex;
+  flex-direction: row;
+}
+
 section {
   height: 100vh;
   width: 100%;
   padding: 6em;
-  h1 {
-    font-size: 5em;
-  }
-
-  p {
-    opacity: 0.8;
-    line-height: 1.5em;
-    font-size: 1.5em;
-  }
 }
 
 section:nth-of-type(1) {
@@ -100,15 +104,4 @@ section:nth-of-type(4) {
 [data-scroll='out'] {
   opacity: 0;
   transform: translateY(5rem);
-}
-
-// .gonggoo {
-//   color: var(--color-lightest);
-// }
-
-.menu {
-  .navbar {
-    display: flex;
-    flex-direction: row;
-  }
 }
