@@ -7,14 +7,14 @@ import {auth} from './service/firebase';
 
 console.clear();
 
-// ScrollOut({
-//   cssProps: {
-//     visibleY: true,
-//     viewportY: true
-//   }
-// });
+ScrollOut({
+  cssProps: {
+    visibleY: true,
+    viewportY: true
+  }
+});
 
-// Splitting({target: '.heading'});
+Splitting({target: '.heading'});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

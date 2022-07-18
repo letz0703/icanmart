@@ -68,7 +68,7 @@
 </style>`
     );
 
-    el.onclick = function () {
+    el.onClick = function () {
       if (ga) {
         var url = this.getAttribute('href');
         ga('send', 'event', 'keyframers', 'click', url, {
