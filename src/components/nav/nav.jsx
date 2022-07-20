@@ -25,9 +25,6 @@ const Nav = () => {
             <i className='fa-brands fa-slack'></i> slack
           </li>
           <li>
-            <i className='fa-brands fa-slack'></i> slack
-          </li>
-          <li>
             <i className='fa-solid fa-arrow-right-to-bracket'> login</i>
           </li>
         </ul>
