@@ -10,9 +10,10 @@ const Nav = () => {
         </div>
         <ul className='navbar__menu'>
           <li>
-            <a href='#japan'>해외주문대행</a>
+            <a href='#japan' className=' fw4  db white link hover-black pointer'>
+              일본 공동구매
+            </a>
           </li>
-          <li>공동구매</li>
           <li>깡통시장 구매대행</li>
           <li>시장 안내</li>
           <li>배송조회</li>
