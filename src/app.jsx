@@ -1,27 +1,34 @@
-import React, {useState} from 'react';
-import styles from './app.module.css';
-import Nav from './components/nav/nav';
-import Intro from './components/intro/intro';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
 
 function App() {
-  const [code, setCode] = useState([]);
-  const icPasses = [{cell: '1815'}];
+  const [count, setCount] = useState(0)
 
   return (
-    <div class={styles.app}>
-      <input type='text' className={styles.intro_input} placeholder='회원번호를 입력 하세요' onChange={(e) => setCode(e.target.value)} required />
-      {icPasses.map((icPass) => {
-        if (icPass.cell === code) {
-          return (
-            <>
-              <Nav />
-              <Intro />
-            </>
-          );
-        }
-      })}
+    <div className="App">
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

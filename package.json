@@ -1,93 +1,21 @@
 {
-  "name": "youtube",
-  "homepage": ".",
-  "main": "public/index.html",
-  "version": "0.1.0",
+  "name": "icanmart",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
-    "firebase": "^9.9.0",
-    "gh-pages": "^4.0.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "scroll-out": "^2.2.12",
-    "splitting": "^1.0.6",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "buil:sass": "sass --no-sourcemaps src/scss:public/css",
-    "copy:assets": "copyfiles -u 1 ./src/assets/**/* public",
-    "copy:html": "copyfiles -u 1 ./src/*.html public",
-    "copy": "npm-run-all parallel copy:*",
-    "watch:html": "onchange \"src/*.html\" -- npm run copy:html",
-    "watch:assets": "onchange \"/src/assets/**/*\" -- npm run copy:assets",
-    "watch:sass": "sass --no-source-map --watch src/scss:public/css",
-    "watch": "npm-run-all --parallel watch:*",
-    "serve": "browser-sync start --server public --files public",
-    "starts": "npm-run-all --parallel watch serve",
-    "builds": "npm-run-all --parallel build:*",
-    "postbuild": "postcss public/css/*.css --use autoprefixer cssnano --r --no-map",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint '**/*.jsx'",
-    "fix": "eslint '**/*.jsx' --fix",
-    "prepare": "husky install",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
-    "pretty": "prettier --config .prettierrc 'src/*.jsx' --write"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "no-unused-vars": [
-        "warn",
-        {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_"
-        }
-      ]
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "browser-sync": "2.27.10",
-    "copyfiles": "2.4.1",
-    "cssnano": "5.1.12",
-    "npm-run-all": "4.1.5",
-    "onchange": "7.1.0",
-    "postcss-cli": "^9.1.0",
-    "sass": "^1.49.8",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.17.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^8.0.0",
-    "prettier": "2.6.2"
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "vite": "^3.2.3"
   }
 }
